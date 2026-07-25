@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import type { Product, ProductStatus } from "@/types/product";
@@ -34,7 +34,9 @@ export function AdminPanel({ initialProducts }: Props) {
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState<ProductStatus>("available");
   const [imageUrl, setImageUrl] = useState("");
+  const [fileName, setFileName] = useState("");
   const [uploading, setUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const filtered = useMemo(() => {
     if (tab === "all") return products;
@@ -48,6 +50,7 @@ export function AdminPanel({ initialProducts }: Props) {
 
   async function uploadFile(file: File) {
     setUploading(true);
+    setFileName(file.name);
     setMsg("");
     const fd = new FormData();
     fd.append("file", file);
@@ -226,17 +229,28 @@ export function AdminPanel({ initialProducts }: Props) {
         <div className="lg:col-span-2">
           <label className="text-sm font-medium text-navy">Foto</label>
           <input
+            ref={fileInputRef}
             type="file"
             accept="image/*"
-            className="mt-1 block w-full text-sm"
+            className="sr-only"
             onChange={(e) => {
               const f = e.target.files?.[0];
               if (f) void uploadFile(f);
             }}
           />
-          {uploading ? (
-            <p className="mt-1 text-xs text-navy/50">Subiendo…</p>
-          ) : null}
+          <div className="mt-2 flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              disabled={uploading}
+              className="inline-flex items-center bg-navy px-4 py-2.5 text-sm font-semibold text-cream transition hover:bg-navy/90 disabled:opacity-60"
+            >
+              {uploading ? "Subiendo…" : "Seleccionar archivo"}
+            </button>
+            <span className="text-sm text-navy/55">
+              {fileName || "Ningún archivo seleccionado"}
+            </span>
+          </div>
           {imageUrl ? (
             <div className="relative mt-3 h-40 w-40 overflow-hidden bg-concrete-light">
               <Image src={imageUrl} alt="Preview" fill className="object-cover" />
