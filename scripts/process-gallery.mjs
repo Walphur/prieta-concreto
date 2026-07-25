@@ -80,6 +80,11 @@ const clientCrops = [
 ];
 
 const videos = [
+  {
+    file: "WhatsApp Video 2026-07-25 at 16.23.13.mp4",
+    out: "proceso-bachas.mp4",
+    label: "Cómo se hacen las bachas",
+  },
   { file: "WhatsApp Video 2026-07-25 at 13.29.17.mp4", out: "bachas-01.mp4", label: "Bachas en taller" },
   { file: "WhatsApp Video 2026-07-25 at 13.29.23.mp4", out: "bachas-02.mp4", label: "Detalle de bachas" },
 ];

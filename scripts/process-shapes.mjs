@@ -232,6 +232,12 @@ async function main() {
         kind: "cliente",
       })),
     videos: [
+      {
+        src: "/gallery/videos/proceso-bachas.mp4",
+        label: "Cómo se hacen las bachas",
+        alt: "Proceso de fabricación de bachas de concreto",
+        kind: "video",
+      },
       { src: "/gallery/videos/bachas-01.mp4", label: "Bachas en taller", alt: "Bachas en taller", kind: "video" },
       { src: "/gallery/videos/bachas-02.mp4", label: "Detalle de bachas", alt: "Detalle de bachas", kind: "video" },
     ],

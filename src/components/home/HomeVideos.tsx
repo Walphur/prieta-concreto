@@ -13,7 +13,7 @@ export function HomeVideos() {
             Videos de las bachas
           </h2>
           <p className="mt-3 text-base text-navy/65">
-            El concreto en movimiento: textura, color y oficio artesanal.
+            Cómo se hacen, textura, color y oficio artesanal.
           </p>
         </div>
         <Button href="/inspiracion" variant="outline">
@@ -21,9 +21,16 @@ export function HomeVideos() {
         </Button>
       </div>
 
-      <div className="mt-10 grid gap-6 md:grid-cols-2">
+      <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {galleryVideos.map((item) => (
-          <figure key={item.src} className="overflow-hidden bg-navy/95">
+          <figure
+            key={item.src}
+            className={
+              item.src.includes("proceso-bachas")
+                ? "overflow-hidden bg-navy/95 md:col-span-2 lg:col-span-3"
+                : "overflow-hidden bg-navy/95"
+            }
+          >
             <div className="flex max-h-[70vh] items-center justify-center bg-navy">
               <video
                 src={item.src}
