@@ -21,23 +21,16 @@ export function HomeVideos() {
         </Button>
       </div>
 
-      <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {galleryVideos.map((item) => (
-          <figure
-            key={item.src}
-            className={
-              item.src.includes("proceso-bachas")
-                ? "overflow-hidden bg-navy/95 md:col-span-2 lg:col-span-3"
-                : "overflow-hidden bg-navy/95"
-            }
-          >
-            <div className="flex max-h-[70vh] items-center justify-center bg-navy">
+          <figure key={item.src} className="overflow-hidden bg-navy/95">
+            <div className="flex aspect-[9/16] items-center justify-center bg-navy">
               <video
                 src={item.src}
                 controls
                 playsInline
                 preload="metadata"
-                className="max-h-[70vh] w-full object-contain"
+                className="h-full max-h-full w-full object-contain"
               >
                 {item.label}
               </video>

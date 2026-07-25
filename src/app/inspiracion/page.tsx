@@ -108,16 +108,16 @@ export default function InspiracionPage() {
         <h2 className="font-[family-name:var(--font-outfit)] text-xl font-semibold text-navy">
           Videos
         </h2>
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {galleryVideos.map((item) => (
             <figure key={item.src} className="overflow-hidden bg-navy">
-              <div className="flex max-h-[70vh] items-center justify-center bg-navy">
+              <div className="flex aspect-[9/16] items-center justify-center bg-navy">
                 <video
                   src={item.src}
                   controls
                   playsInline
                   preload="metadata"
-                  className="max-h-[70vh] w-full object-contain"
+                  className="h-full max-h-full w-full object-contain"
                 >
                   {item.label}
                 </video>
