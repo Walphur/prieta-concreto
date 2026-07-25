@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ProductCard } from "@/components/product/ProductCard";
+import { MedidasMoldes } from "@/components/tienda/MedidasMoldes";
 import { readProducts } from "@/lib/catalog";
 import { clsx } from "clsx";
 import type { ProductCategory } from "@/types/product";
@@ -8,7 +9,7 @@ import type { ProductCategory } from "@/types/product";
 export const metadata: Metadata = {
   title: "Tienda",
   description:
-    "Bachas de concreto Prieta a $80.000. Ejemplos de color y piezas únicas en stock. San Luis.",
+    "Bachas de concreto Prieta a $80.000. Ejemplos de color, medidas de moldes y piezas únicas en stock. San Luis.",
 };
 
 export const dynamic = "force-dynamic";
@@ -31,12 +32,16 @@ export default async function TiendaPage({
   const categoria = (params.categoria as ProductCategory | "all") || "all";
   const vista = params.vista || "todas";
   const all = await readProducts();
+  const showMedidas =
+    vista === "medidas" && (categoria === "bachas" || categoria === "all");
 
   let list = all.filter((p) => {
     if (categoria !== "all" && p.category !== categoria) return false;
     if (vista === "stock") return p.status === "available" && !p.comingSoon;
-    if (vista === "ejemplos") return p.status === "example" && !p.comingSoon;
+    if (vista === "ejemplos")
+      return p.status === "example" && !p.comingSoon && Boolean(p.color);
     if (vista === "vendidas") return p.status === "sold";
+    if (vista === "medidas") return false;
     // default: hide sold unless filtering vendidas; show available + examples + coming soon
     return p.status !== "sold";
   });
@@ -57,7 +62,8 @@ export default async function TiendaPage({
         <p className="mt-3 text-navy/65">
           Toda bacha:{" "}
           <span className="font-semibold text-deep-red">$80.000</span> · Los
-          ejemplos muestran colores; en stock hay piezas únicas artesanales.
+          ejemplos muestran colores; las medidas de cada molde están en la
+          pestaña Medidas.
         </p>
       </header>
 
@@ -89,10 +95,12 @@ export default async function TiendaPage({
             { label: "Todo", value: "todas" },
             { label: "En stock", value: "stock" },
             { label: "Ejemplos de color", value: "ejemplos" },
+            { label: "Medidas", value: "medidas" },
             { label: "Vendidas", value: "vendidas" },
           ].map((f) => {
             const active = vista === f.value;
-            const base = categoria === "bachas" ? "/tienda?categoria=bachas" : "/tienda";
+            const base =
+              categoria === "bachas" ? "/tienda?categoria=bachas" : "/tienda";
             const href =
               f.value === "todas"
                 ? base
@@ -115,17 +123,23 @@ export default async function TiendaPage({
         </div>
       ) : null}
 
-      <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {list.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+      {showMedidas ? (
+        <MedidasMoldes />
+      ) : (
+        <>
+          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {list.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
 
-      {list.length === 0 ? (
-        <p className="mt-16 text-center text-navy/55">
-          No hay productos en esta vista. Cargá piezas nuevas desde el admin.
-        </p>
-      ) : null}
+          {list.length === 0 ? (
+            <p className="mt-16 text-center text-navy/55">
+              No hay productos en esta vista. Cargá piezas nuevas desde el admin.
+            </p>
+          ) : null}
+        </>
+      )}
     </div>
   );
 }

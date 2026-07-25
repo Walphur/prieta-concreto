@@ -3,8 +3,8 @@
     "id": "ex-color-gris-natural",
     "slug": "ejemplo-gris-natural",
     "name": "Gris natural",
-    "description": "Ejemplo de color gris natural. $80.000 cualquier modelo.",
-    "longDescription": "Referencia del pigmento gris natural. Las piezas a la venta se cargan una por una; ninguna es idéntica.",
+    "description": "Ejemplo de color gris natural (incluye tonos claros que parecen blanco).",
+    "longDescription": "Referencia del pigmento gris natural. Las piezas claras ovales o circulares son gris natural, no blanco. El blanco solo es la cuadrada blanca.",
     "price": 80000,
     "currency": "ARS",
     "category": "bachas",
@@ -13,9 +13,15 @@
     "color": "gris-natural",
     "featured": true,
     "images": [
+      "/gallery/producto/oval-crema.jpg",
+      "/gallery/producto/oval-crema-mineral.jpg",
       "/gallery/producto/oval-gris.jpg",
       "/gallery/producto/oval-gris-suave.jpg",
-      "/gallery/producto/circular-gris.jpg"
+      "/gallery/producto/circular-claro.jpg",
+      "/gallery/producto/circular-gris-claro.jpg",
+      "/gallery/producto/circular-gris.jpg",
+      "/gallery/producto/cuadrada-gris.jpg",
+      "/gallery/clientes/cliente-circular-clara.jpg"
     ],
     "specs": {
       "dimensions": "49 × 33 × 11,5 cm",
@@ -41,6 +47,8 @@
     "images": [
       "/gallery/producto/circular-carbon.jpg",
       "/gallery/producto/circular-grafito.jpg",
+      "/gallery/producto/oval-carbon-perfil.jpg",
+      "/gallery/fichas/cuadrado-producto.jpg",
       "/gallery/clientes/cliente-circular-gris.jpg"
     ],
     "specs": {
@@ -132,27 +140,23 @@
     "id": "ex-color-blanco",
     "slug": "ejemplo-blanco",
     "name": "Blanco",
-    "description": "Ejemplo de color blanco / crema mineral.",
-    "longDescription": "Referencia del concreto claro / blanco.",
+    "description": "Única referencia de color blanco (modelo cuadrado).",
+    "longDescription": "El blanco es este tono en cuadrado. Las piezas claras ovales o circulares son gris natural, no blanco.",
     "price": 80000,
     "currency": "ARS",
     "category": "bachas",
     "status": "example",
-    "shape": "oval",
+    "shape": "cuadrado",
     "color": "blanco",
     "featured": true,
     "images": [
-      "/gallery/producto/oval-crema.jpg",
-      "/gallery/producto/oval-crema-mineral.jpg",
-      "/gallery/producto/circular-claro.jpg",
-      "/gallery/producto/cuadrada-crema.jpg",
-      "/gallery/clientes/cliente-circular-clara.jpg"
+      "/gallery/producto/cuadrada-blanco.jpg"
     ],
     "specs": {
-      "dimensions": "49 × 33 × 11,5 cm",
+      "dimensions": "39 × 39 × 12 cm",
       "weight": "Según pieza",
-      "material": "Concreto natural sellado",
-      "finish": "Espesor 1,1 cm · Desagüe Ø 40 mm"
+      "material": "Concreto pigmentado + sellador",
+      "finish": "Espesor 1,1 cm · Desagüe Ø 42 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
@@ -179,110 +183,6 @@
       "weight": "Según pieza",
       "material": "Concreto pigmentado + sellador",
       "finish": "Espesor 1,1 cm · Desagüe Ø 40 mm"
-    },
-    "createdAt": "2026-07-25T00:00:00.000Z"
-  },
-  {
-    "id": "ex-modelo-cuadrado",
-    "slug": "ejemplo-modelo-cuadrado",
-    "name": "Modelo cuadrado",
-    "description": "Ejemplo del modelo cuadrado de vértices redondeados.",
-    "longDescription": "Referencia de forma cuadrada. Disponible en todos los colores. $80.000.",
-    "price": 80000,
-    "currency": "ARS",
-    "category": "bachas",
-    "status": "example",
-    "shape": "cuadrado",
-    "color": "gris-natural",
-    "featured": true,
-    "images": [
-      "/gallery/fichas/cuadrado-producto.jpg",
-      "/gallery/fichas/cuadrado-diagrama.jpg",
-      "/gallery/producto/cuadrada-gris.jpg"
-    ],
-    "specs": {
-      "dimensions": "39 × 39 × 12 cm",
-      "weight": "Según pieza",
-      "material": "Concreto pigmentado",
-      "finish": "Espesor 1,1 cm · Desagüe Ø 42 mm"
-    },
-    "createdAt": "2026-07-25T00:00:00.000Z"
-  },
-  {
-    "id": "ex-modelo-oval",
-    "slug": "ejemplo-modelo-oval",
-    "name": "Modelo oval",
-    "description": "Ejemplo del modelo oval.",
-    "longDescription": "Referencia de forma oval. Disponible en todos los colores. $80.000.",
-    "price": 80000,
-    "currency": "ARS",
-    "category": "bachas",
-    "status": "example",
-    "shape": "oval",
-    "color": "gris-natural",
-    "featured": true,
-    "images": [
-      "/gallery/fichas/oval-producto.jpg",
-      "/gallery/fichas/oval-diagrama.jpg",
-      "/gallery/producto/oval-gris.jpg"
-    ],
-    "specs": {
-      "dimensions": "49 × 33 × 11,5 cm",
-      "weight": "Según pieza",
-      "material": "Concreto pigmentado",
-      "finish": "Espesor 1,1 cm · Desagüe Ø 40 mm"
-    },
-    "createdAt": "2026-07-25T00:00:00.000Z"
-  },
-  {
-    "id": "ex-modelo-circular",
-    "slug": "ejemplo-modelo-circular",
-    "name": "Modelo circular",
-    "description": "Ejemplo del modelo circular (drenaje abierto).",
-    "longDescription": "Referencia de forma circular. Disponible en todos los colores. $80.000.",
-    "price": 80000,
-    "currency": "ARS",
-    "category": "bachas",
-    "status": "example",
-    "shape": "circular",
-    "color": "gris-oscuro",
-    "featured": true,
-    "images": [
-      "/gallery/fichas/circular-producto.jpg",
-      "/gallery/fichas/circular-diagrama.jpg",
-      "/gallery/producto/circular-carbon.jpg"
-    ],
-    "specs": {
-      "dimensions": "Ø 39 × 12 cm",
-      "weight": "Según pieza",
-      "material": "Concreto pigmentado",
-      "finish": "Espesor 1,1 cm · Desagüe Ø 42 mm"
-    },
-    "createdAt": "2026-07-25T00:00:00.000Z"
-  },
-  {
-    "id": "ex-modelo-circular-tapon",
-    "slug": "ejemplo-modelo-circular-tapon",
-    "name": "Modelo circular con tapón",
-    "description": "Ejemplo circular con tapón de concreto a juego.",
-    "longDescription": "Referencia del modelo circular con tapón de concreto. Disponible en todos los colores. $80.000.",
-    "price": 80000,
-    "currency": "ARS",
-    "category": "bachas",
-    "status": "example",
-    "shape": "circular-tapon",
-    "color": "blanco",
-    "featured": true,
-    "images": [
-      "/gallery/fichas/circular-tapon-producto.jpg",
-      "/gallery/producto/circular-claro.jpg",
-      "/gallery/clientes/cliente-circular-clara.jpg"
-    ],
-    "specs": {
-      "dimensions": "Ø 30,5 × 14,5 cm",
-      "weight": "Según pieza",
-      "material": "Concreto pigmentado + tapón a juego",
-      "finish": "Incluye tapón de concreto a juego"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },

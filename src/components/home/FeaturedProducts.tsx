@@ -10,7 +10,8 @@ export async function FeaturedProducts() {
       p.status === "example" &&
       p.category === "bachas" &&
       !p.comingSoon &&
-      p.featured,
+      p.featured &&
+      Boolean(p.color),
   );
   const featured = [...available, ...examples].slice(0, 8);
 
@@ -22,12 +23,13 @@ export async function FeaturedProducts() {
             Colección
           </p>
           <h2 className="mt-2 font-[family-name:var(--font-outfit)] text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
-            {available.length > 0 ? "Piezas y colores" : "Colores y modelos"}
+            {available.length > 0 ? "Piezas y colores" : "Colores disponibles"}
           </h2>
           <p className="mt-3 text-base text-navy/65">
             Todas las bachas:{" "}
             <span className="font-semibold text-deep-red">$80.000</span>. Los
-            ejemplos muestran colores; las piezas en stock son únicas.
+            ejemplos muestran colores; las medidas de moldes están en Tienda →
+            Medidas.
           </p>
         </div>
         <Button href="/tienda" variant="outline" className="self-start sm:self-auto">
