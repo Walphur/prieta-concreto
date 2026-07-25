@@ -44,16 +44,16 @@ const jobs = [
     crop: { left: 0.02, top: 0.02, width: 0.46, height: 0.96 },
   },
   {
-    // Oval — diagramas (izquierda), sin logo
+    // Oval — diagramas (izquierda), sin logo ni título de marca
     file: "c__Users_User_AppData_Roaming_Cursor_User_workspaceStorage_empty-window_images_WhatsApp_Image_2026-07-25_at_14.25.03-bc0a48ca-c330-4f1d-b2e4-b4823d1d9e79.png",
     out: "oval-diagrama.jpg",
-    crop: { left: 0.02, top: 0.2, width: 0.48, height: 0.78 },
+    crop: { left: 0.02, top: 0.28, width: 0.48, height: 0.7 },
   },
   {
-    // Oval — fotos producto (derecha), sin logo
+    // Oval — fotos producto (derecha), sin logo ni texto naranja
     file: "c__Users_User_AppData_Roaming_Cursor_User_workspaceStorage_empty-window_images_WhatsApp_Image_2026-07-25_at_14.25.03-bc0a48ca-c330-4f1d-b2e4-b4823d1d9e79.png",
     out: "oval-producto.jpg",
-    crop: { left: 0.5, top: 0.2, width: 0.48, height: 0.78 },
+    crop: { left: 0.56, top: 0.22, width: 0.42, height: 0.74 },
   },
 ];
 
