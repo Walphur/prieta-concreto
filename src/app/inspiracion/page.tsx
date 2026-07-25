@@ -9,34 +9,34 @@ export const metadata: Metadata = {
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1620626011761-a28690b11c63?auto=format&fit=crop&w=1200&q=80",
-    label: "Estudio",
-    alt: "Bacha en baño iluminado",
+    src: "/products/celosias/circulo.png",
+    label: "Celosía",
+    alt: "Celosía círculo de concreto",
+  },
+  {
+    src: "/products/celosias/ranura.png",
+    label: "Celosía",
+    alt: "Celosía ranura vertical",
+  },
+  {
+    src: "/products/celosias/diagonal.png",
+    label: "Celosía",
+    alt: "Celosía diagonal triangular",
+  },
+  {
+    src: "/products/celosias/horizontales.png",
+    label: "Celosía",
+    alt: "Celosía de lamas horizontales",
   },
   {
     src: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80",
-    label: "Cliente",
+    label: "Estudio",
     alt: "Detalle de baño residencial",
   },
   {
     src: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200&q=80",
     label: "Estudio",
     alt: "Instalación contemporánea",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1200&q=80",
-    label: "Cliente",
-    alt: "Baño con luz natural",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=1200&q=80",
-    label: "Estudio",
-    alt: "Pieza circular de concreto",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1564540586988-aa4e5380613d?auto=format&fit=crop&w=1200&q=80",
-    label: "Cliente",
-    alt: "Detalle textura mineral",
   },
 ];
 
