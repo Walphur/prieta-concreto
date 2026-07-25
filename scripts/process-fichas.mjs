@@ -47,7 +47,7 @@ const jobs = [
     // Oval — diagramas (izquierda), sin logo ni título de marca
     file: "c__Users_User_AppData_Roaming_Cursor_User_workspaceStorage_empty-window_images_WhatsApp_Image_2026-07-25_at_14.25.03-bc0a48ca-c330-4f1d-b2e4-b4823d1d9e79.png",
     out: "oval-diagrama.jpg",
-    crop: { left: 0.02, top: 0.28, width: 0.48, height: 0.7 },
+    crop: { left: 0.02, top: 0.34, width: 0.48, height: 0.64 },
   },
   {
     // Oval — fotos producto (derecha), sin logo ni texto naranja
