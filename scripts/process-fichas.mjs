@@ -68,12 +68,24 @@ for (const job of jobs) {
   const width = Math.min(Math.round(w * job.crop.width), w - left);
   const height = Math.min(Math.round(h * job.crop.height), h - top);
   const out = path.join(outDir, job.out);
-  await sharp(src)
+  const isDiagram = job.out.includes("diagrama");
+  let pipeline = sharp(src)
     .rotate()
     .extract({ left, top, width, height })
-    .resize({ width: 1600, withoutEnlargement: true })
-    .jpeg({ quality: 92, mozjpeg: true })
-    .toFile(out);
+    .resize({ width: 1600, withoutEnlargement: true });
+
+  if (isDiagram) {
+    const pad = Math.round(Math.max(width, height) * 0.05);
+    pipeline = pipeline.extend({
+      top: pad,
+      bottom: pad,
+      left: pad,
+      right: pad,
+      background: { r: 28, g: 30, b: 34 },
+    });
+  }
+
+  await pipeline.jpeg({ quality: 92, mozjpeg: true }).toFile(out);
   console.log("→", job.out, `${width}x${height}`);
 }
 
