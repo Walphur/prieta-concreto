@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
+import { productPhotos } from "@/lib/gallery";
 
-const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1620626011761-a28690b11c63?auto=format&fit=crop&w=2400&q=85";
+const HERO_IMAGE = productPhotos.clienteCircular;
 
 export function Hero() {
   return (
