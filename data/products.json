@@ -4,7 +4,7 @@
     "slug": "ejemplo-gris-natural",
     "name": "Gris natural",
     "description": "Ejemplo de color gris natural (incluye tonos claros que parecen blanco).",
-    "longDescription": "Referencia del pigmento gris natural. Las piezas claras ovales o circulares son gris natural, no blanco. El blanco solo es la cuadrada blanca.",
+    "longDescription": "Referencia del pigmento gris natural. Las piezas claras ovales o circulares son gris natural, no blanco.",
     "price": 80000,
     "currency": "ARS",
     "category": "bachas",
@@ -13,15 +13,15 @@
     "color": "gris-natural",
     "featured": true,
     "images": [
-      "/gallery/producto/oval-crema.jpg",
-      "/gallery/producto/oval-crema-mineral.jpg",
-      "/gallery/producto/oval-gris.jpg",
-      "/gallery/producto/oval-gris-suave.jpg",
-      "/gallery/producto/circular-claro.jpg",
-      "/gallery/producto/circular-gris-claro.jpg",
-      "/gallery/producto/circular-gris.jpg",
-      "/gallery/producto/cuadrada-gris.jpg",
-      "/gallery/clientes/cliente-circular-clara.jpg"
+      "/gallery/shapes/oval/gris-natural-claro.jpg",
+      "/gallery/shapes/oval/gris-natural-mineral.jpg",
+      "/gallery/shapes/oval/gris-natural.jpg",
+      "/gallery/shapes/cuadrado/gris-natural.jpg",
+      "/gallery/shapes/circular/gris-natural.jpg",
+      "/gallery/shapes/circular-tapon/gris-natural.jpg",
+      "/gallery/shapes/circular-tapon/gris-natural-claro.jpg",
+      "/gallery/shapes/circular/cliente-natural.jpg",
+      "/gallery/shapes/circular-tapon/cliente-natural.jpg"
     ],
     "specs": {
       "dimensions": "49 × 33 × 11,5 cm",
@@ -45,11 +45,10 @@
     "color": "gris-oscuro",
     "featured": true,
     "images": [
-      "/gallery/producto/circular-carbon.jpg",
-      "/gallery/producto/circular-grafito.jpg",
-      "/gallery/producto/oval-carbon-perfil.jpg",
-      "/gallery/fichas/cuadrado-producto.jpg",
-      "/gallery/clientes/cliente-circular-gris.jpg"
+      "/gallery/shapes/circular/gris-oscuro.jpg",
+      "/gallery/shapes/oval/gris-oscuro.jpg",
+      "/gallery/shapes/oval/gris-oscuro-perfil.jpg",
+      "/gallery/shapes/circular-tapon/gris-oscuro.jpg"
     ],
     "specs": {
       "dimensions": "Ø 39 × 12 cm",
@@ -73,13 +72,13 @@
     "color": "rosa",
     "featured": true,
     "images": [
-      "/gallery/producto/circular-rosa.jpg",
-      "/gallery/producto/circular-rosa-mate.jpg"
+      "/gallery/shapes/circular/rosa.jpg",
+      "/gallery/shapes/circular/rosa-mate.jpg"
     ],
     "specs": {
       "dimensions": "Ø 39 × 12 cm",
       "weight": "Según pieza",
-      "material": "Concreto pigmentado",
+      "material": "Concreto pigmentado + sellador",
       "finish": "Espesor 1,1 cm · Desagüe Ø 42 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
@@ -89,7 +88,7 @@
     "slug": "ejemplo-verde-agua",
     "name": "Verde agua",
     "description": "Ejemplo de color verde agua.",
-    "longDescription": "Referencia del pigmento verde agua. Si tenés una foto mejor de esta tonalidad, la cambiamos desde el admin.",
+    "longDescription": "Referencia del pigmento verde agua (foto de colección hasta tener pieza individual).",
     "price": 80000,
     "currency": "ARS",
     "category": "bachas",
@@ -98,12 +97,12 @@
     "color": "verde-agua",
     "featured": true,
     "images": [
-      "/gallery/producto/coleccion-colores.jpg"
+      "/gallery/shapes/coleccion/coleccion-colores.jpg"
     ],
     "specs": {
       "dimensions": "49 × 33 × 11,5 cm",
       "weight": "Según pieza",
-      "material": "Concreto pigmentado",
+      "material": "Concreto pigmentado + sellador",
       "finish": "Espesor 1,1 cm · Desagüe Ø 40 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
@@ -122,16 +121,15 @@
     "color": "marmolado",
     "featured": true,
     "images": [
-      "/gallery/producto/oval-marmol.jpg",
-      "/gallery/producto/oval-marmol-oscuro.jpg",
-      "/gallery/producto/oval-marmol-humo.jpg",
-      "/gallery/clientes/cliente-oval-marmol.jpg",
-      "/gallery/clientes/cliente-oval-marmol-bano.jpg"
+      "/gallery/shapes/oval/marmolado-oscuro.jpg",
+      "/gallery/shapes/oval/marmolado.jpg",
+      "/gallery/shapes/oval/marmolado-humo.jpg",
+      "/gallery/shapes/oval/cliente-marmol.jpg"
     ],
     "specs": {
       "dimensions": "49 × 33 × 11,5 cm",
       "weight": "Según pieza",
-      "material": "Concreto pigmentado",
+      "material": "Concreto pigmentado + sellador",
       "finish": "Espesor 1,1 cm · Desagüe Ø 40 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
@@ -141,7 +139,7 @@
     "slug": "ejemplo-blanco",
     "name": "Blanco",
     "description": "Única referencia de color blanco (modelo cuadrado).",
-    "longDescription": "El blanco es este tono en cuadrado. Las piezas claras ovales o circulares son gris natural, no blanco.",
+    "longDescription": "El blanco es este tono en cuadrado. Las piezas claras ovales o circulares son gris natural.",
     "price": 80000,
     "currency": "ARS",
     "category": "bachas",
@@ -150,7 +148,7 @@
     "color": "blanco",
     "featured": true,
     "images": [
-      "/gallery/producto/cuadrada-blanco.jpg"
+      "/gallery/shapes/cuadrado/blanco.jpg"
     ],
     "specs": {
       "dimensions": "39 × 39 × 12 cm",
@@ -174,9 +172,7 @@
     "color": "negro",
     "featured": true,
     "images": [
-      "/gallery/producto/oval-negro.jpg",
-      "/gallery/producto/oval-carbon-perfil.jpg",
-      "/gallery/producto/duo-negro.jpg"
+      "/gallery/shapes/oval/negro.jpg"
     ],
     "specs": {
       "dimensions": "49 × 33 × 11,5 cm",

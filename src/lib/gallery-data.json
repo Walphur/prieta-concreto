@@ -1,155 +1,131 @@
 {
   "producto": [
     {
-      "src": "/gallery/producto/circular-carbon.jpg",
-      "label": "Circular carbón",
-      "alt": "Bacha de concreto Circular carbón",
+      "src": "/gallery/shapes/cuadrado/blanco.jpg",
+      "label": "cuadrado · blanco",
+      "alt": "Bacha cuadrado blanco",
       "kind": "producto"
     },
     {
-      "src": "/gallery/producto/oval-negro.jpg",
-      "label": "Oval negro",
-      "alt": "Bacha de concreto Oval negro",
+      "src": "/gallery/shapes/cuadrado/gris-natural.jpg",
+      "label": "cuadrado · gris-natural",
+      "alt": "Bacha cuadrado gris-natural",
       "kind": "producto"
     },
     {
-      "src": "/gallery/producto/oval-marmol-oscuro.jpg",
-      "label": "Oval mármol oscuro",
-      "alt": "Bacha de concreto Oval mármol oscuro",
+      "src": "/gallery/shapes/oval/negro.jpg",
+      "label": "oval · negro",
+      "alt": "Bacha oval negro",
       "kind": "producto"
     },
     {
-      "src": "/gallery/producto/oval-marmol.jpg",
-      "label": "Oval mármol",
-      "alt": "Bacha de concreto Oval mármol",
+      "src": "/gallery/shapes/oval/marmolado-oscuro.jpg",
+      "label": "oval · marmolado",
+      "alt": "Bacha oval marmolado",
       "kind": "producto"
     },
     {
-      "src": "/gallery/producto/circular-claro.jpg",
-      "label": "Circular claro",
-      "alt": "Bacha de concreto Circular claro",
+      "src": "/gallery/shapes/oval/marmolado.jpg",
+      "label": "oval · marmolado",
+      "alt": "Bacha oval marmolado",
       "kind": "producto"
     },
     {
-      "src": "/gallery/producto/circular-gris-claro.jpg",
-      "label": "Circular gris claro",
-      "alt": "Bacha de concreto Circular gris claro",
+      "src": "/gallery/shapes/oval/gris-natural-claro.jpg",
+      "label": "oval · gris-natural",
+      "alt": "Bacha oval gris-natural",
       "kind": "producto"
     },
     {
-      "src": "/gallery/producto/oval-crema.jpg",
-      "label": "Oval crema",
-      "alt": "Bacha de concreto Oval crema",
+      "src": "/gallery/shapes/oval/gris-natural-mineral.jpg",
+      "label": "oval · gris-natural",
+      "alt": "Bacha oval gris-natural",
       "kind": "producto"
     },
     {
-      "src": "/gallery/producto/oval-crema-mineral.jpg",
-      "label": "Oval crema mineral",
-      "alt": "Bacha de concreto Oval crema mineral",
+      "src": "/gallery/shapes/oval/gris-oscuro.jpg",
+      "label": "oval · gris-oscuro",
+      "alt": "Bacha oval gris-oscuro",
       "kind": "producto"
     },
     {
-      "src": "/gallery/producto/oval-gris.jpg",
-      "label": "Oval gris",
-      "alt": "Bacha de concreto Oval gris",
+      "src": "/gallery/shapes/oval/marmolado-humo.jpg",
+      "label": "oval · marmolado",
+      "alt": "Bacha oval marmolado",
       "kind": "producto"
     },
     {
-      "src": "/gallery/producto/circular-grafito.jpg",
-      "label": "Circular grafito",
-      "alt": "Bacha de concreto Circular grafito",
+      "src": "/gallery/shapes/oval/gris-natural.jpg",
+      "label": "oval · gris-natural",
+      "alt": "Bacha oval gris-natural",
       "kind": "producto"
     },
     {
-      "src": "/gallery/producto/circular-rosa.jpg",
-      "label": "Circular rosa",
-      "alt": "Bacha de concreto Circular rosa",
+      "src": "/gallery/shapes/oval/gris-oscuro-perfil.jpg",
+      "label": "oval · gris-oscuro",
+      "alt": "Bacha oval gris-oscuro",
       "kind": "producto"
     },
     {
-      "src": "/gallery/producto/circular-rosa-mate.jpg",
-      "label": "Circular rosa mate",
-      "alt": "Bacha de concreto Circular rosa mate",
+      "src": "/gallery/shapes/circular/gris-oscuro.jpg",
+      "label": "circular · gris-oscuro",
+      "alt": "Bacha circular gris-oscuro",
       "kind": "producto"
     },
     {
-      "src": "/gallery/producto/cuadrada-crema.jpg",
-      "label": "Cuadrada crema",
-      "alt": "Bacha de concreto Cuadrada crema",
+      "src": "/gallery/shapes/circular/rosa.jpg",
+      "label": "circular · rosa",
+      "alt": "Bacha circular rosa",
       "kind": "producto"
     },
     {
-      "src": "/gallery/producto/oval-marmol-humo.jpg",
-      "label": "Oval mármol humo",
-      "alt": "Bacha de concreto Oval mármol humo",
+      "src": "/gallery/shapes/circular/rosa-mate.jpg",
+      "label": "circular · rosa",
+      "alt": "Bacha circular rosa",
       "kind": "producto"
     },
     {
-      "src": "/gallery/producto/oval-gris-suave.jpg",
-      "label": "Oval gris suave",
-      "alt": "Bacha de concreto Oval gris suave",
+      "src": "/gallery/shapes/circular/gris-natural.jpg",
+      "label": "circular · gris-natural",
+      "alt": "Bacha circular gris-natural",
       "kind": "producto"
     },
     {
-      "src": "/gallery/producto/cuadrada-gris.jpg",
-      "label": "Cuadrada gris",
-      "alt": "Bacha de concreto Cuadrada gris",
+      "src": "/gallery/shapes/circular-tapon/gris-natural.jpg",
+      "label": "circular-tapon · gris-natural",
+      "alt": "Bacha circular-tapon gris-natural",
       "kind": "producto"
     },
     {
-      "src": "/gallery/producto/circular-gris.jpg",
-      "label": "Circular gris",
-      "alt": "Bacha de concreto Circular gris",
+      "src": "/gallery/shapes/circular-tapon/gris-natural-claro.jpg",
+      "label": "circular-tapon · gris-natural",
+      "alt": "Bacha circular-tapon gris-natural",
       "kind": "producto"
     },
     {
-      "src": "/gallery/producto/oval-carbon-perfil.jpg",
-      "label": "Oval carbón",
-      "alt": "Bacha de concreto Oval carbón",
-      "kind": "producto"
-    },
-    {
-      "src": "/gallery/producto/duo-negro.jpg",
-      "label": "Dúo negro",
-      "alt": "Bacha de concreto Dúo negro",
-      "kind": "producto"
-    },
-    {
-      "src": "/gallery/producto/coleccion-estudio.jpg",
-      "label": "Colección estudio",
-      "alt": "Bacha de concreto Colección estudio",
-      "kind": "producto"
-    },
-    {
-      "src": "/gallery/producto/coleccion-colores.jpg",
-      "label": "Colección colores",
-      "alt": "Bacha de concreto Colección colores",
+      "src": "/gallery/shapes/circular-tapon/gris-oscuro.jpg",
+      "label": "circular-tapon · gris-oscuro",
+      "alt": "Bacha circular-tapon gris-oscuro",
       "kind": "producto"
     }
   ],
   "clientes": [
     {
-      "src": "/gallery/clientes/cliente-oval-marmol-bano.jpg",
-      "label": "Cliente · oval mármol",
-      "alt": "Cliente · oval mármol",
+      "src": "/gallery/shapes/oval/cliente-marmol.jpg",
+      "label": "Cliente · oval",
+      "alt": "Instalación oval",
       "kind": "cliente"
     },
     {
-      "src": "/gallery/clientes/cliente-oval-marmol.jpg",
-      "label": "Cliente · oval mármol detalle",
-      "alt": "Cliente · oval mármol detalle",
+      "src": "/gallery/shapes/circular/cliente-natural.jpg",
+      "label": "Cliente · circular",
+      "alt": "Instalación circular",
       "kind": "cliente"
     },
     {
-      "src": "/gallery/clientes/cliente-circular-gris.jpg",
-      "label": "Cliente · circular gris",
-      "alt": "Cliente · circular gris",
-      "kind": "cliente"
-    },
-    {
-      "src": "/gallery/clientes/cliente-circular-clara.jpg",
-      "label": "Cliente · circular clara",
-      "alt": "Cliente · circular clara",
+      "src": "/gallery/shapes/circular-tapon/cliente-natural.jpg",
+      "label": "Cliente · circular-tapon",
+      "alt": "Instalación circular-tapon",
       "kind": "cliente"
     }
   ],

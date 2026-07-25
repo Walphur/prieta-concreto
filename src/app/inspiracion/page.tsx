@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import {
   galleryClientes,
+  galleryGrupos,
   galleryProducto,
   galleryVideos,
 } from "@/lib/gallery";
@@ -34,6 +35,31 @@ export default function InspiracionPage() {
         </h2>
         <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {galleryProducto.map((item) => (
+            <figure
+              key={item.src}
+              className="group relative aspect-square overflow-hidden bg-cream-dark"
+            >
+              <Image
+                src={item.src}
+                alt={item.alt}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              />
+              <figcaption className="absolute bottom-3 left-3 bg-cream/90 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-navy">
+                {item.label}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-16">
+        <h2 className="font-[family-name:var(--font-outfit)] text-xl font-semibold text-navy">
+          Colecciones y grupos
+        </h2>
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {galleryGrupos.map((item) => (
             <figure
               key={item.src}
               className="group relative aspect-square overflow-hidden bg-cream-dark"
