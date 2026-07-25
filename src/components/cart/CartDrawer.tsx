@@ -143,8 +143,7 @@ export function CartDrawer() {
               </span>
             </div>
             <p className="mb-3 text-xs text-navy/50">
-              Envíos regionales con Mercado Envíos · Pago seguro con Mercado
-              Pago
+              Pago solo por transferencia · Envío a coordinar en San Luis
             </p>
             <Link
               href="/checkout"

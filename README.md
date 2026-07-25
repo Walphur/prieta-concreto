@@ -7,7 +7,7 @@ E-commerce headless (custom) para el estudio artesanal **Prieta Concreto** — b
 - **Next.js 16** (App Router) + TypeScript
 - **Tailwind CSS v4** (paleta de marca en `globals.css`)
 - **Zustand** (carrito persistente)
-- Próximo: **Prisma + Postgres**, **Mercado Pago**, **Uploadthing/Firebase** (reseñas con foto)
+- Próximo: **Prisma + Postgres**, fotos reales, **Uploadthing/Firebase** (reseñas)
 
 ## Arquitectura elegida
 
@@ -17,7 +17,8 @@ Enfoque **custom** (no Shopify/WooCommerce en esta etapa):
 |------|----------|
 | Catálogo / stock | Mock tipado → migrar a Prisma + Postgres + panel admin |
 | Carrito | Zustand + `localStorage` |
-| Pagos / envíos | Mercado Pago + Mercado Envíos (AR) |
+| Pagos | Transferencia bancaria (alias/CBU) + aviso por WhatsApp |
+| Envíos | Coordinación manual (San Luis y alrededores) |
 | Reseñas + fotos | Formulario listo; storage externo (Uploadthing o Firebase) |
 
 ## Desarrollo

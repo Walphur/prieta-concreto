@@ -4,7 +4,7 @@ import type { Product } from "@/types/product";
  * Catálogo inicial (mock).
  * Arquitectura prevista: Prisma + Postgres + panel admin;
  * reseñas/fotos vía Uploadthing o Firebase Storage.
- * Pagos: Mercado Pago + Mercado Envíos (San Luis / AR).
+ * Pagos: transferencia bancaria (San Luis / AR). Sin pasarela.
  */
 export const products: Product[] = [
   {

@@ -46,6 +46,19 @@ export function Button(props: ButtonAsButton | ButtonAsLink) {
   );
 
   if ("href" in props && props.href) {
+    const external = /^https?:\/\//.test(props.href);
+    if (external) {
+      return (
+        <a
+          href={props.href}
+          className={classes}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {children}
+        </a>
+      );
+    }
     return (
       <Link href={props.href} className={classes}>
         {children}
