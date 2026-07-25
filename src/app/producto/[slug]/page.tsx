@@ -8,7 +8,12 @@ import {
   readProducts,
   statusLabel,
 } from "@/lib/catalog";
-import { colorLabel, shapeLabel } from "@/lib/bacha-options";
+import {
+  BACHA_DIMENSIONS,
+  colorLabel,
+  shapeLabel,
+  type BachaShapeId,
+} from "@/lib/bacha-options";
 import { AddToCartButton } from "@/components/product/AddToCartButton";
 import { ReviewSection } from "@/components/product/ReviewSection";
 
@@ -37,6 +42,10 @@ export default async function ProductPage({ params }: Props) {
   if (!product) notFound();
 
   const canBuy = isPurchasable(product);
+  const shapeDims =
+    product.shape && product.shape in BACHA_DIMENSIONS
+      ? BACHA_DIMENSIONS[product.shape as BachaShapeId]
+      : null;
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
@@ -107,8 +116,11 @@ export default async function ProductPage({ params }: Props) {
                 Dimensiones
               </dt>
               <dd className="mt-1 text-sm font-medium text-navy">
-                {product.specs.dimensions}
+                {shapeDims?.dimensions || product.specs.dimensions}
               </dd>
+              {shapeDims?.detail ? (
+                <dd className="mt-1 text-xs text-navy/50">{shapeDims.detail}</dd>
+              ) : null}
             </div>
             <div>
               <dt className="text-xs uppercase tracking-wider text-navy/45">
@@ -118,6 +130,26 @@ export default async function ProductPage({ params }: Props) {
                 {product.specs.material}
               </dd>
             </div>
+            {shapeDims?.wall ? (
+              <div>
+                <dt className="text-xs uppercase tracking-wider text-navy/45">
+                  Pared
+                </dt>
+                <dd className="mt-1 text-sm font-medium text-navy">
+                  {shapeDims.wall}
+                </dd>
+              </div>
+            ) : null}
+            {shapeDims?.drain || shapeDims?.note ? (
+              <div>
+                <dt className="text-xs uppercase tracking-wider text-navy/45">
+                  Desagüe
+                </dt>
+                <dd className="mt-1 text-sm font-medium text-navy">
+                  {shapeDims.drain || shapeDims.note}
+                </dd>
+              </div>
+            ) : null}
           </dl>
 
           <div className="mt-8">

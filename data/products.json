@@ -18,10 +18,10 @@
       "/gallery/producto/circular-gris.jpg"
     ],
     "specs": {
-      "dimensions": "Medidas a confirmar",
+      "dimensions": "49 × 33 × 11,5 cm",
       "weight": "Según pieza",
       "material": "Concreto pigmentado + sellador",
-      "finish": "Mate mineral"
+      "finish": "Espesor 1,1 cm · Desagüe Ø 40 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
@@ -44,10 +44,10 @@
       "/gallery/clientes/cliente-circular-gris.jpg"
     ],
     "specs": {
-      "dimensions": "Medidas a confirmar",
+      "dimensions": "Ø 39 × 12 cm",
       "weight": "Según pieza",
       "material": "Concreto pigmentado + sellador",
-      "finish": "Mate"
+      "finish": "Espesor 1,1 cm · Desagüe Ø 42 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
@@ -69,10 +69,10 @@
       "/gallery/producto/circular-rosa-mate.jpg"
     ],
     "specs": {
-      "dimensions": "Medidas a confirmar",
+      "dimensions": "Ø 39 × 12 cm",
       "weight": "Según pieza",
       "material": "Concreto pigmentado",
-      "finish": "Semi-mate"
+      "finish": "Espesor 1,1 cm · Desagüe Ø 42 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
@@ -93,10 +93,10 @@
       "/gallery/producto/coleccion-colores.jpg"
     ],
     "specs": {
-      "dimensions": "Medidas a confirmar",
+      "dimensions": "49 × 33 × 11,5 cm",
       "weight": "Según pieza",
       "material": "Concreto pigmentado",
-      "finish": "Mate mineral"
+      "finish": "Espesor 1,1 cm · Desagüe Ø 40 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
@@ -121,10 +121,10 @@
       "/gallery/clientes/cliente-oval-marmol-bano.jpg"
     ],
     "specs": {
-      "dimensions": "Medidas a confirmar",
+      "dimensions": "49 × 33 × 11,5 cm",
       "weight": "Según pieza",
       "material": "Concreto pigmentado",
-      "finish": "Satinado"
+      "finish": "Espesor 1,1 cm · Desagüe Ø 40 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
@@ -149,10 +149,10 @@
       "/gallery/clientes/cliente-circular-clara.jpg"
     ],
     "specs": {
-      "dimensions": "Medidas a confirmar",
+      "dimensions": "49 × 33 × 11,5 cm",
       "weight": "Según pieza",
       "material": "Concreto natural sellado",
-      "finish": "Mineral"
+      "finish": "Espesor 1,1 cm · Desagüe Ø 40 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
@@ -175,10 +175,10 @@
       "/gallery/producto/duo-negro.jpg"
     ],
     "specs": {
-      "dimensions": "Medidas a confirmar",
+      "dimensions": "49 × 33 × 11,5 cm",
       "weight": "Según pieza",
       "material": "Concreto pigmentado + sellador",
-      "finish": "Mate"
+      "finish": "Espesor 1,1 cm · Desagüe Ø 40 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
@@ -196,14 +196,15 @@
     "color": "gris-natural",
     "featured": true,
     "images": [
-      "/gallery/producto/cuadrada-gris.jpg",
-      "/gallery/producto/cuadrada-crema.jpg"
+      "/gallery/fichas/cuadrado-producto.jpg",
+      "/gallery/fichas/cuadrado-diagrama.jpg",
+      "/gallery/producto/cuadrada-gris.jpg"
     ],
     "specs": {
-      "dimensions": "Medidas a confirmar",
+      "dimensions": "39 × 39 × 12 cm",
       "weight": "Según pieza",
       "material": "Concreto pigmentado",
-      "finish": "Mate"
+      "finish": "Espesor 1,1 cm · Desagüe Ø 42 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
@@ -221,15 +222,15 @@
     "color": "gris-natural",
     "featured": true,
     "images": [
-      "/gallery/producto/oval-gris.jpg",
-      "/gallery/producto/oval-negro.jpg",
-      "/gallery/producto/oval-crema.jpg"
+      "/gallery/fichas/oval-producto.jpg",
+      "/gallery/fichas/oval-diagrama.jpg",
+      "/gallery/producto/oval-gris.jpg"
     ],
     "specs": {
-      "dimensions": "Medidas a confirmar",
+      "dimensions": "49 × 33 × 11,5 cm",
       "weight": "Según pieza",
       "material": "Concreto pigmentado",
-      "finish": "Mate"
+      "finish": "Espesor 1,1 cm · Desagüe Ø 40 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
@@ -247,15 +248,15 @@
     "color": "gris-oscuro",
     "featured": true,
     "images": [
-      "/gallery/producto/circular-carbon.jpg",
-      "/gallery/producto/circular-rosa.jpg",
-      "/gallery/producto/circular-gris.jpg"
+      "/gallery/fichas/circular-producto.jpg",
+      "/gallery/fichas/circular-diagrama.jpg",
+      "/gallery/producto/circular-carbon.jpg"
     ],
     "specs": {
-      "dimensions": "Medidas a confirmar",
+      "dimensions": "Ø 39 × 12 cm",
       "weight": "Según pieza",
       "material": "Concreto pigmentado",
-      "finish": "Mate"
+      "finish": "Espesor 1,1 cm · Desagüe Ø 42 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
@@ -273,16 +274,15 @@
     "color": "blanco",
     "featured": true,
     "images": [
+      "/gallery/fichas/circular-tapon-producto.jpg",
       "/gallery/producto/circular-claro.jpg",
-      "/gallery/producto/circular-gris-claro.jpg",
-      "/gallery/clientes/cliente-circular-clara.jpg",
-      "/gallery/clientes/cliente-circular-gris.jpg"
+      "/gallery/clientes/cliente-circular-clara.jpg"
     ],
     "specs": {
-      "dimensions": "Medidas a confirmar",
+      "dimensions": "Ø 30,5 × 14,5 cm",
       "weight": "Según pieza",
       "material": "Concreto pigmentado + tapón a juego",
-      "finish": "Mate"
+      "finish": "Incluye tapón de concreto a juego"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
@@ -297,7 +297,9 @@
     "category": "celosias",
     "status": "example",
     "comingSoon": true,
-    "images": ["/products/celosias/circulo.png"],
+    "images": [
+      "/products/celosias/circulo.png"
+    ],
     "specs": {
       "dimensions": "Consultar",
       "weight": "Según módulo",
@@ -316,7 +318,9 @@
     "category": "celosias",
     "status": "example",
     "comingSoon": true,
-    "images": ["/products/celosias/ranura.png"],
+    "images": [
+      "/products/celosias/ranura.png"
+    ],
     "specs": {
       "dimensions": "Consultar",
       "weight": "Según módulo",
@@ -335,7 +339,9 @@
     "category": "celosias",
     "status": "example",
     "comingSoon": true,
-    "images": ["/products/celosias/diagonal.png"],
+    "images": [
+      "/products/celosias/diagonal.png"
+    ],
     "specs": {
       "dimensions": "Consultar",
       "weight": "Según módulo",
@@ -354,7 +360,9 @@
     "category": "celosias",
     "status": "example",
     "comingSoon": true,
-    "images": ["/products/celosias/horizontales.png"],
+    "images": [
+      "/products/celosias/horizontales.png"
+    ],
     "specs": {
       "dimensions": "Consultar",
       "weight": "Según módulo",
@@ -373,7 +381,9 @@
     "category": "mesadas",
     "status": "example",
     "comingSoon": true,
-    "images": ["/gallery/clientes/cliente-oval-marmol.jpg"],
+    "images": [
+      "/gallery/clientes/cliente-oval-marmol.jpg"
+    ],
     "specs": {
       "dimensions": "A medida",
       "weight": "Según proyecto",

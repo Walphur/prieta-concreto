@@ -66,10 +66,10 @@ export function makeUniquePiece(input: {
   const slug = `${baseSlug}-${id.slice(-6)}`;
   const status = input.status ?? "available";
 
-  const dimFromShape =
+  const shapeInfo =
     shape !== "otro" && shape in BACHA_DIMENSIONS
-      ? BACHA_DIMENSIONS[shape as BachaShapeId].dimensions
-      : "Medidas a confirmar";
+      ? BACHA_DIMENSIONS[shape as BachaShapeId]
+      : null;
 
   return {
     id,
@@ -89,10 +89,13 @@ export function makeUniquePiece(input: {
     featured: status === "available",
     images: [input.image],
     specs: {
-      dimensions: input.dimensions || dimFromShape,
+      dimensions: input.dimensions || shapeInfo?.dimensions || "Consultar",
       weight: "Según pieza",
       material: "Concreto pigmentado + sellador",
-      finish: "Mate mineral",
+      finish:
+        [shapeInfo?.wall, shapeInfo?.drain, shapeInfo?.note]
+          .filter(Boolean)
+          .join(" · ") || "Mate mineral",
     },
     createdAt: new Date().toISOString(),
   };

@@ -28,25 +28,38 @@ export function shapeLabel(id?: string) {
   return BACHA_SHAPES.find((s) => s.id === id || s.label === id)?.label ?? id ?? "";
 }
 
-/** Medidas por modelo — se completan cuando lleguen los datos oficiales */
+/** Medidas oficiales por modelo (ficha técnica) */
 export const BACHA_DIMENSIONS: Record<
   BachaShapeId,
-  { dimensions: string; note?: string }
+  {
+    dimensions: string;
+    detail: string;
+    wall?: string;
+    drain?: string;
+    note?: string;
+  }
 > = {
   cuadrado: {
-    dimensions: "Medidas a confirmar",
-    note: "Pendiente de ficha técnica",
+    dimensions: "39 × 39 × 12 cm",
+    detail: "Exterior 39 × 39 cm · Alto 12 cm",
+    wall: "Espesor de pared 1,1 cm",
+    drain: "Desagüe Ø 42 mm",
   },
   oval: {
-    dimensions: "Medidas a confirmar",
-    note: "Pendiente de ficha técnica",
+    dimensions: "49 × 33 × 11,5 cm",
+    detail: "Largo 49 cm · Ancho 33 cm · Alto 11,5 cm",
+    wall: "Espesor de pared 1,1 cm",
+    drain: "Desagüe Ø 40 mm",
   },
   circular: {
-    dimensions: "Medidas a confirmar",
-    note: "Pendiente de ficha técnica",
+    dimensions: "Ø 39 × 12 cm",
+    detail: "Diámetro exterior 39 cm · Alto 12 cm",
+    wall: "Espesor de pared 1,1 cm",
+    drain: "Desagüe Ø 42 mm",
   },
   "circular-tapon": {
-    dimensions: "Medidas a confirmar",
-    note: "Incluye tapón de concreto a juego",
+    dimensions: "Ø 30,5 × 14,5 cm",
+    detail: "Diámetro 30,5 cm · Alto 14,5 cm",
+    note: "Incluye tapón / tapa de desagüe de concreto a juego",
   },
 };
