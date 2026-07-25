@@ -43,6 +43,7 @@ export const products: Product[] = [
       productPhotos.ovalMarmolOscuro,
       productPhotos.ovalMarmolHumo,
       productPhotos.clienteMarmol,
+      productPhotos.clienteMarmolBano,
     ],
     specs: {
       dimensions: "Consultar medidas",

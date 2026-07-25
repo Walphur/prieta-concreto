@@ -41,4 +41,5 @@ export const productPhotos = {
   clienteCircular: "/gallery/clientes/cliente-circular-gris.jpg",
   clienteClara: "/gallery/clientes/cliente-circular-clara.jpg",
   clienteMarmol: "/gallery/clientes/cliente-oval-marmol.jpg",
+  clienteMarmolBano: "/gallery/clientes/cliente-oval-marmol-bano.jpg",
 };

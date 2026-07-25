@@ -129,6 +129,18 @@
   ],
   "clientes": [
     {
+      "src": "/gallery/clientes/cliente-oval-marmol-bano.jpg",
+      "label": "Cliente · oval mármol",
+      "alt": "Cliente · oval mármol",
+      "kind": "cliente"
+    },
+    {
+      "src": "/gallery/clientes/cliente-oval-marmol.jpg",
+      "label": "Cliente · oval mármol detalle",
+      "alt": "Cliente · oval mármol detalle",
+      "kind": "cliente"
+    },
+    {
       "src": "/gallery/clientes/cliente-circular-gris.jpg",
       "label": "Cliente · circular gris",
       "alt": "Cliente · circular gris",
@@ -138,12 +150,6 @@
       "src": "/gallery/clientes/cliente-circular-clara.jpg",
       "label": "Cliente · circular clara",
       "alt": "Cliente · circular clara",
-      "kind": "cliente"
-    },
-    {
-      "src": "/gallery/clientes/cliente-oval-marmol.jpg",
-      "label": "Cliente · oval mármol",
-      "alt": "Cliente · oval mármol",
       "kind": "cliente"
     }
   ],
