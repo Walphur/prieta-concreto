@@ -8,6 +8,7 @@ import {
   readProducts,
   statusLabel,
 } from "@/lib/catalog";
+import { colorLabel, shapeLabel } from "@/lib/bacha-options";
 import { AddToCartButton } from "@/components/product/AddToCartButton";
 import { ReviewSection } from "@/components/product/ReviewSection";
 
@@ -61,7 +62,8 @@ export default async function ProductPage({ params }: Props) {
         <div className="lg:sticky lg:top-28 lg:self-start">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
             {product.category}
-            {product.color ? ` · ${product.color}` : ""}
+            {product.shape ? ` · ${shapeLabel(product.shape)}` : ""}
+            {product.color ? ` · ${colorLabel(product.color)}` : ""}
           </p>
           <h1 className="mt-2 font-[family-name:var(--font-outfit)] text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
             {product.name}

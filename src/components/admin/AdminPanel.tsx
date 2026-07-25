@@ -5,6 +5,12 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import type { Product, ProductStatus } from "@/types/product";
 import { BACHA_PRICE } from "@/types/product";
+import {
+  BACHA_COLORS,
+  BACHA_SHAPES,
+  colorLabel,
+  shapeLabel,
+} from "@/lib/bacha-options";
 import { formatPrice, statusLabel } from "@/lib/products";
 import { Button } from "@/components/ui/Button";
 
@@ -23,10 +29,8 @@ export function AdminPanel({ initialProducts }: Props) {
   const [msg, setMsg] = useState("");
 
   const [name, setName] = useState("");
-  const [color, setColor] = useState("");
-  const [shape, setShape] = useState<"circular" | "oval" | "cuadrada" | "otro">(
-    "oval",
-  );
+  const [color, setColor] = useState<string>("gris-natural");
+  const [shape, setShape] = useState<string>("oval");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState<ProductStatus>("available");
   const [imageUrl, setImageUrl] = useState("");
@@ -172,26 +176,30 @@ export function AdminPanel({ initialProducts }: Props) {
         </div>
         <div>
           <label className="text-sm font-medium text-navy">Color</label>
-          <input
+          <select
             className={inputClass}
             value={color}
             onChange={(e) => setColor(e.target.value)}
-            placeholder="Negro, Mármol, Rosa…"
-          />
+          >
+            {BACHA_COLORS.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.label}
+              </option>
+            ))}
+          </select>
         </div>
         <div>
           <label className="text-sm font-medium text-navy">Modelo</label>
           <select
             className={inputClass}
             value={shape}
-            onChange={(e) =>
-              setShape(e.target.value as typeof shape)
-            }
+            onChange={(e) => setShape(e.target.value)}
           >
-            <option value="oval">Oval</option>
-            <option value="circular">Circular</option>
-            <option value="cuadrada">Cuadrada</option>
-            <option value="otro">Otro</option>
+            {BACHA_SHAPES.map((s) => (
+              <option key={s.id} value={s.id}>
+                {s.label}
+              </option>
+            ))}
           </select>
         </div>
         <div>
@@ -292,7 +300,9 @@ export function AdminPanel({ initialProducts }: Props) {
               <p className="font-semibold text-navy">{p.name}</p>
               <p className="text-sm text-navy/55">
                 {statusLabel(p.status)}
-                {p.color ? ` · ${p.color}` : ""} · {formatPrice(p.price)}
+                {p.shape ? ` · ${shapeLabel(p.shape)}` : ""}
+                {p.color ? ` · ${colorLabel(p.color)}` : ""} ·{" "}
+                {formatPrice(p.price)}
               </p>
               <p className="truncate text-xs text-navy/40">{p.slug}</p>
             </div>

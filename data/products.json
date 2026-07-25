@@ -1,20 +1,50 @@
 [
   {
-    "id": "ex-oval-negro",
-    "slug": "ejemplo-oval-negro",
-    "name": "Oval Negro",
-    "description": "Ejemplo de color y modelo. Cada pieza artesanal es única.",
-    "longDescription": "Referencia visual del modelo oval en negro. Las bachas disponibles se publican una por una en el admin; ninguna es idéntica a otra.",
+    "id": "ex-color-gris-natural",
+    "slug": "ejemplo-gris-natural",
+    "name": "Gris natural",
+    "description": "Ejemplo de color gris natural. $80.000 cualquier modelo.",
+    "longDescription": "Referencia del pigmento gris natural. Las piezas a la venta se cargan una por una; ninguna es idéntica.",
     "price": 80000,
     "currency": "ARS",
     "category": "bachas",
     "status": "example",
     "shape": "oval",
-    "color": "Negro",
+    "color": "gris-natural",
     "featured": true,
-    "images": ["/gallery/producto/oval-negro.jpg", "/gallery/producto/oval-carbon-perfil.jpg"],
+    "images": [
+      "/gallery/producto/oval-gris.jpg",
+      "/gallery/producto/oval-gris-suave.jpg",
+      "/gallery/producto/circular-gris.jpg"
+    ],
     "specs": {
-      "dimensions": "Consultar",
+      "dimensions": "Medidas a confirmar",
+      "weight": "Según pieza",
+      "material": "Concreto pigmentado + sellador",
+      "finish": "Mate mineral"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "ex-color-gris-oscuro",
+    "slug": "ejemplo-gris-oscuro",
+    "name": "Gris oscuro",
+    "description": "Ejemplo de color gris oscuro / grafito.",
+    "longDescription": "Referencia del pigmento gris oscuro.",
+    "price": 80000,
+    "currency": "ARS",
+    "category": "bachas",
+    "status": "example",
+    "shape": "circular",
+    "color": "gris-oscuro",
+    "featured": true,
+    "images": [
+      "/gallery/producto/circular-carbon.jpg",
+      "/gallery/producto/circular-grafito.jpg",
+      "/gallery/clientes/cliente-circular-gris.jpg"
+    ],
+    "specs": {
+      "dimensions": "Medidas a confirmar",
       "weight": "Según pieza",
       "material": "Concreto pigmentado + sellador",
       "finish": "Mate"
@@ -22,17 +52,66 @@
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
   {
-    "id": "ex-oval-marmol",
-    "slug": "ejemplo-oval-marmol",
-    "name": "Oval Mármol",
-    "description": "Ejemplo de veteado mármol negro y blanco.",
-    "longDescription": "Referencia del efecto mármol/humo. El veteado de cada pieza nueva es distinto.",
+    "id": "ex-color-rosa",
+    "slug": "ejemplo-rosa",
+    "name": "Rosa",
+    "description": "Ejemplo de color rosa polvo.",
+    "longDescription": "Referencia del pigmento rosa artesanal.",
+    "price": 80000,
+    "currency": "ARS",
+    "category": "bachas",
+    "status": "example",
+    "shape": "circular",
+    "color": "rosa",
+    "featured": true,
+    "images": [
+      "/gallery/producto/circular-rosa.jpg",
+      "/gallery/producto/circular-rosa-mate.jpg"
+    ],
+    "specs": {
+      "dimensions": "Medidas a confirmar",
+      "weight": "Según pieza",
+      "material": "Concreto pigmentado",
+      "finish": "Semi-mate"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "ex-color-verde-agua",
+    "slug": "ejemplo-verde-agua",
+    "name": "Verde agua",
+    "description": "Ejemplo de color verde agua.",
+    "longDescription": "Referencia del pigmento verde agua. Si tenés una foto mejor de esta tonalidad, la cambiamos desde el admin.",
     "price": 80000,
     "currency": "ARS",
     "category": "bachas",
     "status": "example",
     "shape": "oval",
-    "color": "Mármol",
+    "color": "verde-agua",
+    "featured": true,
+    "images": [
+      "/gallery/producto/coleccion-colores.jpg"
+    ],
+    "specs": {
+      "dimensions": "Medidas a confirmar",
+      "weight": "Según pieza",
+      "material": "Concreto pigmentado",
+      "finish": "Mate mineral"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "ex-color-marmolado",
+    "slug": "ejemplo-marmolado",
+    "name": "Marmolado gris con negro",
+    "description": "Ejemplo de veteado marmolado gris y negro.",
+    "longDescription": "Referencia del efecto marmolado. Cada pieza tiene un veteado distinto.",
+    "price": 80000,
+    "currency": "ARS",
+    "category": "bachas",
+    "status": "example",
+    "shape": "oval",
+    "color": "marmolado",
     "featured": true,
     "images": [
       "/gallery/producto/oval-marmol.jpg",
@@ -42,7 +121,7 @@
       "/gallery/clientes/cliente-oval-marmol-bano.jpg"
     ],
     "specs": {
-      "dimensions": "Consultar",
+      "dimensions": "Medidas a confirmar",
       "weight": "Según pieza",
       "material": "Concreto pigmentado",
       "finish": "Satinado"
@@ -50,51 +129,27 @@
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
   {
-    "id": "ex-circular-carbon",
-    "slug": "ejemplo-circular-carbon",
-    "name": "Circular Carbón",
-    "description": "Ejemplo circular en carbón / grafito.",
-    "longDescription": "Referencia del modelo circular oscuro.",
+    "id": "ex-color-blanco",
+    "slug": "ejemplo-blanco",
+    "name": "Blanco",
+    "description": "Ejemplo de color blanco / crema mineral.",
+    "longDescription": "Referencia del concreto claro / blanco.",
     "price": 80000,
     "currency": "ARS",
     "category": "bachas",
     "status": "example",
-    "shape": "circular",
-    "color": "Carbón",
+    "shape": "oval",
+    "color": "blanco",
     "featured": true,
     "images": [
-      "/gallery/producto/circular-carbon.jpg",
-      "/gallery/producto/circular-grafito.jpg",
-      "/gallery/clientes/cliente-circular-gris.jpg"
-    ],
-    "specs": {
-      "dimensions": "Consultar",
-      "weight": "Según pieza",
-      "material": "Concreto pigmentado + sellador",
-      "finish": "Mate"
-    },
-    "createdAt": "2026-07-25T00:00:00.000Z"
-  },
-  {
-    "id": "ex-circular-claro",
-    "slug": "ejemplo-circular-claro",
-    "name": "Circular Claro",
-    "description": "Ejemplo circular en concreto natural claro.",
-    "longDescription": "Referencia del modelo circular claro.",
-    "price": 80000,
-    "currency": "ARS",
-    "category": "bachas",
-    "status": "example",
-    "shape": "circular",
-    "color": "Claro",
-    "featured": true,
-    "images": [
+      "/gallery/producto/oval-crema.jpg",
+      "/gallery/producto/oval-crema-mineral.jpg",
       "/gallery/producto/circular-claro.jpg",
-      "/gallery/producto/circular-gris-claro.jpg",
+      "/gallery/producto/cuadrada-crema.jpg",
       "/gallery/clientes/cliente-circular-clara.jpg"
     ],
     "specs": {
-      "dimensions": "Consultar",
+      "dimensions": "Medidas a confirmar",
       "weight": "Según pieza",
       "material": "Concreto natural sellado",
       "finish": "Mineral"
@@ -102,71 +157,50 @@
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
   {
-    "id": "ex-oval-crema",
-    "slug": "ejemplo-oval-crema",
-    "name": "Oval Crema",
-    "description": "Ejemplo oval en tono crema mineral.",
-    "longDescription": "Referencia del modelo oval claro.",
+    "id": "ex-color-negro",
+    "slug": "ejemplo-negro",
+    "name": "Negro",
+    "description": "Ejemplo de color negro mate.",
+    "longDescription": "Referencia del pigmento negro.",
     "price": 80000,
     "currency": "ARS",
     "category": "bachas",
     "status": "example",
     "shape": "oval",
-    "color": "Crema",
+    "color": "negro",
+    "featured": true,
     "images": [
-      "/gallery/producto/oval-crema.jpg",
-      "/gallery/producto/oval-crema-mineral.jpg"
+      "/gallery/producto/oval-negro.jpg",
+      "/gallery/producto/oval-carbon-perfil.jpg",
+      "/gallery/producto/duo-negro.jpg"
     ],
     "specs": {
-      "dimensions": "Consultar",
+      "dimensions": "Medidas a confirmar",
       "weight": "Según pieza",
-      "material": "Concreto pigmentado",
-      "finish": "Mate mineral"
+      "material": "Concreto pigmentado + sellador",
+      "finish": "Mate"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
   {
-    "id": "ex-circular-rosa",
-    "slug": "ejemplo-circular-rosa",
-    "name": "Circular Rosa",
-    "description": "Ejemplo circular en rosa polvo.",
-    "longDescription": "Referencia del pigmento rosa artesanal.",
+    "id": "ex-modelo-cuadrado",
+    "slug": "ejemplo-modelo-cuadrado",
+    "name": "Modelo cuadrado",
+    "description": "Ejemplo del modelo cuadrado de vértices redondeados.",
+    "longDescription": "Referencia de forma cuadrada. Disponible en todos los colores. $80.000.",
     "price": 80000,
     "currency": "ARS",
     "category": "bachas",
     "status": "example",
-    "shape": "circular",
-    "color": "Rosa",
-    "images": [
-      "/gallery/producto/circular-rosa.jpg",
-      "/gallery/producto/circular-rosa-mate.jpg"
-    ],
-    "specs": {
-      "dimensions": "Consultar",
-      "weight": "Según pieza",
-      "material": "Concreto pigmentado",
-      "finish": "Semi-mate"
-    },
-    "createdAt": "2026-07-25T00:00:00.000Z"
-  },
-  {
-    "id": "ex-cuadrada-gris",
-    "slug": "ejemplo-cuadrada-gris",
-    "name": "Cuadrada Gris",
-    "description": "Ejemplo cuadrada de vértices redondeados.",
-    "longDescription": "Referencia del modelo cuadrado suave.",
-    "price": 80000,
-    "currency": "ARS",
-    "category": "bachas",
-    "status": "example",
-    "shape": "cuadrada",
-    "color": "Gris",
+    "shape": "cuadrado",
+    "color": "gris-natural",
+    "featured": true,
     "images": [
       "/gallery/producto/cuadrada-gris.jpg",
       "/gallery/producto/cuadrada-crema.jpg"
     ],
     "specs": {
-      "dimensions": "Consultar",
+      "dimensions": "Medidas a confirmar",
       "weight": "Según pieza",
       "material": "Concreto pigmentado",
       "finish": "Mate"
@@ -174,23 +208,25 @@
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
   {
-    "id": "ex-oval-gris",
-    "slug": "ejemplo-oval-gris",
-    "name": "Oval Gris",
-    "description": "Ejemplo oval en gris medio.",
-    "longDescription": "Referencia del modelo oval gris neutro.",
+    "id": "ex-modelo-oval",
+    "slug": "ejemplo-modelo-oval",
+    "name": "Modelo oval",
+    "description": "Ejemplo del modelo oval.",
+    "longDescription": "Referencia de forma oval. Disponible en todos los colores. $80.000.",
     "price": 80000,
     "currency": "ARS",
     "category": "bachas",
     "status": "example",
     "shape": "oval",
-    "color": "Gris",
+    "color": "gris-natural",
+    "featured": true,
     "images": [
       "/gallery/producto/oval-gris.jpg",
-      "/gallery/producto/oval-gris-suave.jpg"
+      "/gallery/producto/oval-negro.jpg",
+      "/gallery/producto/oval-crema.jpg"
     ],
     "specs": {
-      "dimensions": "Consultar",
+      "dimensions": "Medidas a confirmar",
       "weight": "Según pieza",
       "material": "Concreto pigmentado",
       "finish": "Mate"
@@ -198,68 +234,55 @@
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
   {
-    "id": "ex-circular-gris",
-    "slug": "ejemplo-circular-gris",
-    "name": "Circular Gris",
-    "description": "Ejemplo circular en gris.",
-    "longDescription": "Referencia del modelo circular gris.",
+    "id": "ex-modelo-circular",
+    "slug": "ejemplo-modelo-circular",
+    "name": "Modelo circular",
+    "description": "Ejemplo del modelo circular (drenaje abierto).",
+    "longDescription": "Referencia de forma circular. Disponible en todos los colores. $80.000.",
     "price": 80000,
     "currency": "ARS",
     "category": "bachas",
     "status": "example",
     "shape": "circular",
-    "color": "Gris",
-    "images": ["/gallery/producto/circular-gris.jpg"],
-    "specs": {
-      "dimensions": "Consultar",
-      "weight": "Según pieza",
-      "material": "Concreto pigmentado",
-      "finish": "Mate"
-    },
-    "createdAt": "2026-07-25T00:00:00.000Z"
-  },
-  {
-    "id": "ex-duo-negro",
-    "slug": "ejemplo-duo-negro",
-    "name": "Dúo Negro",
-    "description": "Ejemplo oval + circular en negro.",
-    "longDescription": "Referencia de ambos formatos en negro.",
-    "price": 80000,
-    "currency": "ARS",
-    "category": "bachas",
-    "status": "example",
-    "shape": "duo",
-    "color": "Negro",
-    "images": ["/gallery/producto/duo-negro.jpg"],
-    "specs": {
-      "dimensions": "Consultar",
-      "weight": "Según pieza",
-      "material": "Concreto pigmentado",
-      "finish": "Mate"
-    },
-    "createdAt": "2026-07-25T00:00:00.000Z"
-  },
-  {
-    "id": "ex-coleccion",
-    "slug": "ejemplo-coleccion-colores",
-    "name": "Colección de colores",
-    "description": "Vista de varios colores y modelos juntos.",
-    "longDescription": "Muestra de la variedad de pigmentos y formas Prieta.",
-    "price": 80000,
-    "currency": "ARS",
-    "category": "bachas",
-    "status": "example",
-    "shape": "coleccion",
-    "color": "Varios",
+    "color": "gris-oscuro",
+    "featured": true,
     "images": [
-      "/gallery/producto/coleccion-colores.jpg",
-      "/gallery/producto/coleccion-estudio.jpg"
+      "/gallery/producto/circular-carbon.jpg",
+      "/gallery/producto/circular-rosa.jpg",
+      "/gallery/producto/circular-gris.jpg"
     ],
     "specs": {
-      "dimensions": "Consultar",
+      "dimensions": "Medidas a confirmar",
       "weight": "Según pieza",
       "material": "Concreto pigmentado",
-      "finish": "Varios"
+      "finish": "Mate"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "ex-modelo-circular-tapon",
+    "slug": "ejemplo-modelo-circular-tapon",
+    "name": "Modelo circular con tapón",
+    "description": "Ejemplo circular con tapón de concreto a juego.",
+    "longDescription": "Referencia del modelo circular con tapón de concreto. Disponible en todos los colores. $80.000.",
+    "price": 80000,
+    "currency": "ARS",
+    "category": "bachas",
+    "status": "example",
+    "shape": "circular-tapon",
+    "color": "blanco",
+    "featured": true,
+    "images": [
+      "/gallery/producto/circular-claro.jpg",
+      "/gallery/producto/circular-gris-claro.jpg",
+      "/gallery/clientes/cliente-circular-clara.jpg",
+      "/gallery/clientes/cliente-circular-gris.jpg"
+    ],
+    "specs": {
+      "dimensions": "Medidas a confirmar",
+      "weight": "Según pieza",
+      "material": "Concreto pigmentado + tapón a juego",
+      "finish": "Mate"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },

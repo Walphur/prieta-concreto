@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/types/product";
 import { formatPrice, isInStock, statusLabel } from "@/lib/products";
+import { colorLabel, shapeLabel } from "@/lib/bacha-options";
 import { clsx } from "clsx";
 
 type ProductCardProps = {
@@ -46,6 +47,13 @@ export function ProductCard({ product, className, priority }: ProductCardProps) 
           <h3 className="font-[family-name:var(--font-outfit)] text-base font-semibold tracking-tight text-navy transition-colors group-hover:text-sage-dark">
             {product.name}
           </h3>
+          {product.category === "bachas" && (product.shape || product.color) ? (
+            <p className="text-xs text-navy/45">
+              {[shapeLabel(product.shape), colorLabel(product.color)]
+                .filter(Boolean)
+                .join(" · ")}
+            </p>
+          ) : null}
           <p className="line-clamp-2 text-sm text-navy/60">
             {product.description}
           </p>

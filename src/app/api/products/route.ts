@@ -5,7 +5,7 @@ import {
   readProducts,
   writeProducts,
 } from "@/lib/catalog";
-import type { ProductStatus } from "@/types/product";
+import type { Product, ProductStatus } from "@/types/product";
 import { BACHA_PRICE } from "@/types/product";
 
 export async function GET(request: Request) {
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
   const body = (await request.json()) as {
     name?: string;
     color?: string;
-    shape?: "circular" | "oval" | "cuadrada" | "otro";
+    shape?: Product["shape"];
     description?: string;
     image?: string;
     status?: ProductStatus;
