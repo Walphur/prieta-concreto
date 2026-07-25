@@ -169,6 +169,9 @@ export function CheckoutForm() {
                 onChange={(e) => update("address", e.target.value)}
                 className={inputClass}
               />
+              <p className="mt-1.5 text-xs text-navy/50">
+                Envíos a toda la Argentina por Andesmar Cargas.
+              </p>
             </div>
           </div>
           <div>

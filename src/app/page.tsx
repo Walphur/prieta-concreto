@@ -18,7 +18,8 @@ export default function HomePage() {
               Inspiración real, piezas reales
             </h2>
             <p className="mt-3 text-cream/70">
-              Fotos de estudio e instalaciones de clientes en San Luis.
+              Fotos de estudio e instalaciones de clientes en todo el país.
+              Envíos a toda la Argentina por Andesmar Cargas.
             </p>
             <div className="mt-8">
               <Button href="/inspiracion" variant="primary">

@@ -109,7 +109,8 @@ export function CartDrawer() {
               </span>
             </div>
             <p className="mb-3 text-xs text-navy/50">
-              Pago solo por transferencia · Envío a coordinar en San Luis
+              Pago por transferencia · Envíos a toda la Argentina (Andesmar
+              Cargas)
             </p>
             <Link
               href="/checkout"

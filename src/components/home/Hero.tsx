@@ -28,7 +28,7 @@ export function Hero() {
           </h1>
           <p className="animate-fade-up delay-200 mt-5 max-w-md text-base leading-relaxed text-cream/80 sm:text-lg">
             Bachas hechas a mano en San Luis. Piezas únicas — $80.000 cualquier
-            color o modelo.
+            color o modelo. Envíos a toda la Argentina.
           </p>
           <div className="animate-fade-up delay-300 mt-8">
             <Button href="/tienda" variant="primary" className="min-w-[11rem]">

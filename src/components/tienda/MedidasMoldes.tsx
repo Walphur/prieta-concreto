@@ -41,7 +41,8 @@ export function MedidasMoldes() {
         Medidas oficiales de cada molde y todas las bachas fotografiadas de ese
         modelo. Todos cuestan{" "}
         <span className="font-semibold text-deep-red">$80.000</span> en
-        cualquiera de los colores.
+        cualquiera de los colores. Envíos a toda la Argentina por Andesmar
+        Cargas.
       </p>
 
       {BACHA_SHAPES.map((shape) => {
@@ -56,7 +57,7 @@ export function MedidasMoldes() {
             key={shape.id}
             className="border-t border-navy/10 pt-10 first:border-t-0 first:pt-0"
           >
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
+            <div className="space-y-8">
               <div>
                 <h2 className="font-[family-name:var(--font-outfit)] text-2xl font-semibold tracking-tight text-navy">
                   {shape.label}
@@ -70,42 +71,42 @@ export function MedidasMoldes() {
                   {dim.drain ? <li>{dim.drain}</li> : null}
                   {dim.note ? <li>{dim.note}</li> : null}
                 </ul>
+              </div>
 
-                <div
-                  className={
-                    ficha.diagram
-                      ? "mt-6 grid gap-3 sm:grid-cols-2"
-                      : "mt-6 max-w-sm"
-                  }
-                >
-                  <div className="relative aspect-[4/5] overflow-hidden bg-concrete-light">
+              <div
+                className={
+                  ficha.diagram
+                    ? "grid gap-4 lg:grid-cols-2"
+                    : "max-w-xl"
+                }
+              >
+                <div className="relative aspect-square overflow-hidden bg-concrete-light">
+                  <Image
+                    src={ficha.product}
+                    alt={`Molde ${shape.label}`}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-contain p-2"
+                  />
+                </div>
+                {ficha.diagram ? (
+                  <div className="relative min-h-[22rem] overflow-hidden bg-navy sm:min-h-[28rem]">
                     <Image
-                      src={ficha.product}
-                      alt={`Molde ${shape.label}`}
+                      src={ficha.diagram}
+                      alt={`Diagrama de medidas ${shape.label}`}
                       fill
-                      sizes="(max-width: 1024px) 50vw, 25vw"
-                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-contain p-3"
                     />
                   </div>
-                  {ficha.diagram ? (
-                    <div className="relative aspect-[4/5] overflow-hidden bg-navy/90">
-                      <Image
-                        src={ficha.diagram}
-                        alt={`Diagrama ${shape.label}`}
-                        fill
-                        sizes="(max-width: 1024px) 50vw, 25vw"
-                        className="object-cover"
-                      />
-                    </div>
-                  ) : null}
-                </div>
+                ) : null}
               </div>
 
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-navy/45">
                   Bachas {shape.label.toLowerCase()}
                 </p>
-                <div className="mt-4 grid gap-3 grid-cols-2 sm:grid-cols-3">
+                <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
                   {photos.map((photo) => (
                     <figure
                       key={photo.src}

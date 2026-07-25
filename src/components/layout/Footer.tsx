@@ -9,7 +9,7 @@ export function Footer() {
           <PrietaLogo size="md" variant="dark" />
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-cream/70">
             Estudio artesanal en San Luis. Bachas de concreto, y pronto celosías
-            y mesadas para espacios de diseño.
+            y mesadas. Envíos a toda la Argentina por Andesmar Cargas.
           </p>
         </div>
 
@@ -48,6 +48,7 @@ export function Footer() {
           </h3>
           <ul className="mt-4 space-y-2 text-sm text-cream/70">
             <li>San Luis, Argentina</li>
+            <li>Envíos a todo el país · Andesmar Cargas</li>
             <li>
               <a
                 href="mailto:hola@prietaconcreto.com"

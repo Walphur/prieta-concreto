@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Prieta Concreto",
   },
   description:
-    "Estudio artesanal en San Luis. Bachas de concreto, celosías y mesadas para baños y espacios de diseño.",
+    "Estudio artesanal en San Luis. Bachas de concreto con envíos a toda la Argentina por Andesmar Cargas.",
   openGraph: {
     title: "Prieta Concreto",
     description: "Artesanía en concreto para baños de diseño.",

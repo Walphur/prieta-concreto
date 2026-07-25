@@ -13,7 +13,7 @@ export function HomeVideos() {
             Videos de las bachas
           </h2>
           <p className="mt-3 text-base text-navy/65">
-            El concreto en movimiento: textura, color y oficio desde San Luis.
+            El concreto en movimiento: textura, color y oficio artesanal.
           </p>
         </div>
         <Button href="/inspiracion" variant="outline">
@@ -21,18 +21,20 @@ export function HomeVideos() {
         </Button>
       </div>
 
-      <div className="mt-10 grid gap-4 md:grid-cols-2">
+      <div className="mt-10 grid gap-6 md:grid-cols-2">
         {galleryVideos.map((item) => (
-          <figure key={item.src} className="overflow-hidden bg-navy">
-            <video
-              src={item.src}
-              controls
-              playsInline
-              preload="metadata"
-              className="aspect-video w-full object-cover"
-            >
-              {item.label}
-            </video>
+          <figure key={item.src} className="overflow-hidden bg-navy/95">
+            <div className="flex max-h-[70vh] items-center justify-center bg-navy">
+              <video
+                src={item.src}
+                controls
+                playsInline
+                preload="metadata"
+                className="max-h-[70vh] w-full object-contain"
+              >
+                {item.label}
+              </video>
+            </div>
             <figcaption className="px-4 py-3 text-sm text-cream/80">
               {item.label}
             </figcaption>

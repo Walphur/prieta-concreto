@@ -10,7 +10,7 @@ import {
 export const metadata: Metadata = {
   title: "Inspiración",
   description:
-    "Galería de bachas Prieta Concreto: estudio, clientes y videos. San Luis, Argentina.",
+    "Galería de bachas Prieta Concreto: estudio, clientes e instalaciones en todo el país.",
 };
 
 export default function InspiracionPage() {
@@ -24,8 +24,8 @@ export default function InspiracionPage() {
           Galería de bachas
         </h1>
         <p className="mt-3 text-navy/65">
-          Fotos de estudio, instalaciones de clientes y videos del taller en San
-          Luis. Solo piezas reales.
+          Fotos de estudio, instalaciones de clientes en distintas provincias y
+          videos del taller. Solo piezas reales.
         </p>
       </header>
 
@@ -111,15 +111,17 @@ export default function InspiracionPage() {
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {galleryVideos.map((item) => (
             <figure key={item.src} className="overflow-hidden bg-navy">
-              <video
-                src={item.src}
-                controls
-                playsInline
-                preload="metadata"
-                className="aspect-video w-full object-cover"
-              >
-                {item.label}
-              </video>
+              <div className="flex max-h-[70vh] items-center justify-center bg-navy">
+                <video
+                  src={item.src}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="max-h-[70vh] w-full object-contain"
+                >
+                  {item.label}
+                </video>
+              </div>
               <figcaption className="px-4 py-3 text-sm text-cream/80">
                 {item.label}
               </figcaption>
