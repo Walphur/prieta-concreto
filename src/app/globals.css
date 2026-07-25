@@ -1,26 +1,131 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand palette — Prieta Concreto */
+  --sage: #7d8f78;
+  --sage-dark: #5f6f5b;
+  --sage-light: #a3b29e;
+  --deep-red: #8b3a3a;
+  --deep-red-dark: #6e2c2c;
+  --navy: #1a2332;
+  --navy-soft: #243044;
+  --concrete: #d8d4ce;
+  --concrete-light: #ebe8e3;
+  --cream: #f7f5f2;
+  --cream-dark: #efece7;
+  --white: #ffffff;
+
+  --background: var(--cream);
+  --foreground: var(--navy);
 }
 
 @theme inline {
+  --color-sage: var(--sage);
+  --color-sage-dark: var(--sage-dark);
+  --color-sage-light: var(--sage-light);
+  --color-deep-red: var(--deep-red);
+  --color-deep-red-dark: var(--deep-red-dark);
+  --color-navy: var(--navy);
+  --color-navy-soft: var(--navy-soft);
+  --color-concrete: var(--concrete);
+  --color-concrete-light: var(--concrete-light);
+  --color-cream: var(--cream);
+  --color-cream-dark: var(--cream-dark);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-outfit);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-dm-sans), ui-sans-serif, sans-serif;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--sage) 35%, transparent);
+    color: var(--navy);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Subtle concrete noise texture */
+.texture-concrete {
+  background-color: var(--concrete-light);
+  background-image:
+    radial-gradient(circle at 18% 22%, rgba(26, 35, 50, 0.035) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 72% 48%, rgba(26, 35, 50, 0.03) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 40% 80%, rgba(125, 143, 120, 0.05) 0 1.2px, transparent 2px),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.35), transparent 45%);
+  background-size: 7px 7px, 9px 9px, 11px 11px, 100% 100%;
+}
+
+.texture-concrete-dark {
+  background-color: var(--navy);
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(125, 143, 120, 0.08) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.035) 0 1px, transparent 1.5px),
+    linear-gradient(160deg, rgba(36, 48, 68, 0.9), rgba(26, 35, 50, 1));
+  background-size: 8px 8px, 10px 10px, 100% 100%;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-soft {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease both;
+}
+
+.animate-scale-soft {
+  animation: scale-soft 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+.delay-200 {
+  animation-delay: 200ms;
+}
+.delay-300 {
+  animation-delay: 300ms;
+}
+.delay-400 {
+  animation-delay: 400ms;
 }
