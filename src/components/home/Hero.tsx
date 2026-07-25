@@ -27,7 +27,7 @@ export function Hero() {
             Artesanía en concreto para baños de diseño.
           </h1>
           <p className="animate-fade-up delay-200 mt-5 max-w-md text-base leading-relaxed text-cream/80 sm:text-lg">
-            Bachas hechas a mano en Córdoba. Piezas únicas con textura mineral y
+            Bachas hechas a mano en San Luis. Piezas únicas con textura mineral y
             acabados de estudio.
           </p>
           <div className="animate-fade-up delay-300 mt-8">

@@ -54,24 +54,25 @@
   }
 }
 
-/* Subtle concrete noise texture */
+/* Soft mineral washes — no noise / no puntillado */
 .texture-concrete {
   background-color: var(--concrete-light);
-  background-image:
-    radial-gradient(circle at 18% 22%, rgba(26, 35, 50, 0.035) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 72% 48%, rgba(26, 35, 50, 0.03) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 40% 80%, rgba(125, 143, 120, 0.05) 0 1.2px, transparent 2px),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.35), transparent 45%);
-  background-size: 7px 7px, 9px 9px, 11px 11px, 100% 100%;
+  background-image: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    transparent 42%,
+    rgba(26, 35, 50, 0.04) 100%
+  );
 }
 
 .texture-concrete-dark {
   background-color: var(--navy);
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(125, 143, 120, 0.08) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.035) 0 1px, transparent 1.5px),
-    linear-gradient(160deg, rgba(36, 48, 68, 0.9), rgba(26, 35, 50, 1));
-  background-size: 8px 8px, 10px 10px, 100% 100%;
+  background-image: linear-gradient(
+    155deg,
+    var(--navy-soft) 0%,
+    var(--navy) 55%,
+    #141c28 100%
+  );
 }
 
 @keyframes fade-up {

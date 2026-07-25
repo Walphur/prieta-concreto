@@ -17,7 +17,7 @@ export default function CheckoutPage() {
       </h1>
       <p className="mt-4 leading-relaxed text-navy/65">
         Próximo paso: crear preferencia de pago con la API de Mercado Pago,
-        calcular envío con Mercado Envíos (Córdoba / AR) y descontar stock al
+        calcular envío con Mercado Envíos (San Luis / AR) y descontar stock al
         confirmar el pago (webhook).
       </p>
       <div className="texture-concrete mt-8 border border-concrete p-6">

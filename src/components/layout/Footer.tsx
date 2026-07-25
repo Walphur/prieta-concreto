@@ -8,7 +8,7 @@ export function Footer() {
         <div>
           <PrietaLogo size="md" variant="dark" />
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-cream/70">
-            Estudio artesanal en Córdoba. Bachas de concreto, y pronto celosías
+            Estudio artesanal en San Luis. Bachas de concreto, y pronto celosías
             y mesadas para espacios de diseño.
           </p>
         </div>
@@ -47,7 +47,7 @@ export function Footer() {
             Contacto
           </h3>
           <ul className="mt-4 space-y-2 text-sm text-cream/70">
-            <li>Córdoba, Argentina</li>
+            <li>San Luis, Argentina</li>
             <li>
               <a
                 href="mailto:hola@prietaconcreto.com"

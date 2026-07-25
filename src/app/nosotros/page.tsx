@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Nosotros",
-  description: "Historia y proceso artesanal de Prieta Concreto en Córdoba.",
+  description: "Historia y proceso artesanal de Prieta Concreto en San Luis.",
 };
 
 export default function NosotrosPage() {
@@ -35,7 +35,7 @@ export default function NosotrosPage() {
           Historia
         </h2>
         <p className="mt-4 leading-relaxed text-navy/70">
-          Prieta Concreto nace en Córdoba como un estudio de diseño artesanal
+          Prieta Concreto nace en San Luis como un estudio de diseño artesanal
           dedicado a piezas de baño. Cada bacha se vacía a mano: pigmentamos la
           masa, controlamos el curado y sellamos la superficie para un uso
           diario sin perder la textura mineral del material.

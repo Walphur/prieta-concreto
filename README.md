@@ -1,6 +1,6 @@
 # Prieta Concreto
 
-E-commerce headless (custom) para el estudio artesanal **Prieta Concreto** — bachas, celosías y mesadas de concreto. Córdoba, Argentina.
+E-commerce headless (custom) para el estudio artesanal **Prieta Concreto** — bachas, celosías y mesadas de concreto. San Luis, Argentina.
 
 ## Stack
 
