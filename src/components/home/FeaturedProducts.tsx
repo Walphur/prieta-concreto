@@ -1,9 +1,18 @@
 import { ProductCard } from "@/components/product/ProductCard";
-import { getFeaturedProducts } from "@/lib/products";
+import { readProducts } from "@/lib/catalog";
 import { Button } from "@/components/ui/Button";
 
-export function FeaturedProducts() {
-  const featured = getFeaturedProducts();
+export async function FeaturedProducts() {
+  const all = await readProducts();
+  const available = all.filter((p) => p.status === "available" && !p.comingSoon);
+  const examples = all.filter(
+    (p) =>
+      p.status === "example" &&
+      p.category === "bachas" &&
+      !p.comingSoon &&
+      p.featured,
+  );
+  const featured = [...available, ...examples].slice(0, 8);
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
@@ -13,14 +22,16 @@ export function FeaturedProducts() {
             Colección
           </p>
           <h2 className="mt-2 font-[family-name:var(--font-outfit)] text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
-            Productos destacados
+            {available.length > 0 ? "Piezas y colores" : "Colores y modelos"}
           </h2>
           <p className="mt-3 text-base text-navy/65">
-            Bachas de concreto con pigmentación integrada y sellado profesional.
+            Todas las bachas:{" "}
+            <span className="font-semibold text-deep-red">$80.000</span>. Los
+            ejemplos muestran colores; las piezas en stock son únicas.
           </p>
         </div>
         <Button href="/tienda" variant="outline" className="self-start sm:self-auto">
-          Ver toda la tienda
+          Ver tienda
         </Button>
       </div>
 

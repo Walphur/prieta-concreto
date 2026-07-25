@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/types/product";
-import { formatPrice, isInStock } from "@/lib/products";
+import { formatPrice, isInStock, statusLabel } from "@/lib/products";
 import { clsx } from "clsx";
 
 type ProductCardProps = {
@@ -12,6 +12,9 @@ type ProductCardProps = {
 
 export function ProductCard({ product, className, priority }: ProductCardProps) {
   const inStock = isInStock(product);
+  const label = product.comingSoon
+    ? "Próximamente"
+    : statusLabel(product.status);
 
   return (
     <article className={clsx("group", className)}>
@@ -28,17 +31,15 @@ export function ProductCard({ product, className, priority }: ProductCardProps) 
           <div className="absolute inset-0 bg-gradient-to-t from-navy/25 via-transparent to-transparent opacity-60" />
           <span
             className={clsx(
-              "absolute left-3 top-3 text-[11px] font-semibold uppercase tracking-[0.14em]",
+              "absolute left-3 top-3 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em]",
               inStock
-                ? "bg-cream/90 px-2.5 py-1 text-sage-dark"
-                : "bg-navy/85 px-2.5 py-1 text-cream",
+                ? "bg-sage text-white"
+                : product.status === "sold"
+                  ? "bg-deep-red/90 text-cream"
+                  : "bg-navy/85 text-cream",
             )}
           >
-            {product.comingSoon
-              ? "Próximamente"
-              : inStock
-                ? "En stock"
-                : "Agotado"}
+            {label}
           </span>
         </div>
         <div className="mt-4 space-y-1">

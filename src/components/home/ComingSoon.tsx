@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { products } from "@/lib/products";
+import { readProducts } from "@/lib/catalog";
 
-const celosias = products.filter((p) => p.category === "celosias");
+export async function ComingSoon() {
+  const products = await readProducts();
+  const celosias = products.filter((p) => p.category === "celosias");
 
-export function ComingSoon() {
   return (
     <section className="texture-concrete border-y border-concrete/70">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
@@ -18,7 +19,6 @@ export function ComingSoon() {
             </h2>
             <p className="mt-3 text-base text-navy/65">
               Módulos de concreto para filtrar luz, ventilación y privacidad.
-              Cuatro modelos en desarrollo, con la misma lógica artesanal.
             </p>
           </div>
           <Link
@@ -54,40 +54,6 @@ export function ComingSoon() {
               <p className="mt-1 text-sm text-navy/60">{item.description}</p>
             </Link>
           ))}
-        </div>
-
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
-          <div className="border border-concrete bg-cream-dark/40 p-8">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sage">
-              También en camino
-            </p>
-            <h3 className="mt-2 font-[family-name:var(--font-outfit)] text-2xl font-semibold text-navy">
-              Mesadas
-            </h3>
-            <p className="mt-2 max-w-md text-sm leading-relaxed text-navy/65">
-              Superficies a medida para integrar bachas Prieta. Mismo material,
-              misma precisión artesanal.
-            </p>
-            <Link
-              href="/tienda?categoria=mesadas"
-              className="mt-5 inline-block text-sm font-medium text-sage-dark underline-offset-4 hover:underline"
-            >
-              Seguir el lanzamiento
-            </Link>
-          </div>
-          <div className="relative min-h-[220px] overflow-hidden bg-navy">
-            <Image
-              src="/products/celosias/circulo.png"
-              alt="Detalle de celosía Prieta"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover opacity-80"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
-            <p className="absolute bottom-6 left-6 max-w-xs text-sm leading-relaxed text-cream/85">
-              Luz, sombra y concreto modular — el lenguaje Prieta fuera del baño.
-            </p>
-          </div>
         </div>
       </div>
     </section>

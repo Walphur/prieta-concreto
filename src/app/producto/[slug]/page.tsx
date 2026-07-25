@@ -4,21 +4,25 @@ import { notFound } from "next/navigation";
 import {
   formatPrice,
   getProductBySlug,
-  isInStock,
-  products,
-} from "@/lib/products";
+  isPurchasable,
+  readProducts,
+  statusLabel,
+} from "@/lib/catalog";
 import { AddToCartButton } from "@/components/product/AddToCartButton";
 import { ReviewSection } from "@/components/product/ReviewSection";
 
 type Props = { params: Promise<{ slug: string }> };
 
-export function generateStaticParams() {
+export const dynamic = "force-dynamic";
+
+export async function generateStaticParams() {
+  const products = await readProducts();
   return products.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = await getProductBySlug(slug);
   if (!product) return { title: "Producto" };
   return {
     title: product.name,
@@ -28,10 +32,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = await getProductBySlug(slug);
   if (!product) notFound();
 
-  const inStock = isInStock(product);
+  const canBuy = isPurchasable(product);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
@@ -39,7 +43,7 @@ export default async function ProductPage({ params }: Props) {
         <div className="space-y-3">
           {product.images.map((src, i) => (
             <div
-              key={src}
+              key={`${src}-${i}`}
               className="relative aspect-[4/5] overflow-hidden bg-concrete-light"
             >
               <Image
@@ -57,6 +61,7 @@ export default async function ProductPage({ params }: Props) {
         <div className="lg:sticky lg:top-28 lg:self-start">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
             {product.category}
+            {product.color ? ` · ${product.color}` : ""}
           </p>
           <h1 className="mt-2 font-[family-name:var(--font-outfit)] text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
             {product.name}
@@ -70,13 +75,23 @@ export default async function ProductPage({ params }: Props) {
           <p className="mt-3 text-sm font-medium">
             {product.comingSoon ? (
               <span className="text-navy/55">Próximamente</span>
-            ) : inStock ? (
-              <span className="text-sage-dark">
-                En stock · {product.stock} disponible
-                {product.stock === 1 ? "" : "s"}
-              </span>
             ) : (
-              <span className="text-deep-red">Agotado</span>
+              <span
+                className={
+                  canBuy
+                    ? "text-sage-dark"
+                    : product.status === "sold"
+                      ? "text-deep-red"
+                      : "text-navy/55"
+                }
+              >
+                {statusLabel(product.status)}
+                {product.status === "example"
+                  ? " · referencia de color/modelo"
+                  : product.status === "available"
+                    ? " · pieza única"
+                    : ""}
+              </span>
             )}
           </p>
 
@@ -95,37 +110,28 @@ export default async function ProductPage({ params }: Props) {
             </div>
             <div>
               <dt className="text-xs uppercase tracking-wider text-navy/45">
-                Peso
-              </dt>
-              <dd className="mt-1 text-sm font-medium text-navy">
-                {product.specs.weight}
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs uppercase tracking-wider text-navy/45">
                 Material
               </dt>
               <dd className="mt-1 text-sm font-medium text-navy">
                 {product.specs.material}
               </dd>
             </div>
-            {product.specs.finish ? (
-              <div>
-                <dt className="text-xs uppercase tracking-wider text-navy/45">
-                  Acabado
-                </dt>
-                <dd className="mt-1 text-sm font-medium text-navy">
-                  {product.specs.finish}
-                </dd>
-              </div>
-            ) : null}
           </dl>
 
           <div className="mt-8">
             <AddToCartButton
               productId={product.id}
-              disabled={!inStock || !!product.comingSoon}
+              name={product.name}
+              price={product.price}
+              image={product.images[0]}
+              disabled={!canBuy}
             />
+            {product.status === "example" ? (
+              <p className="mt-3 text-xs text-navy/50">
+                Esto es un ejemplo de color. Las piezas a la venta se cargan una
+                por una desde el admin (nunca son idénticas).
+              </p>
+            ) : null}
           </div>
         </div>
       </div>

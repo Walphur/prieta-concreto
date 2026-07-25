@@ -4,12 +4,10 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { bankTransfer, whatsappOrderUrl } from "@/lib/bank";
 import { ORDER_STORAGE_KEY, type PendingOrder } from "@/lib/orders";
-import { formatPrice, products } from "@/lib/products";
+import { formatPrice } from "@/lib/products";
 import { Button } from "@/components/ui/Button";
 
-type Props = {
-  refId: string;
-};
+type Props = { refId: string };
 
 export function OrderConfirmation({ refId }: Props) {
   const [order, setOrder] = useState<PendingOrder | null>(null);
@@ -23,9 +21,7 @@ export function OrderConfirmation({ refId }: Props) {
         return;
       }
       const parsed = JSON.parse(raw) as PendingOrder;
-      if (parsed.ref === refId) {
-        setOrder(parsed);
-      }
+      if (parsed.ref === refId) setOrder(parsed);
     } catch {
       /* ignore */
     }
@@ -47,7 +43,7 @@ export function OrderConfirmation({ refId }: Props) {
           Pedido no encontrado
         </h1>
         <p className="mt-3 text-navy/60">
-          Si ya cerraste la pestaña, escribinos por WhatsApp con tu referencia{" "}
+          Escribinos por WhatsApp con tu referencia{" "}
           <span className="font-medium text-navy">{refId}</span>.
         </p>
         <a
@@ -74,9 +70,7 @@ export function OrderConfirmation({ refId }: Props) {
         Transferí para finalizar
       </h1>
       <p className="mt-3 text-navy/65">
-        Referencia{" "}
-        <span className="font-semibold text-navy">{order.ref}</span>. Usala en el
-        concepto de la transferencia.
+        Referencia <span className="font-semibold text-navy">{order.ref}</span>.
       </p>
 
       <div className="mt-8 border border-concrete bg-cream-dark/40 p-6">
@@ -90,10 +84,6 @@ export function OrderConfirmation({ refId }: Props) {
           <Row label="CBU" value={bankTransfer.cbu} mono />
           <Row label="Monto" value={totalLabel} accent />
         </dl>
-        <p className="mt-4 text-xs text-navy/50">
-          Completá alias, CBU y WhatsApp reales en{" "}
-          <code className="text-navy/70">src/lib/bank.ts</code>.
-        </p>
       </div>
 
       <div className="mt-6 border border-concrete p-6">
@@ -101,20 +91,14 @@ export function OrderConfirmation({ refId }: Props) {
           Resumen
         </h2>
         <ul className="mt-4 space-y-2 text-sm text-navy/75">
-          {order.items.map((item) => {
-            const product = products.find((p) => p.id === item.productId);
-            if (!product) return null;
-            return (
-              <li key={item.productId} className="flex justify-between gap-4">
-                <span>
-                  {product.name} × {item.quantity}
-                </span>
-                <span className="font-medium text-deep-red">
-                  {formatPrice(product.price * item.quantity)}
-                </span>
-              </li>
-            );
-          })}
+          {order.items.map((item) => (
+            <li key={item.productId} className="flex justify-between gap-4">
+              <span>{item.name}</span>
+              <span className="font-medium text-deep-red">
+                {formatPrice(item.price ?? 0)}
+              </span>
+            </li>
+          ))}
         </ul>
         <p className="mt-4 text-sm text-navy/60">
           Entrega: {order.customer.address}, {order.customer.city}
@@ -128,10 +112,9 @@ export function OrderConfirmation({ refId }: Props) {
           Avisar por WhatsApp
         </Button>
         <Button href="/tienda" variant="outline" className="sm:flex-1">
-          Seguir comprando
+          Seguir mirando
         </Button>
       </div>
-
       <p className="mt-6 text-center text-xs text-navy/45">
         <Link href="/" className="hover:text-sage-dark">
           Volver al inicio

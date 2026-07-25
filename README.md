@@ -30,6 +30,14 @@ npm run dev
 
 Abrí [http://localhost:3000](http://localhost:3000).
 
+### Admin de piezas
+
+- URL: `/admin`
+- Clave por defecto: `prieta2026` (cambiar con `ADMIN_PASSWORD` en `.env.local`)
+- Crear piezas únicas, poner en stock, marcar vendidas
+- Catálogo en `data/products.json`
+- Precio fijo bachas: **$80.000**
+
 ## Paleta
 
 - Sage `#7D8F78` — CTA / acentos

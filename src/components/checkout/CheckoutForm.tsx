@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { useCartStore } from "@/lib/cart-store";
-import { products, formatPrice } from "@/lib/products";
+import { formatPrice } from "@/lib/products";
 import {
   ORDER_STORAGE_KEY,
   createOrderRef,
@@ -35,17 +35,6 @@ export function CheckoutForm() {
 
   useEffect(() => setMounted(true), []);
 
-  const lines = items
-    .map((item) => {
-      const product = products.find((p) => p.id === item.productId);
-      if (!product) return null;
-      return { item, product };
-    })
-    .filter(Boolean) as {
-    item: { productId: string; quantity: number };
-    product: (typeof products)[number];
-  }[];
-
   function update<K extends keyof CheckoutCustomer>(
     key: K,
     value: CheckoutCustomer[K],
@@ -55,7 +44,7 @@ export function CheckoutForm() {
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (lines.length === 0) return;
+    if (items.length === 0) return;
     setSending(true);
 
     const order: PendingOrder = {
@@ -79,14 +68,14 @@ export function CheckoutForm() {
     );
   }
 
-  if (lines.length === 0) {
+  if (items.length === 0) {
     return (
       <div className="mx-auto max-w-xl px-4 py-16 text-center sm:px-6 lg:py-24">
         <h1 className="font-[family-name:var(--font-outfit)] text-3xl font-semibold text-navy">
           Tu carrito está vacío
         </h1>
         <p className="mt-3 text-navy/60">
-          Agregá productos antes de finalizar el pedido.
+          Agregá una pieza disponible antes de finalizar.
         </p>
         <Link
           href="/tienda"
@@ -98,8 +87,6 @@ export function CheckoutForm() {
     );
   }
 
-  const total = subtotal();
-
   return (
     <div className="mx-auto grid max-w-5xl gap-12 px-4 py-12 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:py-16">
       <div>
@@ -110,8 +97,7 @@ export function CheckoutForm() {
           Pedido por transferencia
         </h1>
         <p className="mt-3 text-navy/65">
-          Sin pasarelas ni comisiones. Completá tus datos, transferí el total y
-          avisanos por WhatsApp con el comprobante.
+          Sin pasarelas. Completá tus datos, transferí y avisanos por WhatsApp.
         </p>
 
         <form onSubmit={onSubmit} className="mt-8 space-y-4">
@@ -195,16 +181,9 @@ export function CheckoutForm() {
               value={form.notes}
               onChange={(e) => update("notes", e.target.value)}
               className={inputClass}
-              placeholder="Horario de entrega, referencias, etc."
             />
           </div>
-
-          <Button
-            type="submit"
-            variant="primary"
-            className="w-full sm:w-auto"
-            disabled={sending}
-          >
+          <Button type="submit" variant="primary" disabled={sending}>
             {sending ? "Generando pedido…" : "Confirmar pedido"}
           </Button>
         </form>
@@ -215,24 +194,25 @@ export function CheckoutForm() {
           Resumen
         </h2>
         <ul className="mt-5 space-y-4">
-          {lines.map(({ item, product }) => (
-            <li key={product.id} className="flex gap-3">
+          {items.map((item) => (
+            <li key={item.productId} className="flex gap-3">
               <div className="relative h-16 w-16 shrink-0 overflow-hidden bg-concrete-light">
-                <Image
-                  src={product.images[0]}
-                  alt={product.name}
-                  fill
-                  className="object-cover"
-                  sizes="64px"
-                />
+                {item.image ? (
+                  <Image
+                    src={item.image}
+                    alt={item.name || ""}
+                    fill
+                    className="object-cover"
+                    sizes="64px"
+                  />
+                ) : null}
               </div>
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-medium text-navy">
-                  {product.name}
+                  {item.name}
                 </p>
-                <p className="text-xs text-navy/55">× {item.quantity}</p>
                 <p className="text-sm font-medium text-deep-red">
-                  {formatPrice(product.price * item.quantity)}
+                  {formatPrice(item.price ?? 0)}
                 </p>
               </div>
             </li>
@@ -241,13 +221,9 @@ export function CheckoutForm() {
         <div className="mt-6 flex items-center justify-between border-t border-concrete pt-4">
           <span className="text-sm text-navy/65">Total a transferir</span>
           <span className="font-[family-name:var(--font-outfit)] text-xl font-semibold text-deep-red">
-            {formatPrice(total)}
+            {formatPrice(subtotal())}
           </span>
         </div>
-        <p className="mt-4 text-xs leading-relaxed text-navy/50">
-          Envío a coordinar dentro de San Luis y alrededores. El stock se
-          reserva al confirmar el pedido y se confirma con la transferencia.
-        </p>
       </aside>
     </div>
   );

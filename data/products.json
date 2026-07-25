@@ -1,0 +1,361 @@
+[
+  {
+    "id": "ex-oval-negro",
+    "slug": "ejemplo-oval-negro",
+    "name": "Oval Negro",
+    "description": "Ejemplo de color y modelo. Cada pieza artesanal es única.",
+    "longDescription": "Referencia visual del modelo oval en negro. Las bachas disponibles se publican una por una en el admin; ninguna es idéntica a otra.",
+    "price": 80000,
+    "currency": "ARS",
+    "category": "bachas",
+    "status": "example",
+    "shape": "oval",
+    "color": "Negro",
+    "featured": true,
+    "images": ["/gallery/producto/oval-negro.jpg", "/gallery/producto/oval-carbon-perfil.jpg"],
+    "specs": {
+      "dimensions": "Consultar",
+      "weight": "Según pieza",
+      "material": "Concreto pigmentado + sellador",
+      "finish": "Mate"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "ex-oval-marmol",
+    "slug": "ejemplo-oval-marmol",
+    "name": "Oval Mármol",
+    "description": "Ejemplo de veteado mármol negro y blanco.",
+    "longDescription": "Referencia del efecto mármol/humo. El veteado de cada pieza nueva es distinto.",
+    "price": 80000,
+    "currency": "ARS",
+    "category": "bachas",
+    "status": "example",
+    "shape": "oval",
+    "color": "Mármol",
+    "featured": true,
+    "images": [
+      "/gallery/producto/oval-marmol.jpg",
+      "/gallery/producto/oval-marmol-oscuro.jpg",
+      "/gallery/producto/oval-marmol-humo.jpg",
+      "/gallery/clientes/cliente-oval-marmol.jpg",
+      "/gallery/clientes/cliente-oval-marmol-bano.jpg"
+    ],
+    "specs": {
+      "dimensions": "Consultar",
+      "weight": "Según pieza",
+      "material": "Concreto pigmentado",
+      "finish": "Satinado"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "ex-circular-carbon",
+    "slug": "ejemplo-circular-carbon",
+    "name": "Circular Carbón",
+    "description": "Ejemplo circular en carbón / grafito.",
+    "longDescription": "Referencia del modelo circular oscuro.",
+    "price": 80000,
+    "currency": "ARS",
+    "category": "bachas",
+    "status": "example",
+    "shape": "circular",
+    "color": "Carbón",
+    "featured": true,
+    "images": [
+      "/gallery/producto/circular-carbon.jpg",
+      "/gallery/producto/circular-grafito.jpg",
+      "/gallery/clientes/cliente-circular-gris.jpg"
+    ],
+    "specs": {
+      "dimensions": "Consultar",
+      "weight": "Según pieza",
+      "material": "Concreto pigmentado + sellador",
+      "finish": "Mate"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "ex-circular-claro",
+    "slug": "ejemplo-circular-claro",
+    "name": "Circular Claro",
+    "description": "Ejemplo circular en concreto natural claro.",
+    "longDescription": "Referencia del modelo circular claro.",
+    "price": 80000,
+    "currency": "ARS",
+    "category": "bachas",
+    "status": "example",
+    "shape": "circular",
+    "color": "Claro",
+    "featured": true,
+    "images": [
+      "/gallery/producto/circular-claro.jpg",
+      "/gallery/producto/circular-gris-claro.jpg",
+      "/gallery/clientes/cliente-circular-clara.jpg"
+    ],
+    "specs": {
+      "dimensions": "Consultar",
+      "weight": "Según pieza",
+      "material": "Concreto natural sellado",
+      "finish": "Mineral"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "ex-oval-crema",
+    "slug": "ejemplo-oval-crema",
+    "name": "Oval Crema",
+    "description": "Ejemplo oval en tono crema mineral.",
+    "longDescription": "Referencia del modelo oval claro.",
+    "price": 80000,
+    "currency": "ARS",
+    "category": "bachas",
+    "status": "example",
+    "shape": "oval",
+    "color": "Crema",
+    "images": [
+      "/gallery/producto/oval-crema.jpg",
+      "/gallery/producto/oval-crema-mineral.jpg"
+    ],
+    "specs": {
+      "dimensions": "Consultar",
+      "weight": "Según pieza",
+      "material": "Concreto pigmentado",
+      "finish": "Mate mineral"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "ex-circular-rosa",
+    "slug": "ejemplo-circular-rosa",
+    "name": "Circular Rosa",
+    "description": "Ejemplo circular en rosa polvo.",
+    "longDescription": "Referencia del pigmento rosa artesanal.",
+    "price": 80000,
+    "currency": "ARS",
+    "category": "bachas",
+    "status": "example",
+    "shape": "circular",
+    "color": "Rosa",
+    "images": [
+      "/gallery/producto/circular-rosa.jpg",
+      "/gallery/producto/circular-rosa-mate.jpg"
+    ],
+    "specs": {
+      "dimensions": "Consultar",
+      "weight": "Según pieza",
+      "material": "Concreto pigmentado",
+      "finish": "Semi-mate"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "ex-cuadrada-gris",
+    "slug": "ejemplo-cuadrada-gris",
+    "name": "Cuadrada Gris",
+    "description": "Ejemplo cuadrada de vértices redondeados.",
+    "longDescription": "Referencia del modelo cuadrado suave.",
+    "price": 80000,
+    "currency": "ARS",
+    "category": "bachas",
+    "status": "example",
+    "shape": "cuadrada",
+    "color": "Gris",
+    "images": [
+      "/gallery/producto/cuadrada-gris.jpg",
+      "/gallery/producto/cuadrada-crema.jpg"
+    ],
+    "specs": {
+      "dimensions": "Consultar",
+      "weight": "Según pieza",
+      "material": "Concreto pigmentado",
+      "finish": "Mate"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "ex-oval-gris",
+    "slug": "ejemplo-oval-gris",
+    "name": "Oval Gris",
+    "description": "Ejemplo oval en gris medio.",
+    "longDescription": "Referencia del modelo oval gris neutro.",
+    "price": 80000,
+    "currency": "ARS",
+    "category": "bachas",
+    "status": "example",
+    "shape": "oval",
+    "color": "Gris",
+    "images": [
+      "/gallery/producto/oval-gris.jpg",
+      "/gallery/producto/oval-gris-suave.jpg"
+    ],
+    "specs": {
+      "dimensions": "Consultar",
+      "weight": "Según pieza",
+      "material": "Concreto pigmentado",
+      "finish": "Mate"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "ex-circular-gris",
+    "slug": "ejemplo-circular-gris",
+    "name": "Circular Gris",
+    "description": "Ejemplo circular en gris.",
+    "longDescription": "Referencia del modelo circular gris.",
+    "price": 80000,
+    "currency": "ARS",
+    "category": "bachas",
+    "status": "example",
+    "shape": "circular",
+    "color": "Gris",
+    "images": ["/gallery/producto/circular-gris.jpg"],
+    "specs": {
+      "dimensions": "Consultar",
+      "weight": "Según pieza",
+      "material": "Concreto pigmentado",
+      "finish": "Mate"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "ex-duo-negro",
+    "slug": "ejemplo-duo-negro",
+    "name": "Dúo Negro",
+    "description": "Ejemplo oval + circular en negro.",
+    "longDescription": "Referencia de ambos formatos en negro.",
+    "price": 80000,
+    "currency": "ARS",
+    "category": "bachas",
+    "status": "example",
+    "shape": "duo",
+    "color": "Negro",
+    "images": ["/gallery/producto/duo-negro.jpg"],
+    "specs": {
+      "dimensions": "Consultar",
+      "weight": "Según pieza",
+      "material": "Concreto pigmentado",
+      "finish": "Mate"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "ex-coleccion",
+    "slug": "ejemplo-coleccion-colores",
+    "name": "Colección de colores",
+    "description": "Vista de varios colores y modelos juntos.",
+    "longDescription": "Muestra de la variedad de pigmentos y formas Prieta.",
+    "price": 80000,
+    "currency": "ARS",
+    "category": "bachas",
+    "status": "example",
+    "shape": "coleccion",
+    "color": "Varios",
+    "images": [
+      "/gallery/producto/coleccion-colores.jpg",
+      "/gallery/producto/coleccion-estudio.jpg"
+    ],
+    "specs": {
+      "dimensions": "Consultar",
+      "weight": "Según pieza",
+      "material": "Concreto pigmentado",
+      "finish": "Varios"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "cel-circulo",
+    "slug": "celosia-circulo",
+    "name": "Celosía Círculo",
+    "description": "Módulo con embudo circular.",
+    "longDescription": "Próximamente.",
+    "price": 0,
+    "currency": "ARS",
+    "category": "celosias",
+    "status": "example",
+    "comingSoon": true,
+    "images": ["/products/celosias/circulo.png"],
+    "specs": {
+      "dimensions": "Consultar",
+      "weight": "Según módulo",
+      "material": "Concreto"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "cel-ranura",
+    "slug": "celosia-ranura",
+    "name": "Celosía Ranura",
+    "description": "Bloque con ranura vertical.",
+    "longDescription": "Próximamente.",
+    "price": 0,
+    "currency": "ARS",
+    "category": "celosias",
+    "status": "example",
+    "comingSoon": true,
+    "images": ["/products/celosias/ranura.png"],
+    "specs": {
+      "dimensions": "Consultar",
+      "weight": "Según módulo",
+      "material": "Concreto"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "cel-diagonal",
+    "slug": "celosia-diagonal",
+    "name": "Celosía Diagonal",
+    "description": "Partición diagonal.",
+    "longDescription": "Próximamente.",
+    "price": 0,
+    "currency": "ARS",
+    "category": "celosias",
+    "status": "example",
+    "comingSoon": true,
+    "images": ["/products/celosias/diagonal.png"],
+    "specs": {
+      "dimensions": "Consultar",
+      "weight": "Según módulo",
+      "material": "Concreto"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "cel-horizontales",
+    "slug": "celosia-horizontales",
+    "name": "Celosía Horizontales",
+    "description": "Lamas horizontales.",
+    "longDescription": "Próximamente.",
+    "price": 0,
+    "currency": "ARS",
+    "category": "celosias",
+    "status": "example",
+    "comingSoon": true,
+    "images": ["/products/celosias/horizontales.png"],
+    "specs": {
+      "dimensions": "Consultar",
+      "weight": "Según módulo",
+      "material": "Concreto"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "mes-01",
+    "slug": "mesada-integral",
+    "name": "Mesada Integral",
+    "description": "Mesada a medida.",
+    "longDescription": "Próximamente.",
+    "price": 0,
+    "currency": "ARS",
+    "category": "mesadas",
+    "status": "example",
+    "comingSoon": true,
+    "images": ["/gallery/clientes/cliente-oval-marmol.jpg"],
+    "specs": {
+      "dimensions": "A medida",
+      "weight": "Según proyecto",
+      "material": "Concreto"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  }
+]
