@@ -17,6 +17,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://prietaconcreto.shop"),
   title: {
     default: "Prieta Concreto | Bachas artesanales de concreto",
     template: "%s | Prieta Concreto",
@@ -26,6 +27,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Prieta Concreto",
     description: "Artesanía en concreto para baños de diseño.",
+    url: "https://prietaconcreto.shop",
+    siteName: "Prieta Concreto",
     locale: "es_AR",
     type: "website",
   },
