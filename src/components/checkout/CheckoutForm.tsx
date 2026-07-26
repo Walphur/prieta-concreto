@@ -138,7 +138,7 @@ export function CheckoutForm() {
                 value={form.phone}
                 onChange={(e) => update("phone", e.target.value)}
                 className={inputClass}
-                placeholder="2664…"
+                placeholder="2665…"
               />
             </div>
           </div>

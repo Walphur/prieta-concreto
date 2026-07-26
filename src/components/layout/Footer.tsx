@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PrietaLogo } from "@/components/brand/PrietaLogo";
+import { whatsappGeneralUrl } from "@/lib/bank";
 
 export function Footer() {
   return (
@@ -49,6 +50,16 @@ export function Footer() {
           <ul className="mt-4 space-y-2 text-sm text-cream/70">
             <li>San Luis, Argentina</li>
             <li>Envíos a todo el país · Andesmar Cargas</li>
+            <li>
+              <a
+                href={whatsappGeneralUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-sage-light"
+              >
+                WhatsApp 2665 031950
+              </a>
+            </li>
             <li>
               <a
                 href="mailto:hola@prietaconcreto.com"

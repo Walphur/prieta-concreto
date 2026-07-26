@@ -81,7 +81,7 @@ export function OrderConfirmation({ refId }: Props) {
           <Row label="Titular" value={bankTransfer.holder} />
           <Row label="Banco" value={bankTransfer.bank} />
           <Row label="Alias" value={bankTransfer.alias} mono />
-          <Row label="CBU" value={bankTransfer.cbu} mono />
+          <Row label={bankTransfer.accountLabel} value={bankTransfer.cbu} mono />
           <Row label="Monto" value={totalLabel} accent />
         </dl>
       </div>

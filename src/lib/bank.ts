@@ -1,13 +1,14 @@
 /**
- * Datos para transferencia bancaria.
- * Completá alias, CBU y WhatsApp reales antes de vender.
+ * Datos para transferencia (Mercado Pago) + WhatsApp.
  */
 export const bankTransfer = {
-  holder: "Prieta Concreto",
-  bank: "Completar banco",
-  alias: "prieta.concreto",
-  cbu: "0000000000000000000000",
-  whatsapp: "5492664000000",
+  holder: "Juan Cruz Gagliano",
+  bank: "Mercado Pago",
+  alias: "dsl.store",
+  cbu: "0000003100031803769513",
+  /** CBU/CVU label shown in checkout */
+  accountLabel: "CVU",
+  whatsapp: "5492665031950",
   city: "San Luis, Argentina",
 } as const;
 
@@ -19,5 +20,10 @@ export function whatsappOrderUrl(orderRef: string, totalLabel: string) {
     `Adjunto el comprobante.`,
   ].join("\n");
 
+  return `https://wa.me/${bankTransfer.whatsapp}?text=${encodeURIComponent(text)}`;
+}
+
+export function whatsappGeneralUrl(message?: string) {
+  const text = message ?? "Hola Prieta Concreto, quiero consultar por una bacha.";
   return `https://wa.me/${bankTransfer.whatsapp}?text=${encodeURIComponent(text)}`;
 }
