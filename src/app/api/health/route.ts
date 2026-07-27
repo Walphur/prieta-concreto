@@ -1,9 +1,22 @@
 import { NextResponse } from "next/server";
+import { ensureCatalogSeeded } from "@/lib/catalog";
 
-/** Diagnóstico no sensible: confirma si Blob está activo en runtime */
+/** Diagnóstico + seed único del catálogo en Blob */
 export async function GET() {
-  return NextResponse.json({
-    blobConfigured: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
-    nodeEnv: process.env.NODE_ENV,
-  });
+  try {
+    const seed = await ensureCatalogSeeded();
+    return NextResponse.json({
+      blobConfigured: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+      nodeEnv: process.env.NODE_ENV,
+      catalog: seed,
+    });
+  } catch (error) {
+    return NextResponse.json(
+      {
+        blobConfigured: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+        error: error instanceof Error ? error.message : "unknown",
+      },
+      { status: 500 },
+    );
+  }
 }

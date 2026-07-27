@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { isAdminAuthenticated } from "@/lib/admin-auth";
 import {
+  ensureCatalogSeeded,
   makeUniquePiece,
   readProducts,
   writeProducts,
@@ -51,9 +52,22 @@ export async function POST(request: Request) {
   });
   product.price = BACHA_PRICE;
 
-  const products = await readProducts();
-  products.unshift(product);
-  await writeProducts(products);
+  try {
+    await ensureCatalogSeeded();
+    const products = await readProducts();
+    products.unshift(product);
+    await writeProducts(products);
+  } catch (error) {
+    return NextResponse.json(
+      {
+        error:
+          error instanceof Error
+            ? error.message
+            : "No se pudo guardar el catálogo",
+      },
+      { status: 500 },
+    );
+  }
 
   return NextResponse.json(product, { status: 201 });
 }

@@ -35,14 +35,23 @@ async function writeLocalProducts(products: Product[]) {
 
 async function readBlobProducts(): Promise<Product[] | null> {
   const { blobs } = await list({
-    prefix: BLOB_CATALOG_PATH,
-    limit: 10,
+    prefix: "catalog/",
+    limit: 20,
   });
-  const match = blobs.find((b) => b.pathname === BLOB_CATALOG_PATH);
+  const match = blobs
+    .filter((b) => b.pathname === BLOB_CATALOG_PATH)
+    .sort(
+      (a, b) =>
+        new Date(b.uploadedAt).getTime() - new Date(a.uploadedAt).getTime(),
+    )[0];
   if (!match) return null;
 
-  const res = await fetch(`${match.url}?t=${Date.now()}`, {
+  const res = await fetch(match.url, {
     cache: "no-store",
+    headers: {
+      "Cache-Control": "no-cache",
+      Pragma: "no-cache",
+    },
   });
   if (!res.ok) return null;
   return (await res.json()) as Product[];
@@ -58,14 +67,22 @@ async function writeBlobProducts(products: Product[]) {
   });
 }
 
+/** Seed Blob once from the committed JSON. Never call this on every read. */
+export async function ensureCatalogSeeded() {
+  if (!useBlob()) return { seeded: false, reason: "no-blob" as const };
+  const existing = await readBlobProducts();
+  if (existing) return { seeded: false, reason: "exists" as const, count: existing.length };
+  const seed = await readLocalProducts();
+  await writeBlobProducts(seed);
+  return { seeded: true, reason: "seeded" as const, count: seed.length };
+}
+
 export async function readProducts(): Promise<Product[]> {
   if (useBlob()) {
     const fromBlob = await readBlobProducts();
     if (fromBlob) return fromBlob;
-
-    const seed = await readLocalProducts();
-    await writeBlobProducts(seed);
-    return seed;
+    // Do NOT write on read — concurrent seeds were overwriting admin creates.
+    return readLocalProducts();
   }
 
   return readLocalProducts();
@@ -74,12 +91,6 @@ export async function readProducts(): Promise<Product[]> {
 export async function writeProducts(products: Product[]) {
   if (useBlob()) {
     await writeBlobProducts(products);
-    // Keep local seed updated when running locally with Blob token
-    try {
-      await writeLocalProducts(products);
-    } catch {
-      // ignore on read-only deploy FS
-    }
     return;
   }
 
