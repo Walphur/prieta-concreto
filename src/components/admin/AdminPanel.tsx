@@ -27,6 +27,7 @@ export function AdminPanel({ initialProducts }: Props) {
   );
   const [busy, setBusy] = useState<string | null>(null);
   const [msg, setMsg] = useState("");
+  const [editingId, setEditingId] = useState<string | null>(null);
 
   const [name, setName] = useState("");
   const [color, setColor] = useState<string>("gris-natural");
@@ -42,6 +43,37 @@ export function AdminPanel({ initialProducts }: Props) {
     if (tab === "all") return products;
     return products.filter((p) => p.status === tab);
   }, [products, tab]);
+
+  function resetForm() {
+    setEditingId(null);
+    setName("");
+    setColor("gris-natural");
+    setShape("oval");
+    setDescription("");
+    setImageUrl("");
+    setFileName("");
+    setStatus("available");
+  }
+
+  function startEdit(p: Product) {
+    setEditingId(p.id);
+    setName(p.name);
+    setColor(p.color || "gris-natural");
+    setShape(p.shape || "oval");
+    setDescription(p.description || "");
+    setImageUrl(p.images[0] || "");
+    setFileName("");
+    setStatus(p.status);
+    setMsg(`Editando: ${p.name}`);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  async function reloadProducts() {
+    const res = await fetch("/api/products", { cache: "no-store" });
+    if (!res.ok) return;
+    const list = (await res.json()) as Product[];
+    setProducts(list);
+  }
 
   async function logout() {
     await fetch("/api/admin/login", { method: "DELETE" });
@@ -64,10 +96,37 @@ export function AdminPanel({ initialProducts }: Props) {
     setImageUrl(data.url);
   }
 
-  async function createProduct(e: React.FormEvent) {
+  async function saveProduct(e: React.FormEvent) {
     e.preventDefault();
-    setBusy("create");
+    setBusy("save");
     setMsg("");
+
+    if (editingId) {
+      const res = await fetch(`/api/products/${editingId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          color,
+          shape,
+          description,
+          image: imageUrl,
+          status,
+        }),
+      });
+      setBusy(null);
+      if (!res.ok) {
+        const err = (await res.json()) as { error?: string };
+        setMsg(err.error || "No se pudo guardar");
+        return;
+      }
+      await reloadProducts();
+      resetForm();
+      setMsg("Pieza actualizada");
+      router.refresh();
+      return;
+    }
+
     const res = await fetch("/api/products", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -86,13 +145,8 @@ export function AdminPanel({ initialProducts }: Props) {
       setMsg(err.error || "No se pudo crear");
       return;
     }
-    const created = (await res.json()) as Product;
-    setProducts((prev) => [created, ...prev]);
-    setName("");
-    setColor("");
-    setDescription("");
-    setImageUrl("");
-    setStatus("available");
+    await reloadProducts();
+    resetForm();
     setMsg("Pieza creada");
     router.refresh();
   }
@@ -106,11 +160,11 @@ export function AdminPanel({ initialProducts }: Props) {
     });
     setBusy(null);
     if (!res.ok) {
-      setMsg("No se pudo actualizar");
+      const err = (await res.json()) as { error?: string };
+      setMsg(err.error || "No se pudo actualizar");
       return;
     }
-    const updated = (await res.json()) as Product;
-    setProducts((prev) => prev.map((p) => (p.id === id ? updated : p)));
+    await reloadProducts();
     router.refresh();
   }
 
@@ -120,10 +174,13 @@ export function AdminPanel({ initialProducts }: Props) {
     const res = await fetch(`/api/products/${id}`, { method: "DELETE" });
     setBusy(null);
     if (!res.ok) {
-      setMsg("No se pudo eliminar");
+      const err = (await res.json()) as { error?: string };
+      setMsg(err.error || "No se pudo eliminar");
       return;
     }
-    setProducts((prev) => prev.filter((p) => p.id !== id));
+    if (editingId === id) resetForm();
+    await reloadProducts();
+    setMsg("Pieza eliminada");
     router.refresh();
   }
 
@@ -159,13 +216,22 @@ export function AdminPanel({ initialProducts }: Props) {
       {msg ? <p className="mt-4 text-sm text-sage-dark">{msg}</p> : null}
 
       <form
-        onSubmit={createProduct}
+        onSubmit={saveProduct}
         className="mt-10 grid gap-4 border border-concrete bg-cream-dark/40 p-6 lg:grid-cols-2"
       >
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 flex flex-wrap items-center justify-between gap-3">
           <h2 className="font-[family-name:var(--font-outfit)] text-lg font-semibold text-navy">
-            Nueva pieza
+            {editingId ? "Editar pieza" : "Nueva pieza"}
           </h2>
+          {editingId ? (
+            <button
+              type="button"
+              onClick={resetForm}
+              className="text-xs font-semibold uppercase tracking-wider text-navy/50 hover:text-navy"
+            >
+              Cancelar edición
+            </button>
+          ) : null}
         </div>
         <div>
           <label className="text-sm font-medium text-navy">Nombre</label>
@@ -248,7 +314,7 @@ export function AdminPanel({ initialProducts }: Props) {
               {uploading ? "Subiendo…" : "Seleccionar archivo"}
             </button>
             <span className="text-sm text-navy/55">
-              {fileName || "Ningún archivo seleccionado"}
+              {fileName || (imageUrl ? "Imagen actual" : "Ningún archivo seleccionado")}
             </span>
           </div>
           {imageUrl ? (
@@ -264,9 +330,13 @@ export function AdminPanel({ initialProducts }: Props) {
             required
           />
         </div>
-        <div className="lg:col-span-2">
-          <Button type="submit" variant="primary" disabled={busy === "create"}>
-            {busy === "create" ? "Guardando…" : "Crear pieza"}
+        <div className="lg:col-span-2 flex flex-wrap gap-3">
+          <Button type="submit" variant="primary" disabled={busy === "save"}>
+            {busy === "save"
+              ? "Guardando…"
+              : editingId
+                ? "Guardar cambios"
+                : "Crear pieza"}
           </Button>
         </div>
       </form>
@@ -321,6 +391,14 @@ export function AdminPanel({ initialProducts }: Props) {
               <p className="truncate text-xs text-navy/40">{p.slug}</p>
             </div>
             <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                disabled={!!busy}
+                onClick={() => startEdit(p)}
+                className="border border-navy/20 bg-white px-3 py-2 text-xs font-semibold text-navy hover:border-navy"
+              >
+                Editar
+              </button>
               {p.status !== "available" && p.category === "bachas" ? (
                 <button
                   type="button"

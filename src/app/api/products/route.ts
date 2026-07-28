@@ -1,11 +1,6 @@
 import { NextResponse } from "next/server";
 import { isAdminAuthenticated } from "@/lib/admin-auth";
-import {
-  ensureCatalogSeeded,
-  makeUniquePiece,
-  readProducts,
-  writeProducts,
-} from "@/lib/catalog";
+import { makeUniquePiece, readProducts, writeProducts } from "@/lib/catalog";
 import type { Product, ProductStatus } from "@/types/product";
 import { BACHA_PRICE } from "@/types/product";
 
@@ -18,7 +13,11 @@ export async function GET(request: Request) {
   if (status) products = products.filter((p) => p.status === status);
   if (category) products = products.filter((p) => p.category === category);
 
-  return NextResponse.json(products);
+  return NextResponse.json(products, {
+    headers: {
+      "Cache-Control": "no-store, max-age=0",
+    },
+  });
 }
 
 export async function POST(request: Request) {
@@ -53,7 +52,6 @@ export async function POST(request: Request) {
   product.price = BACHA_PRICE;
 
   try {
-    await ensureCatalogSeeded();
     const products = await readProducts();
     products.unshift(product);
     await writeProducts(products);
