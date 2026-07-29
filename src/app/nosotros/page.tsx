@@ -47,7 +47,7 @@ export default function NosotrosPage() {
         <h2 className="mt-12 font-[family-name:var(--font-outfit)] text-2xl font-semibold text-navy">
           Proceso artesanal
         </h2>
-        <ol className="mt-6 space-y-6">
+        <ol className="mt-6 divide-y divide-navy/10">
           {[
             {
               t: "Diseño",
@@ -66,7 +66,7 @@ export default function NosotrosPage() {
               d: "Elegís modelo y color. Seña para iniciar la fabricación; el resto al retirar o despachar.",
             },
           ].map((step, i) => (
-            <li key={step.t} className="flex gap-4">
+            <li key={step.t} className="flex gap-4 py-5 first:pt-0 last:pb-0">
               <span className="font-[family-name:var(--font-outfit)] text-sm font-semibold text-sage">
                 0{i + 1}
               </span>

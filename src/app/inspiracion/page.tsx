@@ -50,14 +50,14 @@ export default function InspiracionPage() {
           {estudioGallery.map((item) => (
             <figure
               key={item.src}
-              className="group relative aspect-square overflow-hidden bg-cream-dark"
+              className="group relative aspect-[4/5] overflow-hidden bg-concrete-light"
             >
               <Image
                 src={item.src}
                 alt={item.alt}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
               />
               <figcaption className="absolute bottom-3 left-3 bg-cream/90 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-navy">
                 {item.label}
@@ -74,21 +74,20 @@ export default function InspiracionPage() {
         <p className="mt-1 text-sm text-navy/55">
           Cómo se ven instaladas en casas reales.
         </p>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {galleryClientes.map((item) => (
             <figure
               key={item.src}
-              className="overflow-hidden border border-concrete/70 bg-cream-dark"
+              className="group relative aspect-[4/5] overflow-hidden bg-concrete-light"
             >
               <Image
                 src={item.src}
                 alt={item.alt}
-                width={1200}
-                height={900}
+                fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="h-auto w-full object-contain"
+                className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
               />
-              <figcaption className="border-t border-concrete/50 px-3 py-2.5 text-xs font-medium text-navy/70">
+              <figcaption className="absolute bottom-3 left-3 bg-cream/90 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-navy">
                 {item.label}
               </figcaption>
             </figure>

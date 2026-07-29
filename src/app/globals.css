@@ -61,15 +61,10 @@
   }
 }
 
-/* Soft page wash — no noisy fake cement */
+/* Soft page wash — flat cream (no mid-page band/stripe) */
 .site-mineral {
   background-color: var(--cream);
-  background-image: linear-gradient(
-    180deg,
-    #f7f5f2 0%,
-    var(--cream) 48%,
-    var(--cream-dark) 100%
-  );
+  background-image: none;
 }
 
 .texture-concrete {

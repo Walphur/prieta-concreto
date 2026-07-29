@@ -10,18 +10,18 @@ import {
 const FICHAS: Record<BachaShapeId, { product: string; diagram?: string }> = {
   cuadrado: {
     product: "/gallery/fichas/cuadrado-producto.jpg",
-    diagram: "/gallery/fichas/cuadrado-diagrama.jpg",
+    diagram: "/gallery/fichas/cuadrado-diagrama.png",
   },
   oval: {
     product: "/gallery/fichas/oval-producto.jpg",
-    diagram: "/gallery/fichas/oval-diagrama.jpg",
+    diagram: "/gallery/fichas/oval-diagrama.png",
   },
   circular: {
     product: "/gallery/fichas/circular-producto.jpg",
-    diagram: "/gallery/fichas/circular-diagrama.jpg",
+    diagram: "/gallery/fichas/circular-diagrama.png",
   },
   "circular-tapon": {
-    product: "/gallery/fichas/circular-tapon-producto.jpg",
+    product: "/gallery/fichas/circular-tapon-producto.png",
   },
 };
 
@@ -76,27 +76,29 @@ export function MedidasMoldes() {
               <div
                 className={
                   ficha.diagram
-                    ? "grid gap-4 lg:grid-cols-2"
+                    ? "grid items-start gap-3 lg:grid-cols-2"
                     : "max-w-xl"
                 }
               >
-                <div className="relative aspect-square overflow-hidden bg-concrete-light">
+                <div className="flex items-center justify-center bg-[#e8e8e8] p-4">
                   <Image
                     src={ficha.product}
                     alt={`Molde ${shape.label}`}
-                    fill
+                    width={900}
+                    height={900}
                     sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-contain p-2"
+                    className="h-auto w-full object-contain"
                   />
                 </div>
                 {ficha.diagram ? (
-                  <div className="relative min-h-[22rem] overflow-hidden bg-navy sm:min-h-[28rem]">
+                  <div className="bg-[#1c1c1c] p-4 sm:p-5">
                     <Image
                       src={ficha.diagram}
                       alt={`Diagrama de medidas ${shape.label}`}
-                      fill
+                      width={900}
+                      height={1200}
                       sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-contain p-3"
+                      className="h-auto w-full object-contain"
                     />
                   </div>
                 ) : null}
@@ -117,7 +119,7 @@ export function MedidasMoldes() {
                         alt={`${shape.label} ${colorLabel(photo.color)}`}
                         fill
                         sizes="(max-width: 640px) 50vw, 20vw"
-                        className="object-cover"
+                        className="object-cover object-center"
                       />
                       <figcaption className="absolute bottom-2 left-2 bg-cream/90 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-navy">
                         {colorLabel(photo.color)}
