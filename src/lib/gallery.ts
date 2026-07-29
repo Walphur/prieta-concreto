@@ -72,4 +72,7 @@ export const productPhotos = {
   clienteCircular: "/gallery/shapes/circular-tapon/cliente-natural.jpg",
   clienteClara: "/gallery/shapes/circular/cliente-natural.jpg",
   clienteMarmol: "/gallery/shapes/oval/cliente-marmol.jpg",
+  clienteMarmolMadera: "/gallery/clientes/cliente-oval-marmol-madera.png",
+  clienteGrisOscuroBano: "/gallery/clientes/cliente-oval-gris-oscuro-bano.png",
+  heroBanoMarmolada: "/hero/hero-bano-marmolada.png",
 };

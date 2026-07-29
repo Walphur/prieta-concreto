@@ -54,7 +54,7 @@ export default async function TiendaPage({
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-      <header className="max-w-2xl">
+      <header className="max-w-2xl border-b-2 border-navy/15 pb-8">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
           Tienda
         </p>
@@ -71,53 +71,21 @@ export default async function TiendaPage({
 
       <MadeToOrderNotice className="mt-8 w-full" />
 
-      <div className="mt-8 flex flex-wrap gap-2">
-        {filters.map((f) => {
-          const active = categoria === f.value;
-          const href =
-            f.value === "all" ? "/tienda" : `/tienda?categoria=${f.value}`;
-          return (
-            <Link
-              key={f.value}
-              href={href}
-              className={clsx(
-                "px-4 py-2 text-sm font-medium transition-colors",
-                active
-                  ? "bg-sage text-white"
-                  : "bg-concrete-light text-navy/75 hover:bg-concrete hover:text-navy",
-              )}
-            >
-              {f.label}
-            </Link>
-          );
-        })}
-      </div>
-
-      {categoria === "bachas" || categoria === "all" ? (
-        <div className="mt-4 flex flex-wrap gap-2">
-          {[
-            { label: "Todo", value: "todas" },
-            { label: "En stock", value: "stock" },
-            { label: "Ejemplos de color", value: "ejemplos" },
-            { label: "Medidas", value: "medidas" },
-            { label: "Vendidas", value: "vendidas" },
-          ].map((f) => {
-            const active = vista === f.value;
-            const base =
-              categoria === "bachas" ? "/tienda?categoria=bachas" : "/tienda";
+      <div className="mt-10 border-y-2 border-navy/20 py-4">
+        <div className="flex flex-wrap gap-2">
+          {filters.map((f) => {
+            const active = categoria === f.value;
             const href =
-              f.value === "todas"
-                ? base
-                : `${base}${base.includes("?") ? "&" : "?"}vista=${f.value}`;
+              f.value === "all" ? "/tienda" : `/tienda?categoria=${f.value}`;
             return (
               <Link
                 key={f.value}
                 href={href}
                 className={clsx(
-                  "px-3 py-1.5 text-xs font-medium uppercase tracking-wider transition-colors",
+                  "border-2 px-4 py-2 text-sm font-semibold transition-colors",
                   active
-                    ? "bg-navy text-cream"
-                    : "text-navy/55 hover:text-navy",
+                    ? "border-sage bg-sage text-white"
+                    : "border-navy/25 bg-cream text-navy hover:border-navy/50 hover:bg-concrete-light",
                 )}
               >
                 {f.label}
@@ -125,7 +93,41 @@ export default async function TiendaPage({
             );
           })}
         </div>
-      ) : null}
+
+        {categoria === "bachas" || categoria === "all" ? (
+          <div className="mt-3 flex flex-wrap gap-2 border-t border-navy/15 pt-3">
+            {[
+              { label: "Todo", value: "todas" },
+              { label: "En stock", value: "stock" },
+              { label: "Ejemplos de color", value: "ejemplos" },
+              { label: "Medidas", value: "medidas" },
+              { label: "Vendidas", value: "vendidas" },
+            ].map((f) => {
+              const active = vista === f.value;
+              const base =
+                categoria === "bachas" ? "/tienda?categoria=bachas" : "/tienda";
+              const href =
+                f.value === "todas"
+                  ? base
+                  : `${base}${base.includes("?") ? "&" : "?"}vista=${f.value}`;
+              return (
+                <Link
+                  key={f.value}
+                  href={href}
+                  className={clsx(
+                    "border px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors",
+                    active
+                      ? "border-navy bg-navy text-cream"
+                      : "border-navy/20 bg-cream text-navy/70 hover:border-navy/40 hover:text-navy",
+                  )}
+                >
+                  {f.label}
+                </Link>
+              );
+            })}
+          </div>
+        ) : null}
+      </div>
 
       {showMedidas ? (
         <MedidasMoldes />

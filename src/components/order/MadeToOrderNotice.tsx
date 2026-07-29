@@ -70,7 +70,7 @@ export function MadeToOrderNotice({
         </div>
 
         {showWholesale ? (
-          <div className="flex flex-col border-t border-concrete px-5 py-5 sm:px-6 lg:border-l lg:border-t-0">
+          <div className="flex flex-col border-t-2 border-navy/15 px-5 py-5 sm:px-6 lg:border-l-2 lg:border-t-0">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
               Mayoristas
             </p>

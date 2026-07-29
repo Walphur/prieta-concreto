@@ -5,20 +5,19 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { whatsappGeneralUrl } from "@/lib/bank";
 import { depositLabel, fullPriceLabel, madeToOrder } from "@/lib/order-policy";
-import { productPhotos } from "@/lib/gallery";
 
-const HERO_IMAGE = productPhotos.clienteCircular;
-const HERO_BACHA = "/hero/bacha-flotante-cutout.png";
+/** Instalación real — oval marmolada sobre madera (lifestyle). */
+const HERO_IMAGE = "/hero/hero-bano-marmolada.png";
 
 /**
- * Hero con foto real + linterna que revela la imagen y el grano
- * (efecto 1 + 3 sin canvas pesado). Bacha real flotante como ancla de producto.
+ * Hero full-bleed con foto de instalación real.
+ * Linterna suave que revela luz sobre el concreto (desktop).
  */
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
-  const target = useRef({ x: 72, y: 42 });
-  const current = useRef({ x: 72, y: 42 });
-  const [pos, setPos] = useState({ x: 72, y: 42 });
+  const target = useRef({ x: 58, y: 48 });
+  const current = useRef({ x: 58, y: 48 });
+  const [pos, setPos] = useState({ x: 58, y: 48 });
   const [live, setLive] = useState(false);
 
   useEffect(() => {
@@ -63,52 +62,30 @@ export function Hero() {
     >
       <Image
         src={HERO_IMAGE}
-        alt="Bacha de concreto Prieta en baño de diseño"
+        alt="Bacha oval marmolada Prieta instalada en baño con mueble de madera"
         fill
         priority
         sizes="100vw"
-        className="object-cover object-[70%_center] saturate-[0.92] contrast-[1.05]"
+        className="object-cover object-[center_45%] saturate-[0.94] contrast-[1.04]"
       />
 
-      {/* Base oscura — la linterna “abre” un hueco */}
       <div
         className="absolute inset-0"
         style={{
           background: live
-            ? `radial-gradient(circle 520px at var(--hx) var(--hy), transparent 0%, rgba(26,35,50,0.32) 28%, rgba(26,35,50,0.72) 58%, rgba(18,24,32,0.9) 100%)`
-            : `linear-gradient(90deg, rgba(26,35,50,0.82) 0%, rgba(26,35,50,0.45) 55%, rgba(26,35,50,0.55) 100%)`,
+            ? `radial-gradient(circle 520px at var(--hx) var(--hy), transparent 0%, rgba(26,35,50,0.28) 28%, rgba(26,35,50,0.7) 58%, rgba(18,24,32,0.88) 100%)`
+            : `linear-gradient(105deg, rgba(26,35,50,0.86) 0%, rgba(26,35,50,0.48) 48%, rgba(26,35,50,0.55) 100%)`,
         }}
       />
 
-      {/* Halo sage suave (sin grano) */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background: live
-            ? `radial-gradient(circle 300px at var(--hx) var(--hy), rgba(163,178,158,0.22) 0%, transparent 72%)`
-            : `radial-gradient(circle 360px at 70% 40%, rgba(163,178,158,0.14) 0%, transparent 70%)`,
+            ? `radial-gradient(circle 300px at var(--hx) var(--hy), rgba(163,178,158,0.2) 0%, transparent 72%)`
+            : `radial-gradient(circle 360px at 55% 42%, rgba(163,178,158,0.12) 0%, transparent 70%)`,
         }}
       />
-
-      {/* Bacha real flotante — cutout sin fondo negro */}
-      <div
-        className="pointer-events-none absolute inset-0 z-[5] flex justify-end"
-        aria-hidden
-      >
-        <div className="animate-float-in absolute right-[-8%] top-[12%] w-[min(78vw,340px)] sm:right-[2%] sm:top-[14%] sm:w-[min(48vw,400px)] lg:right-[6%] lg:top-[18%] lg:w-[min(42vw,460px)]">
-          <div className="animate-float-slow cutout-shadow origin-center">
-            <Image
-              src={HERO_BACHA}
-              alt=""
-              width={392}
-              height={215}
-              priority
-              sizes="(max-width: 640px) 78vw, (max-width: 1024px) 48vw, 42vw"
-              className="h-auto w-full select-none"
-            />
-          </div>
-        </div>
-      </div>
 
       <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-end px-4 pb-16 pt-28 sm:px-6 sm:pb-20 lg:justify-center lg:px-8 lg:pb-24">
         <div className="max-w-xl">

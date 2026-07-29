@@ -3,7 +3,7 @@ import { BACHA_COLORS } from "@/lib/bacha-options";
 
 export function PigmentStrip() {
   return (
-    <section className="border-y border-concrete/60 bg-cream">
+    <section className="border-y-2 border-navy/15 bg-cream">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
         <div className="max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">

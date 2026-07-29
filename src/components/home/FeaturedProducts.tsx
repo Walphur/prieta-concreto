@@ -19,7 +19,7 @@ export async function FeaturedProducts() {
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div className="flex flex-col gap-4 border-b-2 border-navy/15 pb-10 sm:flex-row sm:items-end sm:justify-between">
         <div className="max-w-xl">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
             Colección

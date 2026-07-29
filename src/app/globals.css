@@ -89,7 +89,7 @@
 
 .texture-panel {
   background-color: color-mix(in oklab, var(--cream) 92%, white);
-  border: 1px solid color-mix(in oklab, var(--concrete) 75%, transparent);
+  border: 2px solid color-mix(in oklab, var(--navy) 18%, var(--concrete));
 }
 
 .grain-overlay {
@@ -196,21 +196,6 @@
 
 .animate-glow-pulse {
   animation: glow-pulse 6s ease-in-out infinite;
-}
-
-.cutout-fade {
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    #000 0%,
-    #000 68%,
-    transparent 96%
-  );
-  mask-image: linear-gradient(to bottom, #000 0%, #000 68%, transparent 96%);
-}
-
-.cutout-shadow {
-  filter: drop-shadow(0 28px 36px rgba(0, 0, 0, 0.45))
-    drop-shadow(0 8px 14px rgba(0, 0, 0, 0.25));
 }
 
 /* —— Reveal suave al scroll (sin filtros GPU pesados) —— */

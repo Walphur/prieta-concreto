@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/Button";
 
 export function HomeVideos() {
   return (
-    <section className="border-y border-concrete/60 bg-cream">
+    <section className="border-y-2 border-navy/15 bg-cream">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">

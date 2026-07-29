@@ -111,6 +111,18 @@
   ],
   "clientes": [
     {
+      "src": "/gallery/clientes/cliente-oval-marmol-madera.png",
+      "label": "Oval marmolada · baño claro",
+      "alt": "Bacha oval marmolada instalada sobre mueble de madera clara",
+      "kind": "cliente"
+    },
+    {
+      "src": "/gallery/clientes/cliente-oval-gris-oscuro-bano.png",
+      "label": "Oval gris oscuro · baño moody",
+      "alt": "Bacha oval gris oscuro instalada en baño con azulejos oscuros",
+      "kind": "cliente"
+    },
+    {
       "src": "/gallery/clientes/cliente-oval-marmol-bano.jpg",
       "label": "Oval marmolada · instalada",
       "alt": "Bacha oval marmolada instalada en baño de cliente",

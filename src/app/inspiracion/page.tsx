@@ -26,7 +26,7 @@ const estudioGallery = [
 export default function InspiracionPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-      <header className="max-w-2xl">
+      <header className="max-w-2xl border-b-2 border-navy/15 pb-8">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
           Inspiración
         </p>
@@ -67,27 +67,30 @@ export default function InspiracionPage() {
         </div>
       </section>
 
-      <section className="mt-16">
+      <section className="mt-16 border-t-2 border-navy/15 pt-16">
         <h2 className="font-[family-name:var(--font-outfit)] text-xl font-semibold text-navy">
           En baños de clientes
         </h2>
         <p className="mt-1 text-sm text-navy/55">
-          Cómo se ven instaladas en casas reales.
+          Instalaciones completas — se ve la bacha y el baño, sin recorte
+          agresivo.
         </p>
-        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-6 sm:grid-cols-2">
           {galleryClientes.map((item) => (
             <figure
               key={item.src}
-              className="group relative aspect-[4/5] overflow-hidden bg-concrete-light"
+              className="group overflow-hidden border border-navy/12 bg-cream-dark"
             >
-              <Image
-                src={item.src}
-                alt={item.alt}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
-              />
-              <figcaption className="absolute bottom-3 left-3 bg-cream/90 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-navy">
+              <div className="relative flex min-h-[320px] items-center justify-center sm:min-h-[420px] lg:min-h-[480px]">
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                  className="object-contain object-center p-2 transition-transform duration-700 group-hover:scale-[1.01] sm:p-3"
+                />
+              </div>
+              <figcaption className="border-t border-navy/10 bg-cream px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-navy">
                 {item.label}
               </figcaption>
             </figure>
@@ -95,7 +98,7 @@ export default function InspiracionPage() {
         </div>
       </section>
 
-      <section className="mt-16">
+      <section className="mt-16 border-t-2 border-navy/15 pt-16">
         <h2 className="font-[family-name:var(--font-outfit)] text-xl font-semibold text-navy">
           Videos del proceso
         </h2>
@@ -124,7 +127,7 @@ export default function InspiracionPage() {
         </div>
       </section>
 
-      <div className="mt-16 border border-concrete bg-cream-dark/40 px-6 py-10 text-center sm:px-10">
+      <div className="mt-16 border-2 border-navy/15 bg-cream-dark/40 px-6 py-10 text-center sm:px-10">
         <h2 className="font-[family-name:var(--font-outfit)] text-xl font-semibold text-navy">
           Subí tu foto
         </h2>

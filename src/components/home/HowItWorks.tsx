@@ -23,7 +23,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="texture-concrete border-y border-concrete/70">
+    <section className="texture-concrete border-y-2 border-navy/15">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <div className="max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
@@ -38,9 +38,12 @@ export function HowItWorks() {
           </p>
         </div>
 
-        <ol className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        <ol className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
           {steps.map((step, i) => (
-            <li key={step.title} className="relative">
+            <li
+              key={step.title}
+              className="relative border-navy/12 lg:border-l lg:px-6 lg:first:border-l-0 lg:first:pl-0"
+            >
               <span className="font-[family-name:var(--font-outfit)] text-sm font-semibold tracking-[0.12em] text-sage">
                 0{i + 1}
               </span>
@@ -54,7 +57,7 @@ export function HowItWorks() {
           ))}
         </ol>
 
-        <div className="mt-12">
+        <div className="mt-14 border-t-2 border-navy/12 pt-10">
           <Button
             href={whatsappGeneralUrl(
               `Hola Prieta Concreto, quiero encargar una bacha por pedido. Entiendo ~${madeToOrder.leadDays} días y seña ${depositLabel()}.`,

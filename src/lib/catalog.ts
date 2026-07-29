@@ -175,14 +175,21 @@ export async function ensureCatalogSeeded() {
   return { seeded: true, reason: "seeded" as const, count: seed.length };
 }
 
+/** Precio fijo de bachas — evita catálogos Blob/local con montos viejos. */
+function withCanonicalBachaPrices(products: Product[]): Product[] {
+  return products.map((p) =>
+    p.category === "bachas" && p.price > 0 ? { ...p, price: BACHA_PRICE } : p,
+  );
+}
+
 export async function readProducts(): Promise<Product[]> {
   if (useBlob()) {
     const fromBlob = await readBlobProducts();
-    if (fromBlob) return fromBlob;
-    return readLocalProducts();
+    if (fromBlob) return withCanonicalBachaPrices(fromBlob);
+    return withCanonicalBachaPrices(await readLocalProducts());
   }
 
-  return readLocalProducts();
+  return withCanonicalBachaPrices(await readLocalProducts());
 }
 
 export async function writeProducts(products: Product[]) {
