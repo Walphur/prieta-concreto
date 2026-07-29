@@ -104,10 +104,23 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10">
-        <p className="mx-auto max-w-7xl px-4 py-4 text-xs text-cream/45 sm:px-6 lg:px-8">
-          © {new Date().getFullYear()} Prieta Concreto. Todos los derechos
-          reservados.
-        </p>
+        <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 text-xs text-cream/45 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+          <p>
+            © {new Date().getFullYear()} Prieta Concreto. Todos los derechos
+            reservados.
+          </p>
+          <p>
+            Diseñado por{" "}
+            <a
+              href="https://walphur.github.io/WalTech/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-cream/55 transition hover:text-sage-light"
+            >
+              Waltech
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
