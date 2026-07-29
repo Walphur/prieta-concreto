@@ -27,10 +27,11 @@ export async function FeaturedProducts() {
           <h2 className="mt-2 font-[family-name:var(--font-outfit)] text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
             {available.length > 0 ? "Piezas y colores" : "Modelos y colores"}
           </h2>
-          <p className="mt-3 text-base text-navy/65">
-            Ejemplos de referencia para encargar tu bacha. Precio fijo{" "}
+          <p className="mt-3 text-base leading-relaxed text-navy/65">
+            Referencias para encargar tu bacha: modelo, color y textura real.
+            Precio fijo{" "}
             <span className="font-semibold text-deep-red">$80.000</span>. Medidas
-            de moldes en Tienda → Medidas.
+            de moldes en Tienda.
           </p>
         </div>
         <Button href="/tienda" variant="outline" className="self-start sm:self-auto">

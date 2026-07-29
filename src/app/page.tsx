@@ -1,11 +1,11 @@
 import { Hero } from "@/components/home/Hero";
 import { FeaturedProducts } from "@/components/home/FeaturedProducts";
 import { PigmentStrip } from "@/components/home/PigmentStrip";
+import { HowItWorks } from "@/components/home/HowItWorks";
 import { HomeReviews } from "@/components/home/HomeReviews";
 import { HomeVideos } from "@/components/home/HomeVideos";
 import { ComingSoon } from "@/components/home/ComingSoon";
-import { DynamicLightSection } from "@/components/effects/DynamicLightSection";
-import { Button } from "@/components/ui/Button";
+import { HomeCta } from "@/components/home/HomeCta";
 
 export default function HomePage() {
   return (
@@ -13,33 +13,11 @@ export default function HomePage() {
       <Hero />
       <PigmentStrip />
       <FeaturedProducts />
+      <HowItWorks />
       <HomeReviews />
       <HomeVideos />
       <ComingSoon />
-
-      <DynamicLightSection className="mt-4">
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
-          <div className="border border-cream/10 bg-navy-soft/50 px-8 py-14 sm:px-12 sm:py-16">
-            <div className="max-w-xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage-light">
-                Galería · textura real
-              </p>
-              <h2 className="mt-3 font-[family-name:var(--font-outfit)] text-2xl font-semibold tracking-tight text-cream sm:text-3xl">
-                Inspiración real, piezas reales
-              </h2>
-              <p className="mt-3 text-cream/70">
-                Textura mineral, instalaciones de clientes y el proceso del
-                taller. Envíos a toda la Argentina por Andesmar Cargas.
-              </p>
-              <div className="mt-8">
-                <Button href="/inspiracion" variant="primary">
-                  Ver galería
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </DynamicLightSection>
+      <HomeCta />
     </>
   );
 }

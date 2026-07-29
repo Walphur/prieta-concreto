@@ -17,8 +17,9 @@ export async function ComingSoon() {
             <h2 className="mt-2 font-[family-name:var(--font-outfit)] text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
               Celosías
             </h2>
-            <p className="mt-3 text-base text-navy/65">
-              Módulos de concreto para filtrar luz, ventilación y privacidad.
+            <p className="mt-3 text-base leading-relaxed text-navy/65">
+              Próxima línea: módulos de concreto para filtrar luz, ventilación y
+              privacidad.
             </p>
           </div>
           <Link

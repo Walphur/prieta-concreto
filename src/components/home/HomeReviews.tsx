@@ -10,7 +10,7 @@ export async function HomeReviews() {
 
   return (
     <section className="texture-concrete border-y border-concrete/70">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
@@ -19,6 +19,9 @@ export async function HomeReviews() {
             <h2 className="mt-2 font-[family-name:var(--font-outfit)] text-2xl font-semibold tracking-tight text-navy sm:text-3xl">
               Lo que dicen de las bachas
             </h2>
+            <p className="mt-3 text-base text-navy/65">
+              Opiniones reales de quienes ya tienen una pieza Prieta en casa.
+            </p>
           </div>
           <Button href={GOOGLE_REVIEW_URL} variant="outline" className="self-start">
             Reseñar en Google
