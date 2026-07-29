@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PrietaLogo } from "@/components/brand/PrietaLogo";
 import { whatsappGeneralUrl, whatsappWholesaleUrl } from "@/lib/bank";
+import { GOOGLE_MAPS_URL, GOOGLE_REVIEW_URL } from "@/types/review";
 
 export function Footer() {
   return (
@@ -69,6 +70,26 @@ export function Footer() {
                 className="transition hover:text-sage-light"
               >
                 Mayoristas · consultar precio
+              </a>
+            </li>
+            <li>
+              <a
+                href={GOOGLE_REVIEW_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-sage-light"
+              >
+                Reseñas en Google
+              </a>
+            </li>
+            <li>
+              <a
+                href={GOOGLE_MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-sage-light"
+              >
+                Cómo llegar · Prieta Hogar
               </a>
             </li>
             <li>

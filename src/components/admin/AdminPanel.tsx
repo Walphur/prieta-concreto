@@ -13,6 +13,7 @@ import {
 } from "@/lib/bacha-options";
 import { formatPrice, statusLabel } from "@/lib/products";
 import { Button } from "@/components/ui/Button";
+import { AdminReviews } from "@/components/admin/AdminReviews";
 
 type Props = { initialProducts: Product[] };
 
@@ -441,6 +442,8 @@ export function AdminPanel({ initialProducts }: Props) {
           </li>
         ))}
       </ul>
+
+      <AdminReviews />
     </div>
   );
 }

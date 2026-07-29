@@ -16,8 +16,9 @@ import {
 } from "@/lib/bacha-options";
 import { AddToCartButton } from "@/components/product/AddToCartButton";
 import { MadeToOrderCta } from "@/components/order/MadeToOrderCta";
-import { ReviewSection } from "@/components/product/ReviewSection";
+import { ReviewSection } from "@/components/reviews/ReviewSection";
 import { madeToOrderSummary } from "@/lib/order-policy";
+import { getApprovedReviews } from "@/lib/reviews-store";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -238,7 +239,7 @@ export default async function ProductPage({ params }: Props) {
         </div>
       </div>
 
-      <ReviewSection productName={product.name} />
+      <ReviewSection productName={product.name} productSlug={product.slug} />
     </div>
   );
 }

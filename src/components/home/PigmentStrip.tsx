@@ -3,7 +3,7 @@ import { BACHA_COLORS } from "@/lib/bacha-options";
 
 export function PigmentStrip() {
   return (
-    <section className="texture-concrete border-y border-concrete/80">
+    <section className="border-y border-concrete/60 bg-cream">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <div className="max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
@@ -18,21 +18,21 @@ export function PigmentStrip() {
           </p>
         </div>
 
-        <ul className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
+        <ul className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-7">
           {BACHA_COLORS.map((c) => (
             <li key={c.id}>
               <Link
-                href={`/tienda?vista=ejemplos`}
+                href="/tienda?vista=ejemplos"
                 className="group block transition-transform duration-500 hover:-translate-y-0.5"
               >
                 <span
-                  className="block aspect-[4/5] w-full border border-black/5 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)]"
+                  className="block aspect-[4/5] w-full"
                   style={{
-                    background: `linear-gradient(155deg, ${c.hex} 0%, color-mix(in srgb, ${c.hex} 72%, #1a2332) 100%)`,
+                    background: `linear-gradient(160deg, ${c.hex} 0%, color-mix(in srgb, ${c.hex} 78%, #1a2332) 100%)`,
                   }}
                   aria-hidden
                 />
-                <span className="mt-2 block font-[family-name:var(--font-outfit)] text-sm font-semibold text-navy group-hover:text-sage-dark">
+                <span className="mt-2.5 block font-[family-name:var(--font-outfit)] text-sm font-semibold text-navy group-hover:text-sage-dark">
                   {c.label}
                 </span>
                 <span className="mt-0.5 block text-[11px] leading-snug text-navy/45">

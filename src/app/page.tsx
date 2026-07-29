@@ -1,6 +1,7 @@
 import { Hero } from "@/components/home/Hero";
 import { FeaturedProducts } from "@/components/home/FeaturedProducts";
 import { PigmentStrip } from "@/components/home/PigmentStrip";
+import { HomeReviews } from "@/components/home/HomeReviews";
 import { HomeVideos } from "@/components/home/HomeVideos";
 import { ComingSoon } from "@/components/home/ComingSoon";
 import { Button } from "@/components/ui/Button";
@@ -11,6 +12,7 @@ export default function HomePage() {
       <Hero />
       <PigmentStrip />
       <FeaturedProducts />
+      <HomeReviews />
       <HomeVideos />
       <ComingSoon />
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "seed-maria",
+    "author": "María G.",
+    "text": "La textura es impecable. Quedó perfecta en nuestro baño principal.",
+    "rating": 5,
+    "status": "approved",
+    "source": "site",
+    "createdAt": "2026-06-12T15:00:00.000Z"
+  },
+  {
+    "id": "seed-tomas",
+    "author": "Tomás R.",
+    "text": "Embalaje cuidado y pieza tal cual las fotos del estudio. Recomiendo pedir con tiempo por el fraguado.",
+    "rating": 5,
+    "status": "approved",
+    "source": "site",
+    "createdAt": "2026-05-03T12:00:00.000Z"
+  },
+  {
+    "id": "seed-lucia",
+    "author": "Lucía P.",
+    "text": "Pedí oval rosa por WhatsApp. Llegó en Andesmar impecable. Muy contenta.",
+    "rating": 5,
+    "status": "approved",
+    "source": "google",
+    "createdAt": "2026-04-20T10:00:00.000Z"
+  }
+]

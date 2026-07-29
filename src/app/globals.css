@@ -61,79 +61,44 @@
   }
 }
 
-/* Page-wide mineral wash */
+/* Soft page wash — no noisy fake cement */
 .site-mineral {
   background-color: var(--cream);
-  background-image:
-    var(--texture-grain),
-    var(--texture-cement-light),
-    linear-gradient(
-      165deg,
-      #f7f4ef 0%,
-      var(--cream) 42%,
-      var(--cream-dark) 100%
-    );
-  background-size:
-    220px 220px,
-    520px 520px,
-    auto;
-  background-blend-mode: soft-light, multiply, normal;
+  background-image: linear-gradient(
+    180deg,
+    #f7f5f2 0%,
+    var(--cream) 48%,
+    var(--cream-dark) 100%
+  );
 }
 
 .texture-concrete {
   background-color: var(--concrete-light);
-  background-image:
-    var(--texture-grain),
-    var(--texture-cement-light),
-    linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.45) 0%,
-      transparent 45%,
-      rgba(26, 35, 50, 0.06) 100%
-    );
-  background-size:
-    180px 180px,
-    480px 480px,
-    auto;
-  background-blend-mode: soft-light, multiply, normal;
+  background-image: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    transparent 45%,
+    rgba(26, 35, 50, 0.04) 100%
+  );
 }
 
 .texture-concrete-dark {
   background-color: var(--navy);
-  background-image:
-    var(--texture-grain),
-    var(--texture-cement-dark),
-    linear-gradient(
-      155deg,
-      var(--navy-soft) 0%,
-      var(--navy) 52%,
-      #121820 100%
-    );
-  background-size:
-    200px 200px,
-    560px 560px,
-    auto;
-  background-blend-mode: soft-light, soft-light, normal;
+  background-image: linear-gradient(
+    155deg,
+    var(--navy-soft) 0%,
+    var(--navy) 55%,
+    #141c28 100%
+  );
 }
 
 .texture-panel {
-  background-color: color-mix(in oklab, var(--cream-dark) 88%, white);
-  background-image:
-    var(--texture-grain),
-    var(--texture-cement-light);
-  background-size:
-    160px 160px,
-    420px 420px;
-  background-blend-mode: soft-light, multiply;
-  border: 1px solid color-mix(in oklab, var(--concrete) 80%, transparent);
+  background-color: color-mix(in oklab, var(--cream) 92%, white);
+  border: 1px solid color-mix(in oklab, var(--concrete) 75%, transparent);
 }
 
 .grain-overlay {
-  pointer-events: none;
-  background-image: var(--texture-grain);
-  background-size: 180px 180px;
-  opacity: 0.28;
-  mix-blend-mode: soft-light;
+  display: none;
 }
 
 @keyframes fade-up {
