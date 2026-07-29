@@ -58,7 +58,9 @@ function SplitBand({
     <div className="flex min-h-[62vh] flex-col justify-center bg-verde-agua-panel px-10 py-20 text-white sm:px-14 sm:py-24 lg:min-h-[92vh] lg:px-16 xl:px-24">
       <div className="max-w-md">
         {kicker ? (
-          <p className="editorial-kicker text-white/65">{kicker}</p>
+          <p className="text-[0.7rem] font-medium uppercase tracking-[0.22em] text-white/90">
+            {kicker}
+          </p>
         ) : null}
 
         {hero ? (
