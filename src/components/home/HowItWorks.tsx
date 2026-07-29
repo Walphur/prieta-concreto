@@ -1,4 +1,4 @@
-import { depositLabel, fullPriceLabel, madeToOrder } from "@/lib/order-policy";
+import { madeToOrder } from "@/lib/order-policy";
 import { whatsappGeneralUrl } from "@/lib/bank";
 import { Button } from "@/components/ui/Button";
 
@@ -9,7 +9,7 @@ const steps = [
   },
   {
     title: "Confirmás por WhatsApp",
-    body: `Seña ${depositLabel()} para iniciar. Precio total ${fullPriceLabel()}.`,
+    body: "Coordinamos el pedido y la seña para iniciar la fabricación.",
   },
   {
     title: "Fabricamos y curamos",
@@ -60,7 +60,7 @@ export function HowItWorks() {
         <div className="mt-14 border-t-2 border-navy/12 pt-10">
           <Button
             href={whatsappGeneralUrl(
-              `Hola Prieta Concreto, quiero encargar una bacha por pedido. Entiendo ~${madeToOrder.leadDays} días y seña ${depositLabel()}.`,
+              `Hola Prieta Concreto, quiero encargar una bacha por pedido. Entiendo ~${madeToOrder.leadDays} días de fabricación.`,
             )}
             variant="secondary"
           >

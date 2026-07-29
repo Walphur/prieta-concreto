@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { whatsappGeneralUrl } from "@/lib/bank";
-import { depositLabel, fullPriceLabel, madeToOrder } from "@/lib/order-policy";
+import { madeToOrder } from "@/lib/order-policy";
 
 type Band = {
   src: string;
@@ -23,7 +23,7 @@ const BANDS: Band[] = [
     alt: "Bacha oval marmolada Prieta instalada en baño con mueble de madera",
     kicker: "Prieta Concreto · San Luis",
     title: "ARTESANÍA EN CONCRETO PARA BAÑOS DE DISEÑO",
-    subtitle: `Masa pigmentada, curado lento y sellado mineral. Por pedido — ${fullPriceLabel()} · seña ${depositLabel()} · ~${madeToOrder.leadDays} días.`,
+    subtitle: `Masa pigmentada, curado lento y sellado mineral. Por pedido — ~${madeToOrder.leadDays} días.`,
   },
   {
     src: "/gallery/clientes/cliente-oval-gris-oscuro-bano.png",

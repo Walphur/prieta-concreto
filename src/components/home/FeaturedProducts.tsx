@@ -29,9 +29,7 @@ export async function FeaturedProducts() {
           </h2>
           <p className="mt-3 text-base leading-relaxed text-navy/65">
             Referencias para encargar tu bacha: modelo, color y textura real.
-            Precio fijo{" "}
-            <span className="font-semibold text-deep-red">$95.000</span>. Medidas
-            de moldes en Tienda.
+            Medidas de moldes y precios en Tienda.
           </p>
         </div>
         <Button href="/tienda" variant="outline" className="self-start sm:self-auto">
