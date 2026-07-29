@@ -80,16 +80,15 @@ export default function InspiracionPage() {
               key={item.src}
               className="overflow-hidden border border-concrete/70 bg-cream-dark"
             >
-              <div className="relative aspect-[4/3] w-full">
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover object-bottom"
-                />
-              </div>
-              <figcaption className="px-3 py-2.5 text-xs font-medium text-navy/70">
+              <Image
+                src={item.src}
+                alt={item.alt}
+                width={1200}
+                height={900}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="h-auto w-full object-contain"
+              />
+              <figcaption className="border-t border-concrete/50 px-3 py-2.5 text-xs font-medium text-navy/70">
                 {item.label}
               </figcaption>
             </figure>
