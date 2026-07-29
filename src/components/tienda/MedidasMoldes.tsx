@@ -11,6 +11,7 @@ const DIAGRAMAS: Partial<Record<BachaShapeId, string>> = {
   cuadrado: "/gallery/fichas/cuadrado-diagrama.png",
   oval: "/gallery/fichas/oval-diagrama.png",
   circular: "/gallery/fichas/circular-diagrama.png",
+  "circular-tapon": "/gallery/fichas/circular-tapon-diagrama.png",
 };
 
 type BachaImage = {

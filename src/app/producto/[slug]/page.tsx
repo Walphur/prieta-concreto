@@ -41,6 +41,7 @@ const FICHA_BY_SHAPE: Partial<
   },
   "circular-tapon": {
     product: "/gallery/fichas/circular-tapon-producto.png",
+    diagram: "/gallery/fichas/circular-tapon-diagrama.png",
   },
 };
 
