@@ -6,17 +6,17 @@ import { clsx } from "clsx";
 type Props = {
   children: ReactNode;
   className?: string;
-  /** Delay antes de “curar” (ms). */
   cureMs?: number;
 };
 
 /**
- * Colado → curado: entra húmedo/oscuro, solidifica y cae con peso.
+ * Colado → curado al entrar en viewport.
+ * Nunca deja el contenido invisible: fallback a cured.
  */
 export function SolidifyReveal({
   children,
   className,
-  cureMs = 280,
+  cureMs = 520,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [phase, setPhase] = useState<"idle" | "wet" | "cured">("idle");
@@ -31,18 +31,45 @@ export function SolidifyReveal({
       return;
     }
 
+    let curedTimer = 0;
+    let fallbackTimer = 0;
+    let done = false;
+
+    const start = () => {
+      if (done) return;
+      done = true;
+      setPhase("wet");
+      curedTimer = window.setTimeout(() => setPhase("cured"), cureMs);
+      io.disconnect();
+    };
+
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (!entry?.isIntersecting) return;
-        setPhase("wet");
-        window.setTimeout(() => setPhase("cured"), cureMs);
-        io.disconnect();
+        if (entry?.isIntersecting) start();
       },
-      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" },
+      { threshold: 0.01, rootMargin: "80px 0px 80px 0px" },
     );
 
     io.observe(el);
-    return () => io.disconnect();
+
+    // Si ya está en pantalla al montar
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      start();
+    }
+
+    // Nunca quedar trabado en idle
+    fallbackTimer = window.setTimeout(() => {
+      if (!done) start();
+      else setPhase("cured");
+    }, 2200);
+
+    return () => {
+      io.disconnect();
+      window.clearTimeout(curedTimer);
+      window.clearTimeout(fallbackTimer);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- mount once
   }, [cureMs]);
 
   return (

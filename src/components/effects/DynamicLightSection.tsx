@@ -13,42 +13,50 @@ import { clsx } from "clsx";
 type Props = {
   children: ReactNode;
   className?: string;
-  /** Radio de la luz en px (desktop). */
   lightRadius?: number;
 };
 
 /**
- * Linterna especular sobre navy: revela grano mineral y empuja sombras
- * en sentido inverso al cursor.
+ * Linterna sobre navy: el grano solo se ve bajo la luz;
+ * las sombras se mueven al contrario del cursor.
  */
 export function DynamicLightSection({
   children,
   className,
-  lightRadius = 460,
+  lightRadius = 520,
 }: Props) {
   const ref = useRef<HTMLElement>(null);
-  const [pos, setPos] = useState({ x: 62, y: 38 });
-  const [enabled, setEnabled] = useState(false);
+  const rafRef = useRef(0);
+  const target = useRef({ x: 70, y: 40 });
+  const current = useRef({ x: 70, y: 40 });
+  const [pos, setPos] = useState({ x: 70, y: 40 });
+  const [active, setActive] = useState(true);
 
   useEffect(() => {
-    const fine = window.matchMedia("(pointer: fine)").matches;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    setEnabled(fine && !reduce);
+    setActive(!reduce);
+
+    const tick = () => {
+      current.current.x += (target.current.x - current.current.x) * 0.14;
+      current.current.y += (target.current.y - current.current.y) * 0.14;
+      setPos({ ...current.current });
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
   }, []);
 
-  const onMove = useCallback(
-    (e: React.PointerEvent<HTMLElement>) => {
-      if (!enabled || !ref.current) return;
-      const rect = ref.current.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      setPos({ x, y });
-    },
-    [enabled],
-  );
+  const onMove = useCallback((e: React.PointerEvent<HTMLElement>) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    target.current = {
+      x: ((e.clientX - rect.left) / Math.max(rect.width, 1)) * 100,
+      y: ((e.clientY - rect.top) / Math.max(rect.height, 1)) * 100,
+    };
+  }, []);
 
-  const shadowX = ((50 - pos.x) / 50) * 14;
-  const shadowY = ((50 - pos.y) / 50) * 14;
+  const shadowX = ((50 - pos.x) / 50) * 22;
+  const shadowY = ((50 - pos.y) / 50) * 22;
 
   const style = {
     "--lx": `${pos.x}%`,
@@ -64,49 +72,60 @@ export function DynamicLightSection({
       onPointerMove={onMove}
       style={style}
       className={clsx(
-        "dynamic-light relative overflow-hidden bg-navy",
+        "dynamic-light relative isolate overflow-hidden bg-[#121820]",
         className,
       )}
     >
-      {/* Base brutalista */}
-      <div className="absolute inset-0 texture-concrete-dark" />
-      {/* Grano mineral — solo se lee bajo la luz */}
+      <div className="absolute inset-0 bg-navy" />
+
+      {/* Textura siempre presente pero oscura */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.22] mix-blend-soft-light"
+        className="pointer-events-none absolute inset-0 opacity-40"
         style={{
-          backgroundImage: "url(/textures/grain.svg)",
-          backgroundSize: "190px 190px",
+          backgroundImage: "url(/textures/cement-dark.svg)",
+          backgroundSize: "420px 420px",
         }}
       />
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.18] mix-blend-overlay"
+        className="pointer-events-none absolute inset-0 opacity-50 mix-blend-overlay"
         style={{
-          backgroundImage: "url(/textures/cement-dark.svg)",
-          backgroundSize: "520px 520px",
+          backgroundImage: "url(/textures/grain.svg)",
+          backgroundSize: "160px 160px",
         }}
       />
 
-      {/* Linterna sage */}
+      {/* Luz sage fuerte — sigue el mouse */}
       <div
-        className={clsx(
-          "pointer-events-none absolute inset-0 transition-opacity duration-500",
-          enabled ? "opacity-100" : "opacity-70",
-        )}
+        className="pointer-events-none absolute inset-0"
         style={{
-          background: enabled
-            ? `radial-gradient(circle var(--light-r) at var(--lx) var(--ly), rgba(163, 178, 158, 0.28) 0%, rgba(125, 143, 120, 0.12) 32%, transparent 68%)`
-            : `radial-gradient(circle 520px at 70% 35%, rgba(163, 178, 158, 0.18) 0%, transparent 65%)`,
+          background: active
+            ? `radial-gradient(circle var(--light-r) at var(--lx) var(--ly), rgba(163,178,158,0.55) 0%, rgba(125,143,120,0.28) 28%, rgba(26,35,50,0.15) 52%, transparent 72%)`
+            : `radial-gradient(circle 480px at 72% 38%, rgba(163,178,158,0.4) 0%, transparent 70%)`,
         }}
       />
-      {/* Highlight más duro cerca del cursor */}
-      {enabled ? (
-        <div
-          className="pointer-events-none absolute inset-0 mix-blend-soft-light"
-          style={{
-            background: `radial-gradient(circle 180px at var(--lx) var(--ly), rgba(247, 245, 242, 0.14) 0%, transparent 70%)`,
-          }}
-        />
-      ) : null}
+      {/* Revela textura solo bajo la luz (máscara) */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-90 mix-blend-soft-light"
+        style={{
+          backgroundImage: "url(/textures/grain.svg)",
+          backgroundSize: "120px 120px",
+          WebkitMaskImage: active
+            ? `radial-gradient(circle calc(var(--light-r) * 0.85) at var(--lx) var(--ly), #000 0%, transparent 70%)`
+            : `radial-gradient(circle 400px at 72% 38%, #000 0%, transparent 70%)`,
+          maskImage: active
+            ? `radial-gradient(circle calc(var(--light-r) * 0.85) at var(--lx) var(--ly), #000 0%, transparent 70%)`
+            : `radial-gradient(circle 400px at 72% 38%, #000 0%, transparent 70%)`,
+        }}
+      />
+      {/* Specular highlight */}
+      <div
+        className="pointer-events-none absolute inset-0 mix-blend-screen"
+        style={{
+          background: active
+            ? `radial-gradient(circle 140px at var(--lx) var(--ly), rgba(247,245,242,0.22) 0%, transparent 70%)`
+            : "none",
+        }}
+      />
 
       <div className="dynamic-light-content relative z-10">{children}</div>
     </section>

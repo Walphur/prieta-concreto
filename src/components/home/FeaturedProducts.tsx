@@ -38,13 +38,13 @@ export async function FeaturedProducts() {
         </Button>
       </div>
 
-      <SolidifyReveal className="mt-8" cureMs={220}>
+      <SolidifyReveal className="mt-8" cureMs={480}>
         <MadeToOrderNotice />
       </SolidifyReveal>
 
       <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {featured.map((product, i) => (
-          <SolidifyReveal key={product.id} cureMs={240 + i * 40}>
+          <SolidifyReveal key={product.id} cureMs={500 + i * 70}>
             <ProductCard product={product} priority={i < 2} />
           </SolidifyReveal>
         ))}
