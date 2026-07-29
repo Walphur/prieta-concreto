@@ -1,27 +1,23 @@
 [
   {
-    "id": "ex-color-gris-natural",
-    "slug": "ejemplo-gris-natural",
-    "name": "Gris natural",
-    "description": "Tono mineral claro. Incluye piezas que a simple vista parecen blancas.",
-    "longDescription": "Referencia de pigmento. En oval y circular, los tonos claros son gris natural — no blanco.",
+    "id": "modelo-lena",
+    "slug": "lena",
+    "name": "Lena",
+    "description": "Silueta oval. Pensada para acompañar el mueble y la luz del baño.",
+    "longDescription": "Lena es el modelo oval de Prieta. Elegís el tono al encargar: gris natural, gris oscuro, negro, marmolado u otros pigmentos disponibles.",
     "price": 95000,
     "currency": "ARS",
     "category": "bachas",
     "status": "example",
     "shape": "oval",
-    "color": "gris-natural",
     "featured": true,
     "images": [
+      "/gallery/shapes/oval/marmolado.jpg",
       "/gallery/shapes/oval/gris-natural-claro.jpg",
-      "/gallery/shapes/oval/gris-natural-mineral.jpg",
-      "/gallery/shapes/oval/gris-natural.jpg",
-      "/gallery/shapes/cuadrado/gris-natural.jpg",
-      "/gallery/shapes/circular/gris-natural.jpg",
-      "/gallery/shapes/circular-tapon/gris-natural.jpg",
-      "/gallery/shapes/circular-tapon/gris-natural-claro.jpg",
-      "/gallery/shapes/circular/cliente-natural.jpg",
-      "/gallery/shapes/circular-tapon/cliente-natural.jpg"
+      "/gallery/shapes/oval/negro.jpg",
+      "/gallery/shapes/oval/gris-oscuro.jpg",
+      "/gallery/shapes/oval/marmolado-oscuro.jpg",
+      "/gallery/clientes/cliente-oval-marmol-madera.png"
     ],
     "specs": {
       "dimensions": "49 × 33 × 11,5 cm",
@@ -32,26 +28,24 @@
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
   {
-    "id": "ex-color-gris-oscuro",
-    "slug": "ejemplo-gris-oscuro",
-    "name": "Gris oscuro",
-    "description": "Grafito profundo. Baja la luz del baño sin apagarla.",
-    "longDescription": "Referencia de pigmento gris oscuro. El tono se lee distinto según la luz del espacio.",
+    "id": "modelo-forma",
+    "slug": "forma",
+    "name": "Forma",
+    "description": "Geometría cuadrada. Líneas claras para baños contemporáneos.",
+    "longDescription": "Forma es el modelo cuadrado. El tono se elige al pedir: blanco, gris natural u otros pigmentos del taller.",
     "price": 95000,
     "currency": "ARS",
     "category": "bachas",
     "status": "example",
-    "shape": "circular",
-    "color": "gris-oscuro",
+    "shape": "cuadrado",
     "featured": true,
     "images": [
-      "/gallery/shapes/circular/gris-oscuro.jpg",
-      "/gallery/shapes/oval/gris-oscuro.jpg",
-      "/gallery/shapes/oval/gris-oscuro-perfil.jpg",
-      "/gallery/shapes/circular-tapon/gris-oscuro.jpg"
+      "/gallery/shapes/cuadrado/blanco.jpg",
+      "/gallery/shapes/cuadrado/gris-natural.jpg",
+      "/gallery/fichas/cuadrado-producto.jpg"
     ],
     "specs": {
-      "dimensions": "Ø 39 × 12 cm",
+      "dimensions": "39 × 39 × 12 cm",
       "weight": "Según pieza",
       "material": "Masa pigmentada + sellador",
       "finish": "Espesor 1,1 cm · Desagüe Ø 42 mm"
@@ -59,20 +53,21 @@
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
   {
-    "id": "ex-color-rosa",
-    "slug": "ejemplo-rosa",
-    "name": "Rosa",
-    "description": "Rosa polvo. Suave, nunca dulce.",
-    "longDescription": "Referencia de pigmento rosa. Un tono quieto para baños claros o madera.",
+    "id": "modelo-atria",
+    "slug": "atria",
+    "name": "Atria",
+    "description": "Círculo puro. Una presencia quieta sobre la mesada.",
+    "longDescription": "Atria es el modelo circular. Al encargar elegís el pigmento: gris oscuro, rosa pastel, gris natural y más.",
     "price": 95000,
     "currency": "ARS",
     "category": "bachas",
     "status": "example",
     "shape": "circular",
-    "color": "rosa",
     "featured": true,
     "images": [
+      "/gallery/shapes/circular/gris-oscuro.jpg",
       "/gallery/shapes/circular/rosa.jpg",
+      "/gallery/shapes/circular/gris-natural.jpg",
       "/gallery/shapes/circular/rosa-mate.jpg"
     ],
     "specs": {
@@ -84,101 +79,28 @@
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
   {
-    "id": "ex-color-verde-agua",
-    "slug": "ejemplo-verde-agua",
-    "name": "Verde agua",
-    "description": "Verde mineral, entre piedra y agua.",
-    "longDescription": "Referencia de pigmento verde agua. Foto de colección hasta tener pieza individual.",
+    "id": "modelo-aura",
+    "slug": "aura",
+    "name": "Aura",
+    "description": "Circular con tapón a juego. Continuidad de materia hasta el desagüe.",
+    "longDescription": "Aura es el modelo circular con tapón. Diámetro 30,5 cm. El tono se define al pedir.",
     "price": 95000,
     "currency": "ARS",
     "category": "bachas",
     "status": "example",
-    "shape": "oval",
-    "color": "verde-agua",
+    "shape": "circular-tapon",
     "featured": true,
     "images": [
-      "/gallery/shapes/coleccion/coleccion-colores.jpg"
+      "/gallery/fichas/circular-tapon-producto.png",
+      "/gallery/shapes/circular-tapon/gris-natural.jpg",
+      "/gallery/shapes/circular-tapon/gris-oscuro.jpg",
+      "/gallery/shapes/circular-tapon/gris-natural-claro.jpg"
     ],
     "specs": {
-      "dimensions": "49 × 33 × 11,5 cm",
+      "dimensions": "Ø 30,5 × 14,5 cm",
       "weight": "Según pieza",
       "material": "Masa pigmentada + sellador",
-      "finish": "Espesor 1,1 cm · Desagüe Ø 40 mm"
-    },
-    "createdAt": "2026-07-25T00:00:00.000Z"
-  },
-  {
-    "id": "ex-color-marmolado",
-    "slug": "ejemplo-marmolado",
-    "name": "Marmolado gris con negro",
-    "description": "Veteado gris y negro. Cada vaciado deja un dibujo distinto.",
-    "longDescription": "Referencia del marmolado. El veteado no se repite: nace en el vaciado.",
-    "price": 95000,
-    "currency": "ARS",
-    "category": "bachas",
-    "status": "example",
-    "shape": "oval",
-    "color": "marmolado",
-    "featured": true,
-    "images": [
-      "/gallery/shapes/oval/marmolado-oscuro.jpg",
-      "/gallery/shapes/oval/marmolado.jpg",
-      "/gallery/shapes/oval/marmolado-humo.jpg",
-      "/gallery/shapes/oval/cliente-marmol.jpg"
-    ],
-    "specs": {
-      "dimensions": "49 × 33 × 11,5 cm",
-      "weight": "Según pieza",
-      "material": "Masa pigmentada + sellador",
-      "finish": "Espesor 1,1 cm · Desagüe Ø 40 mm"
-    },
-    "createdAt": "2026-07-25T00:00:00.000Z"
-  },
-  {
-    "id": "ex-color-blanco",
-    "slug": "ejemplo-blanco",
-    "name": "Blanco",
-    "description": "Blanco real. Solo en modelo cuadrado.",
-    "longDescription": "Este es el blanco. En oval y circular, los claros son gris natural.",
-    "price": 95000,
-    "currency": "ARS",
-    "category": "bachas",
-    "status": "example",
-    "shape": "cuadrado",
-    "color": "blanco",
-    "featured": true,
-    "images": [
-      "/gallery/shapes/cuadrado/blanco.jpg"
-    ],
-    "specs": {
-      "dimensions": "39 × 39 × 12 cm",
-      "weight": "Según pieza",
-      "material": "Masa pigmentada + sellador",
-      "finish": "Espesor 1,1 cm · Desagüe Ø 42 mm"
-    },
-    "createdAt": "2026-07-25T00:00:00.000Z"
-  },
-  {
-    "id": "ex-color-negro",
-    "slug": "ejemplo-negro",
-    "name": "Negro",
-    "description": "Negro mate. Absorbe el entorno.",
-    "longDescription": "Referencia de pigmento negro. Mate mineral, sin brillo de pintura.",
-    "price": 95000,
-    "currency": "ARS",
-    "category": "bachas",
-    "status": "example",
-    "shape": "oval",
-    "color": "negro",
-    "featured": true,
-    "images": [
-      "/gallery/shapes/oval/negro.jpg"
-    ],
-    "specs": {
-      "dimensions": "49 × 33 × 11,5 cm",
-      "weight": "Según pieza",
-      "material": "Masa pigmentada + sellador",
-      "finish": "Espesor 1,1 cm · Desagüe Ø 40 mm"
+      "finish": "Incluye tapón a juego"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
@@ -193,9 +115,7 @@
     "category": "celosias",
     "status": "example",
     "comingSoon": true,
-    "images": [
-      "/products/celosias/circulo.png"
-    ],
+    "images": ["/products/celosias/circulo.png"],
     "specs": {
       "dimensions": "Consultar",
       "weight": "Según módulo",
@@ -214,9 +134,7 @@
     "category": "celosias",
     "status": "example",
     "comingSoon": true,
-    "images": [
-      "/products/celosias/ranura.png"
-    ],
+    "images": ["/products/celosias/ranura.png"],
     "specs": {
       "dimensions": "Consultar",
       "weight": "Según módulo",
@@ -235,9 +153,7 @@
     "category": "celosias",
     "status": "example",
     "comingSoon": true,
-    "images": [
-      "/products/celosias/diagonal.png"
-    ],
+    "images": ["/products/celosias/diagonal.png"],
     "specs": {
       "dimensions": "Consultar",
       "weight": "Según módulo",
@@ -256,9 +172,7 @@
     "category": "celosias",
     "status": "example",
     "comingSoon": true,
-    "images": [
-      "/products/celosias/horizontales.png"
-    ],
+    "images": ["/products/celosias/horizontales.png"],
     "specs": {
       "dimensions": "Consultar",
       "weight": "Según módulo",
@@ -277,9 +191,7 @@
     "category": "mesadas",
     "status": "example",
     "comingSoon": true,
-    "images": [
-      "/gallery/clientes/cliente-oval-marmol.jpg"
-    ],
+    "images": ["/gallery/clientes/cliente-oval-marmol.jpg"],
     "specs": {
       "dimensions": "A medida",
       "weight": "Según proyecto",

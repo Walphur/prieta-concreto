@@ -12,7 +12,7 @@ export function PigmentStrip() {
         <ul className="mt-16 grid grid-cols-2 gap-6 sm:grid-cols-4 lg:grid-cols-7 lg:gap-8">
           {BACHA_COLORS.map((c) => (
             <li key={c.id}>
-              <Link href="/tienda?vista=ejemplos" className="group block">
+              <Link href="/tienda?categoria=bachas" className="group block">
                 <span
                   className="block aspect-[3/4] w-full transition-opacity duration-700 ease-editorial group-hover:opacity-85"
                   style={{ backgroundColor: c.hex }}

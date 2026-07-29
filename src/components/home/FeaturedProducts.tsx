@@ -11,8 +11,7 @@ export async function FeaturedProducts() {
       p.status === "example" &&
       p.category === "bachas" &&
       !p.comingSoon &&
-      p.featured &&
-      Boolean(p.color),
+      p.featured,
   );
   const featured = [...available, ...examples].slice(0, 3);
 

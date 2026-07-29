@@ -41,7 +41,11 @@ export default async function TiendaPage({
     if (categoria !== "all" && p.category !== categoria) return false;
     if (vista === "stock") return p.status === "available" && !p.comingSoon;
     if (vista === "ejemplos")
-      return p.status === "example" && !p.comingSoon && Boolean(p.color);
+      return (
+        p.status === "example" &&
+        !p.comingSoon &&
+        p.category === "bachas"
+      );
     if (vista === "vendidas") return p.status === "sold";
     if (vista === "medidas") return false;
     return p.status !== "sold";

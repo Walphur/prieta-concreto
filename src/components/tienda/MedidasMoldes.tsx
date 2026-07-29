@@ -49,6 +49,9 @@ export function MedidasMoldes() {
               <h2 className="font-[family-name:var(--font-outfit)] text-2xl font-medium tracking-tight text-navy">
                 {shape.label}
               </h2>
+              <p className="mt-1 text-sm uppercase tracking-[0.14em] text-navy/40">
+                {shape.mold}
+              </p>
               <p className="mt-2 text-base text-navy/60">{dim.dimensions}</p>
               <p className="mt-1 text-sm text-navy/45">{dim.detail}</p>
               <ul className="mt-3 space-y-1 text-sm text-navy/50">

@@ -26,8 +26,8 @@ export function MadeToOrderCta({ name, colorLabel, shapeLabel }: Props) {
         Encargar este modelo
       </a>
       <p className="text-xs leading-relaxed text-navy/55">
-        Referencia de catálogo. Si no hay stock, lo hacemos · ~{madeToOrder.leadDays}{" "}
-        días ({madeToOrder.reason}) · seña {depositLabel()} · total{" "}
+        Modelo por pedido. Elegís el tono al escribirnos · ~
+        {madeToOrder.leadDays} días · seña {depositLabel()} · total{" "}
         {fullPriceLabel()}.{" "}
         <Link href="/tienda" className="underline-offset-2 hover:underline">
           Ver colección

@@ -1,4 +1,4 @@
-/** Catálogo oficial Prieta Concreto — colores y modelos */
+/** Catálogo oficial Prieta Concreto — tonos y modelos */
 
 export const BACHA_COLORS = [
   {
@@ -38,11 +38,12 @@ export const BACHA_COLORS = [
   },
 ] as const;
 
+/** Modelos de diseño (la forma del molde queda en `mold`) */
 export const BACHA_SHAPES = [
-  { id: "cuadrado", label: "Cuadrado" },
-  { id: "oval", label: "Oval" },
-  { id: "circular", label: "Circular" },
-  { id: "circular-tapon", label: "Circular con tapón" },
+  { id: "cuadrado", label: "Forma", mold: "Cuadrado" },
+  { id: "oval", label: "Lena", mold: "Oval" },
+  { id: "circular", label: "Atria", mold: "Circular" },
+  { id: "circular-tapon", label: "Aura", mold: "Circular con tapón" },
 ] as const;
 
 export type BachaColorId = (typeof BACHA_COLORS)[number]["id"];
@@ -52,8 +53,13 @@ export function colorLabel(id?: string) {
   return BACHA_COLORS.find((c) => c.id === id || c.label === id)?.label ?? id ?? "";
 }
 
+/** Nombre de modelo (Lena, Forma, Atria, Aura) */
 export function shapeLabel(id?: string) {
   return BACHA_SHAPES.find((s) => s.id === id || s.label === id)?.label ?? id ?? "";
+}
+
+export function moldLabel(id?: string) {
+  return BACHA_SHAPES.find((s) => s.id === id || s.label === id)?.mold ?? "";
 }
 
 /** Medidas oficiales por modelo (ficha técnica) */

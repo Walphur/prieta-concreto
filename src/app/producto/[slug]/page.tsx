@@ -9,8 +9,10 @@ import {
   statusLabel,
 } from "@/lib/catalog";
 import {
+  BACHA_COLORS,
   BACHA_DIMENSIONS,
   colorLabel,
+  moldLabel,
   shapeLabel,
   type BachaShapeId,
 } from "@/lib/bacha-options";
@@ -187,11 +189,14 @@ export default async function ProductPage({ params }: Props) {
 
         <div className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
           <p className="editorial-kicker">
-            {[shapeName, colorName].filter(Boolean).join(" · ") ||
-              product.category}
+            {isExampleBacha || product.category === "bachas"
+              ? ["Modelo", moldLabel(product.shape)].filter(Boolean).join(" · ")
+              : product.category}
           </p>
           <h1 className="editorial-title mt-4 text-3xl sm:text-4xl">
-            {product.name}
+            {shapeName && product.category === "bachas"
+              ? shapeName
+              : product.name}
           </h1>
 
           {!product.comingSoon && product.price > 0 ? (
@@ -203,20 +208,43 @@ export default async function ProductPage({ params }: Props) {
           <p className="mt-3 text-xs uppercase tracking-[0.14em] text-navy/40">
             {product.comingSoon
               ? "Próximamente"
-              : `${statusLabel(product.status)}${
-                  product.status === "example" ? " · referencia" : ""
-                }`}
+              : product.status === "example"
+                ? "Por pedido"
+                : statusLabel(product.status)}
           </p>
 
           <p className="mt-8 max-w-md leading-[1.75] text-navy/60">
             {product.longDescription}
           </p>
 
+          {product.category === "bachas" && !product.comingSoon ? (
+            <div className="mt-10">
+              <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-navy/40">
+                Tonos
+              </p>
+              <p className="mt-2 text-sm text-navy/50">
+                El pigmento se elige al encargar.
+              </p>
+              <ul className="mt-4 flex flex-wrap gap-3">
+                {BACHA_COLORS.map((c) => (
+                  <li key={c.id} className="flex items-center gap-2">
+                    <span
+                      className="h-5 w-5 border border-navy/10"
+                      style={{ backgroundColor: c.hex }}
+                      aria-hidden
+                    />
+                    <span className="text-xs text-navy/55">{c.label}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+
           <div className="mt-10">
             {isExampleBacha ? (
               <MadeToOrderCta
-                name={product.name}
-                colorLabel={colorName}
+                name={shapeName || product.name}
+                colorLabel={colorName || "a elección"}
                 shapeLabel={shapeName}
               />
             ) : (
