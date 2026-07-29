@@ -37,7 +37,7 @@ export function MadeToOrderNotice({
           showWholesale && "lg:grid-cols-2",
         )}
       >
-        <div className="px-5 py-5 sm:px-6">
+        <div className="flex flex-col px-5 py-5 sm:px-6">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
             Particular
           </p>
@@ -56,7 +56,7 @@ export function MadeToOrderNotice({
             <span className="font-semibold text-navy">{depositLabel()}</span> para
             iniciar.
           </p>
-          <div className="mt-4">
+          <div className="mt-auto pt-4">
             <Button
               href={whatsappGeneralUrl(
                 `Hola Prieta Concreto, no encuentro el modelo/color que quiero en stock. Quiero encargar una bacha por pedido. Entiendo ~${madeToOrder.leadDays} días y seña ${depositLabel()}.`,
@@ -70,7 +70,7 @@ export function MadeToOrderNotice({
         </div>
 
         {showWholesale ? (
-          <div className="border-t border-concrete px-5 py-5 sm:px-6 lg:border-l lg:border-t-0">
+          <div className="flex flex-col border-t border-concrete px-5 py-5 sm:px-6 lg:border-l lg:border-t-0">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
               Mayoristas
             </p>
@@ -82,7 +82,7 @@ export function MadeToOrderNotice({
               comercios del rubro. Armamos cantidades y condiciones según tu
               necesidad.
             </p>
-            <div className="mt-4">
+            <div className="mt-auto pt-4">
               <Button
                 href={whatsappWholesaleUrl()}
                 variant="secondary"
