@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { useCartStore } from "@/lib/cart-store";
+import { useMember } from "@/components/member/MemberProvider";
+import { calcFirstPurchaseDiscount } from "@/lib/member-discount";
 import { formatPrice } from "@/lib/products";
 import {
   ORDER_STORAGE_KEY,
@@ -22,6 +24,7 @@ export function CheckoutForm() {
   const items = useCartStore((s) => s.items);
   const subtotal = useCartStore((s) => s.subtotal);
   const clear = useCartStore((s) => s.clear);
+  const { member, eligibleForDiscount, markDiscountUsed } = useMember();
   const [mounted, setMounted] = useState(false);
   const [sending, setSending] = useState(false);
   const [form, setForm] = useState<CheckoutCustomer>({
@@ -35,6 +38,15 @@ export function CheckoutForm() {
 
   useEffect(() => setMounted(true), []);
 
+  useEffect(() => {
+    if (!member) return;
+    setForm((prev) => ({
+      ...prev,
+      email: prev.email || member.email,
+      name: prev.name || member.name || "",
+    }));
+  }, [member]);
+
   function update<K extends keyof CheckoutCustomer>(
     key: K,
     value: CheckoutCustomer[K],
@@ -42,20 +54,38 @@ export function CheckoutForm() {
     setForm((prev) => ({ ...prev, [key]: value }));
   }
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (items.length === 0) return;
     setSending(true);
+
+    const raw = subtotal();
+    const discount = eligibleForDiscount
+      ? calcFirstPurchaseDiscount(raw)
+      : null;
 
     const order: PendingOrder = {
       ref: createOrderRef(),
       createdAt: new Date().toISOString(),
       customer: form,
       items: items.map((i) => ({ ...i })),
-      subtotal: subtotal(),
+      subtotal: raw,
+      ...(discount
+        ? {
+            discountPercent: discount.discountPercent,
+            discountAmount: discount.discountAmount,
+            total: discount.total,
+            memberEmail: member?.email,
+          }
+        : { total: raw }),
     };
 
     sessionStorage.setItem(ORDER_STORAGE_KEY, JSON.stringify(order));
+
+    if (discount) {
+      await markDiscountUsed();
+    }
+
     clear();
     router.push(`/pedido/${order.ref}`);
   }
@@ -86,6 +116,12 @@ export function CheckoutForm() {
       </div>
     );
   }
+
+  const raw = subtotal();
+  const discount = eligibleForDiscount
+    ? calcFirstPurchaseDiscount(raw)
+    : null;
+  const payable = discount?.total ?? raw;
 
   return (
     <div className="mx-auto grid max-w-5xl gap-12 px-4 py-12 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:py-16">
@@ -221,11 +257,39 @@ export function CheckoutForm() {
             </li>
           ))}
         </ul>
-        <div className="mt-6 flex items-center justify-between border-t border-concrete pt-4">
-          <span className="text-sm text-navy/65">Total a transferir</span>
-          <span className="font-[family-name:var(--font-outfit)] text-xl font-semibold text-deep-red">
-            {formatPrice(subtotal())}
-          </span>
+        <div className="mt-6 space-y-2 border-t border-concrete pt-4">
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-navy/65">Subtotal</span>
+            <span
+              className={
+                discount
+                  ? "text-sm text-navy/45 line-through"
+                  : "font-[family-name:var(--font-outfit)] text-xl font-semibold text-deep-red"
+              }
+            >
+              {formatPrice(raw)}
+            </span>
+          </div>
+          {discount ? (
+            <>
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-sage-dark">
+                  Descuento primera compra ({discount.discountPercent}%)
+                </span>
+                <span className="font-medium text-sage-dark">
+                  −{formatPrice(discount.discountAmount)}
+                </span>
+              </div>
+              <div className="flex items-center justify-between pt-1">
+                <span className="text-sm font-medium text-navy">
+                  Total a transferir
+                </span>
+                <span className="font-[family-name:var(--font-outfit)] text-xl font-semibold text-deep-red">
+                  {formatPrice(payable)}
+                </span>
+              </div>
+            </>
+          ) : null}
         </div>
       </aside>
     </div>

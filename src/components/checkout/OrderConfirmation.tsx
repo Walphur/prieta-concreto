@@ -58,8 +58,10 @@ export function OrderConfirmation({ refId }: Props) {
     );
   }
 
-  const totalLabel = formatPrice(order.subtotal);
+  const totalLabel = formatPrice(order.total ?? order.subtotal);
   const wa = whatsappOrderUrl(order.ref, totalLabel);
+  const hasDiscount =
+    typeof order.discountAmount === "number" && order.discountAmount > 0;
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-12 sm:px-6 lg:py-16">
@@ -100,6 +102,22 @@ export function OrderConfirmation({ refId }: Props) {
             </li>
           ))}
         </ul>
+        {hasDiscount ? (
+          <div className="mt-4 space-y-1 border-t border-concrete pt-3 text-sm">
+            <div className="flex justify-between text-navy/55">
+              <span>Subtotal</span>
+              <span className="line-through">{formatPrice(order.subtotal)}</span>
+            </div>
+            <div className="flex justify-between text-sage-dark">
+              <span>Descuento {order.discountPercent ?? 15}%</span>
+              <span>−{formatPrice(order.discountAmount ?? 0)}</span>
+            </div>
+            <div className="flex justify-between font-medium text-navy">
+              <span>Total</span>
+              <span className="text-deep-red">{totalLabel}</span>
+            </div>
+          </div>
+        ) : null}
         <p className="mt-4 text-sm text-navy/60">
           Entrega: {order.customer.address}, {order.customer.city}
           <br />

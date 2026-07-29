@@ -8,6 +8,7 @@ import { clsx } from "clsx";
 import { PrietaLogo } from "@/components/brand/PrietaLogo";
 import { useCartStore } from "@/lib/cart-store";
 import { CartDrawer } from "@/components/cart/CartDrawer";
+import { MemberAccess } from "@/components/member/MemberAccess";
 
 const nav = [
   { href: "/", label: "Inicio" },
@@ -79,7 +80,8 @@ export function Header() {
             })}
           </nav>
 
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <MemberAccess className="hidden sm:inline-flex" />
             <button
               type="button"
               onClick={openCart}
@@ -137,6 +139,9 @@ export function Header() {
                 </Link>
               );
             })}
+            <div className="border-t border-concrete/60 px-3 pt-2 sm:hidden">
+              <MemberAccess className="inline-flex py-2 text-sm" />
+            </div>
           </nav>
         </div>
       </header>

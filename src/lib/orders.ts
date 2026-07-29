@@ -15,6 +15,10 @@ export type PendingOrder = {
   customer: CheckoutCustomer;
   items: CartItem[];
   subtotal: number;
+  discountPercent?: number;
+  discountAmount?: number;
+  total?: number;
+  memberEmail?: string;
 };
 
 export const ORDER_STORAGE_KEY = "prieta-pending-order";

@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { X, Trash2 } from "lucide-react";
 import { useCartStore } from "@/lib/cart-store";
+import { useMember } from "@/components/member/MemberProvider";
+import { calcFirstPurchaseDiscount } from "@/lib/member-discount";
 import { formatPrice } from "@/lib/products";
 import { clsx } from "clsx";
 
@@ -13,6 +15,12 @@ export function CartDrawer() {
   const items = useCartStore((s) => s.items);
   const removeItem = useCartStore((s) => s.removeItem);
   const subtotal = useCartStore((s) => s.subtotal);
+  const { eligibleForDiscount } = useMember();
+
+  const raw = subtotal();
+  const discount = eligibleForDiscount
+    ? calcFirstPurchaseDiscount(raw)
+    : null;
 
   return (
     <>
@@ -102,13 +110,36 @@ export function CartDrawer() {
 
         {items.length > 0 ? (
           <div className="border-t border-concrete px-5 py-5">
-            <div className="mb-4 flex items-center justify-between">
+            <div className="mb-2 flex items-center justify-between">
               <span className="text-sm text-navy/65">Subtotal</span>
-              <span className="font-[family-name:var(--font-outfit)] text-lg font-semibold text-deep-red">
-                {formatPrice(subtotal())}
+              <span
+                className={clsx(
+                  "font-[family-name:var(--font-outfit)] text-lg font-semibold",
+                  discount ? "text-navy/45 line-through" : "text-deep-red",
+                )}
+              >
+                {formatPrice(raw)}
               </span>
             </div>
-            <p className="mb-3 text-xs text-navy/50">
+            {discount ? (
+              <>
+                <div className="mb-2 flex items-center justify-between text-sm">
+                  <span className="text-sage-dark">
+                    Descuento primera compra ({discount.discountPercent}%)
+                  </span>
+                  <span className="font-medium text-sage-dark">
+                    −{formatPrice(discount.discountAmount)}
+                  </span>
+                </div>
+                <div className="mb-4 flex items-center justify-between">
+                  <span className="text-sm font-medium text-navy">Total</span>
+                  <span className="font-[family-name:var(--font-outfit)] text-lg font-semibold text-deep-red">
+                    {formatPrice(discount.total)}
+                  </span>
+                </div>
+              </>
+            ) : null}
+            <p className={clsx("mb-3 text-xs text-navy/50", !discount && "mt-2")}>
               Pago por transferencia · Envíos a toda la Argentina (Andesmar
               Cargas)
             </p>

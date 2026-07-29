@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { DM_Sans, Outfit } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { WhatsAppFab } from "@/components/layout/WhatsAppFab";
+import { MemberProvider } from "@/components/member/MemberProvider";
 import { JsonLd } from "@/components/seo/JsonLd";
 import "./globals.css";
 
@@ -95,10 +97,13 @@ export default function RootLayout({
       className={`${dmSans.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="site-mineral flex min-h-full flex-col text-navy">
-        <JsonLd />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <MemberProvider>
+          <JsonLd />
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <WhatsAppFab />
+        </MemberProvider>
       </body>
     </html>
   );
