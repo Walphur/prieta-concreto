@@ -7,22 +7,10 @@ import {
   type BachaShapeId,
 } from "@/lib/bacha-options";
 
-const FICHAS: Record<BachaShapeId, { product: string; diagram?: string }> = {
-  cuadrado: {
-    product: "/gallery/fichas/cuadrado-producto.jpg",
-    diagram: "/gallery/fichas/cuadrado-diagrama.png",
-  },
-  oval: {
-    product: "/gallery/fichas/oval-producto.jpg",
-    diagram: "/gallery/fichas/oval-diagrama.png",
-  },
-  circular: {
-    product: "/gallery/fichas/circular-producto.jpg",
-    diagram: "/gallery/fichas/circular-diagrama.png",
-  },
-  "circular-tapon": {
-    product: "/gallery/fichas/circular-tapon-producto.png",
-  },
+const DIAGRAMAS: Partial<Record<BachaShapeId, string>> = {
+  cuadrado: "/gallery/fichas/cuadrado-diagrama.png",
+  oval: "/gallery/fichas/oval-diagrama.png",
+  circular: "/gallery/fichas/circular-diagrama.png",
 };
 
 type BachaImage = {
@@ -44,9 +32,12 @@ export function MedidasMoldes() {
 
       {BACHA_SHAPES.map((shape) => {
         const dim = BACHA_DIMENSIONS[shape.id];
-        const ficha = FICHAS[shape.id];
+        const diagram = DIAGRAMAS[shape.id];
         const photos = all.filter(
-          (i) => i.shape === shape.id && i.kind !== "grupo",
+          (i) =>
+            i.shape === shape.id &&
+            i.kind !== "grupo" &&
+            !i.src.includes("/fichas/"),
         );
 
         return (
@@ -67,70 +58,55 @@ export function MedidasMoldes() {
               </ul>
             </div>
 
-            {/* Diagrama grande a la izquierda; foto de bacha chica a la derecha */}
-            {ficha.diagram ? (
-              <div className="grid items-start gap-4 lg:grid-cols-[1.4fr_0.7fr] lg:gap-6">
-                <div className="bg-[#1c1c1c] p-4 sm:p-6">
+            {/* Medidas (izq, más chicas) · bachas de referencia (der) */}
+            <div
+              className={
+                diagram
+                  ? "grid items-start gap-8 lg:grid-cols-[minmax(0,320px)_1fr] lg:gap-10"
+                  : ""
+              }
+            >
+              {diagram ? (
+                <div className="mx-auto w-full max-w-[280px] bg-[#1c1c1c] p-3 sm:p-4 lg:mx-0 lg:max-w-[320px]">
                   <Image
-                    src={ficha.diagram}
+                    src={diagram}
                     alt={`Diagrama de medidas ${shape.label}`}
-                    width={1000}
-                    height={1300}
-                    sizes="(max-width: 1024px) 100vw, 58vw"
+                    width={640}
+                    height={840}
+                    sizes="(max-width: 1024px) 280px, 320px"
                     className="h-auto w-full object-contain"
                     priority={shape.id === "cuadrado"}
                   />
                 </div>
-                <div className="mx-auto w-full max-w-[280px] bg-[#e8e8e8] p-3 lg:mx-0 lg:max-w-none">
-                  <Image
-                    src={ficha.product}
-                    alt={`Molde ${shape.label}`}
-                    width={480}
-                    height={480}
-                    sizes="(max-width: 1024px) 280px, 28vw"
-                    className="h-auto w-full object-contain"
-                  />
-                </div>
-              </div>
-            ) : (
-              <div className="max-w-xs bg-[#e8e8e8] p-3">
-                <Image
-                  src={ficha.product}
-                  alt={`Molde ${shape.label}`}
-                  width={480}
-                  height={480}
-                  sizes="280px"
-                  className="h-auto w-full object-contain"
-                />
-              </div>
-            )}
+              ) : null}
 
-            {photos.length > 0 ? (
-              <div className="mt-10">
-                <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-navy/40">
-                  Colores · {shape.label.toLowerCase()}
-                </p>
-                <div className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-6 lg:gap-3">
-                  {photos.map((photo) => (
-                    <figure
-                      key={photo.src}
-                      className="relative aspect-square overflow-hidden bg-concrete-light"
-                    >
-                      <Image
-                        src={photo.src}
-                        alt={`${shape.label} ${colorLabel(photo.color)}`}
-                        fill
-                        sizes="(max-width: 640px) 33vw, 12vw"
-                        className="object-cover object-center"
-                      />
-                      <figcaption className="absolute bottom-1.5 left-1.5 bg-cream/90 px-1.5 py-0.5 text-[9px] font-medium uppercase tracking-wider text-navy">
-                        {colorLabel(photo.color)}
-                      </figcaption>
-                    </figure>
-                  ))}
+              {photos.length > 0 ? (
+                <div>
+                  <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-navy/40">
+                    Referencia · {shape.label.toLowerCase()}
+                  </p>
+                  <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
+                    {photos.map((photo) => (
+                      <figure
+                        key={photo.src}
+                        className="relative aspect-square overflow-hidden bg-concrete-light"
+                      >
+                        <Image
+                          src={photo.src}
+                          alt={`${shape.label} ${colorLabel(photo.color)}`}
+                          fill
+                          sizes="(max-width: 640px) 50vw, 20vw"
+                          className="object-cover object-center"
+                        />
+                        <figcaption className="absolute bottom-1.5 left-1.5 bg-cream/90 px-1.5 py-0.5 text-[9px] font-medium uppercase tracking-wider text-navy">
+                          {colorLabel(photo.color)}
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ) : null}
+              ) : null}
+            </div>
           </article>
         );
       })}
