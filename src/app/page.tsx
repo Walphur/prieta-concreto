@@ -1,5 +1,4 @@
 import { Hero } from "@/components/home/Hero";
-import { HomeInstalls } from "@/components/home/HomeInstalls";
 import { FeaturedProducts } from "@/components/home/FeaturedProducts";
 import { PigmentStrip } from "@/components/home/PigmentStrip";
 import { HowItWorks } from "@/components/home/HowItWorks";
@@ -12,7 +11,6 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <HomeInstalls />
       <PigmentStrip />
       <FeaturedProducts />
       <HowItWorks />
