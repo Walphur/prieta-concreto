@@ -41,4 +41,4 @@ export type CartItem = {
   image?: string;
 };
 
-export const BACHA_PRICE = 80000;
+export const BACHA_PRICE = 95000;

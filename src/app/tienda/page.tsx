@@ -10,7 +10,7 @@ import type { ProductCategory } from "@/types/product";
 export const metadata: Metadata = {
   title: "Tienda",
   description:
-    "Bachas de concreto Prieta a $80.000. Si no hay stock, fabricamos por pedido. Precios mayoristas para corralones y ferreterías. San Luis.",
+    "Bachas de concreto Prieta a $95.000. Si no hay stock, fabricamos por pedido. Precios mayoristas para corralones y ferreterías. San Luis.",
   alternates: { canonical: "/tienda" },
 };
 
@@ -63,7 +63,7 @@ export default async function TiendaPage({
         </h1>
         <p className="mt-3 text-navy/65">
           Toda bacha:{" "}
-          <span className="font-semibold text-deep-red">$80.000</span>. Los
+          <span className="font-semibold text-deep-red">$95.000</span>. Los
           ejemplos son referencia de color y modelo para encargar la tuya.
           Medidas de cada molde en la pestaña Medidas.
         </p>

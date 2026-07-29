@@ -245,7 +245,7 @@ export function makeUniquePiece(input: {
     description:
       input.description || `Pieza única · ${shapeName} · ${colorName}.`,
     longDescription:
-      "Pieza única hecha a mano en San Luis. Al ser artesanal, no hay dos iguales. Precio fijo $80.000 cualquier color o modelo.",
+      "Pieza única hecha a mano en San Luis. Al ser artesanal, no hay dos iguales. Precio fijo $95.000 cualquier color o modelo.",
     price: BACHA_PRICE,
     currency: "ARS",
     category: "bachas",

@@ -5,7 +5,7 @@ import { formatPrice } from "@/lib/catalog-shared";
 export const madeToOrder = {
   leadDays: 15,
   /** Seña para iniciar fabricación */
-  deposit: 40_000,
+  deposit: 50_000,
   fullPrice: BACHA_PRICE,
   reason: "secado y fraguado del concreto",
 } as const;

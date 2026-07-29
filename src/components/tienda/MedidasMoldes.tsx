@@ -40,7 +40,7 @@ export function MedidasMoldes() {
       <p className="max-w-2xl text-navy/65">
         Medidas oficiales de cada molde y todas las bachas fotografiadas de ese
         modelo. Todos cuestan{" "}
-        <span className="font-semibold text-deep-red">$80.000</span> en
+        <span className="font-semibold text-deep-red">$95.000</span> en
         cualquiera de los colores. Envíos a toda la Argentina por Andesmar
         Cargas.
       </p>

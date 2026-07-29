@@ -121,7 +121,7 @@ const bachas = COLORS.map((c) => {
     name: c.name,
     description: c.description,
     longDescription: c.longDescription,
-    price: 80000,
+    price: 95000,
     currency: "ARS",
     category: "bachas",
     status: "example",
