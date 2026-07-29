@@ -2,6 +2,7 @@ import { ProductCard } from "@/components/product/ProductCard";
 import { MadeToOrderNotice } from "@/components/order/MadeToOrderNotice";
 import { readProducts } from "@/lib/catalog";
 import { Button } from "@/components/ui/Button";
+import { clsx } from "clsx";
 
 export async function FeaturedProducts() {
   const all = await readProducts();
@@ -45,7 +46,12 @@ export async function FeaturedProducts() {
             key={product.id}
             product={product}
             priority={i < 2}
-            className="animate-fade-up"
+            className={clsx(
+              "animate-fade-up transition-transform duration-500 hover:-translate-y-1",
+              i === 1 && "delay-100",
+              i === 2 && "delay-200",
+              i === 3 && "delay-300",
+            )}
           />
         ))}
       </div>
