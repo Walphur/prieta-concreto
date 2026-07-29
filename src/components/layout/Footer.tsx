@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { PrietaLogo } from "@/components/brand/PrietaLogo";
 import { whatsappGeneralUrl, whatsappWholesaleUrl } from "@/lib/bank";
 import { GOOGLE_MAPS_URL, GOOGLE_REVIEW_URL } from "@/types/review";
@@ -103,22 +104,27 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 text-xs text-cream/45 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 text-xs text-cream/45 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <p>
             © {new Date().getFullYear()} Prieta Concreto. Todos los derechos
             reservados.
           </p>
-          <p>
-            Diseñado por{" "}
-            <a
-              href="https://walphur.github.io/WalTech/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-cream/55 transition hover:text-sage-light"
-            >
-              Waltech
-            </a>
-          </p>
+          <a
+            href="https://walphur.github.io/WalTech/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2.5 text-cream/50 transition hover:text-cream/80"
+            aria-label="Diseñado por Waltech"
+          >
+            <span>Diseñado por</span>
+            <Image
+              src="/brand/waltech-logo.png"
+              alt="Waltech"
+              width={120}
+              height={28}
+              className="h-5 w-auto opacity-90"
+            />
+          </a>
         </div>
       </div>
     </footer>
