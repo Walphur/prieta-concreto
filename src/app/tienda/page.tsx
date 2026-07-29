@@ -62,10 +62,10 @@ export default async function TiendaPage({
         </p>
       </header>
 
-      <MadeToOrderNotice className="mb-16 w-full" />
+      <MadeToOrderNotice className="mb-14 w-full" />
 
-      <div className="border-y border-navy/10 py-5">
-        <div className="flex flex-wrap gap-x-1 gap-y-2">
+      <nav className="mb-4 space-y-5" aria-label="Filtros de colección">
+        <div className="flex flex-wrap gap-2">
           {filters.map((f) => {
             const active = categoria === f.value;
             const href =
@@ -77,8 +77,8 @@ export default async function TiendaPage({
                 className={clsx(
                   "px-4 py-2 text-xs font-medium uppercase tracking-[0.14em] transition-colors duration-500",
                   active
-                    ? "bg-navy text-cream"
-                    : "text-navy/50 hover:text-navy",
+                    ? "bg-verde-agua text-white"
+                    : "bg-cream-dark text-navy/55 hover:bg-concrete-light hover:text-navy",
                 )}
               >
                 {f.label}
@@ -88,7 +88,10 @@ export default async function TiendaPage({
         </div>
 
         {categoria === "bachas" || categoria === "all" ? (
-          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 border-t border-navy/8 pt-4">
+          <div className="flex flex-wrap items-center gap-x-1 gap-y-2">
+            <span className="mr-3 text-[10px] font-medium uppercase tracking-[0.2em] text-navy/35">
+              Ver
+            </span>
             {[
               { label: "Todo", value: "todas" },
               { label: "En stock", value: "stock" },
@@ -108,9 +111,9 @@ export default async function TiendaPage({
                   key={f.value}
                   href={href}
                   className={clsx(
-                    "text-[11px] font-medium uppercase tracking-[0.16em] transition-colors duration-500",
+                    "px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] transition-colors duration-500",
                     active
-                      ? "text-navy underline decoration-navy/30 underline-offset-8"
+                      ? "text-verde-agua-panel underline decoration-verde-agua underline-offset-8"
                       : "text-navy/40 hover:text-navy/70",
                   )}
                 >
@@ -120,7 +123,7 @@ export default async function TiendaPage({
             })}
           </div>
         ) : null}
-      </div>
+      </nav>
 
       {showMedidas ? (
         <MedidasMoldes />

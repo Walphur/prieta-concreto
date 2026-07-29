@@ -6,7 +6,6 @@ import { clsx } from "clsx";
 type Props = {
   compact?: boolean;
   className?: string;
-  /** Si false, solo muestra el bloque de particulares */
   showWholesale?: boolean;
 };
 
@@ -25,34 +24,32 @@ export function MadeToOrderNotice({
   }
 
   return (
-    <aside
-      className={clsx(
-        "texture-panel",
-        className,
-      )}
-    >
+    <aside className={clsx("overflow-hidden border border-navy/10", className)}>
       <div
-        className={clsx(
-          "grid gap-0",
-          showWholesale && "lg:grid-cols-2",
-        )}
+        className={clsx("grid gap-0", showWholesale && "lg:grid-cols-2")}
       >
-        <div className="flex flex-col px-5 py-6 sm:px-6">
-          <p className="editorial-kicker">Particular</p>
+        <div className="relative flex flex-col bg-verde-agua/[0.12] px-6 py-7 sm:px-8">
+          <span
+            className="absolute inset-y-0 left-0 w-1 bg-verde-agua"
+            aria-hidden
+          />
+          <p className="text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-verde-agua-panel">
+            Particular
+          </p>
           <h2 className="mt-3 font-[family-name:var(--font-outfit)] text-lg font-medium text-navy">
             Por pedido
           </h2>
-          <p className="mt-2 text-sm leading-relaxed text-navy/55">
+          <p className="mt-2 text-sm leading-relaxed text-navy/60">
             Modelo y tono a elección. ~{madeToOrder.leadDays} días ·{" "}
             {fullPriceLabel()} · seña {depositLabel()}.
           </p>
-          <div className="mt-auto pt-4">
+          <div className="mt-auto pt-5">
             <Button
               href={whatsappGeneralUrl(
                 `Hola Prieta, quiero encargar una bacha. Entiendo ~${madeToOrder.leadDays} días y seña ${depositLabel()}.`,
               )}
-              variant="outline"
-              className="text-sm"
+              variant="primary"
+              className="bg-verde-agua hover:bg-verde-agua-panel"
             >
               Encargar por WhatsApp
             </Button>
@@ -60,19 +57,25 @@ export function MadeToOrderNotice({
         </div>
 
         {showWholesale ? (
-          <div className="flex flex-col border-t border-navy/10 px-5 py-5 sm:px-6 lg:border-l lg:border-t-0">
-            <p className="editorial-kicker">Mayoristas</p>
+          <div className="relative flex flex-col bg-navy/[0.04] px-6 py-7 sm:px-8 lg:border-l lg:border-navy/10">
+            <span
+              className="absolute inset-y-0 left-0 w-1 bg-sage lg:left-0"
+              aria-hidden
+            />
+            <p className="text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-sage-dark">
+              Mayoristas
+            </p>
             <h2 className="mt-3 font-[family-name:var(--font-outfit)] text-lg font-medium text-navy">
               Corralones y ferreterías
             </h2>
-            <p className="mt-2 text-sm leading-relaxed text-navy/55">
+            <p className="mt-2 text-sm leading-relaxed text-navy/60">
               Condiciones para el rubro. Escribinos y lo vemos.
             </p>
-            <div className="mt-auto pt-4">
+            <div className="mt-auto pt-5">
               <Button
                 href={whatsappWholesaleUrl()}
                 variant="secondary"
-                className="text-sm"
+                className="bg-navy"
               >
                 Consultar
               </Button>
