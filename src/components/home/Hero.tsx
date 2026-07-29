@@ -1,130 +1,184 @@
-"use client";
-
-import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { whatsappGeneralUrl } from "@/lib/bank";
 import { depositLabel, fullPriceLabel, madeToOrder } from "@/lib/order-policy";
 
-/** Instalación real — oval marmolada sobre madera (lifestyle). */
-const HERO_IMAGE = "/hero/hero-bano-marmolada.png";
+type Band = {
+  src: string;
+  alt: string;
+  /** Image left on desktop; on mobile stacks image then text. */
+  imageFirst?: boolean;
+  kicker?: string;
+  title: string;
+  subtitle?: string;
+  /** Primary hero: brand + CTAs as buttons */
+  hero?: boolean;
+};
+
+const BANDS: Band[] = [
+  {
+    hero: true,
+    src: "/hero/hero-bano-marmolada.png",
+    alt: "Bacha oval marmolada Prieta instalada en baño con mueble de madera",
+    kicker: "Prieta Concreto · San Luis",
+    title: "ARTESANÍA EN CONCRETO PARA BAÑOS DE DISEÑO",
+    subtitle: `Masa pigmentada, curado lento y sellado mineral. Por pedido — ${fullPriceLabel()} · seña ${depositLabel()} · ~${madeToOrder.leadDays} días.`,
+  },
+  {
+    src: "/gallery/clientes/cliente-oval-gris-oscuro-bano.png",
+    alt: "Bacha oval gris oscuro instalada en baño con azulejos oscuros",
+    imageFirst: true,
+    kicker: "Instalaciones reales",
+    title: "EN CASAS DE CLIENTES",
+    subtitle: "La pieza en el baño, sin recortes. Así se ve el concreto Prieta instalado.",
+  },
+  {
+    src: "/gallery/clientes/cliente-oval-marmol-madera.png",
+    alt: "Bacha oval marmolada instalada sobre mueble de madera clara",
+    title: "ENCARGÁ LA TUYA",
+    subtitle:
+      "Elegí modelo y color. Si no hay stock, la fabricamos en el taller de San Luis.",
+  },
+];
 
 /**
- * Hero full-bleed con foto de instalación real.
- * Linterna suave que revela luz sobre el concreto (desktop).
+ * Hero + bandas 50/50 full-bleed (estilo Bauvic, voz Prieta):
+ * panel verde agua + foto de instalación a sangre.
  */
 export function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const target = useRef({ x: 58, y: 48 });
-  const current = useRef({ x: 58, y: 48 });
-  const [pos, setPos] = useState({ x: 58, y: 48 });
-  const [live, setLive] = useState(false);
-
-  useEffect(() => {
-    const fine = window.matchMedia("(pointer: fine)").matches;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    setLive(fine && !reduce);
-
-    let raf = 0;
-    const tick = () => {
-      current.current.x += (target.current.x - current.current.x) * 0.12;
-      current.current.y += (target.current.y - current.current.y) * 0.12;
-      setPos({ ...current.current });
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, []);
-
-  const onMove = useCallback(
-    (e: React.PointerEvent<HTMLElement>) => {
-      if (!live || !ref.current) return;
-      const rect = ref.current.getBoundingClientRect();
-      target.current = {
-        x: ((e.clientX - rect.left) / Math.max(rect.width, 1)) * 100,
-        y: ((e.clientY - rect.top) / Math.max(rect.height, 1)) * 100,
-      };
-    },
-    [live],
-  );
-
-  const style = {
-    "--hx": `${pos.x}%`,
-    "--hy": `${pos.y}%`,
-  } as CSSProperties;
-
   return (
-    <section
-      ref={ref}
-      onPointerMove={onMove}
-      style={style}
-      className="relative min-h-[88vh] w-full overflow-hidden bg-navy"
-    >
-      <Image
-        src={HERO_IMAGE}
-        alt="Bacha oval marmolada Prieta instalada en baño con mueble de madera"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-[center_45%] saturate-[0.94] contrast-[1.04]"
-      />
+    <section className="w-full">
+      {BANDS.map((band) => (
+        <SplitBand key={band.src} {...band} />
+      ))}
+    </section>
+  );
+}
 
-      <div
-        className="absolute inset-0"
-        style={{
-          background: live
-            ? `radial-gradient(circle 520px at var(--hx) var(--hy), transparent 0%, rgba(26,35,50,0.28) 28%, rgba(26,35,50,0.7) 58%, rgba(18,24,32,0.88) 100%)`
-            : `linear-gradient(105deg, rgba(26,35,50,0.86) 0%, rgba(26,35,50,0.48) 48%, rgba(26,35,50,0.55) 100%)`,
-        }}
-      />
-
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background: live
-            ? `radial-gradient(circle 300px at var(--hx) var(--hy), rgba(163,178,158,0.2) 0%, transparent 72%)`
-            : `radial-gradient(circle 360px at 55% 42%, rgba(163,178,158,0.12) 0%, transparent 70%)`,
-        }}
-      />
-
-      <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-end px-4 pb-16 pt-28 sm:px-6 sm:pb-20 lg:justify-center lg:px-8 lg:pb-24">
-        <div className="max-w-xl">
-          <p className="animate-fade-up text-xs font-semibold uppercase tracking-[0.22em] text-sage-light">
-            Concreto pigmentado · San Luis
+function SplitBand({
+  src,
+  alt,
+  imageFirst = false,
+  kicker,
+  title,
+  subtitle,
+  hero,
+}: Band) {
+  const text = (
+    <div className="flex min-h-[56vh] flex-col justify-center bg-verde-agua-panel px-8 py-16 text-white sm:px-12 sm:py-20 lg:min-h-[88vh] lg:px-14 xl:px-20">
+      <div className={hero ? "max-w-xl" : "max-w-lg"}>
+        {kicker ? (
+          <p
+            className={
+              hero
+                ? "text-xs font-semibold uppercase tracking-[0.22em] text-white/75"
+                : "font-[family-name:var(--font-outfit)] text-sm font-semibold uppercase tracking-[0.28em] text-white/80 sm:text-base"
+            }
+          >
+            {kicker}
           </p>
-          <p className="animate-fade-up delay-100 mt-3 font-[family-name:var(--font-outfit)] text-2xl font-semibold tracking-tight text-cream sm:text-3xl md:text-4xl">
+        ) : null}
+
+        {hero ? (
+          <p className="mt-4 font-[family-name:var(--font-outfit)] text-2xl font-semibold tracking-tight text-white sm:text-3xl">
             Prieta Concreto
           </p>
-          <h1 className="animate-fade-up delay-200 mt-4 font-[family-name:var(--font-outfit)] text-3xl font-medium leading-[1.15] tracking-tight text-cream sm:text-4xl md:text-5xl">
-            Artesanía en concreto para baños de diseño.
+        ) : null}
+
+        {hero ? (
+          <h1 className="mt-4 font-[family-name:var(--font-outfit)] text-[clamp(1.85rem,4.2vw,3.5rem)] font-bold uppercase leading-[0.95] tracking-[-0.02em] text-white">
+            {title}
           </h1>
-          <p className="animate-fade-up delay-300 mt-5 max-w-md text-base leading-relaxed text-cream/80 sm:text-lg">
-            Masa pigmentada con ferrites, curado lento y sellado mineral. Si no
-            está el modelo en stock, lo fabricamos por pedido —{" "}
-            {fullPriceLabel()} · seña {depositLabel()} · ~{madeToOrder.leadDays}{" "}
-            días.
+        ) : (
+          <h2
+            className={`font-[family-name:var(--font-outfit)] text-[clamp(2.15rem,5.2vw,4.25rem)] font-bold uppercase leading-[0.95] tracking-[-0.02em] text-white ${
+              kicker ? "mt-4" : ""
+            }`}
+          >
+            {title}
+          </h2>
+        )}
+
+        {subtitle ? (
+          <p
+            className={`mt-6 leading-relaxed text-white/85 ${
+              hero ? "max-w-md text-base sm:text-lg" : "max-w-sm text-base sm:text-lg"
+            }`}
+          >
+            {subtitle}
           </p>
-          <div className="animate-fade-up delay-400 mt-8 flex flex-wrap gap-3">
-            <Button href="/tienda" variant="primary" className="min-w-[11rem]">
-              Ver Colección
+        ) : null}
+
+        {hero ? (
+          <div className="mt-9 flex flex-wrap gap-3">
+            <Button
+              href="/tienda"
+              variant="secondary"
+              className="min-w-[11rem] bg-white text-navy hover:bg-cream"
+            >
+              Ver colección
             </Button>
             <Button
               href={whatsappGeneralUrl(
-                `Hola Prieta Concreto, quiero encargar una bacha por pedido.`,
+                "Hola Prieta Concreto, quiero encargar una bacha por pedido.",
               )}
               variant="outline"
-              className="min-w-[11rem] border-cream/35 text-cream hover:border-sage-light hover:text-sage-light"
+              className="min-w-[11rem] border-white/45 text-white hover:border-white hover:bg-white/10"
             >
               Pedir por WhatsApp
             </Button>
           </div>
-          {live ? (
-            <p className="animate-fade-up delay-500 mt-6 text-[11px] uppercase tracking-[0.18em] text-cream/40">
-              Mové el mouse — luz sobre el concreto
-            </p>
-          ) : null}
-        </div>
+        ) : (
+          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4">
+            <Link
+              href="/tienda"
+              className="font-[family-name:var(--font-outfit)] text-sm font-semibold uppercase tracking-[0.2em] text-white underline decoration-white/40 underline-offset-8 transition hover:decoration-white"
+            >
+              Ver colección
+            </Link>
+            <Link
+              href="/inspiracion"
+              className="font-[family-name:var(--font-outfit)] text-sm font-semibold uppercase tracking-[0.2em] text-white/90 underline decoration-white/35 underline-offset-8 transition hover:text-white hover:decoration-white"
+            >
+              Ver inspiración
+            </Link>
+          </div>
+        )}
       </div>
-    </section>
+    </div>
+  );
+
+  const photo = (
+    <div className="relative min-h-[48vh] sm:min-h-[56vh] lg:min-h-[88vh]">
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        priority={Boolean(hero)}
+        sizes="(max-width: 1024px) 100vw, 50vw"
+        className="object-cover object-center"
+      />
+    </div>
+  );
+
+  return (
+    <div
+      className={`grid w-full lg:grid-cols-2 ${
+        imageFirst ? "max-lg:[&>*:first-child]:order-2" : ""
+      }`}
+    >
+      {imageFirst ? (
+        <>
+          {photo}
+          {text}
+        </>
+      ) : (
+        <>
+          {text}
+          {photo}
+        </>
+      )}
+    </div>
   );
 }

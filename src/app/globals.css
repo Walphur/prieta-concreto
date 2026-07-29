@@ -7,6 +7,8 @@
   --sage-light: #a3b29e;
   /* Pigmento / panel “verde agua” (logo teal) */
   --verde-agua: #8faaa2;
+  /* Panel sólido (hero split) — más profundo para texto blanco */
+  --verde-agua-panel: #5f7a72;
   --deep-red: #8b3a3a;
   --deep-red-dark: #6e2c2c;
   --navy: #1a2332;
@@ -33,6 +35,7 @@
   --color-sage-dark: var(--sage-dark);
   --color-sage-light: var(--sage-light);
   --color-verde-agua: var(--verde-agua);
+  --color-verde-agua-panel: var(--verde-agua-panel);
   --color-deep-red: var(--deep-red);
   --color-deep-red-dark: var(--deep-red-dark);
   --color-navy: var(--navy);

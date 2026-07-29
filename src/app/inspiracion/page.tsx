@@ -9,7 +9,6 @@ import {
 import { MadeToOrderNotice } from "@/components/order/MadeToOrderNotice";
 import { whatsappGeneralUrl } from "@/lib/bank";
 import { Button } from "@/components/ui/Button";
-import { ClientesSplit } from "@/components/inspiracion/ClientesSplit";
 
 export const metadata: Metadata = {
   title: "Inspiración",
@@ -23,13 +22,6 @@ const estudioGallery = [
   ...galleryProducto,
   ...galleryGrupos.filter((i) => !i.src.includes("feria")),
 ];
-
-const FEATURED_CLIENTE =
-  "/gallery/clientes/cliente-oval-marmol-madera.png";
-
-const clientesGallery = galleryClientes.filter(
-  (item) => item.src !== FEATURED_CLIENTE,
-);
 
 export default function InspiracionPage() {
   return (
@@ -75,22 +67,16 @@ export default function InspiracionPage() {
             ))}
           </div>
         </section>
-      </div>
 
-      <div className="border-y-2 border-navy/10">
-        <ClientesSplit />
-      </div>
-
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
-        <section>
+        <section className="mt-16 border-t-2 border-navy/15 pt-16">
           <h2 className="font-[family-name:var(--font-outfit)] text-xl font-semibold text-navy">
-            Más instalaciones
+            Instalaciones de clientes
           </h2>
           <p className="mt-1 text-sm text-navy/55">
-            Galería completa — se ve la bacha y el baño, sin recorte agresivo.
+            Bachas Prieta en baños reales — se ve la pieza y el entorno.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
-            {clientesGallery.map((item) => (
+            {galleryClientes.map((item) => (
               <figure
                 key={item.src}
                 className="group overflow-hidden border border-navy/12 bg-cream-dark"
