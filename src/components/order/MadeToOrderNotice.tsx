@@ -37,24 +37,14 @@ export function MadeToOrderNotice({
           showWholesale && "lg:grid-cols-2",
         )}
       >
-        <div className="flex flex-col px-5 py-5 sm:px-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
-            Particular
-          </p>
-          <h2 className="mt-2 font-[family-name:var(--font-outfit)] text-lg font-semibold text-navy">
-            ¿No está el modelo que querés?
+        <div className="flex flex-col px-5 py-6 sm:px-6">
+          <p className="editorial-kicker">Particular</p>
+          <h2 className="mt-3 font-[family-name:var(--font-outfit)] text-lg font-medium text-navy">
+            Por pedido
           </h2>
-          <p className="mt-2 text-sm leading-relaxed text-navy/70">
-            Lo fabricamos por pedido en el modelo y color que elijas. Demora
-            aproximada de{" "}
-            <span className="font-semibold text-navy">
-              {madeToOrder.leadDays} días
-            </span>{" "}
-            por {madeToOrder.reason}. Precio{" "}
-            <span className="font-semibold text-deep-red">{fullPriceLabel()}</span>
-            ; seña de{" "}
-            <span className="font-semibold text-navy">{depositLabel()}</span> para
-            iniciar.
+          <p className="mt-2 text-sm leading-relaxed text-navy/55">
+            Modelo y color a elección. ~{madeToOrder.leadDays} días ·{" "}
+            {fullPriceLabel()} · seña {depositLabel()}.
           </p>
           <div className="mt-auto pt-4">
             <Button
@@ -70,17 +60,14 @@ export function MadeToOrderNotice({
         </div>
 
         {showWholesale ? (
-          <div className="flex flex-col border-t-2 border-navy/15 px-5 py-5 sm:px-6 lg:border-l-2 lg:border-t-0">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
-              Mayoristas
-            </p>
-            <h2 className="mt-2 font-[family-name:var(--font-outfit)] text-lg font-semibold text-navy">
+          <div className="flex flex-col border-t border-navy/10 px-5 py-5 sm:px-6 lg:border-l lg:border-t-0">
+            <p className="editorial-kicker">Mayoristas</p>
+            <h2 className="mt-3 font-[family-name:var(--font-outfit)] text-lg font-medium text-navy">
               Corralones y ferreterías
             </h2>
-            <p className="mt-2 text-sm leading-relaxed text-navy/70">
+            <p className="mt-2 text-sm leading-relaxed text-navy/55">
               Pedidos mayoristas con mejor precio para corralones, ferreterías y
-              comercios del rubro. Armamos cantidades y condiciones según tu
-              necesidad.
+              comercios del rubro.
             </p>
             <div className="mt-auto pt-4">
               <Button

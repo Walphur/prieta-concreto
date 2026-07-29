@@ -3,47 +3,29 @@ import { Button } from "@/components/ui/Button";
 
 export function HomeCta() {
   return (
-    <section className="relative bg-navy">
-      <div
-        className="pointer-events-none absolute inset-0 opacity-40"
-        style={{
-          background:
-            "radial-gradient(ellipse 70% 60% at 85% 20%, rgba(163,178,158,0.18) 0%, transparent 55%), linear-gradient(160deg, #243044 0%, #1a2332 55%, #141c28 100%)",
-        }}
-        aria-hidden
-      />
-      <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
-        <div className="max-w-xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage-light">
-            Siguiente paso
+    <section className="bg-navy">
+      <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+        <div className="max-w-md">
+          <p className="text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-sage-light/80">
+            Encargo
           </p>
-          <h2 className="mt-3 font-[family-name:var(--font-outfit)] text-3xl font-semibold tracking-tight text-cream sm:text-4xl">
-            ¿Listo para encargar?
+          <h2 className="mt-5 font-[family-name:var(--font-outfit)] text-3xl font-medium tracking-[-0.02em] text-cream sm:text-4xl">
+            Hablemos de tu baño.
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-cream/70">
-            Mirá instalaciones reales o escribinos: te ayudamos con modelo,
-            color y envío.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button href="/tienda" variant="primary" className="min-w-[11rem]">
-              Ver colección
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <Button href="/tienda" variant="primary">
+              Colección
             </Button>
-            <Button
+            <a
               href={whatsappGeneralUrl(
                 "Hola Prieta Concreto, quiero consultar por una bacha.",
               )}
-              variant="outline"
-              className="min-w-[11rem] border-cream/35 text-cream hover:border-sage-light hover:text-sage-light"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-medium uppercase tracking-[0.16em] text-cream/70 underline decoration-cream/25 underline-offset-[10px] transition duration-700 hover:text-cream hover:decoration-cream/60"
             >
               WhatsApp
-            </Button>
-            <Button
-              href="/inspiracion"
-              variant="ghost"
-              className="min-w-[11rem] text-cream/75 hover:text-sage-light"
-            >
-              Ver galería
-            </Button>
+            </a>
           </div>
         </div>
       </div>

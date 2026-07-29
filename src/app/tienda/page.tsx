@@ -44,7 +44,6 @@ export default async function TiendaPage({
       return p.status === "example" && !p.comingSoon && Boolean(p.color);
     if (vista === "vendidas") return p.status === "sold";
     if (vista === "medidas") return false;
-    // default: hide sold unless filtering vendidas; show available + examples + coming soon
     return p.status !== "sold";
   });
 
@@ -53,26 +52,22 @@ export default async function TiendaPage({
   }
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-      <header className="max-w-2xl border-b-2 border-navy/15 pb-8">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
-          Tienda
-        </p>
-        <h1 className="mt-2 font-[family-name:var(--font-outfit)] text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
-          Colección Prieta
+    <div className="mx-auto max-w-7xl px-4 section-space sm:px-6 lg:px-8">
+      <header className="max-w-xl pb-12">
+        <p className="editorial-kicker">Colección</p>
+        <h1 className="editorial-title mt-4 text-3xl sm:text-4xl">
+          Bachas de concreto
         </h1>
-        <p className="mt-3 text-navy/65">
-          Toda bacha:{" "}
-          <span className="font-semibold text-deep-red">$95.000</span>. Los
-          ejemplos son referencia de color y modelo para encargar la tuya.
-          Medidas de cada molde en la pestaña Medidas.
+        <p className="mt-4 text-sm leading-relaxed text-navy/55 sm:text-base">
+          Piezas de referencia para encargar. Precio fijo $95.000. Medidas en la
+          pestaña correspondiente.
         </p>
       </header>
 
-      <MadeToOrderNotice className="mt-8 w-full" />
+      <MadeToOrderNotice className="mb-16 w-full" />
 
-      <div className="mt-10 border-y-2 border-navy/20 py-4">
-        <div className="flex flex-wrap gap-2">
+      <div className="border-y border-navy/10 py-5">
+        <div className="flex flex-wrap gap-x-1 gap-y-2">
           {filters.map((f) => {
             const active = categoria === f.value;
             const href =
@@ -82,10 +77,10 @@ export default async function TiendaPage({
                 key={f.value}
                 href={href}
                 className={clsx(
-                  "border-2 px-4 py-2 text-sm font-semibold transition-colors",
+                  "px-4 py-2 text-xs font-medium uppercase tracking-[0.14em] transition-colors duration-500",
                   active
-                    ? "border-sage bg-sage text-white"
-                    : "border-navy/25 bg-cream text-navy hover:border-navy/50 hover:bg-concrete-light",
+                    ? "bg-navy text-cream"
+                    : "text-navy/50 hover:text-navy",
                 )}
               >
                 {f.label}
@@ -95,11 +90,11 @@ export default async function TiendaPage({
         </div>
 
         {categoria === "bachas" || categoria === "all" ? (
-          <div className="mt-3 flex flex-wrap gap-2 border-t border-navy/15 pt-3">
+          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 border-t border-navy/8 pt-4">
             {[
               { label: "Todo", value: "todas" },
               { label: "En stock", value: "stock" },
-              { label: "Ejemplos de color", value: "ejemplos" },
+              { label: "Ejemplos", value: "ejemplos" },
               { label: "Medidas", value: "medidas" },
               { label: "Vendidas", value: "vendidas" },
             ].map((f) => {
@@ -115,10 +110,10 @@ export default async function TiendaPage({
                   key={f.value}
                   href={href}
                   className={clsx(
-                    "border px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors",
+                    "text-[11px] font-medium uppercase tracking-[0.16em] transition-colors duration-500",
                     active
-                      ? "border-navy bg-navy text-cream"
-                      : "border-navy/20 bg-cream text-navy/70 hover:border-navy/40 hover:text-navy",
+                      ? "text-navy underline decoration-navy/30 underline-offset-8"
+                      : "text-navy/40 hover:text-navy/70",
                   )}
                 >
                   {f.label}
@@ -133,15 +128,19 @@ export default async function TiendaPage({
         <MedidasMoldes />
       ) : (
         <>
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {list.map((product) => (
-              <ProductCard key={product.id} product={product} />
+          <div className="mt-16 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+            {list.map((product, i) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                priority={i < 3}
+              />
             ))}
           </div>
 
           {list.length === 0 ? (
-            <p className="mt-16 text-center text-navy/55">
-              No hay productos en esta vista. Cargá piezas nuevas desde el admin.
+            <p className="mt-20 text-center text-sm text-navy/45">
+              No hay piezas en esta vista.
             </p>
           ) : null}
         </>

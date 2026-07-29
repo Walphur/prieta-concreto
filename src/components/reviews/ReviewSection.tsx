@@ -100,32 +100,62 @@ export function ReviewSection({
   }
 
   return (
-    <section className="mt-20 border-t border-concrete pt-14">
+    <section>
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="font-[family-name:var(--font-outfit)] text-2xl font-semibold text-navy">
-            Reseñas de clientes
-          </h2>
-          <p className="mt-2 max-w-xl text-sm text-navy/60">
-            {productName
-              ? `Contanos tu experiencia con ${productName}.`
-              : "Contanos tu experiencia con Prieta."}{" "}
-            Estrellas, comentario y foto opcional. También podés dejar tu
-            opinión en Google Maps.
-          </p>
+          <p className="editorial-kicker">Reseñas</p>
+          <h2 className="editorial-title mt-3 text-2xl">Clientes</h2>
         </div>
         <Button
           href={GOOGLE_REVIEW_URL}
-          variant="outline"
-          className="self-start text-sm"
+          variant="ghost"
+          className="self-start text-xs"
         >
-          Reseñar en Google
+          Google
         </Button>
       </div>
 
+      <ul className="mt-10 space-y-8">
+        {reviews.map((r) => (
+          <li key={r.id} className="border-b border-navy/8 pb-8">
+            <div className="flex flex-wrap items-center gap-3">
+              <p className="font-[family-name:var(--font-outfit)] font-medium text-navy">
+                {r.author}
+              </p>
+              <StarRating value={r.rating} size="sm" />
+              {r.source === "google" ? (
+                <span className="text-[10px] font-medium uppercase tracking-wider text-navy/35">
+                  Google
+                </span>
+              ) : null}
+            </div>
+            <p className="mt-3 text-sm leading-relaxed text-navy/60">{r.text}</p>
+            {r.photoUrl ? (
+              <div className="relative mt-4 h-40 w-56 overflow-hidden bg-concrete-light sm:h-48 sm:w-72">
+                <Image
+                  src={r.photoUrl}
+                  alt={`Foto de ${r.author}`}
+                  fill
+                  className="object-cover"
+                  sizes="288px"
+                />
+              </div>
+            ) : null}
+          </li>
+        ))}
+        {reviews.length === 0 ? (
+          <p className="text-sm text-navy/40">Aún no hay reseñas publicadas.</p>
+        ) : null}
+      </ul>
+
+      <details className="mt-14 max-w-xl">
+        <summary className="cursor-pointer text-xs font-medium uppercase tracking-[0.16em] text-navy/50 transition hover:text-navy">
+          Escribir reseña
+          {productName ? ` · ${productName}` : ""}
+        </summary>
       <form
         onSubmit={onSubmit}
-        className="texture-panel mt-8 max-w-xl space-y-4 p-5 sm:p-6"
+        className="mt-6 space-y-4 border border-navy/10 p-5 sm:p-6"
       >
         <div>
           <p className="text-sm font-medium text-navy">Tu puntuación</p>
@@ -201,40 +231,7 @@ export function ReviewSection({
         </Button>
         {msg ? <p className="text-sm text-sage-dark">{msg}</p> : null}
       </form>
-
-      <ul className="mt-12 space-y-6">
-        {reviews.map((r) => (
-          <li key={r.id} className="border-b border-concrete/80 pb-6">
-            <div className="flex flex-wrap items-center gap-3">
-              <p className="font-semibold text-navy">{r.author}</p>
-              <StarRating value={r.rating} size="sm" />
-              {r.source === "google" ? (
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-navy/40">
-                  Google
-                </span>
-              ) : null}
-            </div>
-            <p className="mt-2 text-navy/70">{r.text}</p>
-            {r.photoUrl ? (
-              <div className="relative mt-3 h-40 w-56 overflow-hidden bg-concrete-light sm:h-48 sm:w-72">
-                <Image
-                  src={r.photoUrl}
-                  alt={`Foto de ${r.author}`}
-                  fill
-                  className="object-cover"
-                  sizes="288px"
-                />
-              </div>
-            ) : null}
-          </li>
-        ))}
-        {reviews.length === 0 ? (
-          <p className="text-sm text-navy/50">
-            Todavía no hay reseñas publicadas. Sé el primero o dejá la tuya en
-            Google.
-          </p>
-        ) : null}
-      </ul>
+      </details>
     </section>
   );
 }

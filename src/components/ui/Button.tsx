@@ -6,12 +6,12 @@ type Variant = "primary" | "secondary" | "ghost" | "outline";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-sage text-white hover:bg-sage-dark shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]",
+    "bg-sage text-white hover:bg-sage-dark",
   secondary:
     "bg-navy text-cream hover:bg-navy-soft",
   outline:
-    "border border-navy/25 text-navy hover:border-sage hover:text-sage-dark bg-transparent",
-  ghost: "text-navy/80 hover:text-sage-dark bg-transparent",
+    "border border-navy/20 text-navy hover:border-navy/45 hover:text-navy bg-transparent",
+  ghost: "text-navy/70 hover:text-navy bg-transparent",
 };
 
 type BaseProps = {
@@ -38,7 +38,8 @@ export function Button(props: ButtonAsButton | ButtonAsLink) {
   } = props;
 
   const classes = clsx(
-    "inline-flex items-center justify-center px-6 py-3 text-sm font-semibold tracking-wide transition-all duration-300",
+    "inline-flex items-center justify-center px-7 py-3.5 text-xs font-medium uppercase tracking-[0.16em]",
+    "transition-colors duration-700 ease-editorial",
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage",
     "disabled:cursor-not-allowed disabled:opacity-50",
     variants[variant],

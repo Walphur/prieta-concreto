@@ -6,13 +6,12 @@ import { GOOGLE_MAPS_URL, GOOGLE_REVIEW_URL } from "@/types/review";
 export function Footer() {
   return (
     <footer className="texture-concrete-dark mt-auto text-cream">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.4fr_1fr_1fr] lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-14 px-4 py-20 sm:px-6 lg:grid-cols-[1.4fr_1fr_1fr] lg:px-8 lg:py-24">
         <div>
           <PrietaLogo size="md" variant="dark" />
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-cream/70">
-            Estudio artesanal en San Luis. Si no está el modelo en stock, lo
-            fabricamos por pedido (~15 días). También ventas mayoristas para
-            corralones y ferreterías.
+          <p className="mt-6 max-w-xs text-sm leading-relaxed text-cream/55">
+            Estudio artesanal en San Luis. Bachas de concreto pigmentado, por
+            pedido.
           </p>
         </div>
 

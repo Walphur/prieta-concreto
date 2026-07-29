@@ -13,54 +13,47 @@ type ProductCardProps = {
 
 export function ProductCard({ product, className, priority }: ProductCardProps) {
   const inStock = isInStock(product);
-  const label = product.comingSoon
+  const meta = product.comingSoon
     ? "Próximamente"
-    : statusLabel(product.status);
+    : product.status === "example"
+      ? "Por pedido"
+      : statusLabel(product.status);
 
   return (
     <article className={clsx("group", className)}>
       <Link href={`/producto/${product.slug}`} className="block">
-        <div className="relative aspect-[4/5] overflow-hidden bg-concrete-light solidify-face">
+        <div className="img-reveal relative aspect-[4/5] overflow-hidden bg-concrete-light">
           <Image
             src={product.images[0]}
             alt={product.name}
             fill
             priority={priority}
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover transition-transform duration-[1000ms] ease-editorial group-hover:scale-[1.02]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy/25 via-transparent to-transparent opacity-60" />
-          <span
-            className={clsx(
-              "absolute left-3 top-3 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em]",
-              inStock
-                ? "bg-sage text-white"
-                : product.status === "sold"
-                  ? "bg-deep-red/90 text-cream"
-                  : "bg-navy/85 text-cream",
-            )}
-          >
-            {label}
-          </span>
         </div>
-        <div className="mt-4 space-y-1">
-          <h3 className="font-[family-name:var(--font-outfit)] text-base font-semibold tracking-tight text-navy transition-colors group-hover:text-sage-dark">
+        <div className="mt-5 space-y-1">
+          <h3 className="font-[family-name:var(--font-outfit)] text-[0.95rem] font-medium tracking-tight text-navy transition-colors duration-700 group-hover:text-sage-dark">
             {product.name}
           </h3>
           {product.category === "bachas" && (product.shape || product.color) ? (
-            <p className="text-xs text-navy/45">
+            <p className="text-[11px] uppercase tracking-[0.14em] text-navy/40">
               {[shapeLabel(product.shape), colorLabel(product.color)]
                 .filter(Boolean)
                 .join(" · ")}
             </p>
-          ) : null}
-          <p className="line-clamp-2 text-sm text-navy/60">
-            {product.description}
-          </p>
+          ) : (
+            <p className="text-[11px] uppercase tracking-[0.14em] text-navy/40">
+              {meta}
+            </p>
+          )}
           {!product.comingSoon && product.price > 0 ? (
-            <p className="pt-1 text-base font-semibold text-deep-red">
+            <p className="pt-1.5 text-sm font-medium text-navy/70">
               {formatPrice(product.price)}
             </p>
+          ) : null}
+          {product.category === "bachas" && !inStock && !product.comingSoon ? (
+            <p className="text-[11px] text-navy/35">{meta}</p>
           ) : null}
         </div>
       </Link>

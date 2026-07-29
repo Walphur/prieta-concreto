@@ -17,12 +17,32 @@ import {
 import { AddToCartButton } from "@/components/product/AddToCartButton";
 import { MadeToOrderCta } from "@/components/order/MadeToOrderCta";
 import { ReviewSection } from "@/components/reviews/ReviewSection";
-import { madeToOrderSummary } from "@/lib/order-policy";
+import { madeToOrder, madeToOrderSummary } from "@/lib/order-policy";
 import { getApprovedReviews } from "@/lib/reviews-store";
 
 type Props = { params: Promise<{ slug: string }> };
 
 export const dynamic = "force-dynamic";
+
+const FICHA_BY_SHAPE: Partial<
+  Record<BachaShapeId, { product: string; diagram?: string }>
+> = {
+  cuadrado: {
+    product: "/gallery/fichas/cuadrado-producto.jpg",
+    diagram: "/gallery/fichas/cuadrado-diagrama.png",
+  },
+  oval: {
+    product: "/gallery/fichas/oval-producto.jpg",
+    diagram: "/gallery/fichas/oval-diagrama.png",
+  },
+  circular: {
+    product: "/gallery/fichas/circular-producto.jpg",
+    diagram: "/gallery/fichas/circular-diagrama.png",
+  },
+  "circular-tapon": {
+    product: "/gallery/fichas/circular-tapon-producto.png",
+  },
+};
 
 export async function generateStaticParams() {
   const products = await readProducts();
@@ -50,9 +70,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       type: "website",
       url: `https://prietaconcreto.shop/producto/${product.slug}`,
-      images: image
-        ? [{ url: image, alt: product.name }]
-        : undefined,
+      images: image ? [{ url: image, alt: product.name }] : undefined,
     },
     twitter: {
       card: "summary_large_image",
@@ -73,12 +91,19 @@ export default async function ProductPage({ params }: Props) {
     product.status === "example" &&
     product.category === "bachas" &&
     !product.comingSoon;
-  const shapeDims =
+  const shapeId =
     product.shape && product.shape in BACHA_DIMENSIONS
-      ? BACHA_DIMENSIONS[product.shape as BachaShapeId]
+      ? (product.shape as BachaShapeId)
       : null;
+  const shapeDims = shapeId ? BACHA_DIMENSIONS[shapeId] : null;
+  const ficha = shapeId ? FICHA_BY_SHAPE[shapeId] : null;
   const shapeName = product.shape ? shapeLabel(product.shape) : undefined;
   const colorName = product.color ? colorLabel(product.color) : undefined;
+
+  const approved = await getApprovedReviews();
+  const initialReviews = approved.filter(
+    (r) => !r.productSlug || r.productSlug === product.slug,
+  );
 
   const productJsonLd = {
     "@context": "https://schema.org",
@@ -102,116 +127,91 @@ export default async function ProductPage({ params }: Props) {
     },
   };
 
+  const hero = product.images[0];
+  const rest = product.images.slice(1);
+
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
+    <div className="mx-auto max-w-7xl px-4 section-space sm:px-6 lg:px-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
       />
-      <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
-        <div className="space-y-3">
-          {product.images.map((src, i) => (
-            <div
-              key={`${src}-${i}`}
-              className="relative aspect-[4/5] overflow-hidden bg-concrete-light"
-            >
+
+      <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="space-y-4 lg:col-span-7">
+          {hero ? (
+            <div className="relative aspect-[4/5] overflow-hidden bg-concrete-light lg:aspect-[3/4]">
               <Image
-                src={src}
-                alt={`${product.name} — foto ${i + 1}`}
+                src={hero}
+                alt={product.name}
                 fill
-                priority={i === 0}
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+                sizes="(max-width: 1024px) 100vw, 58vw"
                 className="object-cover"
               />
             </div>
-          ))}
+          ) : null}
+
+          {rest.length > 0 ? (
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
+              {rest.map((src, i) => (
+                <div
+                  key={`${src}-${i}`}
+                  className="relative aspect-square overflow-hidden bg-concrete-light"
+                >
+                  <Image
+                    src={src}
+                    alt={`${product.name} — detalle ${i + 2}`}
+                    fill
+                    sizes="(max-width: 1024px) 50vw, 28vw"
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          ) : null}
+
+          {ficha?.diagram ? (
+            <div className="bg-[#1c1c1c] p-4 sm:p-6">
+              <Image
+                src={ficha.diagram}
+                alt={`Diagrama de medidas — ${shapeName || product.name}`}
+                width={1200}
+                height={1400}
+                className="h-auto w-full object-contain"
+              />
+            </div>
+          ) : null}
         </div>
 
-        <div className="lg:sticky lg:top-28 lg:self-start">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
-            {product.category}
-            {shapeName ? ` · ${shapeName}` : ""}
-            {colorName ? ` · ${colorName}` : ""}
+        <div className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
+          <p className="editorial-kicker">
+            {[shapeName, colorName].filter(Boolean).join(" · ") ||
+              product.category}
           </p>
-          <h1 className="mt-2 font-[family-name:var(--font-outfit)] text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
+          <h1 className="editorial-title mt-4 text-3xl sm:text-4xl">
             {product.name}
           </h1>
+
           {!product.comingSoon && product.price > 0 ? (
-            <p className="mt-4 text-2xl font-semibold text-deep-red">
+            <p className="mt-6 text-xl font-medium text-navy/80">
               {formatPrice(product.price)}
             </p>
           ) : null}
 
-          <p className="mt-3 text-sm font-medium">
-            {product.comingSoon ? (
-              <span className="text-navy/55">Próximamente</span>
-            ) : (
-              <span
-                className={
-                  canBuy
-                    ? "text-sage-dark"
-                    : product.status === "sold"
-                      ? "text-deep-red"
-                      : "text-navy/55"
-                }
-              >
-                {statusLabel(product.status)}
-                {product.status === "example"
-                  ? " · referencia de color/modelo"
-                  : product.status === "available"
-                    ? " · pieza única"
-                    : ""}
-              </span>
-            )}
+          <p className="mt-3 text-xs uppercase tracking-[0.14em] text-navy/40">
+            {product.comingSoon
+              ? "Próximamente"
+              : `${statusLabel(product.status)}${
+                  product.status === "example" ? " · referencia" : ""
+                }`}
           </p>
 
-          <p className="mt-6 leading-relaxed text-navy/70">
+          <p className="mt-8 max-w-md leading-[1.75] text-navy/60">
             {product.longDescription}
           </p>
 
-          <dl className="mt-8 grid gap-4 border-y border-concrete py-6 sm:grid-cols-2">
-            <div>
-              <dt className="text-xs uppercase tracking-wider text-navy/45">
-                Dimensiones
-              </dt>
-              <dd className="mt-1 text-sm font-medium text-navy">
-                {shapeDims?.dimensions || product.specs.dimensions}
-              </dd>
-              {shapeDims?.detail ? (
-                <dd className="mt-1 text-xs text-navy/50">{shapeDims.detail}</dd>
-              ) : null}
-            </div>
-            <div>
-              <dt className="text-xs uppercase tracking-wider text-navy/45">
-                Material
-              </dt>
-              <dd className="mt-1 text-sm font-medium text-navy">
-                {product.specs.material}
-              </dd>
-            </div>
-            {shapeDims?.wall ? (
-              <div>
-                <dt className="text-xs uppercase tracking-wider text-navy/45">
-                  Pared
-                </dt>
-                <dd className="mt-1 text-sm font-medium text-navy">
-                  {shapeDims.wall}
-                </dd>
-              </div>
-            ) : null}
-            {shapeDims?.drain || shapeDims?.note ? (
-              <div>
-                <dt className="text-xs uppercase tracking-wider text-navy/45">
-                  Desagüe
-                </dt>
-                <dd className="mt-1 text-sm font-medium text-navy">
-                  {shapeDims.drain || shapeDims.note}
-                </dd>
-              </div>
-            ) : null}
-          </dl>
-
-          <div className="mt-8">
+          <div className="mt-10">
             {isExampleBacha ? (
               <MadeToOrderCta
                 name={product.name}
@@ -228,9 +228,9 @@ export default async function ProductPage({ params }: Props) {
                   disabled={!canBuy}
                 />
                 {product.status === "sold" ? (
-                  <p className="mt-3 text-xs text-navy/50">
-                    Pieza vendida. Si querés el mismo modelo y color, lo
-                    fabricamos por pedido (demora ~15 días).
+                  <p className="mt-4 text-xs leading-relaxed text-navy/45">
+                    Pieza vendida. El mismo modelo y color se fabrica por pedido
+                    (~{madeToOrder.leadDays} días).
                   </p>
                 ) : null}
               </>
@@ -239,7 +239,58 @@ export default async function ProductPage({ params }: Props) {
         </div>
       </div>
 
-      <ReviewSection productName={product.name} productSlug={product.slug} />
+      <div className="mt-28 grid gap-16 border-t border-navy/10 pt-20 lg:grid-cols-3 lg:gap-12">
+        <div>
+          <h2 className="editorial-kicker">Material</h2>
+          <p className="mt-4 text-sm leading-relaxed text-navy/60">
+            {product.specs.material}. Pigmento en masa — no pintura. Textura
+            mineral a la vista.
+            {product.specs.finish ? ` Acabado: ${product.specs.finish}.` : ""}
+          </p>
+        </div>
+        <div>
+          <h2 className="editorial-kicker">Proceso</h2>
+          <p className="mt-4 text-sm leading-relaxed text-navy/60">
+            Vaciado a mano, curado de ~{madeToOrder.leadDays} días (
+            {madeToOrder.reason}) y sellado mineral para uso diario.
+          </p>
+        </div>
+        <div>
+          <h2 className="editorial-kicker">Medidas</h2>
+          <p className="mt-4 text-sm leading-relaxed text-navy/60">
+            {shapeDims?.dimensions || product.specs.dimensions}
+            {shapeDims?.detail ? `. ${shapeDims.detail}` : ""}
+            {shapeDims?.wall ? ` Pared ${shapeDims.wall}.` : ""}
+            {shapeDims?.drain ? ` Desagüe ${shapeDims.drain}.` : ""}
+            {product.specs.weight ? ` ${product.specs.weight}.` : ""}
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-16 grid gap-12 border-t border-navy/10 pt-16 lg:grid-cols-2">
+        <div>
+          <h2 className="editorial-kicker">Cuidado</h2>
+          <p className="mt-4 max-w-md text-sm leading-relaxed text-navy/60">
+            Superficie sellada para agua y uso cotidiano. Limpiar con paño suave
+            y jabón neutro. Evitar ácidos fuertes y abrasivos.
+          </p>
+        </div>
+        <div>
+          <h2 className="editorial-kicker">Envío</h2>
+          <p className="mt-4 max-w-md text-sm leading-relaxed text-navy/60">
+            Despacho a todo el país vía Andesmar Cargas. Embalaje reforzado desde
+            el taller de San Luis.
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-28 border-t border-navy/10 pt-16">
+        <ReviewSection
+          productName={product.name}
+          productSlug={product.slug}
+          initialReviews={initialReviews}
+        />
+      </div>
     </div>
   );
 }

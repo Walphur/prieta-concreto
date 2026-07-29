@@ -11,32 +11,31 @@ export const metadata: Metadata = {
 export default function NosotrosPage() {
   return (
     <div>
-      <section className="relative min-h-[42vh] overflow-hidden bg-navy">
+      <section className="relative min-h-[48vh] overflow-hidden bg-navy lg:min-h-[56vh]">
         <Image
-          src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=80"
-          alt="Taller de diseño y concreto"
+          src="/hero/hero-bano-marmolada.png"
+          alt="Bacha Prieta Concreto instalada"
           fill
-          className="object-cover opacity-50"
+          className="object-cover opacity-70"
           priority
           sizes="100vw"
         />
-        <div className="relative mx-auto flex min-h-[42vh] max-w-7xl items-end px-4 pb-12 sm:px-6 lg:px-8">
+        <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
+        <div className="relative mx-auto flex min-h-[48vh] max-w-7xl items-end px-4 pb-14 sm:px-6 lg:min-h-[56vh] lg:px-8 lg:pb-16">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage-light">
+            <p className="text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-cream/70">
               Nosotros
             </p>
-            <h1 className="mt-2 font-[family-name:var(--font-outfit)] text-3xl font-semibold text-cream sm:text-5xl">
+            <h1 className="mt-4 font-[family-name:var(--font-outfit)] text-3xl font-medium tracking-[-0.02em] text-cream sm:text-5xl">
               Concreto con oficio
             </h1>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-        <h2 className="font-[family-name:var(--font-outfit)] text-2xl font-semibold text-navy">
-          Historia
-        </h2>
-        <p className="mt-4 leading-relaxed text-navy/70">
+      <section className="mx-auto max-w-2xl px-4 section-space sm:px-6 lg:px-8">
+        <h2 className="editorial-title text-2xl">Historia</h2>
+        <p className="mt-6 leading-[1.75] text-navy/60">
           Prieta Concreto nace en San Luis como un estudio de diseño artesanal
           dedicado a piezas de baño. Cada bacha se vacía a mano: pigmentamos la
           masa con óxidos y ferrites, controlamos el curado y sellamos la
@@ -44,35 +43,37 @@ export default function NosotrosPage() {
           concreto.
         </p>
 
-        <h2 className="mt-12 font-[family-name:var(--font-outfit)] text-2xl font-semibold text-navy">
-          Proceso artesanal
-        </h2>
-        <ol className="mt-6 divide-y divide-navy/10">
+        <h2 className="editorial-title mt-20 text-2xl">Proceso</h2>
+        <ol className="mt-10 divide-y divide-navy/8">
           {[
             {
               t: "Diseño",
-              d: "Proporciones, drenaje y bordes pensados para baños contemporáneos.",
+              d: "Proporciones, drenaje y bordes para baños contemporáneos.",
             },
             {
               t: "Vaciado",
-              d: "Moldes propios y mezclas pigmentadas en rojo, navy, sage o natural.",
+              d: "Moldes propios y mezclas pigmentadas en la masa.",
             },
             {
               t: "Curado y sellado",
-              d: "Demora aprox. 15 días por secado y fraguado del concreto, más sellador profesional resistente al agua.",
+              d: "Aprox. 15 días de fraguado, más sellador mineral resistente al agua.",
             },
             {
               t: "Pedido a medida",
-              d: "Elegís modelo y color. Seña para iniciar la fabricación; el resto al retirar o despachar.",
+              d: "Modelo y color a elección. Seña para iniciar; saldo al retirar o despachar.",
             },
           ].map((step, i) => (
-            <li key={step.t} className="flex gap-4 py-5 first:pt-0 last:pb-0">
-              <span className="font-[family-name:var(--font-outfit)] text-sm font-semibold text-sage">
+            <li key={step.t} className="flex gap-6 py-7 first:pt-0 last:pb-0">
+              <span className="font-[family-name:var(--font-outfit)] text-sm font-medium text-sage">
                 0{i + 1}
               </span>
               <div>
-                <h3 className="font-semibold text-navy">{step.t}</h3>
-                <p className="mt-1 text-navy/65">{step.d}</p>
+                <h3 className="font-[family-name:var(--font-outfit)] font-medium text-navy">
+                  {step.t}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-navy/55">
+                  {step.d}
+                </p>
               </div>
             </li>
           ))}
