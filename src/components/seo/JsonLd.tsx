@@ -9,7 +9,7 @@ export function JsonLd() {
         url: "https://prietaconcreto.shop",
         logo: "https://prietaconcreto.shop/logo-prieta.png",
         description:
-          "Estudio artesanal de bachas de concreto en San Luis, Argentina. Pedidos a medida por modelo y color.",
+          "Taller de bachas de concreto en San Luis, Argentina. Piezas por pedido, modelo y color a elección.",
         address: {
           "@type": "PostalAddress",
           addressLocality: "San Luis",

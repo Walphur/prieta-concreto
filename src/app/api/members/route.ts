@@ -39,8 +39,8 @@ export async function POST(request: Request) {
         createdAt: member.createdAt,
       },
       message: member.firstDiscountUsed
-        ? "Ya estás registrado. Tu descuento de primera compra ya fue utilizado."
-        : "Listo. Tenés 15% de descuento en tu primera compra.",
+        ? "Ya estás registrado. El 15% de la primera compra ya se usó."
+        : "Listo. Tenés 15% en tu primera compra.",
     });
     res.cookies.set(
       MEMBER_COOKIE,

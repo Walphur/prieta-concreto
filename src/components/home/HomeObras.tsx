@@ -6,22 +6,22 @@ import { SolidifyReveal } from "@/components/effects/SolidifyReveal";
 const obras = [
   {
     src: productPhotos.heroBanoMarmolada,
-    label: "Oval marmolada",
+    label: "Marmolada",
     alt: "Bacha oval marmolada en baño con mueble de madera",
   },
   {
     src: productPhotos.clienteCircularBeigeEspejo,
-    label: "Circular beige",
+    label: "Beige · luz",
     alt: "Bacha circular beige con espejo retroiluminado",
   },
   {
     src: productPhotos.clienteGrisOscuroBano,
-    label: "Oval gris oscuro",
-    alt: "Bacha oval gris oscuro en baño moody",
+    label: "Oscuro",
+    alt: "Bacha oval gris oscuro en baño",
   },
   {
     src: productPhotos.heroBanoCircularEspejo,
-    label: "Circular · espejo",
+    label: "Terrazo",
     alt: "Bacha circular sobre terrazo con espejo LED",
   },
   ...galleryClientes
@@ -44,19 +44,19 @@ export function HomeObras() {
       <div className="mx-auto max-w-7xl px-4 section-space sm:px-6 lg:px-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-md">
-            <p className="editorial-kicker">Obras</p>
+            <p className="editorial-kicker">Espacios</p>
             <h2 className="editorial-title mt-4 text-2xl sm:text-3xl">
-              Instalaciones
+              En casa
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-navy/55">
-              Bachas Prieta en baños reales.
+              Baños reales. Piezas Prieta.
             </p>
           </div>
           <Link
             href="/inspiracion"
             className="text-xs font-medium uppercase tracking-[0.16em] text-navy/50 underline decoration-navy/20 underline-offset-8 transition duration-700 hover:text-navy hover:decoration-navy/50"
           >
-            Ver todos
+            Ver más
           </Link>
         </div>
 

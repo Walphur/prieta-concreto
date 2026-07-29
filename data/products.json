@@ -3,8 +3,8 @@
     "id": "ex-color-gris-natural",
     "slug": "ejemplo-gris-natural",
     "name": "Gris natural",
-    "description": "Ejemplo de color gris natural (incluye tonos claros que parecen blanco).",
-    "longDescription": "Referencia del pigmento gris natural. Las piezas claras ovales o circulares son gris natural, no blanco.",
+    "description": "Tono mineral claro. Incluye piezas que a simple vista parecen blancas.",
+    "longDescription": "Referencia de pigmento. En oval y circular, los tonos claros son gris natural — no blanco.",
     "price": 95000,
     "currency": "ARS",
     "category": "bachas",
@@ -26,7 +26,7 @@
     "specs": {
       "dimensions": "49 × 33 × 11,5 cm",
       "weight": "Según pieza",
-      "material": "Concreto pigmentado + sellador",
+      "material": "Masa pigmentada + sellador",
       "finish": "Espesor 1,1 cm · Desagüe Ø 40 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
@@ -35,8 +35,8 @@
     "id": "ex-color-gris-oscuro",
     "slug": "ejemplo-gris-oscuro",
     "name": "Gris oscuro",
-    "description": "Ejemplo de color gris oscuro / grafito.",
-    "longDescription": "Referencia del pigmento gris oscuro.",
+    "description": "Grafito profundo. Baja la luz del baño sin apagarla.",
+    "longDescription": "Referencia de pigmento gris oscuro. El tono se lee distinto según la luz del espacio.",
     "price": 95000,
     "currency": "ARS",
     "category": "bachas",
@@ -53,7 +53,7 @@
     "specs": {
       "dimensions": "Ø 39 × 12 cm",
       "weight": "Según pieza",
-      "material": "Concreto pigmentado + sellador",
+      "material": "Masa pigmentada + sellador",
       "finish": "Espesor 1,1 cm · Desagüe Ø 42 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
@@ -62,8 +62,8 @@
     "id": "ex-color-rosa",
     "slug": "ejemplo-rosa",
     "name": "Rosa",
-    "description": "Ejemplo de color rosa polvo.",
-    "longDescription": "Referencia del pigmento rosa artesanal.",
+    "description": "Rosa polvo. Suave, nunca dulce.",
+    "longDescription": "Referencia de pigmento rosa. Un tono quieto para baños claros o madera.",
     "price": 95000,
     "currency": "ARS",
     "category": "bachas",
@@ -78,7 +78,7 @@
     "specs": {
       "dimensions": "Ø 39 × 12 cm",
       "weight": "Según pieza",
-      "material": "Concreto pigmentado + sellador",
+      "material": "Masa pigmentada + sellador",
       "finish": "Espesor 1,1 cm · Desagüe Ø 42 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
@@ -87,8 +87,8 @@
     "id": "ex-color-verde-agua",
     "slug": "ejemplo-verde-agua",
     "name": "Verde agua",
-    "description": "Ejemplo de color verde agua.",
-    "longDescription": "Referencia del pigmento verde agua (foto de colección hasta tener pieza individual).",
+    "description": "Verde mineral, entre piedra y agua.",
+    "longDescription": "Referencia de pigmento verde agua. Foto de colección hasta tener pieza individual.",
     "price": 95000,
     "currency": "ARS",
     "category": "bachas",
@@ -102,7 +102,7 @@
     "specs": {
       "dimensions": "49 × 33 × 11,5 cm",
       "weight": "Según pieza",
-      "material": "Concreto pigmentado + sellador",
+      "material": "Masa pigmentada + sellador",
       "finish": "Espesor 1,1 cm · Desagüe Ø 40 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
@@ -111,8 +111,8 @@
     "id": "ex-color-marmolado",
     "slug": "ejemplo-marmolado",
     "name": "Marmolado gris con negro",
-    "description": "Ejemplo de veteado marmolado gris y negro.",
-    "longDescription": "Referencia del efecto marmolado. Cada pieza tiene un veteado distinto.",
+    "description": "Veteado gris y negro. Cada vaciado deja un dibujo distinto.",
+    "longDescription": "Referencia del marmolado. El veteado no se repite: nace en el vaciado.",
     "price": 95000,
     "currency": "ARS",
     "category": "bachas",
@@ -129,7 +129,7 @@
     "specs": {
       "dimensions": "49 × 33 × 11,5 cm",
       "weight": "Según pieza",
-      "material": "Concreto pigmentado + sellador",
+      "material": "Masa pigmentada + sellador",
       "finish": "Espesor 1,1 cm · Desagüe Ø 40 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
@@ -138,8 +138,8 @@
     "id": "ex-color-blanco",
     "slug": "ejemplo-blanco",
     "name": "Blanco",
-    "description": "Única referencia de color blanco (modelo cuadrado).",
-    "longDescription": "El blanco es este tono en cuadrado. Las piezas claras ovales o circulares son gris natural.",
+    "description": "Blanco real. Solo en modelo cuadrado.",
+    "longDescription": "Este es el blanco. En oval y circular, los claros son gris natural.",
     "price": 95000,
     "currency": "ARS",
     "category": "bachas",
@@ -153,7 +153,7 @@
     "specs": {
       "dimensions": "39 × 39 × 12 cm",
       "weight": "Según pieza",
-      "material": "Concreto pigmentado + sellador",
+      "material": "Masa pigmentada + sellador",
       "finish": "Espesor 1,1 cm · Desagüe Ø 42 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
@@ -162,8 +162,8 @@
     "id": "ex-color-negro",
     "slug": "ejemplo-negro",
     "name": "Negro",
-    "description": "Ejemplo de color negro mate.",
-    "longDescription": "Referencia del pigmento negro.",
+    "description": "Negro mate. Absorbe el entorno.",
+    "longDescription": "Referencia de pigmento negro. Mate mineral, sin brillo de pintura.",
     "price": 95000,
     "currency": "ARS",
     "category": "bachas",
@@ -177,7 +177,7 @@
     "specs": {
       "dimensions": "49 × 33 × 11,5 cm",
       "weight": "Según pieza",
-      "material": "Concreto pigmentado + sellador",
+      "material": "Masa pigmentada + sellador",
       "finish": "Espesor 1,1 cm · Desagüe Ø 40 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
@@ -187,7 +187,7 @@
     "slug": "celosia-circulo",
     "name": "Celosía Círculo",
     "description": "Módulo con embudo circular.",
-    "longDescription": "Próximamente.",
+    "longDescription": "Línea en desarrollo. Filtra luz y aire.",
     "price": 0,
     "currency": "ARS",
     "category": "celosias",
@@ -199,7 +199,7 @@
     "specs": {
       "dimensions": "Consultar",
       "weight": "Según módulo",
-      "material": "Concreto"
+      "material": "Masa mineral"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
@@ -208,7 +208,7 @@
     "slug": "celosia-ranura",
     "name": "Celosía Ranura",
     "description": "Bloque con ranura vertical.",
-    "longDescription": "Próximamente.",
+    "longDescription": "Línea en desarrollo. Ritmo vertical.",
     "price": 0,
     "currency": "ARS",
     "category": "celosias",
@@ -220,7 +220,7 @@
     "specs": {
       "dimensions": "Consultar",
       "weight": "Según módulo",
-      "material": "Concreto"
+      "material": "Masa mineral"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
@@ -228,8 +228,8 @@
     "id": "cel-diagonal",
     "slug": "celosia-diagonal",
     "name": "Celosía Diagonal",
-    "description": "Partición diagonal.",
-    "longDescription": "Próximamente.",
+    "description": "Partición en diagonal.",
+    "longDescription": "Línea en desarrollo. Corte en ángulo.",
     "price": 0,
     "currency": "ARS",
     "category": "celosias",
@@ -241,7 +241,7 @@
     "specs": {
       "dimensions": "Consultar",
       "weight": "Según módulo",
-      "material": "Concreto"
+      "material": "Masa mineral"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
@@ -250,7 +250,7 @@
     "slug": "celosia-horizontales",
     "name": "Celosía Horizontales",
     "description": "Lamas horizontales.",
-    "longDescription": "Próximamente.",
+    "longDescription": "Línea en desarrollo. Capas de luz.",
     "price": 0,
     "currency": "ARS",
     "category": "celosias",
@@ -262,7 +262,7 @@
     "specs": {
       "dimensions": "Consultar",
       "weight": "Según módulo",
-      "material": "Concreto"
+      "material": "Masa mineral"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
@@ -271,7 +271,7 @@
     "slug": "mesada-integral",
     "name": "Mesada Integral",
     "description": "Mesada a medida.",
-    "longDescription": "Próximamente.",
+    "longDescription": "Próxima línea. Continuidad de material en el baño.",
     "price": 0,
     "currency": "ARS",
     "category": "mesadas",
@@ -283,7 +283,7 @@
     "specs": {
       "dimensions": "A medida",
       "weight": "Según proyecto",
-      "material": "Concreto"
+      "material": "Masa mineral"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   }

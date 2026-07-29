@@ -18,8 +18,8 @@ export function MadeToOrderNotice({
   if (compact) {
     return (
       <p className={className ?? "text-sm text-navy/65"}>
-        Sin stock del modelo: lo fabricamos · {madeToOrder.leadDays} días · seña{" "}
-        {depositLabel()}. Mayoristas: consultá precio especial.
+        Sin stock: lo hacemos · {madeToOrder.leadDays} días · seña{" "}
+        {depositLabel()}. Mayoristas: consultá condiciones.
       </p>
     );
   }
@@ -43,18 +43,18 @@ export function MadeToOrderNotice({
             Por pedido
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-navy/55">
-            Modelo y color a elección. ~{madeToOrder.leadDays} días ·{" "}
+            Modelo y tono a elección. ~{madeToOrder.leadDays} días ·{" "}
             {fullPriceLabel()} · seña {depositLabel()}.
           </p>
           <div className="mt-auto pt-4">
             <Button
               href={whatsappGeneralUrl(
-                `Hola Prieta Concreto, no encuentro el modelo/color que quiero en stock. Quiero encargar una bacha por pedido. Entiendo ~${madeToOrder.leadDays} días y seña ${depositLabel()}.`,
+                `Hola Prieta, quiero encargar una bacha. Entiendo ~${madeToOrder.leadDays} días y seña ${depositLabel()}.`,
               )}
               variant="outline"
               className="text-sm"
             >
-              Pedir por WhatsApp
+              Encargar por WhatsApp
             </Button>
           </div>
         </div>
@@ -66,8 +66,7 @@ export function MadeToOrderNotice({
               Corralones y ferreterías
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-navy/55">
-              Pedidos mayoristas con mejor precio para corralones, ferreterías y
-              comercios del rubro.
+              Condiciones para el rubro. Escribinos y lo vemos.
             </p>
             <div className="mt-auto pt-4">
               <Button
@@ -75,7 +74,7 @@ export function MadeToOrderNotice({
                 variant="secondary"
                 className="text-sm"
               >
-                Consultar precio mayorista
+                Consultar
               </Button>
             </div>
           </div>

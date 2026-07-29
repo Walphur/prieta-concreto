@@ -66,13 +66,13 @@ export function OrderConfirmation({ refId }: Props) {
   return (
     <div className="mx-auto max-w-2xl px-4 py-12 sm:px-6 lg:py-16">
       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
-        Pedido confirmado
+        Pedido listo
       </p>
       <h1 className="mt-2 font-[family-name:var(--font-outfit)] text-3xl font-semibold tracking-tight text-navy">
-        Transferí para finalizar
+        Transferí y avisanos
       </h1>
       <p className="mt-3 text-navy/65">
-        Referencia <span className="font-semibold text-navy">{order.ref}</span>.
+        Ref. <span className="font-semibold text-navy">{order.ref}</span>.
       </p>
 
       <div className="mt-8 border border-concrete bg-cream-dark/40 p-6">
@@ -130,7 +130,7 @@ export function OrderConfirmation({ refId }: Props) {
           Avisar por WhatsApp
         </Button>
         <Button href="/tienda" variant="outline" className="sm:flex-1">
-          Seguir mirando
+          Volver a la colección
         </Button>
       </div>
       <p className="mt-6 text-center text-xs text-navy/45">

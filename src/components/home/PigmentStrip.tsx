@@ -6,7 +6,7 @@ export function PigmentStrip() {
     <section className="bg-cream">
       <div className="mx-auto max-w-7xl px-4 section-space sm:px-6 lg:px-8">
         <h2 className="editorial-title max-w-sm text-2xl sm:text-3xl">
-          Color en la masa
+          Pigmento en masa
         </h2>
 
         <ul className="mt-16 grid grid-cols-2 gap-6 sm:grid-cols-4 lg:grid-cols-7 lg:gap-8">

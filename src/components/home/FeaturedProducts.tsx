@@ -23,13 +23,13 @@ export async function FeaturedProducts() {
       <div className="mx-auto max-w-7xl px-4 section-space sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-sm">
-            <h2 className="editorial-title text-2xl sm:text-3xl">Piezas</h2>
+            <h2 className="editorial-title text-2xl sm:text-3xl">Colección</h2>
           </div>
           <Link
             href="/tienda"
             className="text-xs font-medium uppercase tracking-[0.16em] text-navy/45 underline decoration-navy/15 underline-offset-8 transition duration-700 hover:text-navy hover:decoration-navy/40"
           >
-            Ver colección
+            Ver todas
           </Link>
         </div>
 

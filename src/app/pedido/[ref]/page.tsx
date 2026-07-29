@@ -7,7 +7,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { ref } = await params;
   return {
     title: `Pedido ${ref}`,
-    description: "Instrucciones de transferencia para tu pedido Prieta Concreto.",
+    description: "Datos para transferir tu pedido Prieta.",
   };
 }
 

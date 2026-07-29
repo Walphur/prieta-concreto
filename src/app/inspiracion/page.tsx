@@ -10,7 +10,7 @@ import { whatsappGeneralUrl } from "@/lib/bank";
 export const metadata: Metadata = {
   title: "Inspiración",
   description:
-    "Espacios e instalaciones reales con bachas Prieta Concreto. Baños de clientes y piezas del taller. San Luis.",
+    "Baños reales con bachas Prieta. Instalaciones de clientes y piezas del taller en San Luis.",
   alternates: { canonical: "/inspiracion" },
 };
 
@@ -32,7 +32,7 @@ export default function InspiracionPage() {
     <div>
       <div className="mx-auto max-w-7xl px-4 section-space sm:px-6 lg:px-8">
         <header className="max-w-md pb-6">
-          <h1 className="editorial-title text-3xl sm:text-4xl">Espacios</h1>
+          <h1 className="editorial-title text-3xl sm:text-4xl">Baños</h1>
         </header>
 
         <section className="mt-12">
@@ -76,13 +76,13 @@ export default function InspiracionPage() {
         <div className="mt-32 text-center">
           <a
             href={whatsappGeneralUrl(
-              "Hola Prieta, quiero compartir fotos de mi bacha instalada.",
+              "Hola Prieta, quiero compartir fotos de mi baño con una pieza tuya.",
             )}
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs font-medium uppercase tracking-[0.16em] text-navy/45 underline decoration-navy/20 underline-offset-8 transition duration-700 hover:text-navy hover:decoration-navy/50"
           >
-            Compartir tu espacio
+            Sumá tu baño
           </a>
         </div>
       </div>

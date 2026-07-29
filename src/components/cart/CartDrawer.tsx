@@ -42,7 +42,7 @@ export function CartDrawer() {
       >
         <div className="flex items-center justify-between border-b border-concrete px-5 py-4">
           <h2 className="font-[family-name:var(--font-outfit)] text-lg font-semibold text-navy">
-            Tu carrito
+            Carrito
           </h2>
           <button
             type="button"
@@ -57,13 +57,13 @@ export function CartDrawer() {
         <div className="flex-1 overflow-y-auto px-5 py-4">
           {items.length === 0 ? (
             <div className="flex h-full flex-col items-center justify-center gap-3 text-center">
-              <p className="text-navy/60">Tu carrito está vacío.</p>
+              <p className="text-navy/60">Todavía vacío.</p>
               <Link
                 href="/tienda"
                 onClick={closeCart}
                 className="text-sm font-medium text-sage-dark underline-offset-4 hover:underline"
               >
-                Ver piezas disponibles
+                Ir a la colección
               </Link>
             </div>
           ) : (
@@ -90,7 +90,7 @@ export function CartDrawer() {
                         <p className="mt-0.5 text-sm font-medium text-deep-red">
                           {formatPrice(item.price ?? 0)}
                         </p>
-                        <p className="mt-1 text-xs text-navy/45">Pieza única</p>
+                        <p className="mt-1 text-xs text-navy/45">Una unidad</p>
                       </div>
                       <button
                         type="button"
@@ -125,7 +125,7 @@ export function CartDrawer() {
               <>
                 <div className="mb-2 flex items-center justify-between text-sm">
                   <span className="text-sage-dark">
-                    Descuento primera compra ({discount.discountPercent}%)
+                    Primera compra (−{discount.discountPercent}%)
                   </span>
                   <span className="font-medium text-sage-dark">
                     −{formatPrice(discount.discountAmount)}
@@ -140,15 +140,14 @@ export function CartDrawer() {
               </>
             ) : null}
             <p className={clsx("mb-3 text-xs text-navy/50", !discount && "mt-2")}>
-              Pago por transferencia · Envíos a toda la Argentina (Andesmar
-              Cargas)
+              Transferencia · Andesmar Cargas a todo el país
             </p>
             <Link
               href="/checkout"
               onClick={closeCart}
               className="flex w-full items-center justify-center bg-sage px-4 py-3 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-sage-dark"
             >
-              Finalizar compra
+              Continuar
             </Link>
           </div>
         ) : null}

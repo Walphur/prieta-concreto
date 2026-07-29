@@ -96,15 +96,15 @@ export function ReviewSection({
     setRating(5);
     setPhotoUrl("");
     setPhotoName("");
-    setMsg(data.message || "Gracias. Pendiente de aprobación.");
+    setMsg(data.message || "Gracias. Quedó pendiente de aprobación.");
   }
 
   return (
     <section>
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="editorial-kicker">Reseñas</p>
-          <h2 className="editorial-title mt-3 text-2xl">Clientes</h2>
+          <p className="editorial-kicker">Voces</p>
+          <h2 className="editorial-title mt-3 text-2xl">Quienes ya tienen</h2>
         </div>
         <Button
           href={GOOGLE_REVIEW_URL}
@@ -144,13 +144,13 @@ export function ReviewSection({
           </li>
         ))}
         {reviews.length === 0 ? (
-          <p className="text-sm text-navy/40">Aún no hay reseñas publicadas.</p>
+          <p className="text-sm text-navy/40">Todavía no hay reseñas.</p>
         ) : null}
       </ul>
 
       <details className="mt-14 max-w-xl">
         <summary className="cursor-pointer text-xs font-medium uppercase tracking-[0.16em] text-navy/50 transition hover:text-navy">
-          Escribir reseña
+          Dejar una nota
           {productName ? ` · ${productName}` : ""}
         </summary>
       <form
@@ -158,7 +158,7 @@ export function ReviewSection({
         className="mt-6 space-y-4 border border-navy/10 p-5 sm:p-6"
       >
         <div>
-          <p className="text-sm font-medium text-navy">Tu puntuación</p>
+          <p className="text-sm font-medium text-navy">Puntuación</p>
           <StarRating
             value={rating}
             onChange={setRating}
@@ -180,7 +180,7 @@ export function ReviewSection({
         </div>
         <div>
           <label htmlFor="review" className="text-sm font-medium text-navy">
-            Comentario
+            Cómo se siente en casa
           </label>
           <textarea
             id="review"
@@ -195,7 +195,7 @@ export function ReviewSection({
         </div>
         <div>
           <label className="text-sm font-medium text-navy">
-            Foto de tu bacha (opcional)
+            Foto del baño (opcional)
           </label>
           <input
             ref={fileRef}
@@ -227,7 +227,7 @@ export function ReviewSection({
           ) : null}
         </div>
         <Button type="submit" variant="primary" disabled={busy || uploading}>
-          {busy ? "Enviando…" : "Enviar reseña"}
+          {busy ? "Enviando…" : "Enviar"}
         </Button>
         {msg ? <p className="text-sm text-sage-dark">{msg}</p> : null}
       </form>

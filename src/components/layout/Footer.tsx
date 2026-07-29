@@ -11,8 +11,7 @@ export function Footer() {
         <div>
           <PrietaLogo size="md" variant="dark" />
           <p className="mt-6 max-w-xs text-sm leading-relaxed text-cream/55">
-            Estudio artesanal en San Luis. Bachas de concreto pigmentado, por
-            pedido.
+            Taller en San Luis. Piezas por pedido, una a una.
           </p>
         </div>
 
@@ -69,7 +68,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="transition hover:text-sage-light"
               >
-                Mayoristas · consultar precio
+                Mayoristas
               </a>
             </li>
             <li>
@@ -79,7 +78,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="transition hover:text-sage-light"
               >
-                Reseñas en Google
+                Google
               </a>
             </li>
             <li>

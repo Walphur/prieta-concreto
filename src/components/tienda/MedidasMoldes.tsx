@@ -26,8 +26,7 @@ export function MedidasMoldes() {
   return (
     <div className="mt-12 space-y-20">
       <p className="max-w-xl text-sm leading-relaxed text-navy/55">
-        Medidas oficiales de cada molde. Precio fijo $95.000. Envíos por Andesmar
-        Cargas.
+        Medidas de cada molde. $95.000. Envíos Andesmar Cargas.
       </p>
 
       {BACHA_SHAPES.map((shape) => {
@@ -83,7 +82,7 @@ export function MedidasMoldes() {
               {photos.length > 0 ? (
                 <div>
                   <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-navy/40">
-                    Referencia · {shape.label.toLowerCase()}
+                    {shape.label}
                   </p>
                   <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
                     {photos.map((photo) => (

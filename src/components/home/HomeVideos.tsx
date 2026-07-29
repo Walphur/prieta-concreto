@@ -9,7 +9,7 @@ export function HomeVideos() {
           <div className="max-w-md">
             <p className="editorial-kicker">Taller</p>
             <h2 className="editorial-title mt-4 text-2xl sm:text-3xl">
-              Oficio
+              Manos
             </h2>
           </div>
           <Link

@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = await getProductBySlug(slug);
   if (!product) return { title: "Producto" };
 
-  const title = `${product.name} — bacha de concreto`;
+  const title = `${product.name} — bacha Prieta`;
   const description =
     product.status === "example"
       ? `${product.description} ${madeToOrderSummary()}`
@@ -229,8 +229,8 @@ export default async function ProductPage({ params }: Props) {
                 />
                 {product.status === "sold" ? (
                   <p className="mt-4 text-xs leading-relaxed text-navy/45">
-                    Pieza vendida. El mismo modelo y color se fabrica por pedido
-                    (~{madeToOrder.leadDays} días).
+                    Ya salió. El mismo modelo y tono se hace por pedido (~
+                    {madeToOrder.leadDays} días).
                   </p>
                 ) : null}
               </>
@@ -243,21 +243,21 @@ export default async function ProductPage({ params }: Props) {
         {[
           {
             t: "Material",
-            d: `${product.specs.material}. Pigmento en masa — no pintura.${
-              product.specs.finish ? ` Acabado: ${product.specs.finish}.` : ""
+            d: `${product.specs.material}. El color vive en la masa, no encima.${
+              product.specs.finish ? ` ${product.specs.finish}.` : ""
             }`,
           },
           {
             t: "Proceso",
-            d: `Vaciado a mano, curado de ~${madeToOrder.leadDays} días (${madeToOrder.reason}) y sellado mineral.`,
+            d: `Vaciado a mano. ~${madeToOrder.leadDays} días de ${madeToOrder.reason}. Luego, sellado mineral.`,
           },
           {
             t: "Medidas",
             d: [
               shapeDims?.dimensions || product.specs.dimensions,
               shapeDims?.detail,
-              shapeDims?.wall ? `Pared ${shapeDims.wall}` : null,
-              shapeDims?.drain ? `Desagüe ${shapeDims.drain}` : null,
+              shapeDims?.wall ? shapeDims.wall : null,
+              shapeDims?.drain ? shapeDims.drain : null,
               product.specs.weight,
             ]
               .filter(Boolean)
@@ -265,11 +265,11 @@ export default async function ProductPage({ params }: Props) {
           },
           {
             t: "Cuidado",
-            d: "Paño suave y jabón neutro. Evitar ácidos y abrasivos.",
+            d: "Paño suave, jabón neutro. Sin ácidos ni abrasivos.",
           },
           {
             t: "Envío",
-            d: "Andesmar Cargas a todo el país. Embalaje reforzado desde San Luis.",
+            d: "Desde San Luis, Andesmar Cargas a todo el país. Embalaje reforzado.",
           },
         ].map((block) => (
           <details

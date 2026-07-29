@@ -4,7 +4,7 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Nosotros",
   description:
-    "Historia y proceso artesanal de Prieta Concreto en San Luis. Bachas por pedido con demora de 15 días por fraguado.",
+    "Prieta Concreto nace en San Luis: de la arquitectura al taller. Bachas por pedido, ~15 días de curado. Piezas hechas una a una.",
   alternates: { canonical: "/nosotros" },
 };
 
@@ -24,35 +24,47 @@ export default function NosotrosPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-navy/75 via-navy/15 to-transparent" />
         <div className="relative mx-auto flex min-h-[52vh] max-w-7xl items-end px-4 pb-16 sm:px-6 lg:min-h-[62vh] lg:px-8 lg:pb-20">
           <h1 className="font-[family-name:var(--font-outfit)] text-3xl font-medium tracking-[-0.02em] text-cream sm:text-5xl">
-            Concreto con oficio
+            De la arquitectura al taller
           </h1>
         </div>
       </section>
 
       <section className="mx-auto max-w-xl px-4 section-space sm:px-6 lg:px-8">
         <p className="leading-[1.8] text-navy/60">
-          Prieta Concreto nace en San Luis. Cada bacha se vacía a mano:
-          pigmentamos la masa, controlamos el curado y sellamos la superficie
-          para uso diario sin perder la textura mineral.
+          Empezó como un hobby mientras estudiaba Arquitectura. Dejó la carrera.
+          Nunca dejó de proyectar.
+        </p>
+        <p className="mt-6 leading-[1.8] text-navy/60">
+          Hoy cada pieza sale de sus manos. Sin fábrica. Sin serie. La obsesión
+          es simple: que la siguiente sea mejor que la anterior.
+        </p>
+        <p className="mt-6 leading-[1.8] text-navy/60">
+          No vendemos lavatorios. Vendemos proporción, material noble y un
+          objeto que cambia el baño — hasta que alguien pregunte dónde lo
+          compraste.
+        </p>
+        <p className="mt-6 leading-[1.8] text-navy/60">
+          Más adelante: nuevas formas en masa mineral y terrazo. Por ahora, el
+          foco es la bacha.
         </p>
 
         <ol className="mt-20 divide-y divide-navy/8">
           {[
             {
-              t: "Diseño",
-              d: "Proporciones y drenaje para baños contemporáneos.",
+              t: "Proporción",
+              d: "Forma y drenaje pensados para el baño contemporáneo.",
             },
             {
               t: "Vaciado",
-              d: "Moldes propios y pigmento en la masa.",
+              d: "Moldes propios. Pigmento dentro de la masa.",
             },
             {
               t: "Curado",
-              d: "Aprox. 15 días de fraguado y sellado mineral.",
+              d: "Cerca de 15 días. Después, sellado mineral.",
             },
             {
               t: "Encargo",
-              d: "Modelo y color a elección. Seña para iniciar.",
+              d: "Modelo y tono a elección. Seña para arrancar.",
             },
           ].map((step, i) => (
             <li key={step.t} className="flex gap-6 py-8 first:pt-0 last:pb-0">

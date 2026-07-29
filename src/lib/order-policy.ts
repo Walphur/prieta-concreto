@@ -7,7 +7,7 @@ export const madeToOrder = {
   /** Seña para iniciar fabricación */
   deposit: 50_000,
   fullPrice: BACHA_PRICE,
-  reason: "secado y fraguado del concreto",
+  reason: "curado y fraguado",
 } as const;
 
 export function depositLabel() {
@@ -19,5 +19,5 @@ export function fullPriceLabel() {
 }
 
 export function madeToOrderSummary() {
-  return `Si no hay stock del modelo o color que buscás, lo fabricamos por pedido · demora aprox. ${madeToOrder.leadDays} días (${madeToOrder.reason}) · seña ${depositLabel()} · precio total ${fullPriceLabel()}.`;
+  return `Sin stock de ese modelo o color: lo hacemos por pedido · ~${madeToOrder.leadDays} días (${madeToOrder.reason}) · seña ${depositLabel()} · total ${fullPriceLabel()}.`;
 }

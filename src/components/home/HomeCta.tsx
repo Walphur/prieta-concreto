@@ -7,7 +7,7 @@ export function HomeCta() {
       <div className="mx-auto max-w-7xl px-4 py-28 sm:px-6 lg:px-8 lg:py-36">
         <div className="max-w-md">
           <h2 className="font-[family-name:var(--font-outfit)] text-3xl font-medium tracking-[-0.02em] text-cream sm:text-4xl">
-            Hablemos de tu baño.
+            Contame del baño.
           </h2>
           <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
             <Button href="/tienda" variant="primary">
@@ -15,7 +15,7 @@ export function HomeCta() {
             </Button>
             <a
               href={whatsappGeneralUrl(
-                "Hola Prieta Concreto, quiero consultar por una bacha.",
+                "Hola Prieta, quiero hablar de una bacha para mi baño.",
               )}
               target="_blank"
               rel="noopener noreferrer"

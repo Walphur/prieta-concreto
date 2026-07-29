@@ -84,7 +84,7 @@ export async function POST(request: Request) {
     {
       ok: true,
       message:
-        "Gracias. Tu reseña quedó pendiente de aprobación y la publicamos pronto.",
+        "Gracias. Quedó pendiente de aprobación.",
     },
     { status: 201 },
   );

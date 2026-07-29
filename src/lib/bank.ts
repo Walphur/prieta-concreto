@@ -16,7 +16,7 @@ export const bankTransfer = {
 
 export function whatsappOrderUrl(orderRef: string, totalLabel: string) {
   const text = [
-    `Hola Prieta Concreto, realicé / voy a realizar una transferencia.`,
+    `Hola Prieta, transferí / voy a transferir.`,
     `Pedido: ${orderRef}`,
     `Monto: ${totalLabel}`,
     `Adjunto el comprobante.`,
@@ -26,7 +26,7 @@ export function whatsappOrderUrl(orderRef: string, totalLabel: string) {
 }
 
 export function whatsappGeneralUrl(message?: string) {
-  const text = message ?? "Hola Prieta Concreto, quiero consultar por una bacha.";
+  const text = message ?? "Hola Prieta, quiero consultar por una pieza.";
   return `https://wa.me/${bankTransfer.whatsapp}?text=${encodeURIComponent(text)}`;
 }
 
@@ -37,15 +37,15 @@ export function whatsappMadeToOrderUrl(opts: {
   shape?: string;
 }) {
   const lines = [
-    `Hola Prieta Concreto, quiero pedir una bacha a medida.`,
-    `Modelo/color de referencia: ${opts.name}`,
+    `Hola Prieta, quiero encargar una bacha.`,
+    `Referencia: ${opts.name}`,
   ];
   if (opts.shape) lines.push(`Modelo: ${opts.shape}`);
   if (opts.color) lines.push(`Color: ${opts.color}`);
   lines.push(
-    `Entiendo demora aprox. ${madeToOrder.leadDays} días por ${madeToOrder.reason}.`,
-    `Precio total: ${fullPriceLabel()} · Seña: ${depositLabel()}.`,
-    `¿Me confirman disponibilidad y cómo transferir la seña?`,
+    `Entiendo ~${madeToOrder.leadDays} días por ${madeToOrder.reason}.`,
+    `Total: ${fullPriceLabel()} · Seña: ${depositLabel()}.`,
+    `¿Me confirman cómo seguir con la seña?`,
   );
 
   return `https://wa.me/${bankTransfer.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`;
@@ -54,9 +54,8 @@ export function whatsappMadeToOrderUrl(opts: {
 /** Consulta mayorista (corralones, ferreterías, etc.). */
 export function whatsappWholesaleUrl() {
   const text = [
-    `Hola Prieta Concreto, soy de un negocio (corralón / ferretería / distribuidor).`,
-    `Quiero consultar precios mayoristas de bachas.`,
-    `¿Me pasan condiciones y lista de precios?`,
+    `Hola Prieta, escribo desde un negocio (corralón / ferretería / distribuidor).`,
+    `Quiero consultar condiciones mayoristas de bachas.`,
   ].join("\n");
 
   return `https://wa.me/${bankTransfer.whatsapp}?text=${encodeURIComponent(text)}`;

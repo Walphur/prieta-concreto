@@ -88,6 +88,6 @@ export const BACHA_DIMENSIONS: Record<
   "circular-tapon": {
     dimensions: "Ø 30,5 × 14,5 cm",
     detail: "Diámetro 30,5 cm · Alto 14,5 cm",
-    note: "Incluye tapón / tapa de desagüe de concreto a juego",
+    note: "Incluye tapón de desagüe a juego",
   },
 };

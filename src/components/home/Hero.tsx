@@ -16,10 +16,10 @@ export function Hero() {
               Prieta Concreto
             </p>
             <h1 className="mt-10 font-[family-name:var(--font-outfit)] text-[clamp(2rem,4vw,3.25rem)] font-medium leading-[1.12] tracking-[-0.02em] text-white">
-              Concreto para baños de diseño.
+              Objetos que transforman un baño.
             </h1>
             <p className="mt-8 max-w-sm text-[0.95rem] leading-[1.75] text-white/70">
-              Masa pigmentada. Curado lento. Sellado mineral.
+              Una a una. Del taller a tu espacio.
             </p>
             <div className="mt-14 flex flex-wrap items-center gap-x-8 gap-y-4">
               <Link
@@ -30,7 +30,7 @@ export function Hero() {
               </Link>
               <a
                 href={whatsappGeneralUrl(
-                  "Hola Prieta Concreto, quiero encargar una bacha.",
+                  "Hola Prieta, quiero encargar una pieza.",
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -44,7 +44,7 @@ export function Hero() {
         <div className="relative min-h-[56vh] overflow-hidden sm:min-h-[70vh] lg:min-h-[92vh]">
           <Image
             src="/hero/hero-bano-marmolada.png"
-            alt="Bacha oval marmolada Prieta instalada en baño con mueble de madera"
+            alt="Bacha oval marmolada Prieta en baño con mueble de madera"
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 50vw"

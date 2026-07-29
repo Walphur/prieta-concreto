@@ -12,14 +12,13 @@ export async function ComingSoon() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
-              Próximamente
+              Próximo
             </p>
             <h2 className="mt-2 font-[family-name:var(--font-outfit)] text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
               Celosías
             </h2>
             <p className="mt-3 text-base leading-relaxed text-navy/65">
-              Próxima línea: módulos de concreto para filtrar luz, ventilación y
-              privacidad.
+              Módulos para filtrar luz, aire y mirada.
             </p>
           </div>
           <Link

@@ -14,17 +14,17 @@ export async function HomeReviews() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
-              Clientes
+              Voces
             </p>
             <h2 className="mt-2 font-[family-name:var(--font-outfit)] text-2xl font-semibold tracking-tight text-navy sm:text-3xl">
-              Lo que dicen de las bachas
+              Quienes ya tienen
             </h2>
             <p className="mt-3 text-base text-navy/65">
-              Opiniones reales de quienes ya tienen una pieza Prieta en casa.
+              Palabras de quienes viven con una pieza Prieta.
             </p>
           </div>
           <Button href={GOOGLE_REVIEW_URL} variant="outline" className="self-start">
-            Reseñar en Google
+            Google
           </Button>
         </div>
 

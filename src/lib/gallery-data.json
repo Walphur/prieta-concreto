@@ -112,70 +112,70 @@
   "clientes": [
     {
       "src": "/gallery/clientes/cliente-circular-beige-espejo.png",
-      "label": "Circular beige · espejo LED",
-      "alt": "Bacha circular beige a juego con la mesada, espejo redondo retroiluminado y grifería negra en baño crema",
+      "label": "Beige · luz",
+      "alt": "Bacha circular beige con espejo retroiluminado",
       "kind": "cliente"
     },
     {
       "src": "/hero/hero-bano-circular-espejo.png",
-      "label": "Circular gris · espejo retroiluminado",
-      "alt": "Bacha circular gris clara sobre terrazo, espejo redondo retroiluminado y grifería negra",
+      "label": "Circular · terrazo",
+      "alt": "Bacha circular clara sobre terrazo con espejo LED",
       "kind": "cliente"
     },
     {
       "src": "/gallery/clientes/cliente-oval-marmol-madera.png",
-      "label": "Oval marmolada · baño claro",
-      "alt": "Bacha oval marmolada instalada sobre mueble de madera clara",
+      "label": "Marmolada · madera",
+      "alt": "Bacha oval marmolada sobre mueble de madera",
       "kind": "cliente"
     },
     {
       "src": "/gallery/clientes/cliente-oval-gris-oscuro-bano.png",
-      "label": "Oval gris oscuro · baño moody",
-      "alt": "Bacha oval gris oscuro instalada en baño con azulejos oscuros",
+      "label": "Oscuro · quieto",
+      "alt": "Bacha oval gris oscuro en baño con azulejos oscuros",
       "kind": "cliente"
     },
     {
       "src": "/gallery/clientes/cliente-oval-marmol-bano.jpg",
-      "label": "Oval marmolada · instalada",
-      "alt": "Bacha oval marmolada instalada en baño de cliente",
+      "label": "Marmolada",
+      "alt": "Bacha oval marmolada en baño",
       "kind": "cliente"
     },
     {
       "src": "/gallery/clientes/cliente-oval-marmol.jpg",
-      "label": "Oval marmolada",
-      "alt": "Bacha oval marmolada de cliente",
+      "label": "Veteado",
+      "alt": "Bacha oval marmolada",
       "kind": "cliente"
     },
     {
       "src": "/gallery/clientes/cliente-circular-gris.jpg",
-      "label": "Circular gris · instalada",
-      "alt": "Bacha circular gris instalada en baño de cliente",
+      "label": "Gris",
+      "alt": "Bacha circular gris en baño",
       "kind": "cliente"
     },
     {
       "src": "/gallery/clientes/cliente-circular-clara.jpg",
-      "label": "Circular clara · instalada",
-      "alt": "Bacha circular clara instalada en baño de cliente",
+      "label": "Clara",
+      "alt": "Bacha circular clara en baño",
       "kind": "cliente"
     }
   ],
   "videos": [
     {
       "src": "/gallery/videos/proceso-bachas.mp4",
-      "label": "Cómo se hacen las bachas",
-      "alt": "Proceso de fabricación de bachas de concreto",
+      "label": "Proceso",
+      "alt": "Proceso de vaciado en taller",
       "kind": "video"
     },
     {
       "src": "/gallery/videos/bachas-01.mp4",
-      "label": "Bachas en taller",
-      "alt": "Bachas en taller",
+      "label": "Taller",
+      "alt": "Piezas en el taller",
       "kind": "video"
     },
     {
       "src": "/gallery/videos/bachas-02.mp4",
-      "label": "Detalle de bachas",
-      "alt": "Detalle de bachas",
+      "label": "Detalle",
+      "alt": "Detalle de superficie",
       "kind": "video"
     }
   ]

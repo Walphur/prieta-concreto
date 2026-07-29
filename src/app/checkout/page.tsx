@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { CheckoutForm } from "@/components/checkout/CheckoutForm";
 
 export const metadata: Metadata = {
-  title: "Checkout",
+  title: "Pedido",
   description:
-    "Finalizá tu pedido Prieta Concreto por transferencia bancaria. San Luis, Argentina.",
+    "Confirmá tu pedido Prieta por transferencia. San Luis, Argentina.",
 };
 
 export default function CheckoutPage() {

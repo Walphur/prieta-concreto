@@ -20,22 +20,22 @@ const outfit = Outfit({
 });
 
 const siteDescription =
-  "Bachas artesanales de concreto en San Luis. Pedidos a medida por modelo y color, demora aprox. 15 días. Envíos a toda la Argentina por Andesmar Cargas.";
+  "Bachas de concreto en San Luis. Piezas por pedido, ~15 días. Envíos a toda la Argentina por Andesmar Cargas.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://prietaconcreto.shop"),
   title: {
-    default: "Prieta Concreto | Bachas artesanales de concreto",
+    default: "Prieta Concreto | Bachas de concreto en San Luis",
     template: "%s | Prieta Concreto",
   },
   description: siteDescription,
   keywords: [
     "bachas de concreto",
-    "bacha artesanal",
+    "bacha baño",
     "San Luis",
     "Prieta Concreto",
     "bacha por pedido",
-    "baño de diseño",
+    "baño",
     "concreto pigmentado",
     "Andesmar Cargas",
   ],
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Prieta Concreto | Bachas artesanales de concreto",
+    title: "Prieta Concreto | Bachas de concreto en San Luis",
     description: siteDescription,
     url: "https://prietaconcreto.shop",
     siteName: "Prieta Concreto",
@@ -56,13 +56,13 @@ export const metadata: Metadata = {
         url: "/gallery/clientes/cliente-circular-gris.jpg",
         width: 1200,
         height: 800,
-        alt: "Bacha de concreto Prieta en baño de diseño",
+        alt: "Bacha Prieta en un baño",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Prieta Concreto | Bachas artesanales",
+    title: "Prieta Concreto | Bachas de concreto",
     description: siteDescription,
     images: ["/gallery/clientes/cliente-circular-gris.jpg"],
   },

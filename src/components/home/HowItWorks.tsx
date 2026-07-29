@@ -4,20 +4,20 @@ import { Button } from "@/components/ui/Button";
 
 const steps = [
   {
-    title: "Elegí modelo y color",
-    body: "Mirás la colección o los ejemplos de pigmento. Medidas de moldes en Tienda.",
+    title: "Elegí forma y tono",
+    body: "Mirás la colección o las referencias de pigmento. Medidas en Tienda.",
   },
   {
     title: "Confirmás por WhatsApp",
-    body: "Coordinamos el pedido y la seña para iniciar la fabricación.",
+    body: "Coordinamos el pedido y la seña para arrancar.",
   },
   {
-    title: "Fabricamos y curamos",
-    body: `Vaciado a mano, pigmento en masa y ~${madeToOrder.leadDays} días de fraguado.`,
+    title: "Vaciamos y curamos",
+    body: `A mano. Pigmento en masa. ~${madeToOrder.leadDays} días de fraguado.`,
   },
   {
     title: "Retiro o envío",
-    body: "Coordinamos entrega. Envíos a toda la Argentina por Andesmar Cargas.",
+    body: "Coordinamos entrega. Andesmar Cargas a todo el país.",
   },
 ] as const;
 
@@ -27,14 +27,13 @@ export function HowItWorks() {
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <div className="max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
-            Pedido a medida
+            Por pedido
           </p>
           <h2 className="mt-2 font-[family-name:var(--font-outfit)] text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
-            Así encargás tu bacha
+            Cómo encargás
           </h2>
           <p className="mt-3 text-base leading-relaxed text-navy/65">
-            Un proceso claro de punta a punta: sin stock del modelo, lo
-            fabricamos por pedido.
+            Sin stock del modelo: lo hacemos. Claro de punta a punta.
           </p>
         </div>
 
@@ -60,7 +59,7 @@ export function HowItWorks() {
         <div className="mt-14 border-t-2 border-navy/12 pt-10">
           <Button
             href={whatsappGeneralUrl(
-              `Hola Prieta Concreto, quiero encargar una bacha por pedido. Entiendo ~${madeToOrder.leadDays} días de fabricación.`,
+              `Hola Prieta, quiero encargar una bacha. Entiendo ~${madeToOrder.leadDays} días.`,
             )}
             variant="secondary"
           >

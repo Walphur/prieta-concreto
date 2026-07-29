@@ -93,7 +93,7 @@ export function CheckoutForm() {
   if (!mounted) {
     return (
       <div className="mx-auto max-w-5xl px-4 py-16 text-navy/50 sm:px-6">
-        Cargando carrito…
+        Cargando…
       </div>
     );
   }
@@ -102,16 +102,16 @@ export function CheckoutForm() {
     return (
       <div className="mx-auto max-w-xl px-4 py-16 text-center sm:px-6 lg:py-24">
         <h1 className="font-[family-name:var(--font-outfit)] text-3xl font-semibold text-navy">
-          Tu carrito está vacío
+          El carrito está vacío
         </h1>
         <p className="mt-3 text-navy/60">
-          Agregá una pieza disponible antes de finalizar.
+          Sumá una pieza en stock para seguir.
         </p>
         <Link
           href="/tienda"
           className="mt-8 inline-block text-sm font-medium text-sage-dark underline-offset-4 hover:underline"
         >
-          Ir a la tienda
+          Ir a la colección
         </Link>
       </div>
     );
@@ -127,13 +127,13 @@ export function CheckoutForm() {
     <div className="mx-auto grid max-w-5xl gap-12 px-4 py-12 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:py-16">
       <div>
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
-          Checkout
+          Pedido
         </p>
         <h1 className="mt-2 font-[family-name:var(--font-outfit)] text-3xl font-semibold tracking-tight text-navy">
-          Pedido por transferencia
+          Transferencia
         </h1>
         <p className="mt-3 text-navy/65">
-          Sin pasarelas. Completá tus datos, transferí y avisanos por WhatsApp.
+          Tus datos, la transferencia y un mensaje por WhatsApp.
         </p>
 
         <form onSubmit={onSubmit} className="mt-8 space-y-4">
@@ -206,7 +206,7 @@ export function CheckoutForm() {
                 className={inputClass}
               />
               <p className="mt-1.5 text-xs text-navy/50">
-                Envíos a toda la Argentina por Andesmar Cargas.
+                Andesmar Cargas a todo el país.
               </p>
             </div>
           </div>
@@ -223,7 +223,7 @@ export function CheckoutForm() {
             />
           </div>
           <Button type="submit" variant="primary" disabled={sending}>
-            {sending ? "Generando pedido…" : "Confirmar pedido"}
+            {sending ? "Generando…" : "Confirmar"}
           </Button>
         </form>
       </div>
@@ -274,7 +274,7 @@ export function CheckoutForm() {
             <>
               <div className="flex items-center justify-between text-sm">
                 <span className="text-sage-dark">
-                  Descuento primera compra ({discount.discountPercent}%)
+                  Primera compra (−{discount.discountPercent}%)
                 </span>
                 <span className="font-medium text-sage-dark">
                   −{formatPrice(discount.discountAmount)}

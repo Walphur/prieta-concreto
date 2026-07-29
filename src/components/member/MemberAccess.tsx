@@ -60,10 +60,10 @@ export function MemberAccess({ className }: Props) {
   const label = loading
     ? "Acceso"
     : eligibleForDiscount
-      ? "15% activo"
+      ? "15% listo"
       : member
         ? "Acceso"
-        : "15% primera compra";
+        : "15% primera vez";
 
   return (
     <>
@@ -105,7 +105,7 @@ export function MemberAccess({ className }: Props) {
                   id={titleId}
                   className="mt-1 font-[family-name:var(--font-outfit)] text-xl font-semibold text-navy"
                 >
-                  {member ? "Tu cuenta" : "15% en tu primera compra"}
+                  {member ? "Tu acceso" : "15% la primera vez"}
                 </h2>
               </div>
               <button
@@ -132,13 +132,12 @@ export function MemberAccess({ className }: Props) {
                 </p>
                 {eligibleForDiscount ? (
                   <p className="border border-sage/30 bg-sage/10 px-3 py-2.5 text-sage-dark">
-                    Tenés <strong>15% de descuento</strong> en tu primera
-                    compra. Se aplica en el carrito y al confirmar el pedido.
+                    Tenés <strong>15%</strong> en tu primera compra. Se aplica
+                    en el carrito al confirmar.
                   </p>
                 ) : (
                   <p>
-                    Tu descuento de primera compra ya fue utilizado. Gracias por
-                    comprar en Prieta.
+                    Ya usaste el 15% de la primera compra. Gracias por estar.
                   </p>
                 )}
                 <button
@@ -152,8 +151,8 @@ export function MemberAccess({ className }: Props) {
             ) : (
               <>
                 <p className="mt-3 text-sm text-navy/65">
-                  Dejá tu email (sin contraseña) para activar el 15% en tu
-                  primera compra. El descuento se usa una sola vez.
+                  Dejá tu email — sin contraseña — y activás el 15% una sola
+                  vez.
                 </p>
                 <form onSubmit={onSubmit} className="mt-5 space-y-3">
                   <div>
@@ -202,7 +201,7 @@ export function MemberAccess({ className }: Props) {
                     disabled={sending}
                     className="w-full bg-navy px-4 py-3 text-xs font-medium uppercase tracking-[0.16em] text-cream transition-colors hover:bg-navy-soft disabled:opacity-50"
                   >
-                    {sending ? "Guardando…" : "Activar descuento"}
+                    {sending ? "Guardando…" : "Activar 15%"}
                   </button>
                 </form>
               </>

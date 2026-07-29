@@ -27,7 +27,7 @@ export function AddToCartButton({
       disabled={disabled}
       onClick={() => addItem({ productId, name, price, image })}
     >
-      {disabled ? "No disponible" : "Añadir al Carrito"}
+      {disabled ? "No disponible" : "Agregar al carrito"}
     </Button>
   );
 }

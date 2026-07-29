@@ -23,13 +23,12 @@ export function MadeToOrderCta({ name, colorLabel, shapeLabel }: Props) {
         rel="noopener noreferrer"
         className="inline-flex w-full items-center justify-center bg-sage px-6 py-3 text-sm font-semibold text-white transition hover:bg-sage-dark sm:w-auto sm:min-w-[14rem]"
       >
-        Pedir este modelo y color
+        Encargar este modelo
       </a>
       <p className="text-xs leading-relaxed text-navy/55">
-        Referencia de catálogo. Si no hay stock de este modelo o color, lo
-        fabricamos por pedido · demora aprox. {madeToOrder.leadDays} días (
-        {madeToOrder.reason}) · seña {depositLabel()} · total {fullPriceLabel()}
-        .{" "}
+        Referencia de catálogo. Si no hay stock, lo hacemos · ~{madeToOrder.leadDays}{" "}
+        días ({madeToOrder.reason}) · seña {depositLabel()} · total{" "}
+        {fullPriceLabel()}.{" "}
         <Link href="/tienda" className="underline-offset-2 hover:underline">
           Ver colección
         </Link>
