@@ -81,13 +81,14 @@ export default function InspiracionPage() {
                 key={item.src}
                 className="group overflow-hidden border border-navy/12 bg-cream-dark"
               >
-                <div className="relative flex min-h-[320px] items-center justify-center sm:min-h-[420px] lg:min-h-[480px]">
+                <div className="bg-cream-dark p-2 sm:p-3">
                   <Image
                     src={item.src}
                     alt={item.alt}
-                    fill
+                    width={1200}
+                    height={1600}
                     sizes="(max-width: 640px) 100vw, 50vw"
-                    className="object-contain object-center p-2 transition-transform duration-700 group-hover:scale-[1.01] sm:p-3"
+                    className="h-auto w-full object-contain transition-transform duration-700 group-hover:scale-[1.01]"
                   />
                 </div>
                 <figcaption className="border-t border-navy/10 bg-cream px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-navy">

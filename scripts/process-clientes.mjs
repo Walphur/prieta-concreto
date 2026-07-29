@@ -28,13 +28,14 @@ const clients = [
     file: "c__Users_User_AppData_Roaming_Cursor_User_workspaceStorage_empty-window_images_WhatsApp_Image_2026-07-25_at_13.29.47-a3d37edd-7f04-4181-9d5e-59223e50e4a1.png",
     out: "cliente-circular-gris.jpg",
     label: "Cliente · circular gris",
-    crop: { left: 0.18, top: 0.32, width: 0.7, height: 0.55 },
+    // Full original — no crop (bacha completa)
+    crop: null,
   },
   {
     file: "c__Users_User_AppData_Roaming_Cursor_User_workspaceStorage_empty-window_images_WhatsApp_Image_2026-07-25_at_13.30.21-41c382fb-cc28-45be-a75c-60e31ee69f90.png",
     out: "cliente-circular-clara.jpg",
     label: "Cliente · circular clara",
-    crop: { left: 0.26, top: 0.34, width: 0.52, height: 0.48 },
+    crop: null,
   },
 ];
 
@@ -42,6 +43,15 @@ const catalogPath = path.join(root, "src", "lib", "gallery-data.json");
 const catalog = JSON.parse(fs.readFileSync(catalogPath, "utf8"));
 
 async function cropOne(src, crop) {
+  const pipeline = sharp(src).rotate();
+
+  if (!crop) {
+    return pipeline
+      .resize({ width: 1600, height: 2000, fit: "inside", withoutEnlargement: true })
+      .jpeg({ quality: 90, mozjpeg: true })
+      .toBuffer();
+  }
+
   const meta = await sharp(src).rotate().metadata();
   const w = meta.width ?? 0;
   const h = meta.height ?? 0;
