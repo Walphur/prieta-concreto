@@ -19,12 +19,12 @@ export default function HomePage() {
 
       <DynamicLightSection className="mt-4">
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
-          <div className="lit-panel border border-cream/10 bg-navy-soft/40 px-8 py-14 backdrop-blur-[2px] sm:px-12 sm:py-16">
-            <div className="relative max-w-xl">
-              <p className="lit-text text-xs font-semibold uppercase tracking-[0.2em] text-sage-light">
+          <div className="border border-cream/10 bg-navy-soft/50 px-8 py-14 sm:px-12 sm:py-16">
+            <div className="max-w-xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage-light">
                 Galería · textura real
               </p>
-              <h2 className="lit-text mt-3 font-[family-name:var(--font-outfit)] text-2xl font-semibold tracking-tight text-cream sm:text-3xl">
+              <h2 className="mt-3 font-[family-name:var(--font-outfit)] text-2xl font-semibold tracking-tight text-cream sm:text-3xl">
                 Inspiración real, piezas reales
               </h2>
               <p className="mt-3 text-cream/70">

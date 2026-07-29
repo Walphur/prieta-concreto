@@ -10,13 +10,12 @@ type Props = {
 };
 
 /**
- * Colado → curado al entrar en viewport.
- * Nunca deja el contenido invisible: fallback a cured.
+ * Fade-in al entrar en viewport. Sin filtros ni rAF continuo.
  */
 export function SolidifyReveal({
   children,
   className,
-  cureMs = 520,
+  cureMs = 420,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [phase, setPhase] = useState<"idle" | "wet" | "cured">("idle");
@@ -52,17 +51,15 @@ export function SolidifyReveal({
 
     io.observe(el);
 
-    // Si ya está en pantalla al montar
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight && rect.bottom > 0) {
       start();
     }
 
-    // Nunca quedar trabado en idle
     fallbackTimer = window.setTimeout(() => {
       if (!done) start();
       else setPhase("cured");
-    }, 2200);
+    }, 1800);
 
     return () => {
       io.disconnect();

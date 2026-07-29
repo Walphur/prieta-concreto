@@ -35,9 +35,6 @@ export function PigmentStrip() {
                 <span className="mt-2.5 block font-[family-name:var(--font-outfit)] text-sm font-semibold text-navy group-hover:text-sage-dark">
                   {c.label}
                 </span>
-                <span className="mt-0.5 block text-[11px] leading-snug text-navy/45">
-                  {c.ferrite}
-                </span>
               </Link>
             </li>
           ))}
