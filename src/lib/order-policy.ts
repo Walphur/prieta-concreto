@@ -19,5 +19,5 @@ export function fullPriceLabel() {
 }
 
 export function madeToOrderSummary() {
-  return `Bachas por pedido · modelo y color a elección · demora aprox. ${madeToOrder.leadDays} días (${madeToOrder.reason}) · seña ${depositLabel()} · precio total ${fullPriceLabel()}.`;
+  return `Si no hay stock del modelo o color que buscás, lo fabricamos por pedido · demora aprox. ${madeToOrder.leadDays} días (${madeToOrder.reason}) · seña ${depositLabel()} · precio total ${fullPriceLabel()}.`;
 }

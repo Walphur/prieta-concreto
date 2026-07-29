@@ -28,9 +28,9 @@ export function Hero() {
             Artesanía en concreto para baños de diseño.
           </h1>
           <p className="animate-fade-up delay-200 mt-5 max-w-md text-base leading-relaxed text-cream/80 sm:text-lg">
-            Bachas hechas a mano en San Luis. Por pedido según modelo y color —{" "}
-            {fullPriceLabel()} · seña {depositLabel()} · demora aprox.{" "}
-            {madeToOrder.leadDays} días. Envíos a toda la Argentina.
+            Bachas hechas a mano en San Luis. Si no está el modelo en stock, lo
+            fabricamos por pedido — {fullPriceLabel()} · seña {depositLabel()} ·
+            ~{madeToOrder.leadDays} días. También mayoristas.
           </p>
           <div className="animate-fade-up delay-300 mt-8 flex flex-wrap gap-3">
             <Button href="/tienda" variant="primary" className="min-w-[11rem]">

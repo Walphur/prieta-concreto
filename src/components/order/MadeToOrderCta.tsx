@@ -26,9 +26,10 @@ export function MadeToOrderCta({ name, colorLabel, shapeLabel }: Props) {
         Pedir este modelo y color
       </a>
       <p className="text-xs leading-relaxed text-navy/55">
-        Ejemplo de referencia. Fabricamos por pedido · demora aprox.{" "}
-        {madeToOrder.leadDays} días ({madeToOrder.reason}) · seña{" "}
-        {depositLabel()} · total {fullPriceLabel()}.{" "}
+        Referencia de catálogo. Si no hay stock de este modelo o color, lo
+        fabricamos por pedido · demora aprox. {madeToOrder.leadDays} días (
+        {madeToOrder.reason}) · seña {depositLabel()} · total {fullPriceLabel()}
+        .{" "}
         <Link href="/tienda" className="underline-offset-2 hover:underline">
           Ver colección
         </Link>

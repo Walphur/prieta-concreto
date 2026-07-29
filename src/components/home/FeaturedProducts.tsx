@@ -37,7 +37,7 @@ export async function FeaturedProducts() {
         </Button>
       </div>
 
-      <MadeToOrderNotice className="mt-8 border border-concrete bg-cream-dark/50 px-5 py-5 sm:px-6" />
+      <MadeToOrderNotice className="mt-8" />
 
       <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {featured.map((product, i) => (

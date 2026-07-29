@@ -50,3 +50,14 @@ export function whatsappMadeToOrderUrl(opts: {
 
   return `https://wa.me/${bankTransfer.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`;
 }
+
+/** Consulta mayorista (corralones, ferreterías, etc.). */
+export function whatsappWholesaleUrl() {
+  const text = [
+    `Hola Prieta Concreto, soy de un negocio (corralón / ferretería / distribuidor).`,
+    `Quiero consultar precios mayoristas de bachas.`,
+    `¿Me pasan condiciones y lista de precios?`,
+  ].join("\n");
+
+  return `https://wa.me/${bankTransfer.whatsapp}?text=${encodeURIComponent(text)}`;
+}

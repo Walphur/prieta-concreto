@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { PrietaLogo } from "@/components/brand/PrietaLogo";
-import { whatsappGeneralUrl } from "@/lib/bank";
+import { whatsappGeneralUrl, whatsappWholesaleUrl } from "@/lib/bank";
 
 export function Footer() {
   return (
@@ -9,9 +9,9 @@ export function Footer() {
         <div>
           <PrietaLogo size="md" variant="dark" />
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-cream/70">
-            Estudio artesanal en San Luis. Bachas de concreto por pedido (modelo
-            y color), demora aprox. 15 días. Envíos a toda la Argentina por
-            Andesmar Cargas.
+            Estudio artesanal en San Luis. Si no está el modelo en stock, lo
+            fabricamos por pedido (~15 días). También ventas mayoristas para
+            corralones y ferreterías.
           </p>
         </div>
 
@@ -59,6 +59,16 @@ export function Footer() {
                 className="transition hover:text-sage-light"
               >
                 WhatsApp 2665 031950
+              </a>
+            </li>
+            <li>
+              <a
+                href={whatsappWholesaleUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-sage-light"
+              >
+                Mayoristas · consultar precio
               </a>
             </li>
             <li>

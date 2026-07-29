@@ -228,8 +228,8 @@ export default async function ProductPage({ params }: Props) {
                 />
                 {product.status === "sold" ? (
                   <p className="mt-3 text-xs text-navy/50">
-                    Pieza vendida. Podés encargar el mismo modelo y color por
-                    pedido (demora ~15 días).
+                    Pieza vendida. Si querés el mismo modelo y color, lo
+                    fabricamos por pedido (demora ~15 días).
                   </p>
                 ) : null}
               </>

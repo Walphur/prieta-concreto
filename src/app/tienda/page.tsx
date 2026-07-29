@@ -10,7 +10,7 @@ import type { ProductCategory } from "@/types/product";
 export const metadata: Metadata = {
   title: "Tienda",
   description:
-    "Bachas de concreto Prieta a $80.000. Pedidos a medida por modelo y color, seña $40.000, demora aprox. 15 días. San Luis.",
+    "Bachas de concreto Prieta a $80.000. Si no hay stock, fabricamos por pedido. Precios mayoristas para corralones y ferreterías. San Luis.",
   alternates: { canonical: "/tienda" },
 };
 
@@ -69,7 +69,7 @@ export default async function TiendaPage({
         </p>
       </header>
 
-      <MadeToOrderNotice className="mt-8 max-w-2xl border border-concrete bg-cream-dark/50 px-5 py-5 sm:px-6" />
+      <MadeToOrderNotice className="mt-8 max-w-4xl" />
 
       <div className="mt-8 flex flex-wrap gap-2">
         {filters.map((f) => {
