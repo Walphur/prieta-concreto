@@ -28,6 +28,6 @@ export function statusLabel(status: ProductStatus) {
       return "Vendida";
     case "example":
     default:
-      return "Ejemplo";
+      return "Por pedido";
   }
 }

@@ -1,3 +1,5 @@
+import { depositLabel, fullPriceLabel, madeToOrder } from "@/lib/order-policy";
+
 /**
  * Datos para transferencia (Mercado Pago) + WhatsApp.
  */
@@ -26,4 +28,25 @@ export function whatsappOrderUrl(orderRef: string, totalLabel: string) {
 export function whatsappGeneralUrl(message?: string) {
   const text = message ?? "Hola Prieta Concreto, quiero consultar por una bacha.";
   return `https://wa.me/${bankTransfer.whatsapp}?text=${encodeURIComponent(text)}`;
+}
+
+/** Pedido a medida por modelo/color (ejemplos del catálogo). */
+export function whatsappMadeToOrderUrl(opts: {
+  name: string;
+  color?: string;
+  shape?: string;
+}) {
+  const lines = [
+    `Hola Prieta Concreto, quiero pedir una bacha a medida.`,
+    `Modelo/color de referencia: ${opts.name}`,
+  ];
+  if (opts.shape) lines.push(`Modelo: ${opts.shape}`);
+  if (opts.color) lines.push(`Color: ${opts.color}`);
+  lines.push(
+    `Entiendo demora aprox. ${madeToOrder.leadDays} días por ${madeToOrder.reason}.`,
+    `Precio total: ${fullPriceLabel()} · Seña: ${depositLabel()}.`,
+    `¿Me confirman disponibilidad y cómo transferir la seña?`,
+  );
+
+  return `https://wa.me/${bankTransfer.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`;
 }

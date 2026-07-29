@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ProductCard } from "@/components/product/ProductCard";
+import { MadeToOrderNotice } from "@/components/order/MadeToOrderNotice";
 import { MedidasMoldes } from "@/components/tienda/MedidasMoldes";
 import { readProducts } from "@/lib/catalog";
 import { clsx } from "clsx";
@@ -9,7 +10,8 @@ import type { ProductCategory } from "@/types/product";
 export const metadata: Metadata = {
   title: "Tienda",
   description:
-    "Bachas de concreto Prieta a $80.000. Ejemplos de color, medidas de moldes y piezas únicas en stock. San Luis.",
+    "Bachas de concreto Prieta a $80.000. Pedidos a medida por modelo y color, seña $40.000, demora aprox. 15 días. San Luis.",
+  alternates: { canonical: "/tienda" },
 };
 
 export const dynamic = "force-dynamic";
@@ -61,11 +63,13 @@ export default async function TiendaPage({
         </h1>
         <p className="mt-3 text-navy/65">
           Toda bacha:{" "}
-          <span className="font-semibold text-deep-red">$80.000</span> · Los
-          ejemplos muestran colores; las medidas de cada molde están en la
-          pestaña Medidas.
+          <span className="font-semibold text-deep-red">$80.000</span>. Los
+          ejemplos son referencia de color y modelo para encargar la tuya.
+          Medidas de cada molde en la pestaña Medidas.
         </p>
       </header>
+
+      <MadeToOrderNotice className="mt-8 max-w-2xl border border-concrete bg-cream-dark/50 px-5 py-5 sm:px-6" />
 
       <div className="mt-8 flex flex-wrap gap-2">
         {filters.map((f) => {

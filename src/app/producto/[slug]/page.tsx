@@ -15,7 +15,9 @@ import {
   type BachaShapeId,
 } from "@/lib/bacha-options";
 import { AddToCartButton } from "@/components/product/AddToCartButton";
+import { MadeToOrderCta } from "@/components/order/MadeToOrderCta";
 import { ReviewSection } from "@/components/product/ReviewSection";
+import { madeToOrderSummary } from "@/lib/order-policy";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -30,9 +32,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
   if (!product) return { title: "Producto" };
+
+  const title = `${product.name} — bacha de concreto`;
+  const description =
+    product.status === "example"
+      ? `${product.description} ${madeToOrderSummary()}`
+      : product.description;
+  const image = product.images[0];
+
   return {
     title: product.name,
-    description: product.description,
+    description,
+    alternates: { canonical: `/producto/${product.slug}` },
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      url: `https://prietaconcreto.shop/producto/${product.slug}`,
+      images: image
+        ? [{ url: image, alt: product.name }]
+        : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: image ? [image] : undefined,
+    },
   };
 }
 
@@ -42,13 +68,45 @@ export default async function ProductPage({ params }: Props) {
   if (!product) notFound();
 
   const canBuy = isPurchasable(product);
+  const isExampleBacha =
+    product.status === "example" &&
+    product.category === "bachas" &&
+    !product.comingSoon;
   const shapeDims =
     product.shape && product.shape in BACHA_DIMENSIONS
       ? BACHA_DIMENSIONS[product.shape as BachaShapeId]
       : null;
+  const shapeName = product.shape ? shapeLabel(product.shape) : undefined;
+  const colorName = product.color ? colorLabel(product.color) : undefined;
+
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.description,
+    image: product.images,
+    sku: product.id,
+    brand: { "@type": "Brand", name: "Prieta Concreto" },
+    offers: {
+      "@type": "Offer",
+      url: `https://prietaconcreto.shop/producto/${product.slug}`,
+      priceCurrency: "ARS",
+      price: product.price,
+      availability: canBuy
+        ? "https://schema.org/InStock"
+        : isExampleBacha
+          ? "https://schema.org/PreOrder"
+          : "https://schema.org/OutOfStock",
+      seller: { "@type": "Organization", name: "Prieta Concreto" },
+    },
+  };
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
       <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
         <div className="space-y-3">
           {product.images.map((src, i) => (
@@ -71,8 +129,8 @@ export default async function ProductPage({ params }: Props) {
         <div className="lg:sticky lg:top-28 lg:self-start">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
             {product.category}
-            {product.shape ? ` · ${shapeLabel(product.shape)}` : ""}
-            {product.color ? ` · ${colorLabel(product.color)}` : ""}
+            {shapeName ? ` · ${shapeName}` : ""}
+            {colorName ? ` · ${colorName}` : ""}
           </p>
           <h1 className="mt-2 font-[family-name:var(--font-outfit)] text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
             {product.name}
@@ -153,19 +211,29 @@ export default async function ProductPage({ params }: Props) {
           </dl>
 
           <div className="mt-8">
-            <AddToCartButton
-              productId={product.id}
-              name={product.name}
-              price={product.price}
-              image={product.images[0]}
-              disabled={!canBuy}
-            />
-            {product.status === "example" ? (
-              <p className="mt-3 text-xs text-navy/50">
-                Esto es un ejemplo de color. Las piezas a la venta se cargan una
-                por una desde el admin (nunca son idénticas).
-              </p>
-            ) : null}
+            {isExampleBacha ? (
+              <MadeToOrderCta
+                name={product.name}
+                colorLabel={colorName}
+                shapeLabel={shapeName}
+              />
+            ) : (
+              <>
+                <AddToCartButton
+                  productId={product.id}
+                  name={product.name}
+                  price={product.price}
+                  image={product.images[0]}
+                  disabled={!canBuy}
+                />
+                {product.status === "sold" ? (
+                  <p className="mt-3 text-xs text-navy/50">
+                    Pieza vendida. Podés encargar el mismo modelo y color por
+                    pedido (demora ~15 días).
+                  </p>
+                ) : null}
+              </>
+            )}
           </div>
         </div>
       </div>

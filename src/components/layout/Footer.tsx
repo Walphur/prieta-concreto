@@ -9,8 +9,9 @@ export function Footer() {
         <div>
           <PrietaLogo size="md" variant="dark" />
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-cream/70">
-            Estudio artesanal en San Luis. Bachas de concreto, y pronto celosías
-            y mesadas. Envíos a toda la Argentina por Andesmar Cargas.
+            Estudio artesanal en San Luis. Bachas de concreto por pedido (modelo
+            y color), demora aprox. 15 días. Envíos a toda la Argentina por
+            Andesmar Cargas.
           </p>
         </div>
 

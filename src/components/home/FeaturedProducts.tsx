@@ -1,4 +1,5 @@
 import { ProductCard } from "@/components/product/ProductCard";
+import { MadeToOrderNotice } from "@/components/order/MadeToOrderNotice";
 import { readProducts } from "@/lib/catalog";
 import { Button } from "@/components/ui/Button";
 
@@ -23,19 +24,20 @@ export async function FeaturedProducts() {
             Colección
           </p>
           <h2 className="mt-2 font-[family-name:var(--font-outfit)] text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
-            {available.length > 0 ? "Piezas y colores" : "Colores disponibles"}
+            {available.length > 0 ? "Piezas y colores" : "Modelos y colores"}
           </h2>
           <p className="mt-3 text-base text-navy/65">
-            Todas las bachas:{" "}
-            <span className="font-semibold text-deep-red">$80.000</span>. Los
-            ejemplos muestran colores; las medidas de moldes están en Tienda →
-            Medidas.
+            Ejemplos de referencia para encargar tu bacha. Precio fijo{" "}
+            <span className="font-semibold text-deep-red">$80.000</span>. Medidas
+            de moldes en Tienda → Medidas.
           </p>
         </div>
         <Button href="/tienda" variant="outline" className="self-start sm:self-auto">
           Ver tienda
         </Button>
       </div>
+
+      <MadeToOrderNotice className="mt-8 border border-concrete bg-cream-dark/50 px-5 py-5 sm:px-6" />
 
       <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {featured.map((product, i) => (

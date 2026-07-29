@@ -10,7 +10,8 @@ import {
 export const metadata: Metadata = {
   title: "Inspiración",
   description:
-    "Galería de bachas Prieta Concreto: estudio, clientes e instalaciones en todo el país.",
+    "Galería de bachas Prieta Concreto: estudio, clientes e instalaciones en todo el país. Pedidos a medida desde San Luis.",
+  alternates: { canonical: "/inspiracion" },
 };
 
 export default function InspiracionPage() {

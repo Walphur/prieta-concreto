@@ -3,7 +3,9 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Nosotros",
-  description: "Historia y proceso artesanal de Prieta Concreto en San Luis.",
+  description:
+    "Historia y proceso artesanal de Prieta Concreto en San Luis. Bachas por pedido con demora de 15 días por fraguado.",
+  alternates: { canonical: "/nosotros" },
 };
 
 export default function NosotrosPage() {
@@ -56,11 +58,11 @@ export default function NosotrosPage() {
             },
             {
               t: "Curado y sellado",
-              d: "Tiempo de fraguado controlado y sellador profesional resistente al agua.",
+              d: "Demora aprox. 15 días por secado y fraguado del concreto, más sellador profesional resistente al agua.",
             },
             {
-              t: "Control de stock",
-              d: "Inventario en tiempo real: solo publicamos lo que podemos entregar.",
+              t: "Pedido a medida",
+              d: "Elegís modelo y color. Seña para iniciar la fabricación; el resto al retirar o despachar.",
             },
           ].map((step, i) => (
             <li key={step.t} className="flex gap-4">
