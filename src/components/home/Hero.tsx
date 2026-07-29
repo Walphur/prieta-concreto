@@ -71,36 +71,21 @@ export function Hero() {
 
       {/* Base oscura — la linterna “abre” un hueco */}
       <div
-        className="absolute inset-0 bg-navy/75 transition-[background] duration-100"
+        className="absolute inset-0"
         style={{
           background: live
-            ? `radial-gradient(circle 520px at var(--hx) var(--hy), transparent 0%, rgba(26,35,50,0.35) 28%, rgba(26,35,50,0.78) 58%, rgba(18,24,32,0.92) 100%)`
+            ? `radial-gradient(circle 520px at var(--hx) var(--hy), transparent 0%, rgba(26,35,50,0.32) 28%, rgba(26,35,50,0.72) 58%, rgba(18,24,32,0.9) 100%)`
             : `linear-gradient(90deg, rgba(26,35,50,0.82) 0%, rgba(26,35,50,0.45) 55%, rgba(26,35,50,0.55) 100%)`,
         }}
       />
 
-      {/* Grano revelado bajo la luz */}
+      {/* Halo sage suave (sin grano) */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-70 mix-blend-soft-light"
-        style={{
-          backgroundImage: "url(/textures/grain.svg)",
-          backgroundSize: "140px 140px",
-          WebkitMaskImage: live
-            ? `radial-gradient(circle 420px at var(--hx) var(--hy), #000 0%, transparent 72%)`
-            : `linear-gradient(90deg, transparent 20%, #000 50%, transparent 90%)`,
-          maskImage: live
-            ? `radial-gradient(circle 420px at var(--hx) var(--hy), #000 0%, transparent 72%)`
-            : `linear-gradient(90deg, transparent 20%, #000 50%, transparent 90%)`,
-        }}
-      />
-
-      {/* Halo sage */}
-      <div
-        className="pointer-events-none absolute inset-0 mix-blend-screen"
+        className="pointer-events-none absolute inset-0"
         style={{
           background: live
-            ? `radial-gradient(circle 280px at var(--hx) var(--hy), rgba(163,178,158,0.28) 0%, transparent 70%)`
-            : `radial-gradient(circle 360px at 70% 40%, rgba(163,178,158,0.16) 0%, transparent 70%)`,
+            ? `radial-gradient(circle 300px at var(--hx) var(--hy), rgba(163,178,158,0.22) 0%, transparent 72%)`
+            : `radial-gradient(circle 360px at 70% 40%, rgba(163,178,158,0.14) 0%, transparent 70%)`,
         }}
       />
 
