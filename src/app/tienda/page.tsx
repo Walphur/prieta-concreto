@@ -53,14 +53,12 @@ export default async function TiendaPage({
 
   return (
     <div className="mx-auto max-w-7xl px-4 section-space sm:px-6 lg:px-8">
-      <header className="max-w-xl pb-12">
-        <p className="editorial-kicker">Colección</p>
-        <h1 className="editorial-title mt-4 text-3xl sm:text-4xl">
+      <header className="max-w-lg pb-16">
+        <h1 className="editorial-title text-3xl sm:text-4xl">
           Bachas de concreto
         </h1>
-        <p className="mt-4 text-sm leading-relaxed text-navy/55 sm:text-base">
-          Piezas de referencia para encargar. Precio fijo $95.000. Medidas en la
-          pestaña correspondiente.
+        <p className="mt-5 text-sm leading-relaxed text-navy/50">
+          Precio fijo $95.000. Medidas en la pestaña correspondiente.
         </p>
       </header>
 

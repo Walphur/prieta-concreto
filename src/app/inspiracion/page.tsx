@@ -4,7 +4,6 @@ import {
   galleryClientes,
   galleryGrupos,
   galleryProducto,
-  galleryVideos,
 } from "@/lib/gallery";
 import { whatsappGeneralUrl } from "@/lib/bank";
 
@@ -15,36 +14,29 @@ export const metadata: Metadata = {
   alternates: { canonical: "/inspiracion" },
 };
 
-const estudioGallery = [
-  ...galleryProducto.slice(0, 9),
-  ...galleryGrupos.filter((i) => !i.src.includes("feria")).slice(0, 3),
-];
+/** Fotos reservadas para otras páginas — no se repiten aquí. */
+const RESERVED = new Set([
+  "/hero/hero-bano-marmolada.png", // Home hero
+  "/hero/hero-bano-circular-espejo.png", // Nosotros hero
+]);
 
-const instalaciones = [
-  {
-    src: "/hero/hero-bano-marmolada.png",
-    label: "Oval marmolada",
-    alt: "Bacha oval marmolada Prieta en baño con mueble de madera",
-  },
-  ...galleryClientes,
+const instalaciones = galleryClientes.filter((i) => !RESERVED.has(i.src));
+
+const estudioGallery = [
+  ...galleryProducto.slice(0, 6),
+  ...galleryGrupos.filter((i) => !i.src.includes("feria")).slice(0, 2),
 ];
 
 export default function InspiracionPage() {
   return (
     <div>
       <div className="mx-auto max-w-7xl px-4 section-space sm:px-6 lg:px-8">
-        <header className="max-w-lg pb-4">
-          <p className="editorial-kicker">Inspiración</p>
-          <h1 className="editorial-title mt-4 text-3xl sm:text-4xl">
-            Espacios
-          </h1>
-          <p className="mt-4 text-sm leading-relaxed text-navy/55">
-            Baños reales. La pieza en contexto.
-          </p>
+        <header className="max-w-md pb-6">
+          <h1 className="editorial-title text-3xl sm:text-4xl">Espacios</h1>
         </header>
 
-        <section className="mt-16">
-          <div className="grid gap-8 sm:grid-cols-2 lg:gap-10">
+        <section className="mt-12">
+          <div className="grid gap-10 sm:grid-cols-2 lg:gap-12">
             {instalaciones.map((item) => (
               <figure key={item.src} className="group">
                 <div className="overflow-hidden bg-cream-dark">
@@ -57,18 +49,14 @@ export default function InspiracionPage() {
                     className="h-auto w-full object-contain transition-transform duration-[1000ms] ease-editorial group-hover:scale-[1.01]"
                   />
                 </div>
-                <figcaption className="mt-4 text-[11px] font-medium uppercase tracking-[0.16em] text-navy/40">
-                  {item.label}
-                </figcaption>
               </figure>
             ))}
           </div>
         </section>
 
-        <section className="mt-28">
-          <p className="editorial-kicker">Taller</p>
-          <h2 className="editorial-title mt-4 text-2xl">Piezas</h2>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+        <section className="mt-32">
+          <h2 className="editorial-title text-2xl">Taller</h2>
+          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
             {estudioGallery.map((item) => (
               <figure key={item.src} className="group">
                 <div className="img-reveal relative aspect-[4/5] overflow-hidden bg-concrete-light">
@@ -80,50 +68,21 @@ export default function InspiracionPage() {
                     className="object-cover object-center transition-transform duration-[1000ms] ease-editorial group-hover:scale-[1.02]"
                   />
                 </div>
-                <figcaption className="mt-3 text-[11px] font-medium uppercase tracking-[0.14em] text-navy/35">
-                  {item.label}
-                </figcaption>
               </figure>
             ))}
           </div>
         </section>
 
-        <section className="mt-28">
-          <p className="editorial-kicker">Oficio</p>
-          <h2 className="editorial-title mt-4 text-2xl">Proceso</h2>
-          <div className="mt-12 grid gap-6 sm:grid-cols-3">
-            {galleryVideos.map((item) => (
-              <figure key={item.src}>
-                <div className="flex aspect-[9/16] items-center justify-center bg-navy">
-                  <video
-                    src={item.src}
-                    controls
-                    playsInline
-                    preload="metadata"
-                    className="h-full max-h-full w-full object-contain"
-                  >
-                    {item.label}
-                  </video>
-                </div>
-                <figcaption className="mt-3 text-[11px] font-medium uppercase tracking-[0.14em] text-navy/40">
-                  {item.label}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </section>
-
-        <div className="mt-28 border-t border-navy/10 pt-16 text-center">
-          <p className="text-sm text-navy/50">¿Tenés un baño Prieta?</p>
+        <div className="mt-32 text-center">
           <a
             href={whatsappGeneralUrl(
               "Hola Prieta, quiero compartir fotos de mi bacha instalada.",
             )}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-block text-xs font-medium uppercase tracking-[0.16em] text-navy underline decoration-navy/25 underline-offset-8 transition duration-700 hover:decoration-navy/60"
+            className="text-xs font-medium uppercase tracking-[0.16em] text-navy/45 underline decoration-navy/20 underline-offset-8 transition duration-700 hover:text-navy hover:decoration-navy/50"
           >
-            Compartir por WhatsApp
+            Compartir tu espacio
           </a>
         </div>
       </div>

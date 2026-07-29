@@ -4,15 +4,12 @@ import { Button } from "@/components/ui/Button";
 export function HomeCta() {
   return (
     <section className="bg-navy">
-      <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+      <div className="mx-auto max-w-7xl px-4 py-28 sm:px-6 lg:px-8 lg:py-36">
         <div className="max-w-md">
-          <p className="text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-sage-light/80">
-            Encargo
-          </p>
-          <h2 className="mt-5 font-[family-name:var(--font-outfit)] text-3xl font-medium tracking-[-0.02em] text-cream sm:text-4xl">
+          <h2 className="font-[family-name:var(--font-outfit)] text-3xl font-medium tracking-[-0.02em] text-cream sm:text-4xl">
             Hablemos de tu baño.
           </h2>
-          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+          <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
             <Button href="/tienda" variant="primary">
               Colección
             </Button>

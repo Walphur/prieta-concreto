@@ -239,52 +239,59 @@ export default async function ProductPage({ params }: Props) {
         </div>
       </div>
 
-      <div className="mt-28 grid gap-16 border-t border-navy/10 pt-20 lg:grid-cols-3 lg:gap-12">
-        <div>
-          <h2 className="editorial-kicker">Material</h2>
-          <p className="mt-4 text-sm leading-relaxed text-navy/60">
-            {product.specs.material}. Pigmento en masa — no pintura. Textura
-            mineral a la vista.
-            {product.specs.finish ? ` Acabado: ${product.specs.finish}.` : ""}
-          </p>
-        </div>
-        <div>
-          <h2 className="editorial-kicker">Proceso</h2>
-          <p className="mt-4 text-sm leading-relaxed text-navy/60">
-            Vaciado a mano, curado de ~{madeToOrder.leadDays} días (
-            {madeToOrder.reason}) y sellado mineral para uso diario.
-          </p>
-        </div>
-        <div>
-          <h2 className="editorial-kicker">Medidas</h2>
-          <p className="mt-4 text-sm leading-relaxed text-navy/60">
-            {shapeDims?.dimensions || product.specs.dimensions}
-            {shapeDims?.detail ? `. ${shapeDims.detail}` : ""}
-            {shapeDims?.wall ? ` Pared ${shapeDims.wall}.` : ""}
-            {shapeDims?.drain ? ` Desagüe ${shapeDims.drain}.` : ""}
-            {product.specs.weight ? ` ${product.specs.weight}.` : ""}
-          </p>
-        </div>
+      <div className="mt-24 max-w-2xl space-y-0 border-t border-navy/10 pt-10">
+        {[
+          {
+            t: "Material",
+            d: `${product.specs.material}. Pigmento en masa — no pintura.${
+              product.specs.finish ? ` Acabado: ${product.specs.finish}.` : ""
+            }`,
+          },
+          {
+            t: "Proceso",
+            d: `Vaciado a mano, curado de ~${madeToOrder.leadDays} días (${madeToOrder.reason}) y sellado mineral.`,
+          },
+          {
+            t: "Medidas",
+            d: [
+              shapeDims?.dimensions || product.specs.dimensions,
+              shapeDims?.detail,
+              shapeDims?.wall ? `Pared ${shapeDims.wall}` : null,
+              shapeDims?.drain ? `Desagüe ${shapeDims.drain}` : null,
+              product.specs.weight,
+            ]
+              .filter(Boolean)
+              .join(". "),
+          },
+          {
+            t: "Cuidado",
+            d: "Paño suave y jabón neutro. Evitar ácidos y abrasivos.",
+          },
+          {
+            t: "Envío",
+            d: "Andesmar Cargas a todo el país. Embalaje reforzado desde San Luis.",
+          },
+        ].map((block) => (
+          <details
+            key={block.t}
+            className="group border-b border-navy/10 py-5"
+          >
+            <summary className="cursor-pointer list-none font-[family-name:var(--font-outfit)] text-sm font-medium tracking-wide text-navy marker:content-none [&::-webkit-details-marker]:hidden">
+              <span className="flex items-center justify-between gap-4">
+                {block.t}
+                <span className="text-navy/30 transition group-open:rotate-45">
+                  +
+                </span>
+              </span>
+            </summary>
+            <p className="mt-4 max-w-lg text-sm leading-relaxed text-navy/55">
+              {block.d}
+            </p>
+          </details>
+        ))}
       </div>
 
-      <div className="mt-16 grid gap-12 border-t border-navy/10 pt-16 lg:grid-cols-2">
-        <div>
-          <h2 className="editorial-kicker">Cuidado</h2>
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-navy/60">
-            Superficie sellada para agua y uso cotidiano. Limpiar con paño suave
-            y jabón neutro. Evitar ácidos fuertes y abrasivos.
-          </p>
-        </div>
-        <div>
-          <h2 className="editorial-kicker">Envío</h2>
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-navy/60">
-            Despacho a todo el país vía Andesmar Cargas. Embalaje reforzado desde
-            el taller de San Luis.
-          </p>
-        </div>
-      </div>
-
-      <div className="mt-28 border-t border-navy/10 pt-16">
+      <div className="mt-24">
         <ReviewSection
           productName={product.name}
           productSlug={product.slug}
