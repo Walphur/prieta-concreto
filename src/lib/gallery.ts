@@ -23,13 +23,23 @@ export const galleryClientes = data.clientes as GalleryItem[];
 export const galleryVideos = data.videos as GalleryItem[];
 
 export const galleryGrupos: GalleryItem[] = allBachaImages
-  .filter((i) => i.kind === "grupo")
-  .map((i) => ({
-    src: i.src,
-    label: i.shape === "coleccion" ? "Colección" : `Grupo · ${i.shape}`,
-    alt: `Bachas ${i.shape}`,
-    kind: "producto" as const,
-  }));
+  .filter((i) => i.kind === "grupo" && !i.src.includes("feria"))
+  .map((i) => {
+    const label =
+      i.shape === "coleccion"
+        ? i.src.includes("colores")
+          ? "Varios colores"
+          : "En el taller"
+        : i.src.includes("duo")
+          ? `Dos · ${i.shape}`
+          : `Varias · ${i.shape}`;
+    return {
+      src: i.src,
+      label,
+      alt: `Bachas ${i.shape}`,
+      kind: "producto" as const,
+    };
+  });
 
 export const galleryAll: GalleryItem[] = [
   ...galleryProducto,

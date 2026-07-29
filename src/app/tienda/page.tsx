@@ -69,7 +69,7 @@ export default async function TiendaPage({
         </p>
       </header>
 
-      <MadeToOrderNotice className="mt-8 max-w-4xl" />
+      <MadeToOrderNotice className="mt-8 w-full" />
 
       <div className="mt-8 flex flex-wrap gap-2">
         {filters.map((f) => {

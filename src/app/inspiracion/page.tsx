@@ -6,13 +6,22 @@ import {
   galleryProducto,
   galleryVideos,
 } from "@/lib/gallery";
+import { MadeToOrderNotice } from "@/components/order/MadeToOrderNotice";
+import { whatsappGeneralUrl } from "@/lib/bank";
+import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
   title: "Inspiración",
   description:
-    "Galería de bachas Prieta Concreto: estudio, clientes e instalaciones en todo el país. Pedidos a medida desde San Luis.",
+    "Galería de bachas Prieta Concreto: fotos de estudio, baños de clientes y videos del taller. San Luis.",
   alternates: { canonical: "/inspiracion" },
 };
+
+/** Fotos de taller + varias bachas juntas (sin feria / fotos confusas). */
+const estudioGallery = [
+  ...galleryProducto,
+  ...galleryGrupos.filter((i) => !i.src.includes("feria")),
+];
 
 export default function InspiracionPage() {
   return (
@@ -25,17 +34,20 @@ export default function InspiracionPage() {
           Galería de bachas
         </h1>
         <p className="mt-3 text-navy/65">
-          Fotos de estudio, instalaciones de clientes en distintas provincias y
-          videos del taller. Solo piezas reales.
+          Fotos reales del taller y de baños ya instalados. Elegí modelo y color
+          para encargar la tuya.
         </p>
       </header>
 
       <section className="mt-14">
         <h2 className="font-[family-name:var(--font-outfit)] text-xl font-semibold text-navy">
-          Estudio
+          En el taller
         </h2>
+        <p className="mt-1 text-sm text-navy/55">
+          Modelos, colores y piezas terminadas antes de enviar.
+        </p>
         <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {galleryProducto.map((item) => (
+          {estudioGallery.map((item) => (
             <figure
               key={item.src}
               className="group relative aspect-square overflow-hidden bg-cream-dark"
@@ -57,47 +69,27 @@ export default function InspiracionPage() {
 
       <section className="mt-16">
         <h2 className="font-[family-name:var(--font-outfit)] text-xl font-semibold text-navy">
-          Colecciones y grupos
+          En baños de clientes
         </h2>
-        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {galleryGrupos.map((item) => (
-            <figure
-              key={item.src}
-              className="group relative aspect-square overflow-hidden bg-cream-dark"
-            >
-              <Image
-                src={item.src}
-                alt={item.alt}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-              />
-              <figcaption className="absolute bottom-3 left-3 bg-cream/90 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-navy">
-                {item.label}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </section>
-
-      <section className="mt-16">
-        <h2 className="font-[family-name:var(--font-outfit)] text-xl font-semibold text-navy">
-          Clientes
-        </h2>
-        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <p className="mt-1 text-sm text-navy/55">
+          Cómo se ven instaladas en casas reales.
+        </p>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {galleryClientes.map((item) => (
             <figure
               key={item.src}
-              className="group relative aspect-[4/5] overflow-hidden bg-concrete-light"
+              className="overflow-hidden border border-concrete/70 bg-cream-dark"
             >
-              <Image
-                src={item.src}
-                alt={item.alt}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-              />
-              <figcaption className="absolute bottom-3 left-3 bg-cream/90 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-navy">
+              <div className="relative aspect-[4/3] w-full">
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover object-bottom"
+                />
+              </div>
+              <figcaption className="px-3 py-2.5 text-xs font-medium text-navy/70">
                 {item.label}
               </figcaption>
             </figure>
@@ -107,8 +99,11 @@ export default function InspiracionPage() {
 
       <section className="mt-16">
         <h2 className="font-[family-name:var(--font-outfit)] text-xl font-semibold text-navy">
-          Videos
+          Videos del proceso
         </h2>
+        <p className="mt-1 text-sm text-navy/55">
+          Cómo se hacen las bachas en el taller.
+        </p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {galleryVideos.map((item) => (
             <figure key={item.src} className="overflow-hidden bg-navy">
@@ -139,7 +134,19 @@ export default function InspiracionPage() {
           ¿Ya tenés tu bacha Prieta? Mandanos la foto por WhatsApp y la sumamos
           a esta galería.
         </p>
+        <div className="mt-6">
+          <Button
+            href={whatsappGeneralUrl(
+              "Hola Prieta Concreto, les mando foto de mi bacha para la galería.",
+            )}
+            variant="outline"
+          >
+            Enviar por WhatsApp
+          </Button>
+        </div>
       </div>
+
+      <MadeToOrderNotice className="mt-10 w-full" />
     </div>
   );
 }
