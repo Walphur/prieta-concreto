@@ -8,10 +8,11 @@ import { depositLabel, fullPriceLabel, madeToOrder } from "@/lib/order-policy";
 import { productPhotos } from "@/lib/gallery";
 
 const HERO_IMAGE = productPhotos.clienteCircular;
+const HERO_BACHA = "/hero/bacha-flotante-cutout.png";
 
 /**
  * Hero con foto real + linterna que revela la imagen y el grano
- * (efecto 1 + 3 sin canvas pesado).
+ * (efecto 1 + 3 sin canvas pesado). Bacha real flotante como ancla de producto.
  */
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -88,6 +89,26 @@ export function Hero() {
             : `radial-gradient(circle 360px at 70% 40%, rgba(163,178,158,0.14) 0%, transparent 70%)`,
         }}
       />
+
+      {/* Bacha real flotante — cutout sin fondo negro */}
+      <div
+        className="pointer-events-none absolute inset-0 z-[5] flex justify-end"
+        aria-hidden
+      >
+        <div className="animate-float-in absolute right-[-8%] top-[12%] w-[min(78vw,340px)] sm:right-[2%] sm:top-[14%] sm:w-[min(48vw,400px)] lg:right-[6%] lg:top-[18%] lg:w-[min(42vw,460px)]">
+          <div className="animate-float-slow cutout-shadow origin-center">
+            <Image
+              src={HERO_BACHA}
+              alt=""
+              width={392}
+              height={215}
+              priority
+              sizes="(max-width: 640px) 78vw, (max-width: 1024px) 48vw, 42vw"
+              className="h-auto w-full select-none"
+            />
+          </div>
+        </div>
+      </div>
 
       <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-end px-4 pb-16 pt-28 sm:px-6 sm:pb-20 lg:justify-center lg:px-8 lg:pb-24">
         <div className="max-w-xl">
