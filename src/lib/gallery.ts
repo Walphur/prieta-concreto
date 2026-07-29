@@ -74,6 +74,7 @@ export const productPhotos = {
   clienteMarmol: "/gallery/shapes/oval/cliente-marmol.jpg",
   clienteMarmolMadera: "/gallery/clientes/cliente-oval-marmol-madera.png",
   clienteGrisOscuroBano: "/gallery/clientes/cliente-oval-gris-oscuro-bano.png",
+  clienteCircularBeigeEspejo: "/gallery/clientes/cliente-circular-beige-espejo.png",
   heroBanoMarmolada: "/hero/hero-bano-marmolada.png",
   heroBanoCircularEspejo: "/hero/hero-bano-circular-espejo.png",
 };

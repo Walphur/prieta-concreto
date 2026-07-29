@@ -26,8 +26,8 @@ const BANDS: Band[] = [
     subtitle: `Masa pigmentada, curado lento y sellado mineral. Por pedido — ~${madeToOrder.leadDays} días.`,
   },
   {
-    src: "/gallery/clientes/cliente-oval-gris-oscuro-bano.png",
-    alt: "Bacha oval gris oscuro instalada en baño con azulejos oscuros",
+    src: "/gallery/clientes/cliente-circular-beige-espejo.png",
+    alt: "Bacha circular beige a juego con la mesada, espejo redondo retroiluminado y grifería negra en baño crema",
     imageFirst: true,
     kicker: "Instalaciones reales",
     title: "EN CASAS DE CLIENTES",

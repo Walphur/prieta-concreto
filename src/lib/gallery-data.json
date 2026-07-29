@@ -111,6 +111,12 @@
   ],
   "clientes": [
     {
+      "src": "/gallery/clientes/cliente-circular-beige-espejo.png",
+      "label": "Circular beige · espejo LED",
+      "alt": "Bacha circular beige a juego con la mesada, espejo redondo retroiluminado y grifería negra en baño crema",
+      "kind": "cliente"
+    },
+    {
       "src": "/hero/hero-bano-circular-espejo.png",
       "label": "Circular gris · espejo retroiluminado",
       "alt": "Bacha circular gris clara sobre terrazo, espejo redondo retroiluminado y grifería negra",
