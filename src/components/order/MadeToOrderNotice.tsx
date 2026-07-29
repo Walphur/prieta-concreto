@@ -27,7 +27,7 @@ export function MadeToOrderNotice({
   return (
     <aside
       className={clsx(
-        "border border-concrete bg-cream-dark/50",
+        "texture-panel",
         className,
       )}
     >

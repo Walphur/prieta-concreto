@@ -39,8 +39,9 @@ export default function NosotrosPage() {
         <p className="mt-4 leading-relaxed text-navy/70">
           Prieta Concreto nace en San Luis como un estudio de diseño artesanal
           dedicado a piezas de baño. Cada bacha se vacía a mano: pigmentamos la
-          masa, controlamos el curado y sellamos la superficie para un uso
-          diario sin perder la textura mineral del material.
+          masa con óxidos y ferrites, controlamos el curado y sellamos la
+          superficie para un uso diario sin perder la textura mineral del
+          concreto.
         </p>
 
         <h2 className="mt-12 font-[family-name:var(--font-outfit)] text-2xl font-semibold text-navy">

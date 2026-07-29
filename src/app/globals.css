@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand palette — Prieta Concreto */
+  /* Brand palette — Prieta Concreto / mineral */
   --sage: #7d8f78;
   --sage-dark: #5f6f5b;
   --sage-light: #a3b29e;
@@ -11,12 +11,19 @@
   --navy-soft: #243044;
   --concrete: #d8d4ce;
   --concrete-light: #ebe8e3;
-  --cream: #f7f5f2;
-  --cream-dark: #efece7;
+  --cream: #f3f0eb;
+  --cream-dark: #e8e4dd;
   --white: #ffffff;
+  --ferrite-rosa: #cfa39a;
+  --ferrite-verde: #8faaa2;
+  --ferrite-grafito: #4c5258;
+  --ferrite-mineral: #9b9791;
 
   --background: var(--cream);
   --foreground: var(--navy);
+  --texture-grain: url("/textures/grain.svg");
+  --texture-cement-light: url("/textures/cement-light.svg");
+  --texture-cement-dark: url("/textures/cement-dark.svg");
 }
 
 @theme inline {
@@ -54,25 +61,79 @@
   }
 }
 
-/* Soft mineral washes — no noise / no puntillado */
+/* Page-wide mineral wash */
+.site-mineral {
+  background-color: var(--cream);
+  background-image:
+    var(--texture-grain),
+    var(--texture-cement-light),
+    linear-gradient(
+      165deg,
+      #f7f4ef 0%,
+      var(--cream) 42%,
+      var(--cream-dark) 100%
+    );
+  background-size:
+    220px 220px,
+    520px 520px,
+    auto;
+  background-blend-mode: soft-light, multiply, normal;
+}
+
 .texture-concrete {
   background-color: var(--concrete-light);
-  background-image: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.55) 0%,
-    transparent 42%,
-    rgba(26, 35, 50, 0.04) 100%
-  );
+  background-image:
+    var(--texture-grain),
+    var(--texture-cement-light),
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.45) 0%,
+      transparent 45%,
+      rgba(26, 35, 50, 0.06) 100%
+    );
+  background-size:
+    180px 180px,
+    480px 480px,
+    auto;
+  background-blend-mode: soft-light, multiply, normal;
 }
 
 .texture-concrete-dark {
   background-color: var(--navy);
-  background-image: linear-gradient(
-    155deg,
-    var(--navy-soft) 0%,
-    var(--navy) 55%,
-    #141c28 100%
-  );
+  background-image:
+    var(--texture-grain),
+    var(--texture-cement-dark),
+    linear-gradient(
+      155deg,
+      var(--navy-soft) 0%,
+      var(--navy) 52%,
+      #121820 100%
+    );
+  background-size:
+    200px 200px,
+    560px 560px,
+    auto;
+  background-blend-mode: soft-light, soft-light, normal;
+}
+
+.texture-panel {
+  background-color: color-mix(in oklab, var(--cream-dark) 88%, white);
+  background-image:
+    var(--texture-grain),
+    var(--texture-cement-light);
+  background-size:
+    160px 160px,
+    420px 420px;
+  background-blend-mode: soft-light, multiply;
+  border: 1px solid color-mix(in oklab, var(--concrete) 80%, transparent);
+}
+
+.grain-overlay {
+  pointer-events: none;
+  background-image: var(--texture-grain);
+  background-size: 180px 180px;
+  opacity: 0.28;
+  mix-blend-mode: soft-light;
 }
 
 @keyframes fade-up {

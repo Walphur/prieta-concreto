@@ -94,7 +94,7 @@ export default function RootLayout({
       lang="es-AR"
       className={`${dmSans.variable} ${outfit.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-cream text-navy">
+      <body className="site-mineral flex min-h-full flex-col text-navy">
         <JsonLd />
         <Header />
         <main className="flex-1">{children}</main>

@@ -1,13 +1,48 @@
 /** Catálogo oficial Prieta Concreto — colores y modelos */
 
 export const BACHA_COLORS = [
-  { id: "gris-natural", label: "Gris natural" },
-  { id: "gris-oscuro", label: "Gris oscuro" },
-  { id: "rosa", label: "Rosa" },
-  { id: "verde-agua", label: "Verde agua" },
-  { id: "marmolado", label: "Marmolado gris con negro" },
-  { id: "blanco", label: "Blanco" },
-  { id: "negro", label: "Negro" },
+  {
+    id: "gris-natural",
+    label: "Gris natural",
+    hex: "#9B9791",
+    ferrite: "Óxido de hierro · tono mineral",
+  },
+  {
+    id: "gris-oscuro",
+    label: "Gris oscuro",
+    hex: "#4C5258",
+    ferrite: "Pigmento grafito",
+  },
+  {
+    id: "rosa",
+    label: "Rosa",
+    hex: "#CFA39A",
+    ferrite: "Ferrite rosa",
+  },
+  {
+    id: "verde-agua",
+    label: "Verde agua",
+    hex: "#8FAAA2",
+    ferrite: "Óxido verde · agua",
+  },
+  {
+    id: "marmolado",
+    label: "Marmolado gris con negro",
+    hex: "#6A6E73",
+    ferrite: "Veteado mineral",
+  },
+  {
+    id: "blanco",
+    label: "Blanco",
+    hex: "#E6E3DC",
+    ferrite: "Cemento claro",
+  },
+  {
+    id: "negro",
+    label: "Negro",
+    hex: "#2B2E31",
+    ferrite: "Negro carbono",
+  },
 ] as const;
 
 export const BACHA_SHAPES = [
