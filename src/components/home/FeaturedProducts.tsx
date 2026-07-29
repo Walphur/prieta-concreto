@@ -1,8 +1,8 @@
 import { ProductCard } from "@/components/product/ProductCard";
 import { MadeToOrderNotice } from "@/components/order/MadeToOrderNotice";
+import { SolidifyReveal } from "@/components/effects/SolidifyReveal";
 import { readProducts } from "@/lib/catalog";
 import { Button } from "@/components/ui/Button";
-import { clsx } from "clsx";
 
 export async function FeaturedProducts() {
   const all = await readProducts();
@@ -38,21 +38,15 @@ export async function FeaturedProducts() {
         </Button>
       </div>
 
-      <MadeToOrderNotice className="mt-8" />
+      <SolidifyReveal className="mt-8" cureMs={220}>
+        <MadeToOrderNotice />
+      </SolidifyReveal>
 
       <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {featured.map((product, i) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            priority={i < 2}
-            className={clsx(
-              "animate-fade-up transition-transform duration-500 hover:-translate-y-1",
-              i === 1 && "delay-100",
-              i === 2 && "delay-200",
-              i === 3 && "delay-300",
-            )}
-          />
+          <SolidifyReveal key={product.id} cureMs={240 + i * 40}>
+            <ProductCard product={product} priority={i < 2} />
+          </SolidifyReveal>
         ))}
       </div>
     </section>

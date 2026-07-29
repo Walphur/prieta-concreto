@@ -20,7 +20,7 @@ export function ProductCard({ product, className, priority }: ProductCardProps) 
   return (
     <article className={clsx("group", className)}>
       <Link href={`/producto/${product.slug}`} className="block">
-        <div className="relative aspect-[4/5] overflow-hidden bg-concrete-light">
+        <div className="relative aspect-[4/5] overflow-hidden bg-concrete-light solidify-face">
           <Image
             src={product.images[0]}
             alt={product.name}

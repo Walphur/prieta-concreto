@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/Button";
 import { whatsappGeneralUrl } from "@/lib/bank";
 import { depositLabel, fullPriceLabel, madeToOrder } from "@/lib/order-policy";
 import { productPhotos } from "@/lib/gallery";
+import { ConcreteNoiseCanvas } from "@/components/effects/ConcreteNoiseCanvas";
 
-/** Foto real de instalación — full-bleed, sin recortes falsos */
 const HERO_IMAGE = productPhotos.clienteCircular;
 
 export function Hero() {
@@ -18,8 +18,9 @@ export function Hero() {
         sizes="100vw"
         className="animate-scale-soft object-cover object-[68%_center]"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-navy/88 via-navy/55 to-navy/25" />
-      <div className="absolute inset-0 bg-gradient-to-t from-navy/55 via-transparent to-navy/35" />
+      <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/60 to-navy/30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-navy/65 via-transparent to-navy/40" />
+      <ConcreteNoiseCanvas className="pointer-events-none absolute inset-0" opacity={0.28} />
 
       <div className="relative mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-end px-4 pb-16 pt-28 sm:px-6 sm:pb-20 lg:justify-center lg:px-8 lg:pb-24">
         <div className="max-w-xl">
