@@ -34,8 +34,8 @@ const BANDS: Band[] = [
     subtitle: "La pieza en el baño, sin recortes. Así se ve el concreto Prieta instalado.",
   },
   {
-    src: "/gallery/clientes/cliente-oval-marmol-madera.png",
-    alt: "Bacha oval marmolada instalada sobre mueble de madera clara",
+    src: "/hero/hero-bano-circular-espejo.png",
+    alt: "Bacha circular gris clara sobre terrazo, espejo redondo retroiluminado y grifería negra",
     title: "ENCARGÁ LA TUYA",
     subtitle:
       "Elegí modelo y color. Si no hay stock, la fabricamos en el taller de San Luis.",

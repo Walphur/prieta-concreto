@@ -111,6 +111,12 @@
   ],
   "clientes": [
     {
+      "src": "/hero/hero-bano-circular-espejo.png",
+      "label": "Circular gris · espejo retroiluminado",
+      "alt": "Bacha circular gris clara sobre terrazo, espejo redondo retroiluminado y grifería negra",
+      "kind": "cliente"
+    },
+    {
       "src": "/gallery/clientes/cliente-oval-marmol-madera.png",
       "label": "Oval marmolada · baño claro",
       "alt": "Bacha oval marmolada instalada sobre mueble de madera clara",
