@@ -16,22 +16,28 @@ const nav = [
   { href: "/inspiracion", label: "Inspiración" },
 ];
 
-/** Trolley cart — upright handle, trapezoid basket, two wheels (ref right icon). */
+/** Trolley cart — upright handle, wide trapezoid basket, two wheels. */
 function CartIcon({ className }: { className?: string }) {
   return (
     <svg
       className={className}
       viewBox="0 0 24 24"
+      width="24"
+      height="24"
       fill="none"
       stroke="currentColor"
       strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
+      preserveAspectRatio="xMidYMid meet"
       aria-hidden="true"
     >
-      <path d="M4.5 6.5H7.5V17.5H16L18 6.5H7.5" />
-      <circle cx="10" cy="20.25" r="1.4" />
-      <circle cx="15.25" cy="20.25" r="1.4" />
+      {/* Upright handle with top grip */}
+      <path d="M4 3.5h3v5" />
+      {/* Basket: wider than tall trapezoid */}
+      <path d="M7 8.5h13l-1.7 9H8.7L7 8.5z" />
+      <circle cx="10.25" cy="20.5" r="1.35" />
+      <circle cx="16.5" cy="20.5" r="1.35" />
     </svg>
   );
 }
@@ -103,7 +109,7 @@ export function Header() {
               className="relative inline-flex h-11 w-11 items-center justify-center text-navy transition-colors hover:text-sage-dark"
               aria-label={`Carrito${count ? `, ${count} artículos` : ""}`}
             >
-              <CartIcon className="h-5 w-5" />
+              <CartIcon className="h-7 w-7 shrink-0" />
               {count > 0 ? (
                 <span className="absolute right-1.5 top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-sage px-1 text-[10px] font-semibold text-white">
                   {count}
