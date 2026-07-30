@@ -99,13 +99,13 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
               tabIndex={isActive ? 0 : -1}
               onClick={() => select(i)}
               className={clsx(
-                "interactive relative w-fit rounded-sm border px-3 py-1.5 text-left font-[family-name:var(--font-outfit)] tracking-tight",
-                "transition-[background-color,border-color,color] ease-editorial",
+                "chip interactive relative w-fit px-3 py-1.5 text-left font-[family-name:var(--font-outfit)] tracking-tight",
+                "ease-editorial",
                 reduceMotion ? "duration-0" : "duration-[400ms]",
                 "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-verde-agua",
                 isActive
-                  ? "border-verde-agua/45 bg-verde-agua/[0.16] text-[1.35rem] font-medium text-verde-agua-panel sm:text-[1.5rem]"
-                  : "border-transparent text-[1.15rem] font-normal text-navy/40 hover:bg-verde-agua/[0.07] hover:text-navy/65 sm:text-[1.25rem]",
+                  ? "chip--active text-[1.35rem] sm:text-[1.5rem]"
+                  : "chip--idle text-[1.15rem] font-normal text-navy/40 sm:text-[1.25rem]",
               )}
             >
               {model.label}

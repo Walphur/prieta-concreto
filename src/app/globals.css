@@ -135,6 +135,28 @@
   transform: scale(1.03);
 }
 
+/* Quiet verde agua selection — ModelExplorer / nav / filters */
+.chip {
+  border: 1px solid transparent;
+  border-radius: 0.125rem;
+  transition:
+    background-color var(--duration-micro) var(--ease-editorial),
+    border-color var(--duration-micro) var(--ease-editorial),
+    color var(--duration-micro) var(--ease-editorial);
+}
+
+.chip--active {
+  border-color: color-mix(in oklab, var(--verde-agua) 45%, transparent);
+  background-color: color-mix(in oklab, var(--verde-agua) 16%, transparent);
+  color: var(--verde-agua-panel);
+  font-weight: 500;
+}
+
+.chip--idle:hover {
+  background-color: color-mix(in oklab, var(--verde-agua) 7%, transparent);
+  color: color-mix(in oklab, var(--navy) 65%, transparent);
+}
+
 /* Quiet press / hover for CTAs, chips, FABs */
 .interactive {
   transition:

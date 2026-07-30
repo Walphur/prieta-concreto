@@ -112,8 +112,8 @@ export default async function TiendaPage({
         </div>
       </section>
 
-      <div className="mx-auto max-w-7xl px-4 section-space sm:px-6 lg:px-8">
-        <nav className="mb-4 space-y-5" aria-label="Filtros de colección">
+      <div className="mx-auto max-w-7xl px-4 pb-24 pt-8 sm:px-6 sm:pt-10 lg:px-8 lg:pb-36 lg:pt-12">
+        <nav className="mb-4 space-y-4" aria-label="Filtros de colección">
           <div className="flex flex-wrap gap-2">
             {filters.map((f) => {
               const active = categoria === f.value;
@@ -124,10 +124,8 @@ export default async function TiendaPage({
                   key={f.value}
                   href={href}
                   className={clsx(
-                    "interactive px-4 py-2 text-xs font-medium uppercase tracking-[0.14em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-agua",
-                    active
-                      ? "bg-verde-agua text-white"
-                      : "bg-cream-dark text-navy/55 hover:bg-concrete-light hover:text-navy",
+                    "chip interactive px-4 py-2 text-xs uppercase tracking-[0.14em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-agua",
+                    active ? "chip--active" : "chip--idle font-medium text-navy/45",
                   )}
                 >
                   {f.label}
@@ -151,10 +149,8 @@ export default async function TiendaPage({
                     key={f.value}
                     href={href}
                     className={clsx(
-                      "interactive px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-agua",
-                      active
-                        ? "text-verde-agua-panel underline decoration-verde-agua underline-offset-8"
-                        : "text-navy/40 hover:text-navy/70",
+                      "chip interactive px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-agua",
+                      active ? "chip--active" : "chip--idle font-medium text-navy/45",
                     )}
                   >
                     {f.label}

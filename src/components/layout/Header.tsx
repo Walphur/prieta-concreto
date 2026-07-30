@@ -53,7 +53,7 @@ export function Header() {
         <div className="mx-auto flex h-[4.25rem] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <PrietaLogo size="md" intro />
 
-          <nav className="hidden items-center gap-8 md:flex" aria-label="Principal">
+          <nav className="hidden items-center gap-1.5 md:flex" aria-label="Principal">
             {nav.map((item) => {
               const active =
                 item.href === "/"
@@ -63,18 +63,15 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  aria-current={active ? "page" : undefined}
                   className={clsx(
-                    "relative text-sm font-medium tracking-wide transition-colors duration-300",
-                    active ? "text-sage-dark" : "text-navy/75 hover:text-navy",
+                    "chip interactive px-3 py-1.5 text-sm tracking-wide",
+                    active
+                      ? "chip--active"
+                      : "chip--idle font-medium text-navy/70",
                   )}
                 >
                   {item.label}
-                  <span
-                    className={clsx(
-                      "absolute -bottom-1 left-0 h-px w-full origin-left bg-sage transition-transform duration-300",
-                      active ? "scale-x-100" : "scale-x-0",
-                    )}
-                  />
                 </Link>
               );
             })}
@@ -128,11 +125,12 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  aria-current={active ? "page" : undefined}
                   className={clsx(
-                    "rounded-md px-3 py-2.5 text-sm font-medium transition-colors",
+                    "chip interactive px-3 py-2.5 text-sm tracking-wide",
                     active
-                      ? "bg-concrete-light text-sage-dark"
-                      : "text-navy/80 hover:bg-cream-dark",
+                      ? "chip--active"
+                      : "chip--idle font-medium text-navy/75",
                   )}
                 >
                   {item.label}
