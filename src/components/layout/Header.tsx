@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Menu, ShoppingBag, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { clsx } from "clsx";
 import { PrietaLogo } from "@/components/brand/PrietaLogo";
 import { useCartStore } from "@/lib/cart-store";
@@ -16,6 +16,25 @@ const nav = [
   { href: "/nosotros", label: "Nosotros" },
   { href: "/inspiracion", label: "Inspiración" },
 ];
+
+/** Minimal open tote — stroke matches Menu/X (~1.75). */
+function CartToteIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M7 8.25h10l-.85 11.1a1.4 1.4 0 0 1-1.4 1.3H9.25a1.4 1.4 0 0 1-1.4-1.3L7 8.25Z" />
+      <path d="M9.25 8.25V6.9a2.75 2.75 0 0 1 5.5 0v1.35" />
+    </svg>
+  );
+}
 
 export function Header() {
   const pathname = usePathname();
@@ -50,8 +69,10 @@ export function Header() {
             : "border-transparent bg-cream",
         )}
       >
-        <div className="mx-auto flex h-[4.25rem] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <PrietaLogo size="md" intro />
+        <div className="mx-auto flex h-[4.25rem] max-w-7xl items-center justify-between gap-3 overflow-x-clip px-4 sm:px-6 lg:px-8">
+          <div className="min-w-0 shrink">
+            <PrietaLogo size="md" intro className="origin-left max-sm:scale-[0.92]" />
+          </div>
 
           <nav className="hidden items-center gap-1.5 md:flex" aria-label="Principal">
             {nav.map((item) => {
@@ -65,7 +86,7 @@ export function Header() {
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   className={clsx(
-                    "chip interactive px-3 py-1.5 text-sm tracking-wide",
+                    "chip interactive inline-flex min-h-10 items-center px-3 py-1.5 text-sm tracking-wide",
                     active
                       ? "chip--active"
                       : "chip--idle font-medium text-navy/70",
@@ -85,7 +106,7 @@ export function Header() {
               className="relative inline-flex h-11 w-11 items-center justify-center text-navy transition-colors hover:text-sage-dark"
               aria-label={`Carrito${count ? `, ${count} artículos` : ""}`}
             >
-              <ShoppingBag className="h-5 w-5" strokeWidth={1.75} />
+              <CartToteIcon className="h-5 w-5" />
               {count > 0 ? (
                 <span className="absolute right-1.5 top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-sage px-1 text-[10px] font-semibold text-white">
                   {count}
@@ -127,7 +148,7 @@ export function Header() {
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   className={clsx(
-                    "chip interactive px-3 py-2.5 text-sm tracking-wide",
+                    "chip interactive inline-flex min-h-11 items-center px-3 py-3 text-sm tracking-wide",
                     active
                       ? "chip--active"
                       : "chip--idle font-medium text-navy/75",
@@ -138,7 +159,10 @@ export function Header() {
               );
             })}
             <div className="border-t border-concrete/60 px-3 pt-2 sm:hidden">
-              <MemberAccess className="inline-flex py-2 text-sm" />
+              <MemberAccess
+                className="inline-flex py-2 text-sm"
+                onOpen={() => setMobileOpen(false)}
+              />
             </div>
           </nav>
         </div>
