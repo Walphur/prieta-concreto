@@ -35,7 +35,7 @@ export async function FeaturedProducts() {
         <div className="mt-16 grid gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((product, i) => (
             <SolidifyReveal key={product.id} cureMs={500 + i * 90}>
-              <ProductCard product={product} priority={i < 2} />
+              <ProductCard product={product} priority={i < 2} rotateImages />
             </SolidifyReveal>
           ))}
         </div>
