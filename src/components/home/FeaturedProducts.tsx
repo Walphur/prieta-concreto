@@ -1,36 +1,74 @@
-import { ProductCard } from "@/components/product/ProductCard";
 import { SolidifyReveal } from "@/components/effects/SolidifyReveal";
+import {
+  ModelExplorer,
+  type ModelExplorerItem,
+} from "@/components/home/ModelExplorer";
 import { readProducts } from "@/lib/catalog";
-import { BACHA_SHAPES } from "@/lib/bacha-options";
+import {
+  BACHA_DIMENSIONS,
+  BACHA_SHAPES,
+  type BachaShapeId,
+} from "@/lib/bacha-options";
+import { imagesByShape } from "@/lib/gallery";
 import Link from "next/link";
 import type { Product } from "@/types/product";
 
-const SHAPE_ORDER = BACHA_SHAPES.map((s) => s.id);
+/** Studio shots only — skip ficha/diagram and group shots. */
+function studioImages(product: Product | undefined, shapeId: BachaShapeId) {
+  const fromProduct = (product?.images ?? []).filter(
+    (src) => src && !src.includes("/fichas/") && !src.includes("grupo"),
+  );
+  if (fromProduct.length > 0) return fromProduct;
 
-function sortBachas(products: Product[]) {
-  return [...products].sort((a, b) => {
-    const ia = SHAPE_ORDER.indexOf(a.shape as (typeof SHAPE_ORDER)[number]);
-    const ib = SHAPE_ORDER.indexOf(b.shape as (typeof SHAPE_ORDER)[number]);
-    const sa = ia === -1 ? 99 : ia;
-    const sb = ib === -1 ? 99 : ib;
-    if (sa !== sb) return sa - sb;
-    return a.name.localeCompare(b.name, "es");
-  });
+  return imagesByShape(shapeId)
+    .filter(
+      (i) =>
+        i.kind !== "grupo" &&
+        !i.src.includes("/fichas/") &&
+        !i.src.includes("grupo"),
+    )
+    .map((i) => i.src);
+}
+
+function pickProduct(all: Product[], shapeId: BachaShapeId, label: string) {
+  const bachas = all.filter(
+    (p) =>
+      p.category === "bachas" &&
+      p.shape === shapeId &&
+      !p.comingSoon &&
+      (p.status === "available" || p.status === "example"),
+  );
+  const labelKey = label.toLowerCase();
+  return (
+    bachas.find((p) => p.featured) ??
+    bachas.find(
+      (p) =>
+        p.slug === labelKey || p.name.toLowerCase() === labelKey,
+    ) ??
+    bachas[0]
+  );
 }
 
 export async function FeaturedProducts() {
   const all = await readProducts();
-  const featured = sortBachas(
-    all.filter(
-      (p) =>
-        p.featured &&
-        p.category === "bachas" &&
-        !p.comingSoon &&
-        (p.status === "available" || p.status === "example"),
-    ),
-  ).slice(0, 4);
 
-  if (featured.length === 0) return null;
+  const models: ModelExplorerItem[] = BACHA_SHAPES.map((shape) => {
+    const product = pickProduct(all, shape.id, shape.label);
+    const dim = BACHA_DIMENSIONS[shape.id];
+    const images = studioImages(product, shape.id);
+
+    return {
+      id: shape.id,
+      label: shape.label,
+      mold: shape.mold,
+      dimensions: dim.dimensions,
+      copy: product?.description?.trim() || dim.detail,
+      images,
+      slug: product?.slug ?? shape.label.toLowerCase(),
+    };
+  }).filter((m) => m.images.length > 0);
+
+  if (models.length === 0) return null;
 
   return (
     <section className="bg-cream">
@@ -39,6 +77,9 @@ export async function FeaturedProducts() {
           <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-sm">
               <h2 className="editorial-title text-2xl sm:text-3xl">Colección</h2>
+              <p className="mt-3 text-sm leading-relaxed text-navy/50">
+                Cuatro moldes. Elegí el modelo y mirá la pieza.
+              </p>
             </div>
             <Link
               href="/tienda"
@@ -49,13 +90,9 @@ export async function FeaturedProducts() {
           </div>
         </SolidifyReveal>
 
-        <div className="mt-16 grid gap-x-12 gap-y-16 sm:grid-cols-2">
-          {featured.map((product, i) => (
-            <SolidifyReveal key={product.id} cureMs={500 + i * 90}>
-              <ProductCard product={product} priority={i < 2} rotateImages />
-            </SolidifyReveal>
-          ))}
-        </div>
+        <SolidifyReveal cureMs={520}>
+          <ModelExplorer models={models} />
+        </SolidifyReveal>
       </div>
     </section>
   );
