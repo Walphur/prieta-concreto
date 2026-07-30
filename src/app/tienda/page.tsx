@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/product/ProductCard";
 import { MadeToOrderNotice } from "@/components/order/MadeToOrderNotice";
 import { PigmentStrip } from "@/components/home/PigmentStrip";
 import { MedidasMoldes } from "@/components/tienda/MedidasMoldes";
+import { HeartbeatTitle } from "@/components/effects/HeartbeatTitle";
 import { readProducts } from "@/lib/catalog";
 import { BACHA_SHAPES } from "@/lib/bacha-options";
 import { clsx } from "clsx";
@@ -106,9 +107,12 @@ export default async function TiendaPage({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
         <div className="relative mx-auto flex min-h-[28vh] max-w-7xl items-end px-4 pb-10 sm:min-h-[36vh] sm:px-6 sm:pb-12 lg:min-h-[48vh] lg:px-8 lg:pb-16">
-          <h1 className="font-[family-name:var(--font-outfit)] text-3xl font-medium tracking-[-0.02em] text-cream sm:text-5xl">
+          <HeartbeatTitle
+            as="h1"
+            className="font-[family-name:var(--font-outfit)] text-3xl font-medium tracking-[-0.02em] text-cream sm:text-5xl"
+          >
             Colección
-          </h1>
+          </HeartbeatTitle>
         </div>
       </section>
 

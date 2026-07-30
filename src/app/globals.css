@@ -299,6 +299,58 @@
   animation: logo-letter-in 420ms var(--ease-editorial) both;
 }
 
+/* Quiet section titles — letter stagger + slow heartbeat */
+@keyframes title-letter-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.22em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes title-heartbeat {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.94;
+    transform: scale(1.012);
+  }
+}
+
+.heartbeat-title__inner {
+  display: inline-block;
+  transform-origin: left center;
+  will-change: transform, opacity;
+}
+
+.heartbeat-title__inner--pulse {
+  animation: title-heartbeat 3.6s ease-in-out infinite;
+}
+
+.heartbeat-title__letter {
+  display: inline-block;
+  will-change: opacity, transform;
+}
+
+.heartbeat-title__letter--hidden {
+  opacity: 0;
+}
+
+.heartbeat-title__letter--visible {
+  opacity: 1;
+  transform: none;
+}
+
+.heartbeat-title__letter--run {
+  animation: title-letter-in 480ms var(--ease-editorial) both;
+}
+
 /* —— Scroll reveal —— */
 .solidify--idle {
   opacity: 0;
@@ -344,12 +396,17 @@
   .animate-fade-up,
   .animate-fade-in,
   .logo-intro__mark--run,
-  .logo-intro__letter--run {
+  .logo-intro__letter--run,
+  .heartbeat-title__letter--run,
+  .heartbeat-title__inner--pulse {
     animation: none !important;
   }
 
   .logo-intro__mark--run,
-  .logo-intro__letter--run {
+  .logo-intro__letter--run,
+  .heartbeat-title__letter--hidden,
+  .heartbeat-title__letter--run,
+  .heartbeat-title__inner--pulse {
     opacity: 1 !important;
     transform: none !important;
   }

@@ -11,6 +11,7 @@ import {
 } from "react";
 import { clsx } from "clsx";
 import { Button } from "@/components/ui/Button";
+import { HeartbeatTitle } from "@/components/effects/HeartbeatTitle";
 import type { BachaShapeId } from "@/lib/bacha-options";
 
 export type ModelExplorerItem = {
@@ -87,7 +88,9 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
     >
       {/* LEFT COLUMN — Colección, subtitle, models, TODAS (below Forma) */}
       <div className="min-w-0 lg:col-start-1 lg:row-start-1">
-        <h2 className="editorial-title text-2xl sm:text-3xl">Colección</h2>
+        <HeartbeatTitle className="editorial-title text-2xl sm:text-3xl">
+          Colección
+        </HeartbeatTitle>
         <p className="mt-3 max-w-sm text-sm leading-relaxed text-navy/50">
           Cuatro moldes. Elegí el modelo y mirá la pieza.
         </p>

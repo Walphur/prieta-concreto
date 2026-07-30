@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { HeartbeatTitle } from "@/components/effects/HeartbeatTitle";
 
 export const metadata: Metadata = {
   title: "Nosotros",
@@ -23,9 +24,12 @@ export default function NosotrosPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/75 via-navy/15 to-transparent" />
         <div className="relative mx-auto flex min-h-[30vh] max-w-7xl items-end px-4 pb-10 sm:min-h-[42vh] sm:px-6 sm:pb-16 lg:min-h-[62vh] lg:px-8 lg:pb-20">
-          <h1 className="max-w-2xl font-[family-name:var(--font-outfit)] text-3xl font-medium tracking-[-0.02em] text-cream sm:text-5xl">
+          <HeartbeatTitle
+            as="h1"
+            className="max-w-2xl font-[family-name:var(--font-outfit)] text-3xl font-medium tracking-[-0.02em] text-cream sm:text-5xl"
+          >
             Nosotros
-          </h1>
+          </HeartbeatTitle>
         </div>
       </section>
 

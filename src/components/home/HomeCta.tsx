@@ -1,14 +1,15 @@
 import { whatsappGeneralUrl } from "@/lib/bank";
 import { Button } from "@/components/ui/Button";
+import { HeartbeatTitle } from "@/components/effects/HeartbeatTitle";
 
 export function HomeCta() {
   return (
     <section className="bg-navy">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-12 sm:gap-8 sm:px-6 sm:py-16 lg:flex-row lg:items-end lg:justify-between lg:gap-12 lg:px-8">
         <div className="max-w-md min-w-0">
-          <h2 className="font-[family-name:var(--font-outfit)] text-2xl font-medium tracking-[-0.02em] text-cream sm:text-3xl">
+          <HeartbeatTitle className="font-[family-name:var(--font-outfit)] text-2xl font-medium tracking-[-0.02em] text-cream sm:text-3xl">
             Contame del baño.
-          </h2>
+          </HeartbeatTitle>
           <p className="mt-3 text-sm leading-relaxed text-cream/50">
             Una bacha a medida, o la pieza que ya está en colección.
           </p>
