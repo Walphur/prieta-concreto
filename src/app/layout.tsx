@@ -4,6 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFab } from "@/components/layout/WhatsAppFab";
 import { MemberProvider } from "@/components/member/MemberProvider";
+import { PromoDaySheet } from "@/components/member/PromoDaySheet";
 import { JsonLd } from "@/components/seo/JsonLd";
 import "./globals.css";
 
@@ -103,6 +104,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
           <WhatsAppFab />
+          <PromoDaySheet />
         </MemberProvider>
       </body>
     </html>

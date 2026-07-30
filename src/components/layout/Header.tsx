@@ -102,7 +102,7 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
-            <MemberAccess className="hidden sm:inline-flex" />
+            <MemberAccess className="hidden md:inline-flex" />
             <button
               type="button"
               onClick={openCart}
@@ -136,7 +136,7 @@ export function Header() {
         <div
           className={clsx(
             "overflow-hidden border-t border-concrete/60 bg-cream transition-[max-height,opacity] duration-300 md:hidden",
-            mobileOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0",
+            mobileOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0",
           )}
         >
           <nav className="flex flex-col gap-1 px-4 py-3" aria-label="Móvil">
@@ -158,7 +158,7 @@ export function Header() {
                 </Link>
               );
             })}
-            <div className="border-t border-concrete/60 px-3 pt-2 sm:hidden">
+            <div className="border-t border-concrete/60 px-3 pt-2">
               <MemberAccess
                 className="inline-flex py-2 text-sm"
                 onOpen={() => setMobileOpen(false)}
