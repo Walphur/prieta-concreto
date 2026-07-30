@@ -25,6 +25,7 @@
   --foreground: var(--navy);
   --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
   --duration-editorial: 900ms;
+  --duration-micro: 200ms;
 }
 
 @theme inline {
@@ -124,14 +125,60 @@
   overflow: hidden;
 }
 
-.img-reveal img,
-.img-reveal > span {
+.img-reveal:not(.img-reveal--rotating) img,
+.img-reveal:not(.img-reveal--rotating) > span {
   transition: transform var(--duration-editorial) var(--ease-editorial);
 }
 
-.group:hover .img-reveal img,
-.group:hover .img-reveal > span {
-  transform: scale(1.02);
+.group:hover .img-reveal:not(.img-reveal--rotating) img,
+.group:hover .img-reveal:not(.img-reveal--rotating) > span {
+  transform: scale(1.03);
+}
+
+/* Quiet press / hover for CTAs, chips, FABs */
+.interactive {
+  transition:
+    background-color var(--duration-micro) var(--ease-editorial),
+    color var(--duration-micro) var(--ease-editorial),
+    border-color var(--duration-micro) var(--ease-editorial),
+    opacity var(--duration-micro) var(--ease-editorial),
+    transform var(--duration-micro) var(--ease-editorial),
+    box-shadow var(--duration-micro) var(--ease-editorial),
+    text-decoration-color var(--duration-micro) var(--ease-editorial);
+}
+
+.interactive:hover {
+  transform: translateY(-1px);
+}
+
+.interactive:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Colección photo rotation — soft Ken Burns while slide is visible */
+@keyframes product-ken {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.035);
+  }
+}
+
+.product-rotate-frame {
+  transition: transform var(--duration-editorial) var(--ease-editorial);
+}
+
+.group:hover .product-rotate-frame {
+  transform: scale(1.03);
+}
+
+.product-ken-active {
+  animation: product-ken 5.2s linear forwards;
+}
+
+.group:hover .product-ken-active {
+  animation-play-state: paused;
 }
 
 @keyframes fade-up {
@@ -220,8 +267,21 @@
   .img-reveal img,
   .img-reveal > span,
   .group:hover .img-reveal img,
-  .group:hover .img-reveal > span {
+  .group:hover .img-reveal > span,
+  .group:hover .img-reveal:not(.img-reveal--rotating) img,
+  .group:hover .img-reveal:not(.img-reveal--rotating) > span,
+  .product-rotate-frame,
+  .group:hover .product-rotate-frame {
     transform: none !important;
     transition: none !important;
+  }
+
+  .product-ken-active {
+    animation: none !important;
+  }
+
+  .interactive:hover,
+  .interactive:active {
+    transform: none !important;
   }
 }

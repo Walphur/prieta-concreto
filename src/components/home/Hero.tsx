@@ -24,7 +24,7 @@ export function Hero() {
             <div className="mt-14 flex flex-wrap items-center gap-x-8 gap-y-4">
               <Link
                 href="/tienda"
-                className="inline-flex items-center bg-white px-7 py-3.5 text-xs font-medium uppercase tracking-[0.18em] text-navy transition-colors duration-700 ease-editorial hover:bg-cream"
+                className="interactive inline-flex items-center bg-white px-7 py-3.5 text-xs font-medium uppercase tracking-[0.18em] text-navy hover:bg-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 Colección
               </Link>

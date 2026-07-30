@@ -51,7 +51,7 @@ export function MadeToOrderCta({
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex w-full items-center justify-center bg-sage px-6 py-3 text-sm font-semibold text-white transition hover:bg-sage-dark sm:w-auto sm:min-w-[14rem]"
+          className="interactive inline-flex w-full items-center justify-center bg-sage px-6 py-3 text-sm font-semibold text-white hover:bg-sage-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage sm:w-auto sm:min-w-[14rem]"
         >
           Encargar este modelo
         </a>

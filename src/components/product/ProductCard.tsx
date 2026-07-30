@@ -78,14 +78,14 @@ function ProductCardImage({
         fill
         priority={priority}
         sizes="(max-width: 640px) 100vw, 50vw"
-        className="object-cover transition-transform duration-[1000ms] ease-editorial group-hover:scale-[1.02]"
+        className="object-cover"
       />
     );
   }
 
   return (
     <div
-      className="absolute inset-0"
+      className="product-rotate-frame absolute inset-0"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -98,8 +98,8 @@ function ProductCardImage({
           priority={priority && i === 0}
           sizes="(max-width: 640px) 100vw, 50vw"
           className={clsx(
-            "object-cover transition-[opacity,transform] duration-[1200ms] ease-editorial group-hover:scale-[1.02]",
-            i === index ? "opacity-100" : "opacity-0",
+            "object-cover transition-opacity duration-700 ease-editorial",
+            i === index ? "opacity-100 product-ken-active" : "opacity-0",
           )}
         />
       ))}
@@ -114,7 +114,7 @@ function ToneSwatches({ color }: { color?: string }) {
     const label = match?.label ?? colorLabel(color);
     return (
       <span
-        className="inline-block h-3 w-3 shrink-0 border border-navy/15"
+        className="inline-block h-3 w-3 shrink-0 border border-navy/15 transition-transform duration-200 ease-editorial motion-safe:hover:scale-110"
         style={{ backgroundColor: hex }}
         title={label}
         aria-label={label}
@@ -127,7 +127,7 @@ function ToneSwatches({ color }: { color?: string }) {
       {BACHA_COLORS.map((c) => (
         <span
           key={c.id}
-          className="inline-block h-3 w-3 shrink-0 border border-navy/15"
+          className="inline-block h-3 w-3 shrink-0 border border-navy/15 transition-transform duration-200 ease-editorial motion-safe:hover:scale-110"
           style={{ backgroundColor: c.hex }}
           title={c.label}
         />
@@ -157,7 +157,12 @@ export function ProductCard({
   return (
     <article className={clsx("group", className)}>
       <Link href={`/producto/${product.slug}`} className="block">
-        <div className="img-reveal relative aspect-[4/5] overflow-hidden bg-concrete-light sm:aspect-[3/4]">
+        <div
+          className={clsx(
+            "img-reveal relative aspect-[4/5] overflow-hidden bg-concrete-light sm:aspect-[3/4]",
+            rotateImages && "img-reveal--rotating",
+          )}
+        >
           <ProductCardImage
             images={product.images}
             alt={modelName}
@@ -166,7 +171,7 @@ export function ProductCard({
           />
         </div>
         <div className="mt-5 space-y-1">
-          <h3 className="font-[family-name:var(--font-outfit)] text-[0.95rem] font-medium tracking-tight text-navy transition-colors duration-700 group-hover:text-sage-dark">
+          <h3 className="font-[family-name:var(--font-outfit)] text-[0.95rem] font-medium tracking-tight text-navy transition-colors duration-200 ease-editorial group-hover:text-sage-dark">
             {isBacha ? modelName : product.name}
           </h3>
           {isBacha ? (

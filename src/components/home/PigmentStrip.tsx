@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BACHA_COLORS } from "@/lib/bacha-options";
+import { SolidifyReveal } from "@/components/effects/SolidifyReveal";
 import { clsx } from "clsx";
 
 type Props = {
@@ -43,17 +44,17 @@ export function PigmentStrip({
             <>
               <span
                 className={clsx(
-                  "block w-full transition-opacity duration-700 ease-editorial",
+                  "block w-full overflow-hidden transition-[opacity,transform] duration-500 ease-editorial",
                   inline ? "aspect-square" : "aspect-[3/4]",
-                  !inline && "group-hover:opacity-85",
+                  !inline && "motion-safe:group-hover:scale-[1.02] group-hover:opacity-90",
                 )}
                 style={{ backgroundColor: c.hex }}
                 aria-hidden
               />
               <span
                 className={clsx(
-                  "mt-3 block font-[family-name:var(--font-outfit)] font-medium text-navy",
-                  inline ? "text-xs sm:text-sm" : "mt-4 text-sm",
+                  "mt-3 block font-[family-name:var(--font-outfit)] font-medium text-navy transition-colors duration-200",
+                  inline ? "text-xs sm:text-sm" : "mt-4 text-sm group-hover:text-sage-dark",
                 )}
               >
                 {c.label}
@@ -80,7 +81,7 @@ export function PigmentStrip({
   if (inline) {
     return (
       <section id={id} className={clsx("scroll-mt-28", className)}>
-        {body}
+        <SolidifyReveal cureMs={420}>{body}</SolidifyReveal>
       </section>
     );
   }
@@ -88,7 +89,7 @@ export function PigmentStrip({
   return (
     <section id={id} className={clsx("scroll-mt-28 bg-cream", className)}>
       <div className="mx-auto max-w-7xl px-4 section-space sm:px-6 lg:px-8">
-        {body}
+        <SolidifyReveal cureMs={420}>{body}</SolidifyReveal>
       </div>
     </section>
   );

@@ -124,7 +124,7 @@ export default async function TiendaPage({
                   key={f.value}
                   href={href}
                   className={clsx(
-                    "px-4 py-2 text-xs font-medium uppercase tracking-[0.14em] transition-colors duration-500",
+                    "interactive px-4 py-2 text-xs font-medium uppercase tracking-[0.14em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-agua",
                     active
                       ? "bg-verde-agua text-white"
                       : "bg-cream-dark text-navy/55 hover:bg-concrete-light hover:text-navy",
@@ -151,7 +151,7 @@ export default async function TiendaPage({
                     key={f.value}
                     href={href}
                     className={clsx(
-                      "px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] transition-colors duration-500",
+                      "interactive px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-agua",
                       active
                         ? "text-verde-agua-panel underline decoration-verde-agua underline-offset-8"
                         : "text-navy/40 hover:text-navy/70",

@@ -38,10 +38,9 @@ export function Button(props: ButtonAsButton | ButtonAsLink) {
   } = props;
 
   const classes = clsx(
-    "inline-flex items-center justify-center px-7 py-3.5 text-xs font-medium uppercase tracking-[0.16em]",
-    "transition-colors duration-700 ease-editorial",
+    "interactive inline-flex items-center justify-center px-7 py-3.5 text-xs font-medium uppercase tracking-[0.16em]",
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage",
-    "disabled:cursor-not-allowed disabled:opacity-50",
+    "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:active:scale-100",
     variants[variant],
     className,
   );

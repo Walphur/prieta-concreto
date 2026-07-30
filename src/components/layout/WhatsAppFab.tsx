@@ -14,7 +14,7 @@ export function WhatsAppFab() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="WhatsApp"
-      className="fixed z-[80] inline-flex h-12 w-12 items-center justify-center rounded-full bg-verde-agua text-white shadow-md transition-all duration-500 hover:scale-105 hover:bg-verde-agua-panel focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-agua bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-[max(1.25rem,env(safe-area-inset-right))]"
+      className="interactive fixed z-[80] inline-flex h-12 w-12 items-center justify-center rounded-full bg-verde-agua text-white shadow-md hover:bg-verde-agua-panel hover:brightness-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-agua bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-[max(1.25rem,env(safe-area-inset-right))]"
     >
       <svg
         viewBox="0 0 24 24"

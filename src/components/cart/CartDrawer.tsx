@@ -145,7 +145,7 @@ export function CartDrawer() {
             <Link
               href="/checkout"
               onClick={closeCart}
-              className="flex w-full items-center justify-center bg-sage px-4 py-3 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-sage-dark"
+              className="interactive flex w-full items-center justify-center bg-sage px-4 py-3 text-sm font-semibold tracking-wide text-white hover:bg-sage-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
             >
               Continuar
             </Link>
