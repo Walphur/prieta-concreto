@@ -1,6 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Ensure catalog JSON ships with serverless routes that read/write it at runtime.
+  outputFileTracingIncludes: {
+    "/api/admin/sync-catalog": ["./data/products.json"],
+    "/api/products": ["./data/products.json"],
+    "/api/products/[id]": ["./data/products.json"],
+    "/api/health": ["./data/products.json"],
+  },
   images: {
     remotePatterns: [
       {

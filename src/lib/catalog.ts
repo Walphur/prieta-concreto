@@ -122,6 +122,39 @@ async function pruneOldVersions() {
   }
 }
 
+async function putHeadPointer(pointer: HeadPointer) {
+  const body = JSON.stringify(pointer);
+  const opts = {
+    access: "public" as const,
+    contentType: "application/json",
+    addRandomSuffix: false,
+    allowOverwrite: true,
+    cacheControlMaxAge: 0,
+  };
+
+  try {
+    await put(BLOB_HEAD_PATH, body, opts);
+  } catch (firstError) {
+    // Stale/locked head: delete then rewrite so sync can recover.
+    try {
+      const { blobs } = await list({ prefix: BLOB_HEAD_PATH, limit: 5 });
+      const urls = blobs
+        .filter((b) => b.pathname === BLOB_HEAD_PATH)
+        .map((b) => b.url);
+      if (urls.length) await del(urls);
+    } catch {
+      // Continue to retry put below.
+    }
+    try {
+      await put(BLOB_HEAD_PATH, body, opts);
+    } catch {
+      throw firstError instanceof Error
+        ? firstError
+        : new Error("Failed to write catalog head pointer");
+    }
+  }
+}
+
 async function writeBlobProducts(products: Product[]) {
   const pathname = `${BLOB_VERSION_PREFIX}${Date.now()}-${Math.random().toString(36).slice(2, 7)}.json`;
   const blob = await put(pathname, JSON.stringify(products, null, 2), {
@@ -131,18 +164,10 @@ async function writeBlobProducts(products: Product[]) {
     cacheControlMaxAge: 60 * 60 * 24 * 365,
   });
 
-  const pointer: HeadPointer = {
+  await putHeadPointer({
     url: blob.url,
     pathname: blob.pathname,
     updatedAt: new Date().toISOString(),
-  };
-
-  await put(BLOB_HEAD_PATH, JSON.stringify(pointer), {
-    access: "public",
-    contentType: "application/json",
-    addRandomSuffix: false,
-    allowOverwrite: true,
-    cacheControlMaxAge: 0,
   });
 
   void pruneOldVersions();
