@@ -67,10 +67,6 @@ export default async function TiendaPage({
         </p>
       </header>
 
-      <PigmentStrip variant="inline" className="mb-14 border-b border-navy/8 pb-14" />
-
-      <MadeToOrderNotice className="mb-14 w-full" showTonePicker />
-
       <nav className="mb-4 space-y-5" aria-label="Filtros de colección">
         <div className="flex flex-wrap gap-2">
           {filters.map((f) => {
@@ -153,6 +149,13 @@ export default async function TiendaPage({
           ) : null}
         </>
       )}
+
+      <PigmentStrip
+        variant="inline"
+        className="mt-20 mb-14 border-t border-navy/8 pt-14"
+      />
+
+      <MadeToOrderNotice className="mb-14 w-full" showTonePicker />
     </div>
   );
 }
