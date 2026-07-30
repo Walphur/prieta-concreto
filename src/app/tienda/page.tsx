@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ProductCard } from "@/components/product/ProductCard";
 import { MadeToOrderNotice } from "@/components/order/MadeToOrderNotice";
@@ -20,12 +21,20 @@ export const dynamic = "force-dynamic";
 
 type SearchParams = Promise<{ categoria?: string; vista?: string }>;
 
-const filters: { label: string; value: "all" | ProductCategory }[] = [
-  { label: "Todas", value: "all" },
+/** Visible category chips — "all" stays the default but is not rendered. */
+const filters: { label: string; value: ProductCategory }[] = [
   { label: "Bachas", value: "bachas" },
   { label: "Celosías", value: "celosias" },
   { label: "Mesadas", value: "mesadas" },
 ];
+
+/** Visible vista links — "todas" stays the default but is not rendered. */
+const vistaFilters = [
+  { label: "En stock", value: "stock" },
+  { label: "Ejemplos", value: "ejemplos" },
+  { label: "Medidas", value: "medidas" },
+  { label: "Vendidas", value: "vendidas" },
+] as const;
 
 const SHAPE_ORDER = BACHA_SHAPES.map((s) => s.id);
 
@@ -84,64 +93,41 @@ export default async function TiendaPage({
   list = sortCatalog(list);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 section-space sm:px-6 lg:px-8">
-      <header className="max-w-lg pb-12">
-        <h1 className="editorial-title text-3xl sm:text-4xl">
-          Colección
-        </h1>
-        <p className="mt-5 text-sm leading-relaxed text-navy/50">
-          $95.000. Medidas en su pestaña.
-        </p>
-      </header>
-
-      <nav className="mb-4 space-y-5" aria-label="Filtros de colección">
-        <div className="flex flex-wrap gap-2">
-          {filters.map((f) => {
-            const active = categoria === f.value;
-            const href =
-              f.value === "all" ? "/tienda" : `/tienda?categoria=${f.value}`;
-            return (
-              <Link
-                key={f.value}
-                href={href}
-                className={clsx(
-                  "px-4 py-2 text-xs font-medium uppercase tracking-[0.14em] transition-colors duration-500",
-                  active
-                    ? "bg-verde-agua text-white"
-                    : "bg-cream-dark text-navy/55 hover:bg-concrete-light hover:text-navy",
-                )}
-              >
-                {f.label}
-              </Link>
-            );
-          })}
+    <div>
+      <section className="relative min-h-[40vh] overflow-hidden bg-navy lg:min-h-[48vh]">
+        <Image
+          src="/hero/hero-bano-circular-espejo.png"
+          alt="Bacha circular Prieta instalada en baño con espejo"
+          fill
+          className="object-cover object-center opacity-80"
+          priority
+          sizes="100vw"
+          quality={90}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
+        <div className="relative mx-auto flex min-h-[40vh] max-w-7xl items-end px-4 pb-12 sm:px-6 lg:min-h-[48vh] lg:px-8 lg:pb-16">
+          <h1 className="font-[family-name:var(--font-outfit)] text-3xl font-medium tracking-[-0.02em] text-cream sm:text-5xl">
+            Colección
+          </h1>
         </div>
+      </section>
 
-        {categoria === "bachas" || categoria === "all" ? (
-          <div className="flex flex-wrap items-center gap-x-1 gap-y-2">
-            {[
-              { label: "Todo", value: "todas" },
-              { label: "En stock", value: "stock" },
-              { label: "Ejemplos", value: "ejemplos" },
-              { label: "Medidas", value: "medidas" },
-              { label: "Vendidas", value: "vendidas" },
-            ].map((f) => {
-              const active = vista === f.value;
-              const base =
-                categoria === "bachas" ? "/tienda?categoria=bachas" : "/tienda";
-              const href =
-                f.value === "todas"
-                  ? base
-                  : `${base}${base.includes("?") ? "&" : "?"}vista=${f.value}`;
+      <div className="mx-auto max-w-7xl px-4 section-space sm:px-6 lg:px-8">
+        <nav className="mb-4 space-y-5" aria-label="Filtros de colección">
+          <div className="flex flex-wrap gap-2">
+            {filters.map((f) => {
+              const active = categoria === f.value;
+              // Active chip clears back to invisible default (todas / all)
+              const href = active ? "/tienda" : `/tienda?categoria=${f.value}`;
               return (
                 <Link
                   key={f.value}
                   href={href}
                   className={clsx(
-                    "px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] transition-colors duration-500",
+                    "px-4 py-2 text-xs font-medium uppercase tracking-[0.14em] transition-colors duration-500",
                     active
-                      ? "text-verde-agua-panel underline decoration-verde-agua underline-offset-8"
-                      : "text-navy/40 hover:text-navy/70",
+                      ? "bg-verde-agua text-white"
+                      : "bg-cream-dark text-navy/55 hover:bg-concrete-light hover:text-navy",
                   )}
                 >
                   {f.label}
@@ -149,44 +135,72 @@ export default async function TiendaPage({
               );
             })}
           </div>
-        ) : null}
-      </nav>
 
-      {showMedidas ? (
-        <MedidasMoldes />
-      ) : (
-        <>
-          <div
-            className={clsx(
-              "mt-16 grid gap-y-14",
-              categoria === "bachas"
-                ? "gap-x-12 sm:grid-cols-2"
-                : "gap-x-8 sm:grid-cols-2 lg:grid-cols-3",
-            )}
-          >
-            {list.map((product, i) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                priority={i < 4}
-              />
-            ))}
-          </div>
-
-          {list.length === 0 ? (
-            <p className="mt-20 text-center text-sm text-navy/45">
-              Nada en esta vista.
-            </p>
+          {categoria === "bachas" || categoria === "all" ? (
+            <div className="flex flex-wrap items-center gap-x-1 gap-y-2">
+              {vistaFilters.map((f) => {
+                const active = vista === f.value;
+                const base =
+                  categoria === "bachas" ? "/tienda?categoria=bachas" : "/tienda";
+                // Active vista clears back to invisible default (todo / todas)
+                const href = active
+                  ? base
+                  : `${base}${base.includes("?") ? "&" : "?"}vista=${f.value}`;
+                return (
+                  <Link
+                    key={f.value}
+                    href={href}
+                    className={clsx(
+                      "px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] transition-colors duration-500",
+                      active
+                        ? "text-verde-agua-panel underline decoration-verde-agua underline-offset-8"
+                        : "text-navy/40 hover:text-navy/70",
+                    )}
+                  >
+                    {f.label}
+                  </Link>
+                );
+              })}
+            </div>
           ) : null}
-        </>
-      )}
+        </nav>
 
-      <PigmentStrip
-        variant="inline"
-        className="mt-20 mb-14 border-t border-navy/8 pt-14"
-      />
+        {showMedidas ? (
+          <MedidasMoldes />
+        ) : (
+          <>
+            <div
+              className={clsx(
+                "mt-16 grid gap-y-14",
+                categoria === "bachas"
+                  ? "gap-x-12 sm:grid-cols-2"
+                  : "gap-x-8 sm:grid-cols-2 lg:grid-cols-3",
+              )}
+            >
+              {list.map((product, i) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  priority={i < 4}
+                />
+              ))}
+            </div>
 
-      <MadeToOrderNotice className="mb-14 w-full" showTonePicker />
+            {list.length === 0 ? (
+              <p className="mt-20 text-center text-sm text-navy/45">
+                Nada en esta vista.
+              </p>
+            ) : null}
+          </>
+        )}
+
+        <PigmentStrip
+          variant="inline"
+          className="mt-20 mb-14 border-t border-navy/8 pt-14"
+        />
+
+        <MadeToOrderNotice className="mb-14 w-full" showTonePicker />
+      </div>
     </div>
   );
 }

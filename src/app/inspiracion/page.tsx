@@ -18,6 +18,7 @@ export const metadata: Metadata = {
 const RESERVED = new Set([
   "/hero/hero-bano-marmolada.png", // Home hero
   "/gallery/clientes/cliente-oval-marmol-bano.jpg", // Nosotros hero
+  "/hero/hero-bano-circular-espejo.png", // Tienda portada
 ]);
 
 const instalaciones = galleryClientes.filter((i) => !RESERVED.has(i.src));
