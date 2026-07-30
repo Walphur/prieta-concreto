@@ -17,11 +17,6 @@ export const BACHA_COLORS = [
     hex: "#CFA39A",
   },
   {
-    id: "verde-agua",
-    label: "Verde agua",
-    hex: "#8FAAA2",
-  },
-  {
     id: "marmolado",
     label: "Marmolado gris con negro",
     hex: "#6A6E73",
@@ -38,12 +33,12 @@ export const BACHA_COLORS = [
   },
 ] as const;
 
-/** Modelos de diseño (la forma del molde queda en `mold`) */
+/** Modelos de diseño — Forma (cuadrado) último: el que menos se lleva */
 export const BACHA_SHAPES = [
-  { id: "cuadrado", label: "Forma", mold: "Cuadrado" },
   { id: "oval", label: "Lena", mold: "Oval" },
   { id: "circular", label: "Atria", mold: "Circular" },
   { id: "circular-tapon", label: "Aura", mold: "Circular con tapón" },
+  { id: "cuadrado", label: "Forma", mold: "Cuadrado" },
 ] as const;
 
 export type BachaColorId = (typeof BACHA_COLORS)[number]["id"];

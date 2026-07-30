@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 /** Fotos reservadas para otras páginas — no se repiten aquí. */
 const RESERVED = new Set([
   "/hero/hero-bano-marmolada.png", // Home hero
-  "/hero/hero-bano-circular-espejo.png", // Nosotros hero
+  "/gallery/clientes/cliente-oval-marmol-bano.jpg", // Nosotros hero
 ]);
 
 const instalaciones = galleryClientes.filter((i) => !RESERVED.has(i.src));

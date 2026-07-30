@@ -1,19 +1,34 @@
 import { ProductCard } from "@/components/product/ProductCard";
 import { SolidifyReveal } from "@/components/effects/SolidifyReveal";
 import { readProducts } from "@/lib/catalog";
+import { BACHA_SHAPES } from "@/lib/bacha-options";
 import Link from "next/link";
+import type { Product } from "@/types/product";
+
+const SHAPE_ORDER = BACHA_SHAPES.map((s) => s.id);
+
+function sortBachas(products: Product[]) {
+  return [...products].sort((a, b) => {
+    const ia = SHAPE_ORDER.indexOf(a.shape as (typeof SHAPE_ORDER)[number]);
+    const ib = SHAPE_ORDER.indexOf(b.shape as (typeof SHAPE_ORDER)[number]);
+    const sa = ia === -1 ? 99 : ia;
+    const sb = ib === -1 ? 99 : ib;
+    if (sa !== sb) return sa - sb;
+    return a.name.localeCompare(b.name, "es");
+  });
+}
 
 export async function FeaturedProducts() {
   const all = await readProducts();
-  const available = all.filter((p) => p.status === "available" && !p.comingSoon);
-  const examples = all.filter(
-    (p) =>
-      p.status === "example" &&
-      p.category === "bachas" &&
-      !p.comingSoon &&
-      p.featured,
-  );
-  const featured = [...available, ...examples].slice(0, 3);
+  const featured = sortBachas(
+    all.filter(
+      (p) =>
+        p.featured &&
+        p.category === "bachas" &&
+        !p.comingSoon &&
+        (p.status === "available" || p.status === "example"),
+    ),
+  ).slice(0, 4);
 
   if (featured.length === 0) return null;
 
@@ -28,11 +43,11 @@ export async function FeaturedProducts() {
             href="/tienda"
             className="text-xs font-medium uppercase tracking-[0.16em] text-navy/45 underline decoration-navy/15 underline-offset-8 transition duration-700 hover:text-navy hover:decoration-navy/40"
           >
-            Ver todas
+            Todas
           </Link>
         </div>
 
-        <div className="mt-16 grid gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid gap-x-12 gap-y-16 sm:grid-cols-2">
           {featured.map((product, i) => (
             <SolidifyReveal key={product.id} cureMs={500 + i * 90}>
               <ProductCard product={product} priority={i < 2} rotateImages />

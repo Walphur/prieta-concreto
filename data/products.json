@@ -34,34 +34,6 @@
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
   {
-    "id": "modelo-forma",
-    "slug": "forma",
-    "name": "Forma",
-    "description": "Geometría cuadrada. Líneas claras para baños contemporáneos.",
-    "longDescription": "Forma es el modelo cuadrado. El tono se elige al pedir: blanco, gris natural u otros pigmentos del taller.",
-    "price": 95000,
-    "currency": "ARS",
-    "category": "bachas",
-    "status": "example",
-    "shape": "cuadrado",
-    "featured": true,
-    "images": [
-      "/gallery/shapes/cuadrado/blanco.jpg",
-      "/gallery/shapes/cuadrado/gris-natural.jpg",
-      "/gallery/shapes/cuadrado/gris-oscuro.jpg",
-      "/gallery/shapes/cuadrado/carbon.jpg",
-      "/gallery/shapes/cuadrado/negro.jpg",
-      "/gallery/fichas/cuadrado-producto.jpg"
-    ],
-    "specs": {
-      "dimensions": "39 × 39 × 12 cm",
-      "weight": "Según pieza",
-      "material": "Masa pigmentada + sellador",
-      "finish": "Espesor 1,1 cm · Desagüe Ø 42 mm"
-    },
-    "createdAt": "2026-07-25T00:00:00.000Z"
-  },
-  {
     "id": "modelo-atria",
     "slug": "atria",
     "name": "Atria",
@@ -107,14 +79,40 @@
       "/gallery/shapes/circular-tapon/gris-natural-claro.jpg",
       "/gallery/shapes/circular-tapon/gris-perfil.jpg",
       "/gallery/shapes/circular-tapon/carbon.jpg",
-      "/gallery/shapes/circular-tapon/gris-medio.jpg",
-      "/gallery/fichas/circular-tapon-producto.png"
+      "/gallery/shapes/circular-tapon/gris-medio.jpg"
     ],
     "specs": {
       "dimensions": "Ø 30,5 × 14,5 cm",
       "weight": "Según pieza",
       "material": "Masa pigmentada + sellador",
       "finish": "Incluye tapón a juego"
+    },
+    "createdAt": "2026-07-25T00:00:00.000Z"
+  },
+  {
+    "id": "modelo-forma",
+    "slug": "forma",
+    "name": "Forma",
+    "description": "Geometría cuadrada. Líneas claras para baños contemporáneos.",
+    "longDescription": "Forma es el modelo cuadrado. El tono se elige al pedir: blanco, gris natural u otros pigmentos del taller.",
+    "price": 95000,
+    "currency": "ARS",
+    "category": "bachas",
+    "status": "example",
+    "shape": "cuadrado",
+    "featured": true,
+    "images": [
+      "/gallery/shapes/cuadrado/blanco.jpg",
+      "/gallery/shapes/cuadrado/gris-natural.jpg",
+      "/gallery/shapes/cuadrado/gris-oscuro.jpg",
+      "/gallery/shapes/cuadrado/carbon.jpg",
+      "/gallery/shapes/cuadrado/negro.jpg"
+    ],
+    "specs": {
+      "dimensions": "39 × 39 × 12 cm",
+      "weight": "Según pieza",
+      "material": "Masa pigmentada + sellador",
+      "finish": "Espesor 1,1 cm · Desagüe Ø 42 mm"
     },
     "createdAt": "2026-07-25T00:00:00.000Z"
   },
@@ -129,7 +127,9 @@
     "category": "celosias",
     "status": "example",
     "comingSoon": true,
-    "images": ["/products/celosias/circulo.png"],
+    "images": [
+      "/products/celosias/circulo.png"
+    ],
     "specs": {
       "dimensions": "Consultar",
       "weight": "Según módulo",
@@ -148,7 +148,9 @@
     "category": "celosias",
     "status": "example",
     "comingSoon": true,
-    "images": ["/products/celosias/ranura.png"],
+    "images": [
+      "/products/celosias/ranura.png"
+    ],
     "specs": {
       "dimensions": "Consultar",
       "weight": "Según módulo",
@@ -167,7 +169,9 @@
     "category": "celosias",
     "status": "example",
     "comingSoon": true,
-    "images": ["/products/celosias/diagonal.png"],
+    "images": [
+      "/products/celosias/diagonal.png"
+    ],
     "specs": {
       "dimensions": "Consultar",
       "weight": "Según módulo",
@@ -186,7 +190,9 @@
     "category": "celosias",
     "status": "example",
     "comingSoon": true,
-    "images": ["/products/celosias/horizontales.png"],
+    "images": [
+      "/products/celosias/horizontales.png"
+    ],
     "specs": {
       "dimensions": "Consultar",
       "weight": "Según módulo",
@@ -205,7 +211,9 @@
     "category": "mesadas",
     "status": "example",
     "comingSoon": true,
-    "images": ["/gallery/clientes/cliente-oval-marmol.jpg"],
+    "images": [
+      "/gallery/clientes/cliente-oval-marmol.jpg"
+    ],
     "specs": {
       "dimensions": "A medida",
       "weight": "Según proyecto",

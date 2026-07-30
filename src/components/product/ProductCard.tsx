@@ -21,8 +21,11 @@ type ProductCardProps = {
   rotateImages?: boolean;
 };
 
-function uniqueImages(images: string[]) {
-  return [...new Set(images.filter(Boolean))];
+/** Studio shots only — skip ficha/diagram assets so rotation has real photo variety. */
+function rotateSlides(images: string[]) {
+  const unique = [...new Set(images.filter(Boolean))];
+  const studio = unique.filter((src) => !src.includes("/fichas/"));
+  return studio.length > 0 ? studio : unique;
 }
 
 function ProductCardImage({
@@ -36,11 +39,12 @@ function ProductCardImage({
   priority?: boolean;
   rotate?: boolean;
 }) {
+  const slides = rotateSlides(images);
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
-  const slides = uniqueImages(images);
   const canRotate = Boolean(rotate && slides.length > 1 && !reduceMotion);
+  const slideKey = slides.join("|");
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -51,12 +55,20 @@ function ProductCardImage({
   }, []);
 
   useEffect(() => {
+    setIndex(0);
+  }, [slideKey]);
+
+  useEffect(() => {
     if (!canRotate || paused) return;
     const id = window.setInterval(() => {
       setIndex((i) => (i + 1) % slides.length);
     }, 5000);
     return () => window.clearInterval(id);
-  }, [canRotate, paused, slides.length]);
+  }, [canRotate, paused, slides.length, slideKey]);
+
+  if (!slides[0]) {
+    return <div className="absolute inset-0 bg-concrete-light" />;
+  }
 
   if (!canRotate) {
     return (
@@ -65,7 +77,7 @@ function ProductCardImage({
         alt={alt}
         fill
         priority={priority}
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        sizes="(max-width: 640px) 100vw, 50vw"
         className="object-cover transition-transform duration-[1000ms] ease-editorial group-hover:scale-[1.02]"
       />
     );
@@ -84,7 +96,7 @@ function ProductCardImage({
           alt={alt}
           fill
           priority={priority && i === 0}
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          sizes="(max-width: 640px) 100vw, 50vw"
           className={clsx(
             "object-cover transition-[opacity,transform] duration-[1200ms] ease-editorial group-hover:scale-[1.02]",
             i === index ? "opacity-100" : "opacity-0",
@@ -145,7 +157,7 @@ export function ProductCard({
   return (
     <article className={clsx("group", className)}>
       <Link href={`/producto/${product.slug}`} className="block">
-        <div className="img-reveal relative aspect-[4/5] overflow-hidden bg-concrete-light">
+        <div className="img-reveal relative aspect-[4/5] overflow-hidden bg-concrete-light sm:aspect-[3/4]">
           <ProductCardImage
             images={product.images}
             alt={modelName}

@@ -131,8 +131,15 @@ export default async function ProductPage({ params }: Props) {
     },
   };
 
-  const hero = product.images[0];
-  const rest = product.images.slice(1);
+  // Studio photos only — ficha/diagrama assets are shown once below (never duplicated).
+  const fichaAssets = new Set(
+    [ficha?.product, ficha?.diagram].filter(Boolean) as string[],
+  );
+  const galleryImages = [...new Set(product.images.filter(Boolean))].filter(
+    (src) => !fichaAssets.has(src) && !src.includes("/fichas/"),
+  );
+  const hero = galleryImages[0];
+  const rest = galleryImages.slice(1);
 
   return (
     <div className="mx-auto max-w-7xl px-4 section-space sm:px-6 lg:px-8">

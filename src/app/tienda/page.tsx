@@ -119,9 +119,6 @@ export default async function TiendaPage({
 
         {categoria === "bachas" || categoria === "all" ? (
           <div className="flex flex-wrap items-center gap-x-1 gap-y-2">
-            <span className="mr-3 text-[10px] font-medium uppercase tracking-[0.2em] text-navy/35">
-              Ver
-            </span>
             {[
               { label: "Todo", value: "todas" },
               { label: "En stock", value: "stock" },
@@ -159,12 +156,19 @@ export default async function TiendaPage({
         <MedidasMoldes />
       ) : (
         <>
-          <div className="mt-16 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+          <div
+            className={clsx(
+              "mt-16 grid gap-y-14",
+              categoria === "bachas"
+                ? "gap-x-12 sm:grid-cols-2"
+                : "gap-x-8 sm:grid-cols-2 lg:grid-cols-3",
+            )}
+          >
             {list.map((product, i) => (
               <ProductCard
                 key={product.id}
                 product={product}
-                priority={i < 3}
+                priority={i < 4}
               />
             ))}
           </div>

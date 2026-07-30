@@ -13,12 +13,13 @@ export default function NosotrosPage() {
     <div>
       <section className="relative min-h-[52vh] overflow-hidden bg-navy lg:min-h-[62vh]">
         <Image
-          src="/hero/hero-bano-circular-espejo.png"
-          alt="Bacha circular Prieta en baño con espejo retroiluminado"
+          src="/gallery/clientes/cliente-oval-marmol-bano.jpg"
+          alt="Bacha Prieta instalada en baño de cliente"
           fill
           className="object-cover opacity-75"
           priority
           sizes="100vw"
+          quality={90}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/75 via-navy/15 to-transparent" />
         <div className="relative mx-auto flex min-h-[52vh] max-w-7xl items-end px-4 pb-16 sm:px-6 lg:min-h-[62vh] lg:px-8 lg:pb-20">
