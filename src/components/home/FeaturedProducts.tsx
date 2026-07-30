@@ -86,8 +86,9 @@ export async function FeaturedProducts() {
   if (models.length === 0) return null;
 
   return (
-    <section className="bg-cream">
+    <section id="coleccion" className="bg-cream">
       <div className="mx-auto max-w-7xl px-4 section-space sm:px-6 lg:px-8">
+        {/* Heading + TODAS live inside ModelExplorer left column — not a header row */}
         <SolidifyReveal cureMs={420}>
           <ModelExplorer models={models} />
         </SolidifyReveal>

@@ -27,6 +27,10 @@ type ModelExplorerProps = {
   models: ModelExplorerItem[];
 };
 
+/** ModelExplorer never uses .chip — avoids underline-grow ::after from globals.css */
+const modelBtnBase =
+  "relative w-fit max-w-full shrink-0 rounded-sm border px-2.5 py-1.5 text-left text-lg leading-none tracking-tight sm:text-xl font-[family-name:var(--font-outfit)] ease-editorial focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-verde-agua";
+
 export function ModelExplorer({ models }: ModelExplorerProps) {
   const listId = useId();
   const [active, setActive] = useState(0);
@@ -74,66 +78,76 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
   }
 
   return (
-    <div className="grid min-w-0 gap-8 sm:gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.4fr)] lg:items-start lg:gap-14 xl:gap-18">
-      {/* Left: heading + models share top edge with the photo */}
-      <div className="min-w-0">
+    <div
+      className={clsx(
+        "grid min-w-0 gap-8 sm:gap-10",
+        /* Two columns from lg: left = title+list, right = photo from row 1 top */
+        "lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.4fr)] lg:items-start lg:gap-x-14 xl:gap-x-16",
+      )}
+    >
+      {/* LEFT COLUMN — Colección, subtitle, models, TODAS (below Forma) */}
+      <div className="min-w-0 lg:col-start-1 lg:row-start-1">
         <h2 className="editorial-title text-2xl sm:text-3xl">Colección</h2>
         <p className="mt-3 max-w-sm text-sm leading-relaxed text-navy/50">
           Cuatro moldes. Elegí el modelo y mirá la pieza.
         </p>
 
-        <div
-          role="tablist"
-          aria-label="Modelos de la colección"
-          aria-orientation="vertical"
-          className="mt-8 flex max-w-full flex-row flex-wrap items-start gap-x-2 gap-y-1.5 sm:mt-10 sm:gap-x-2.5 lg:flex-col lg:items-start lg:gap-y-1"
-          onKeyDown={onListKeyDown}
-        >
-          {models.map((model, i) => {
-            const isActive = i === active;
-            return (
-              <button
-                key={model.id}
-                ref={(el) => {
-                  buttonsRef.current[i] = el;
-                }}
-                type="button"
-                role="tab"
-                id={`${listId}-tab-${model.id}`}
-                aria-selected={isActive}
-                aria-controls={`${listId}-panel`}
-                tabIndex={isActive ? 0 : -1}
-                onClick={() => select(i)}
-                className={clsx(
-                  "interactive relative w-fit shrink-0 rounded-sm border px-2.5 py-1.5 text-left text-lg leading-none tracking-tight sm:text-xl",
-                  "font-[family-name:var(--font-outfit)] no-underline ease-editorial",
-                  reduceMotion ? "duration-0" : "duration-[400ms]",
-                  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-verde-agua",
-                  isActive
-                    ? "border-verde-agua/45 bg-verde-agua/[0.16] font-medium text-verde-agua-panel"
-                    : "border-transparent font-normal text-navy/40 hover:bg-verde-agua/[0.1] hover:text-navy/65",
-                )}
-              >
-                {model.label}
-              </button>
-            );
-          })}
-        </div>
+        <div className="mt-8 flex flex-col items-start gap-1 sm:mt-10 sm:gap-1.5">
+          <div
+            role="tablist"
+            aria-label="Modelos de la colección"
+            aria-orientation="vertical"
+            className="flex w-full max-w-full flex-row flex-wrap items-start gap-x-2 gap-y-1.5 sm:gap-x-2.5 lg:flex-col lg:items-start lg:gap-y-1"
+            onKeyDown={onListKeyDown}
+          >
+            {models.map((model, i) => {
+              const isActive = i === active;
+              return (
+                <button
+                  key={model.id}
+                  ref={(el) => {
+                    buttonsRef.current[i] = el;
+                  }}
+                  type="button"
+                  role="tab"
+                  id={`${listId}-tab-${model.id}`}
+                  aria-selected={isActive}
+                  aria-controls={`${listId}-panel`}
+                  tabIndex={isActive ? 0 : -1}
+                  onClick={() => select(i)}
+                  className={clsx(
+                    "interactive",
+                    modelBtnBase,
+                    reduceMotion ? "duration-0" : "duration-[400ms]",
+                    isActive
+                      ? "border-verde-agua/45 bg-verde-agua/[0.16] font-medium text-verde-agua-panel"
+                      : "border-transparent font-normal text-navy/40 hover:bg-verde-agua/[0.1] hover:text-navy/65",
+                  )}
+                  style={{ textDecoration: "none" }}
+                >
+                  {model.label}
+                </button>
+              );
+            })}
+          </div>
 
-        <Link
-          href="/tienda"
-          className="interactive mt-3 inline-flex min-h-10 w-fit items-center px-2.5 text-[11px] font-medium uppercase tracking-[0.16em] text-navy/35 no-underline hover:text-navy/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage lg:mt-4"
-        >
-          Todas
-        </Link>
+          {/* TODAS — directly under Forma, same left padding as model buttons */}
+          <Link
+            href="/tienda"
+            className="interactive inline-flex min-h-10 w-fit items-center px-2.5 text-[11px] font-medium uppercase tracking-[0.16em] text-navy/35 hover:text-navy/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
+            style={{ textDecoration: "none" }}
+          >
+            Todas
+          </Link>
+        </div>
       </div>
 
-      {/* Right: photo top-aligned with Colección */}
+      {/* RIGHT COLUMN — photo top edge aligns with Colección (row 1 / items-start) */}
       <div
         role="tabpanel"
         id={`${listId}-panel`}
         aria-labelledby={`${listId}-tab-${current.id}`}
-        className="min-w-0"
+        className="min-w-0 self-start pt-0 lg:col-start-2 lg:row-start-1"
       >
         <div className="relative aspect-square overflow-hidden bg-concrete-light">
           {models.map((model) => {
@@ -186,7 +200,8 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
             </Button>
             <Link
               href="/tienda"
-              className="interactive inline-flex min-h-11 items-center text-xs font-medium uppercase tracking-[0.16em] text-navy/45 no-underline hover:text-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
+              className="interactive inline-flex min-h-11 items-center text-xs font-medium uppercase tracking-[0.16em] text-navy/45 hover:text-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
+              style={{ textDecoration: "none" }}
             >
               Toda la tienda
             </Link>
