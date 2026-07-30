@@ -108,12 +108,6 @@
     "kind": "studio"
   },
   {
-    "src": "/gallery/shapes/circular/rosa-mate.jpg",
-    "shape": "circular",
-    "color": "rosa",
-    "kind": "studio"
-  },
-  {
     "src": "/gallery/shapes/circular/gris-natural.jpg",
     "shape": "circular",
     "color": "gris-natural",

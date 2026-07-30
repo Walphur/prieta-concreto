@@ -5,8 +5,9 @@ import { MadeToOrderNotice } from "@/components/order/MadeToOrderNotice";
 import { PigmentStrip } from "@/components/home/PigmentStrip";
 import { MedidasMoldes } from "@/components/tienda/MedidasMoldes";
 import { readProducts } from "@/lib/catalog";
+import { BACHA_SHAPES } from "@/lib/bacha-options";
 import { clsx } from "clsx";
-import type { ProductCategory } from "@/types/product";
+import type { Product, ProductCategory } from "@/types/product";
 
 export const metadata: Metadata = {
   title: "Tienda",
@@ -25,6 +26,29 @@ const filters: { label: string; value: "all" | ProductCategory }[] = [
   { label: "Celosías", value: "celosias" },
   { label: "Mesadas", value: "mesadas" },
 ];
+
+const SHAPE_ORDER = BACHA_SHAPES.map((s) => s.id);
+
+function sortCatalog(products: Product[]) {
+  const categoryOrder: Record<string, number> = {
+    bachas: 0,
+    celosias: 1,
+    mesadas: 2,
+  };
+  return [...products].sort((a, b) => {
+    const ca = categoryOrder[a.category] ?? 9;
+    const cb = categoryOrder[b.category] ?? 9;
+    if (ca !== cb) return ca - cb;
+    if (a.category === "bachas" && b.category === "bachas") {
+      const ia = SHAPE_ORDER.indexOf(a.shape as (typeof SHAPE_ORDER)[number]);
+      const ib = SHAPE_ORDER.indexOf(b.shape as (typeof SHAPE_ORDER)[number]);
+      const sa = ia === -1 ? 99 : ia;
+      const sb = ib === -1 ? 99 : ib;
+      if (sa !== sb) return sa - sb;
+    }
+    return a.name.localeCompare(b.name, "es");
+  });
+}
 
 export default async function TiendaPage({
   searchParams,
@@ -49,12 +73,15 @@ export default async function TiendaPage({
       );
     if (vista === "vendidas") return p.status === "sold";
     if (vista === "medidas") return false;
+    // Todas: show everything except sold (includes por-pedido models + coming soon)
     return p.status !== "sold";
   });
 
   if (categoria === "celosias" || categoria === "mesadas") {
     list = all.filter((p) => p.category === categoria);
   }
+
+  list = sortCatalog(list);
 
   return (
     <div className="mx-auto max-w-7xl px-4 section-space sm:px-6 lg:px-8">

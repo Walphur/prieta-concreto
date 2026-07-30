@@ -5,7 +5,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { Product } from "@/types/product";
 import { formatPrice, isInStock, statusLabel } from "@/lib/products";
-import { colorLabel, moldLabel, shapeLabel } from "@/lib/bacha-options";
+import {
+  BACHA_COLORS,
+  colorLabel,
+  moldLabel,
+  shapeLabel,
+} from "@/lib/bacha-options";
 import { clsx } from "clsx";
 
 type ProductCardProps = {
@@ -15,6 +20,10 @@ type ProductCardProps = {
   /** Cycle through product.images every 5s (home Colección). Off by default for tienda. */
   rotateImages?: boolean;
 };
+
+function uniqueImages(images: string[]) {
+  return [...new Set(images.filter(Boolean))];
+}
 
 function ProductCardImage({
   images,
@@ -30,7 +39,8 @@ function ProductCardImage({
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
-  const canRotate = Boolean(rotate && images.length > 1 && !reduceMotion);
+  const slides = uniqueImages(images);
+  const canRotate = Boolean(rotate && slides.length > 1 && !reduceMotion);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -43,15 +53,15 @@ function ProductCardImage({
   useEffect(() => {
     if (!canRotate || paused) return;
     const id = window.setInterval(() => {
-      setIndex((i) => (i + 1) % images.length);
+      setIndex((i) => (i + 1) % slides.length);
     }, 5000);
     return () => window.clearInterval(id);
-  }, [canRotate, paused, images.length]);
+  }, [canRotate, paused, slides.length]);
 
   if (!canRotate) {
     return (
       <Image
-        src={images[0]}
+        src={slides[0]}
         alt={alt}
         fill
         priority={priority}
@@ -67,7 +77,7 @@ function ProductCardImage({
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {images.map((src, i) => (
+      {slides.map((src, i) => (
         <Image
           key={src}
           src={src}
@@ -82,6 +92,35 @@ function ProductCardImage({
         />
       ))}
     </div>
+  );
+}
+
+function ToneSwatches({ color }: { color?: string }) {
+  if (color) {
+    const match = BACHA_COLORS.find((c) => c.id === color || c.label === color);
+    const hex = match?.hex ?? "#9B9791";
+    const label = match?.label ?? colorLabel(color);
+    return (
+      <span
+        className="inline-block h-3 w-3 shrink-0 border border-navy/15"
+        style={{ backgroundColor: hex }}
+        title={label}
+        aria-label={label}
+      />
+    );
+  }
+
+  return (
+    <span className="flex flex-wrap items-center gap-1" aria-label="Tonos disponibles">
+      {BACHA_COLORS.map((c) => (
+        <span
+          key={c.id}
+          className="inline-block h-3 w-3 shrink-0 border border-navy/15"
+          style={{ backgroundColor: c.hex }}
+          title={c.label}
+        />
+      ))}
+    </span>
   );
 }
 
@@ -101,11 +140,7 @@ export function ProductCard({
   const isBacha = product.category === "bachas";
   const modelName =
     isBacha && product.shape ? shapeLabel(product.shape) : product.name;
-  const toneLine = isBacha
-    ? product.color
-      ? colorLabel(product.color)
-      : "Elegí el tono al encargar"
-    : null;
+  const mold = isBacha ? moldLabel(product.shape) : "";
 
   return (
     <article className={clsx("group", className)}>
@@ -123,9 +158,16 @@ export function ProductCard({
             {isBacha ? modelName : product.name}
           </h3>
           {isBacha ? (
-            <p className="text-[11px] uppercase tracking-[0.14em] text-navy/40">
-              {[moldLabel(product.shape), toneLine].filter(Boolean).join(" · ")}
-            </p>
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
+              {mold ? (
+                <p className="text-[11px] uppercase tracking-[0.14em] text-navy/40">
+                  {mold}
+                </p>
+              ) : null}
+              {!product.comingSoon ? (
+                <ToneSwatches color={product.color} />
+              ) : null}
+            </div>
           ) : (
             <p className="text-[11px] uppercase tracking-[0.14em] text-navy/40">
               {meta}
