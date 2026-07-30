@@ -201,12 +201,41 @@
   }
 }
 
+@keyframes logo-mark-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes logo-letter-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.28em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .animate-fade-up {
   animation: fade-up 1s var(--ease-editorial) both;
 }
 
 .animate-fade-in {
   animation: fade-in 1.1s ease both;
+}
+
+/* Header logo intro — mark fade, then letter stagger (once per session) */
+.logo-intro__mark--run {
+  animation: logo-mark-in 520ms var(--ease-editorial) both;
+}
+
+.logo-intro__letter--run {
+  animation: logo-letter-in 420ms var(--ease-editorial) both;
 }
 
 /* —— Scroll reveal —— */
@@ -252,8 +281,16 @@
 
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up,
-  .animate-fade-in {
+  .animate-fade-in,
+  .logo-intro__mark--run,
+  .logo-intro__letter--run {
     animation: none !important;
+  }
+
+  .logo-intro__mark--run,
+  .logo-intro__letter--run {
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   .solidify--idle,

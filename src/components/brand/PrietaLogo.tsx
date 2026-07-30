@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { clsx } from "clsx";
+import { useLayoutEffect, useState } from "react";
 
 type PrietaLogoProps = {
   className?: string;
@@ -9,6 +12,8 @@ type PrietaLogoProps = {
   href?: string;
   /** light = fondo claro; dark = fondo navy */
   variant?: "light" | "dark";
+  /** Fade-in mark, then staggered letters — once per session */
+  intro?: boolean;
 };
 
 const sizes = {
@@ -17,6 +22,43 @@ const sizes = {
   lg: { mark: 56, text: "text-xl" },
 };
 
+const INTRO_KEY = "prieta-logo-intro";
+const MARK_MS = 520;
+const LETTER_STAGGER_MS = 55;
+
+function WordLetters({
+  text,
+  animate,
+  startDelayMs,
+}: {
+  text: string;
+  animate: boolean;
+  startDelayMs: number;
+}) {
+  return (
+    <>
+      {text.split("").map((char, i) => (
+        <span
+          key={`${char}-${i}`}
+          className={clsx(
+            "logo-intro__letter inline-block",
+            animate && "logo-intro__letter--run",
+          )}
+          style={
+            animate
+              ? {
+                  animationDelay: `${startDelayMs + i * LETTER_STAGGER_MS}ms`,
+                }
+              : undefined
+          }
+        >
+          {char === " " ? "\u00a0" : char}
+        </span>
+      ))}
+    </>
+  );
+}
+
 /** Isotipo aislado sobre fondo claro + wordmark sans-serif */
 export function PrietaLogo({
   className,
@@ -24,14 +66,52 @@ export function PrietaLogo({
   size = "md",
   href = "/",
   variant = "light",
+  intro = false,
 }: PrietaLogoProps) {
   const s = sizes[size];
   const dark = variant === "dark";
+  const [runIntro, setRunIntro] = useState(false);
+
+  useLayoutEffect(() => {
+    if (!intro) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let already = false;
+    try {
+      already = sessionStorage.getItem(INTRO_KEY) === "1";
+    } catch {
+      /* private mode */
+    }
+
+    if (reduced || already) return;
+
+    try {
+      sessionStorage.setItem(INTRO_KEY, "1");
+    } catch {
+      /* ignore */
+    }
+    setRunIntro(true);
+  }, [intro]);
+
+  const prieta = "Prieta";
+  const concreto = "Concreto";
+  const lettersStart = MARK_MS;
 
   const content = (
-    <span className={clsx("inline-flex items-center gap-3", className)}>
+    <span
+      className={clsx(
+        "inline-flex items-center gap-3",
+        intro && "logo-intro",
+        runIntro && "logo-intro--run",
+        className,
+      )}
+    >
       <span
-        className="relative shrink-0 overflow-hidden"
+        className={clsx(
+          "relative shrink-0 overflow-hidden",
+          intro && "logo-intro__mark",
+          runIntro && "logo-intro__mark--run",
+        )}
         style={{ width: s.mark, height: s.mark }}
         aria-hidden
       >
@@ -48,23 +128,41 @@ export function PrietaLogo({
         />
       </span>
       {showWordmark ? (
-        <span className="flex flex-col leading-none">
+        <span className="flex flex-col leading-none" aria-hidden={intro || undefined}>
           <span
             className={clsx(
-              "font-[family-name:var(--font-outfit)] font-semibold tracking-[-0.02em]",
+              "font-[family-name:var(--font-outfit)] font-semibold tracking-[-0.02em] whitespace-nowrap",
               dark ? "text-cream" : "text-navy",
               s.text,
             )}
           >
-            Prieta
+            {intro ? (
+              <WordLetters
+                text={prieta}
+                animate={runIntro}
+                startDelayMs={lettersStart}
+              />
+            ) : (
+              prieta
+            )}
           </span>
           <span
             className={clsx(
-              "mt-0.5 text-[0.65em] font-medium uppercase tracking-[0.22em]",
+              "mt-0.5 text-[0.65em] font-medium uppercase tracking-[0.22em] whitespace-nowrap",
               dark ? "text-sage-light" : "text-sage",
             )}
           >
-            Concreto
+            {intro ? (
+              <WordLetters
+                text={concreto}
+                animate={runIntro}
+                startDelayMs={
+                  lettersStart + prieta.length * LETTER_STAGGER_MS + 40
+                }
+              />
+            ) : (
+              concreto
+            )}
           </span>
         </span>
       ) : null}

@@ -51,7 +51,7 @@ export function Header() {
         )}
       >
         <div className="mx-auto flex h-[4.25rem] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <PrietaLogo size="md" />
+          <PrietaLogo size="md" intro />
 
           <nav className="hidden items-center gap-8 md:flex" aria-label="Principal">
             {nav.map((item) => {
