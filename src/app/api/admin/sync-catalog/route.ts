@@ -5,6 +5,16 @@ import type { Product } from "@/types/product";
 /** Bundled into the serverless function — do not rely on fs + process.cwd(). */
 import productsSeed from "../../../../../data/products.json";
 
+function catalogSummary(products: Product[]) {
+  return {
+    ok: true as const,
+    count: products.length,
+    models: products
+      .filter((p) => p.category === "bachas" && !p.comingSoon)
+      .map((p) => p.name),
+  };
+}
+
 /** Sincroniza data/products.json → Blob (catálogo en producción). */
 export async function POST(request: Request) {
   const authed = await isAdminAuthenticated();
@@ -28,14 +38,21 @@ export async function POST(request: Request) {
       );
     }
 
+    // Without Blob, the deployed data/products.json already serves /api/products.
+    // Vercel’s function FS is read-only, so a local write would fail with EROFS.
+    if (!process.env.BLOB_READ_WRITE_TOKEN) {
+      return NextResponse.json({
+        ...catalogSummary(products),
+        blob: false,
+        note: "Sin Blob: el catálogo desplegado ya es la fuente de verdad.",
+      });
+    }
+
     await writeProducts(products);
 
     return NextResponse.json({
-      ok: true,
-      count: products.length,
-      models: products
-        .filter((p) => p.category === "bachas" && !p.comingSoon)
-        .map((p) => p.name),
+      ...catalogSummary(products),
+      blob: true,
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : "unknown";

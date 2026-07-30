@@ -223,7 +223,17 @@ export async function writeProducts(products: Product[]) {
     return;
   }
 
-  await writeLocalProducts(products);
+  try {
+    await writeLocalProducts(products);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "unknown";
+    if (/EROFS|read-only/i.test(message)) {
+      throw new Error(
+        "Catálogo no escribible: configurá un Blob store activo (BLOB_READ_WRITE_TOKEN). En Vercel el filesystem es de solo lectura.",
+      );
+    }
+    throw error;
+  }
 }
 
 export async function getProductBySlug(slug: string) {
