@@ -74,14 +74,19 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
   }
 
   return (
-    <div className="mt-5 grid min-w-0 gap-8 sm:mt-6 sm:gap-10 lg:mt-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.4fr)] lg:items-start lg:gap-14 xl:gap-18">
-      {/* Model list — same type size for every item; no shared .chip inflation */}
+    <div className="grid min-w-0 gap-8 sm:gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.4fr)] lg:items-start lg:gap-14 xl:gap-18">
+      {/* Left: heading + models share top edge with the photo */}
       <div className="min-w-0">
+        <h2 className="editorial-title text-2xl sm:text-3xl">Colección</h2>
+        <p className="mt-3 max-w-sm text-sm leading-relaxed text-navy/50">
+          Cuatro moldes. Elegí el modelo y mirá la pieza.
+        </p>
+
         <div
           role="tablist"
           aria-label="Modelos de la colección"
           aria-orientation="vertical"
-          className="flex max-w-full flex-row flex-wrap items-baseline gap-x-5 gap-y-1 sm:gap-x-6 lg:flex-col lg:items-start lg:gap-y-0.5"
+          className="mt-8 flex max-w-full flex-row flex-wrap items-start gap-x-2 gap-y-1.5 sm:mt-10 sm:gap-x-2.5 lg:flex-col lg:items-start lg:gap-y-1"
           onKeyDown={onListKeyDown}
         >
           {models.map((model, i) => {
@@ -100,13 +105,13 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
                 tabIndex={isActive ? 0 : -1}
                 onClick={() => select(i)}
                 className={clsx(
-                  "interactive relative min-h-10 shrink-0 px-0 py-1.5 text-left text-lg leading-none tracking-tight sm:text-xl",
-                  "font-[family-name:var(--font-outfit)] ease-editorial",
+                  "interactive relative w-fit shrink-0 rounded-sm border px-2.5 py-1.5 text-left text-lg leading-none tracking-tight sm:text-xl",
+                  "font-[family-name:var(--font-outfit)] no-underline ease-editorial",
                   reduceMotion ? "duration-0" : "duration-[400ms]",
                   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-verde-agua",
                   isActive
-                    ? "font-medium text-verde-agua-panel underline decoration-verde-agua/55 decoration-1 underline-offset-[0.35em]"
-                    : "font-normal text-navy/40 hover:text-navy/65",
+                    ? "border-verde-agua/45 bg-verde-agua/[0.16] font-medium text-verde-agua-panel"
+                    : "border-transparent font-normal text-navy/40 hover:bg-verde-agua/[0.1] hover:text-navy/65",
                 )}
               >
                 {model.label}
@@ -114,9 +119,16 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
             );
           })}
         </div>
+
+        <Link
+          href="/tienda"
+          className="interactive mt-3 inline-flex min-h-10 w-fit items-center px-2.5 text-[11px] font-medium uppercase tracking-[0.16em] text-navy/35 no-underline hover:text-navy/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage lg:mt-4"
+        >
+          Todas
+        </Link>
       </div>
 
-      {/* Detail panel */}
+      {/* Right: photo top-aligned with Colección */}
       <div
         role="tabpanel"
         id={`${listId}-panel`}
@@ -174,7 +186,7 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
             </Button>
             <Link
               href="/tienda"
-              className="interactive inline-flex min-h-11 items-center text-xs font-medium uppercase tracking-[0.16em] text-navy/45 underline decoration-navy/15 underline-offset-8 hover:text-navy hover:decoration-navy/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
+              className="interactive inline-flex min-h-11 items-center text-xs font-medium uppercase tracking-[0.16em] text-navy/45 no-underline hover:text-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
             >
               Toda la tienda
             </Link>
