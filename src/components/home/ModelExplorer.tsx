@@ -80,7 +80,7 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
         role="tablist"
         aria-label="Modelos de la colección"
         aria-orientation="vertical"
-        className="flex flex-row flex-wrap gap-x-8 gap-y-3 lg:flex-col lg:gap-y-1"
+        className="flex flex-row flex-wrap gap-x-3 gap-y-2 lg:flex-col lg:gap-y-1.5"
         onKeyDown={onListKeyDown}
       >
         {models.map((model, i) => {
@@ -99,24 +99,16 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
               tabIndex={isActive ? 0 : -1}
               onClick={() => select(i)}
               className={clsx(
-                "interactive group/tab relative w-fit py-1.5 text-left font-[family-name:var(--font-outfit)] tracking-tight",
-                "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sage",
+                "interactive relative w-fit rounded-sm border px-3 py-1.5 text-left font-[family-name:var(--font-outfit)] tracking-tight",
+                "transition-[background-color,border-color,color] ease-editorial",
+                reduceMotion ? "duration-0" : "duration-[400ms]",
+                "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-verde-agua",
                 isActive
-                  ? "text-[1.35rem] font-medium text-navy sm:text-[1.5rem]"
-                  : "text-[1.15rem] font-normal text-navy/40 hover:text-navy/70 sm:text-[1.25rem]",
+                  ? "border-verde-agua/45 bg-verde-agua/[0.16] text-[1.35rem] font-medium text-verde-agua-panel sm:text-[1.5rem]"
+                  : "border-transparent text-[1.15rem] font-normal text-navy/40 hover:bg-verde-agua/[0.07] hover:text-navy/65 sm:text-[1.25rem]",
               )}
             >
-              <span
-                className={clsx(
-                  "underline decoration-transparent underline-offset-[10px] transition-[text-decoration-color,color,font-weight] ease-editorial",
-                  reduceMotion ? "duration-0" : "duration-[400ms]",
-                  isActive
-                    ? "decoration-navy/35"
-                    : "group-hover/tab:decoration-navy/15",
-                )}
-              >
-                {model.label}
-              </span>
+              {model.label}
             </button>
           );
         })}
