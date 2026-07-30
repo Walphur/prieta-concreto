@@ -74,44 +74,52 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
   }
 
   return (
-    <div className="mt-10 grid min-w-0 gap-10 sm:mt-14 sm:gap-12 lg:mt-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.35fr)] lg:items-start lg:gap-16 xl:gap-20">
+    <div className="mt-6 grid min-w-0 gap-8 sm:mt-8 sm:gap-10 lg:mt-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.35fr)] lg:items-start lg:gap-16 xl:gap-20">
       {/* Model list — wrap on phone; column from lg */}
-      <div
-        role="tablist"
-        aria-label="Modelos de la colección"
-        aria-orientation="vertical"
-        className="flex max-w-full flex-row flex-wrap gap-x-2 gap-y-2 sm:gap-x-3 lg:flex-col lg:gap-y-1.5"
-        onKeyDown={onListKeyDown}
-      >
-        {models.map((model, i) => {
-          const isActive = i === active;
-          return (
-            <button
-              key={model.id}
-              ref={(el) => {
-                buttonsRef.current[i] = el;
-              }}
-              type="button"
-              role="tab"
-              id={`${listId}-tab-${model.id}`}
-              aria-selected={isActive}
-              aria-controls={`${listId}-panel`}
-              tabIndex={isActive ? 0 : -1}
-              onClick={() => select(i)}
-              className={clsx(
-                "chip interactive relative min-h-11 max-w-full shrink-0 px-3 py-2 text-left font-[family-name:var(--font-outfit)] tracking-tight",
-                "ease-editorial",
-                reduceMotion ? "duration-0" : "duration-[400ms]",
-                "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-verde-agua",
-                isActive
-                  ? "chip--active text-[1.2rem] sm:text-[1.35rem] lg:text-[1.5rem]"
-                  : "chip--idle text-[1.05rem] font-normal text-navy/40 sm:text-[1.15rem] lg:text-[1.25rem]",
-              )}
-            >
-              {model.label}
-            </button>
-          );
-        })}
+      <div className="min-w-0">
+        <div
+          role="tablist"
+          aria-label="Modelos de la colección"
+          aria-orientation="vertical"
+          className="flex max-w-full flex-row flex-wrap gap-x-2 gap-y-2 sm:gap-x-3 lg:flex-col lg:gap-y-1.5"
+          onKeyDown={onListKeyDown}
+        >
+          {models.map((model, i) => {
+            const isActive = i === active;
+            return (
+              <button
+                key={model.id}
+                ref={(el) => {
+                  buttonsRef.current[i] = el;
+                }}
+                type="button"
+                role="tab"
+                id={`${listId}-tab-${model.id}`}
+                aria-selected={isActive}
+                aria-controls={`${listId}-panel`}
+                tabIndex={isActive ? 0 : -1}
+                onClick={() => select(i)}
+                className={clsx(
+                  "chip interactive relative min-h-11 max-w-full shrink-0 px-3 py-2 text-left font-[family-name:var(--font-outfit)] tracking-tight",
+                  "ease-editorial",
+                  reduceMotion ? "duration-0" : "duration-[400ms]",
+                  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-verde-agua",
+                  isActive
+                    ? "chip--active text-[1.2rem] sm:text-[1.35rem] lg:text-[1.5rem]"
+                    : "chip--idle text-[1.05rem] font-normal text-navy/40 sm:text-[1.15rem] lg:text-[1.25rem]",
+                )}
+              >
+                {model.label}
+              </button>
+            );
+          })}
+        </div>
+        <Link
+          href="/tienda"
+          className="interactive mt-3 inline-flex min-h-11 items-center text-[11px] font-medium uppercase tracking-[0.16em] text-navy/35 underline decoration-navy/10 underline-offset-8 hover:text-navy/70 hover:decoration-navy/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage lg:mt-4"
+        >
+          Todas
+        </Link>
       </div>
 
       {/* Detail panel */}
@@ -121,7 +129,7 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
         aria-labelledby={`${listId}-tab-${current.id}`}
         className="min-w-0"
       >
-        <div className="relative aspect-[4/5] overflow-hidden bg-concrete-light sm:aspect-[5/6] lg:aspect-[4/5]">
+        <div className="relative aspect-square overflow-hidden bg-concrete-light sm:aspect-[5/4] lg:aspect-square">
           {models.map((model) => {
             const src = model.images[0];
             if (!src) return null;
@@ -135,7 +143,7 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
                 priority={model.id === models[0]?.id}
                 sizes="(max-width: 1024px) 100vw, 55vw"
                 className={clsx(
-                  "object-cover transition-opacity ease-editorial",
+                  "object-cover object-center transition-opacity ease-editorial",
                   visible ? "z-[1] opacity-100" : "z-0 opacity-0",
                   reduceMotion ? "duration-0" : "duration-[400ms]",
                 )}

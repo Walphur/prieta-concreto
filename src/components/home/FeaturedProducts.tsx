@@ -10,24 +10,39 @@ import {
   type BachaShapeId,
 } from "@/lib/bacha-options";
 import { imagesByShape } from "@/lib/gallery";
-import Link from "next/link";
 import type { Product } from "@/types/product";
 
-/** Studio shots only — skip ficha/diagram and group shots. */
-function studioImages(product: Product | undefined, shapeId: BachaShapeId) {
-  const fromProduct = (product?.images ?? []).filter(
-    (src) => src && !src.includes("/fichas/") && !src.includes("grupo"),
+/** Studio shots for explorer — skip ficha, grupo, cliente, and tall portraits. */
+function isExplorerHeroSrc(src: string) {
+  return (
+    Boolean(src) &&
+    !src.includes("/fichas/") &&
+    !src.includes("grupo") &&
+    !src.includes("cliente") &&
+    !src.includes("marmolado-humo")
   );
-  if (fromProduct.length > 0) return fromProduct;
+}
 
-  return imagesByShape(shapeId)
-    .filter(
-      (i) =>
-        i.kind !== "grupo" &&
-        !i.src.includes("/fichas/") &&
-        !i.src.includes("grupo"),
-    )
-    .map((i) => i.src);
+/** Prefer landscape/square studio frames so the full bacha shows in a square hero. */
+function preferStudioFrame(srcs: string[]) {
+  const rank = (src: string) => {
+    if (src.includes("marmolado.jpg") || src.includes("gris-oscuro-perfil"))
+      return 0;
+    if (src.includes("negro.jpg") || src.includes("carbon.jpg")) return 1;
+    return 2;
+  };
+  return [...srcs].sort((a, b) => rank(a) - rank(b));
+}
+
+function studioImages(product: Product | undefined, shapeId: BachaShapeId) {
+  const fromProduct = (product?.images ?? []).filter(isExplorerHeroSrc);
+  if (fromProduct.length > 0) return preferStudioFrame(fromProduct);
+
+  return preferStudioFrame(
+    imagesByShape(shapeId)
+      .filter((i) => i.kind !== "grupo" && isExplorerHeroSrc(i.src))
+      .map((i) => i.src),
+  );
 }
 
 function pickProduct(all: Product[], shapeId: BachaShapeId, label: string) {
@@ -74,19 +89,11 @@ export async function FeaturedProducts() {
     <section className="bg-cream">
       <div className="mx-auto max-w-7xl px-4 section-space sm:px-6 lg:px-8">
         <SolidifyReveal cureMs={380}>
-          <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
-            <div className="max-w-sm">
-              <h2 className="editorial-title text-2xl sm:text-3xl">Colección</h2>
-              <p className="mt-3 text-sm leading-relaxed text-navy/50">
-                Cuatro moldes. Elegí el modelo y mirá la pieza.
-              </p>
-            </div>
-            <Link
-              href="/tienda"
-              className="interactive inline-flex min-h-11 items-center text-xs font-medium uppercase tracking-[0.16em] text-navy/45 underline decoration-navy/15 underline-offset-8 hover:text-navy hover:decoration-navy/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
-            >
-              Todas
-            </Link>
+          <div className="max-w-sm">
+            <h2 className="editorial-title text-2xl sm:text-3xl">Colección</h2>
+            <p className="mt-3 text-sm leading-relaxed text-navy/50">
+              Cuatro moldes. Elegí el modelo y mirá la pieza.
+            </p>
           </div>
         </SolidifyReveal>
 
