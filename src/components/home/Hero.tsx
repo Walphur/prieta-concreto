@@ -44,11 +44,11 @@ export function Hero() {
         <div className="relative min-h-[56vh] overflow-hidden sm:min-h-[70vh] lg:min-h-[92vh]">
           <Image
             src="/hero/banner-inicio.jpg"
-            alt="Bacha marmolada Prieta sobre vanity en baño minimalista"
+            alt="Bacha oval de concreto Prieta sobre mesada de granito con grifería de pared"
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover object-[72%_center]"
+            className="object-cover object-[center_62%]"
             quality={90}
           />
         </div>
