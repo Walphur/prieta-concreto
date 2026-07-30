@@ -16,8 +16,8 @@ const nav = [
   { href: "/inspiracion", label: "Inspiración" },
 ];
 
-/** Minimal shopping bag — stroke matches Menu/X (~1.75). */
-function CartBagIcon({ className }: { className?: string }) {
+/** Trolley cart — upright handle, trapezoid basket, two wheels (ref right icon). */
+function CartIcon({ className }: { className?: string }) {
   return (
     <svg
       className={className}
@@ -29,8 +29,9 @@ function CartBagIcon({ className }: { className?: string }) {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path d="M6.5 9h11l-.7 10.2a1.75 1.75 0 0 1-1.75 1.55H8.95a1.75 1.75 0 0 1-1.75-1.55L6.5 9Z" />
-      <path d="M9 9V7.5a3 3 0 0 1 6 0V9" />
+      <path d="M4.5 6.5H7.5V17.5H16L18 6.5H7.5" />
+      <circle cx="10" cy="20.25" r="1.4" />
+      <circle cx="15.25" cy="20.25" r="1.4" />
     </svg>
   );
 }
@@ -102,7 +103,7 @@ export function Header() {
               className="relative inline-flex h-11 w-11 items-center justify-center text-navy transition-colors hover:text-sage-dark"
               aria-label={`Carrito${count ? `, ${count} artículos` : ""}`}
             >
-              <CartBagIcon className="h-5 w-5" />
+              <CartIcon className="h-5 w-5" />
               {count > 0 ? (
                 <span className="absolute right-1.5 top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-sage px-1 text-[10px] font-semibold text-white">
                   {count}
