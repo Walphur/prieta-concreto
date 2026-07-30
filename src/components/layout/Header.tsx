@@ -11,7 +11,6 @@ import { CartDrawer } from "@/components/cart/CartDrawer";
 import { MemberAccess } from "@/components/member/MemberAccess";
 
 const nav = [
-  { href: "/", label: "Inicio" },
   { href: "/tienda", label: "Tienda" },
   { href: "/nosotros", label: "Nosotros" },
   { href: "/inspiracion", label: "Inspiración" },
@@ -76,10 +75,7 @@ export function Header() {
 
           <nav className="hidden items-center gap-1.5 md:flex" aria-label="Principal">
             {nav.map((item) => {
-              const active =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(item.href);
+              const active = pathname.startsWith(item.href);
               return (
                 <Link
                   key={item.href}
@@ -138,10 +134,7 @@ export function Header() {
         >
           <nav className="flex flex-col gap-1 px-4 py-3" aria-label="Móvil">
             {nav.map((item) => {
-              const active =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(item.href);
+              const active = pathname.startsWith(item.href);
               return (
                 <Link
                   key={item.href}
