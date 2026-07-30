@@ -17,6 +17,11 @@ export const BACHA_COLORS = [
     hex: "#CFA39A",
   },
   {
+    id: "verde-agua",
+    label: "Verde agua",
+    hex: "#8FAAA2",
+  },
+  {
     id: "marmolado",
     label: "Marmolado gris con negro",
     hex: "#6A6E73",

@@ -34,7 +34,7 @@ export function PigmentStrip({
 
       <ul
         className={clsx(
-          "grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6 lg:gap-8",
+          "grid grid-cols-2 gap-6 sm:grid-cols-4 lg:grid-cols-7 lg:gap-8",
           inline ? "mt-10" : "mt-16",
         )}
       >
