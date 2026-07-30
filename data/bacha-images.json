@@ -3,217 +3,192 @@
     "src": "/gallery/shapes/cuadrado/blanco.jpg",
     "shape": "cuadrado",
     "color": "blanco",
-    "kind": "studio",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.22 (2).jpeg"
+    "kind": "studio"
   },
   {
     "src": "/gallery/shapes/cuadrado/gris-natural.jpg",
     "shape": "cuadrado",
     "color": "gris-natural",
-    "kind": "studio",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.38.jpeg"
+    "kind": "studio"
   },
   {
-    "src": "/gallery/shapes/cuadrado/grupo-oscuro.jpg",
+    "src": "/gallery/shapes/cuadrado/gris-oscuro.jpg",
     "shape": "cuadrado",
     "color": "gris-oscuro",
-    "kind": "grupo",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.23.jpeg"
+    "kind": "studio"
   },
   {
-    "src": "/gallery/shapes/cuadrado/grupo-natural.jpg",
+    "src": "/gallery/shapes/cuadrado/carbon.jpg",
     "shape": "cuadrado",
-    "color": "gris-natural",
-    "kind": "grupo",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.24 (1).jpeg"
+    "color": "gris-oscuro",
+    "kind": "studio"
+  },
+  {
+    "src": "/gallery/shapes/cuadrado/negro.jpg",
+    "shape": "cuadrado",
+    "color": "negro",
+    "kind": "studio"
   },
   {
     "src": "/gallery/shapes/oval/negro.jpg",
     "shape": "oval",
     "color": "negro",
-    "kind": "studio",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.19.jpeg"
+    "kind": "studio"
   },
   {
     "src": "/gallery/shapes/oval/marmolado-oscuro.jpg",
     "shape": "oval",
     "color": "marmolado",
-    "kind": "studio",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.19 (1).jpeg"
+    "kind": "studio"
   },
   {
     "src": "/gallery/shapes/oval/marmolado.jpg",
     "shape": "oval",
     "color": "marmolado",
-    "kind": "studio",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.19 (2).jpeg"
+    "kind": "studio"
   },
   {
     "src": "/gallery/shapes/oval/gris-natural-claro.jpg",
     "shape": "oval",
     "color": "gris-natural",
-    "kind": "studio",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.20 (2).jpeg"
+    "kind": "studio"
   },
   {
     "src": "/gallery/shapes/oval/gris-natural-mineral.jpg",
     "shape": "oval",
     "color": "gris-natural",
-    "kind": "studio",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.20 (3).jpeg"
+    "kind": "studio"
   },
   {
     "src": "/gallery/shapes/oval/gris-oscuro.jpg",
     "shape": "oval",
     "color": "gris-oscuro",
-    "kind": "studio",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.21.jpeg"
-  },
-  {
-    "src": "/gallery/shapes/oval/duo-oscuro.jpg",
-    "shape": "oval",
-    "color": "gris-oscuro",
-    "kind": "grupo",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.22 (1).jpeg"
+    "kind": "studio"
   },
   {
     "src": "/gallery/shapes/oval/marmolado-humo.jpg",
     "shape": "oval",
     "color": "marmolado",
-    "kind": "studio",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.22 (3).jpeg"
-  },
-  {
-    "src": "/gallery/shapes/oval/grupo-natural.jpg",
-    "shape": "oval",
-    "color": "gris-natural",
-    "kind": "grupo",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.24.jpeg"
+    "kind": "studio"
   },
   {
     "src": "/gallery/shapes/oval/gris-natural.jpg",
     "shape": "oval",
     "color": "gris-natural",
-    "kind": "studio",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.28 (1).jpeg"
+    "kind": "studio"
   },
   {
     "src": "/gallery/shapes/oval/gris-oscuro-perfil.jpg",
     "shape": "oval",
     "color": "gris-oscuro",
-    "kind": "studio",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.39.jpeg"
+    "kind": "studio"
   },
   {
-    "src": "/gallery/shapes/oval/cliente-marmol.jpg",
+    "src": "/gallery/shapes/oval/carbon.jpg",
     "shape": "oval",
-    "color": "marmolado",
-    "kind": "cliente",
-    "file": "WhatsApp Image 2026-07-25 at 13.30.55.jpeg"
+    "color": "gris-oscuro",
+    "kind": "studio"
+  },
+  {
+    "src": "/gallery/shapes/oval/gris-medio.jpg",
+    "shape": "oval",
+    "color": "gris-natural",
+    "kind": "studio"
   },
   {
     "src": "/gallery/shapes/circular/gris-oscuro.jpg",
     "shape": "circular",
     "color": "gris-oscuro",
-    "kind": "studio",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.18 (1).jpeg"
+    "kind": "studio"
   },
   {
     "src": "/gallery/shapes/circular/rosa.jpg",
     "shape": "circular",
     "color": "rosa",
-    "kind": "studio",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.21 (2).jpeg"
+    "kind": "studio"
   },
   {
     "src": "/gallery/shapes/circular/rosa-mate.jpg",
     "shape": "circular",
     "color": "rosa",
-    "kind": "studio",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.22.jpeg"
+    "kind": "studio"
   },
   {
     "src": "/gallery/shapes/circular/gris-natural.jpg",
     "shape": "circular",
     "color": "gris-natural",
-    "kind": "studio",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.38 (1).jpeg"
+    "kind": "studio"
   },
   {
-    "src": "/gallery/shapes/circular/cliente-natural.jpg",
+    "src": "/gallery/shapes/circular/gris-medio.jpg",
     "shape": "circular",
     "color": "gris-natural",
-    "kind": "cliente",
-    "file": "WhatsApp Image 2026-07-25 at 13.30.21.jpeg"
+    "kind": "studio"
   },
   {
-    "src": "/gallery/shapes/circular/duo-oscuro.jpg",
+    "src": "/gallery/shapes/circular/carbon.jpg",
     "shape": "circular",
     "color": "gris-oscuro",
-    "kind": "grupo",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.22 (1).jpeg"
+    "kind": "studio"
   },
   {
-    "src": "/gallery/shapes/circular/grupo-oscuro.jpg",
-    "shape": "circular",
-    "color": "gris-oscuro",
-    "kind": "grupo",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.23.jpeg"
-  },
-  {
-    "src": "/gallery/shapes/circular/grupo-natural.jpg",
+    "src": "/gallery/shapes/circular/gris-suave.jpg",
     "shape": "circular",
     "color": "gris-natural",
-    "kind": "grupo",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.24 (1).jpeg"
+    "kind": "studio"
   },
   {
     "src": "/gallery/shapes/circular-tapon/gris-natural.jpg",
     "shape": "circular-tapon",
     "color": "gris-natural",
-    "kind": "studio",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.20.jpeg"
+    "kind": "studio"
   },
   {
     "src": "/gallery/shapes/circular-tapon/gris-natural-claro.jpg",
     "shape": "circular-tapon",
     "color": "gris-natural",
-    "kind": "studio",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.20 (1).jpeg"
+    "kind": "studio"
   },
   {
     "src": "/gallery/shapes/circular-tapon/gris-oscuro.jpg",
     "shape": "circular-tapon",
     "color": "gris-oscuro",
-    "kind": "studio",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.21 (1).jpeg"
+    "kind": "studio"
   },
   {
-    "src": "/gallery/shapes/circular-tapon/cliente-natural.jpg",
+    "src": "/gallery/shapes/circular-tapon/gris-perfil.jpg",
     "shape": "circular-tapon",
     "color": "gris-natural",
-    "kind": "cliente",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.47.jpeg"
+    "kind": "studio"
+  },
+  {
+    "src": "/gallery/shapes/circular-tapon/carbon.jpg",
+    "shape": "circular-tapon",
+    "color": "gris-oscuro",
+    "kind": "studio"
+  },
+  {
+    "src": "/gallery/shapes/circular-tapon/gris-medio.jpg",
+    "shape": "circular-tapon",
+    "color": "gris-natural",
+    "kind": "studio"
   },
   {
     "src": "/gallery/shapes/coleccion/coleccion-estudio.jpg",
     "shape": "coleccion",
     "color": "varios",
-    "kind": "grupo",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.17.jpeg"
+    "kind": "grupo"
   },
   {
     "src": "/gallery/shapes/coleccion/coleccion-colores.jpg",
     "shape": "coleccion",
     "color": "varios",
-    "kind": "grupo",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.18.jpeg"
+    "kind": "grupo"
   },
   {
     "src": "/gallery/shapes/coleccion/feria.jpg",
     "shape": "coleccion",
     "color": "varios",
-    "kind": "grupo",
-    "file": "WhatsApp Image 2026-07-25 at 13.29.28.jpeg"
+    "kind": "grupo"
   }
 ]

@@ -13,6 +13,24 @@
       "kind": "producto"
     },
     {
+      "src": "/gallery/shapes/cuadrado/gris-oscuro.jpg",
+      "label": "cuadrado · gris-oscuro",
+      "alt": "Bacha cuadrado gris-oscuro",
+      "kind": "producto"
+    },
+    {
+      "src": "/gallery/shapes/cuadrado/carbon.jpg",
+      "label": "cuadrado · carbón",
+      "alt": "Bacha cuadrado carbón",
+      "kind": "producto"
+    },
+    {
+      "src": "/gallery/shapes/cuadrado/negro.jpg",
+      "label": "cuadrado · negro",
+      "alt": "Bacha cuadrado negro",
+      "kind": "producto"
+    },
+    {
       "src": "/gallery/shapes/oval/negro.jpg",
       "label": "oval · negro",
       "alt": "Bacha oval negro",
@@ -67,6 +85,18 @@
       "kind": "producto"
     },
     {
+      "src": "/gallery/shapes/oval/carbon.jpg",
+      "label": "oval · carbón",
+      "alt": "Bacha oval carbón",
+      "kind": "producto"
+    },
+    {
+      "src": "/gallery/shapes/oval/gris-medio.jpg",
+      "label": "oval · gris-medio",
+      "alt": "Bacha oval gris medio",
+      "kind": "producto"
+    },
+    {
       "src": "/gallery/shapes/circular/gris-oscuro.jpg",
       "label": "circular · gris-oscuro",
       "alt": "Bacha circular gris-oscuro",
@@ -91,6 +121,24 @@
       "kind": "producto"
     },
     {
+      "src": "/gallery/shapes/circular/gris-medio.jpg",
+      "label": "circular · gris-medio",
+      "alt": "Bacha circular gris medio",
+      "kind": "producto"
+    },
+    {
+      "src": "/gallery/shapes/circular/carbon.jpg",
+      "label": "circular · carbón",
+      "alt": "Bacha circular carbón",
+      "kind": "producto"
+    },
+    {
+      "src": "/gallery/shapes/circular/gris-suave.jpg",
+      "label": "circular · gris-suave",
+      "alt": "Bacha circular gris suave",
+      "kind": "producto"
+    },
+    {
       "src": "/gallery/shapes/circular-tapon/gris-natural.jpg",
       "label": "circular-tapon · gris-natural",
       "alt": "Bacha circular-tapon gris-natural",
@@ -106,6 +154,24 @@
       "src": "/gallery/shapes/circular-tapon/gris-oscuro.jpg",
       "label": "circular-tapon · gris-oscuro",
       "alt": "Bacha circular-tapon gris-oscuro",
+      "kind": "producto"
+    },
+    {
+      "src": "/gallery/shapes/circular-tapon/gris-perfil.jpg",
+      "label": "circular-tapon · perfil",
+      "alt": "Bacha circular-tapon perfil",
+      "kind": "producto"
+    },
+    {
+      "src": "/gallery/shapes/circular-tapon/carbon.jpg",
+      "label": "circular-tapon · carbón",
+      "alt": "Bacha circular-tapon carbón",
+      "kind": "producto"
+    },
+    {
+      "src": "/gallery/shapes/circular-tapon/gris-medio.jpg",
+      "label": "circular-tapon · gris-medio",
+      "alt": "Bacha circular-tapon gris medio",
       "kind": "producto"
     }
   ],

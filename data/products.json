@@ -17,6 +17,12 @@
       "/gallery/shapes/oval/negro.jpg",
       "/gallery/shapes/oval/gris-oscuro.jpg",
       "/gallery/shapes/oval/marmolado-oscuro.jpg",
+      "/gallery/shapes/oval/marmolado-humo.jpg",
+      "/gallery/shapes/oval/gris-natural.jpg",
+      "/gallery/shapes/oval/gris-natural-mineral.jpg",
+      "/gallery/shapes/oval/gris-oscuro-perfil.jpg",
+      "/gallery/shapes/oval/carbon.jpg",
+      "/gallery/shapes/oval/gris-medio.jpg",
       "/gallery/clientes/cliente-oval-marmol-madera.png"
     ],
     "specs": {
@@ -42,6 +48,9 @@
     "images": [
       "/gallery/shapes/cuadrado/blanco.jpg",
       "/gallery/shapes/cuadrado/gris-natural.jpg",
+      "/gallery/shapes/cuadrado/gris-oscuro.jpg",
+      "/gallery/shapes/cuadrado/carbon.jpg",
+      "/gallery/shapes/cuadrado/negro.jpg",
       "/gallery/fichas/cuadrado-producto.jpg"
     ],
     "specs": {
@@ -68,7 +77,10 @@
       "/gallery/shapes/circular/gris-oscuro.jpg",
       "/gallery/shapes/circular/rosa.jpg",
       "/gallery/shapes/circular/gris-natural.jpg",
-      "/gallery/shapes/circular/rosa-mate.jpg"
+      "/gallery/shapes/circular/rosa-mate.jpg",
+      "/gallery/shapes/circular/gris-medio.jpg",
+      "/gallery/shapes/circular/carbon.jpg",
+      "/gallery/shapes/circular/gris-suave.jpg"
     ],
     "specs": {
       "dimensions": "Ø 39 × 12 cm",
@@ -91,10 +103,13 @@
     "shape": "circular-tapon",
     "featured": true,
     "images": [
-      "/gallery/fichas/circular-tapon-producto.png",
       "/gallery/shapes/circular-tapon/gris-natural.jpg",
       "/gallery/shapes/circular-tapon/gris-oscuro.jpg",
-      "/gallery/shapes/circular-tapon/gris-natural-claro.jpg"
+      "/gallery/shapes/circular-tapon/gris-natural-claro.jpg",
+      "/gallery/shapes/circular-tapon/gris-perfil.jpg",
+      "/gallery/shapes/circular-tapon/carbon.jpg",
+      "/gallery/shapes/circular-tapon/gris-medio.jpg",
+      "/gallery/fichas/circular-tapon-producto.png"
     ],
     "specs": {
       "dimensions": "Ø 30,5 × 14,5 cm",
