@@ -74,13 +74,13 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
   }
 
   return (
-    <div className="mt-14 grid gap-12 lg:mt-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.35fr)] lg:items-start lg:gap-16 xl:gap-20">
-      {/* Model list */}
+    <div className="mt-10 grid min-w-0 gap-10 sm:mt-14 sm:gap-12 lg:mt-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.35fr)] lg:items-start lg:gap-16 xl:gap-20">
+      {/* Model list — wrap on phone; column from lg */}
       <div
         role="tablist"
         aria-label="Modelos de la colección"
         aria-orientation="vertical"
-        className="flex flex-row flex-wrap gap-x-3 gap-y-2 lg:flex-col lg:gap-y-1.5"
+        className="flex max-w-full flex-row flex-wrap gap-x-2 gap-y-2 sm:gap-x-3 lg:flex-col lg:gap-y-1.5"
         onKeyDown={onListKeyDown}
       >
         {models.map((model, i) => {
@@ -99,13 +99,13 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
               tabIndex={isActive ? 0 : -1}
               onClick={() => select(i)}
               className={clsx(
-                "chip interactive relative w-fit px-3 py-1.5 text-left font-[family-name:var(--font-outfit)] tracking-tight",
+                "chip interactive relative min-h-11 max-w-full shrink-0 px-3 py-2 text-left font-[family-name:var(--font-outfit)] tracking-tight",
                 "ease-editorial",
                 reduceMotion ? "duration-0" : "duration-[400ms]",
                 "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-verde-agua",
                 isActive
-                  ? "chip--active text-[1.35rem] sm:text-[1.5rem]"
-                  : "chip--idle text-[1.15rem] font-normal text-navy/40 sm:text-[1.25rem]",
+                  ? "chip--active text-[1.2rem] sm:text-[1.35rem] lg:text-[1.5rem]"
+                  : "chip--idle text-[1.05rem] font-normal text-navy/40 sm:text-[1.15rem] lg:text-[1.25rem]",
               )}
             >
               {model.label}
@@ -166,13 +166,13 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
               {current.copy}
             </p>
           ) : null}
-          <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 sm:gap-x-8 sm:gap-y-4">
             <Button href={`/producto/${current.slug}`} variant="outline">
               Ver {current.label}
             </Button>
             <Link
               href="/tienda"
-              className="interactive text-xs font-medium uppercase tracking-[0.16em] text-navy/45 underline decoration-navy/15 underline-offset-8 hover:text-navy hover:decoration-navy/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
+              className="interactive inline-flex min-h-11 items-center text-xs font-medium uppercase tracking-[0.16em] text-navy/45 underline decoration-navy/15 underline-offset-8 hover:text-navy hover:decoration-navy/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
             >
               Toda la tienda
             </Link>

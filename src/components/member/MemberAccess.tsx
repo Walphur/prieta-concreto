@@ -233,7 +233,7 @@ export function MemberAccess({ className, onOpen }: Props) {
           setMessage(null);
         }}
         className={clsx(
-          "text-[11px] font-medium tracking-wide text-navy/70 transition-colors hover:text-sage-dark",
+          "inline-flex min-h-11 items-center text-[11px] font-medium tracking-wide text-navy/70 transition-colors hover:text-sage-dark",
           className,
         )}
       >

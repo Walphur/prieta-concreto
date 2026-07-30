@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function NosotrosPage() {
   return (
     <div>
-      <section className="relative min-h-[52vh] overflow-hidden bg-navy lg:min-h-[62vh]">
+      <section className="relative min-h-[30vh] overflow-hidden bg-navy sm:min-h-[42vh] lg:min-h-[62vh]">
         <Image
           src="/hero/banner-nosotros.jpg"
           alt="Bacha circular Prieta en baño zen con jardín y pasillo"
@@ -22,7 +22,7 @@ export default function NosotrosPage() {
           quality={90}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/75 via-navy/15 to-transparent" />
-        <div className="relative mx-auto flex min-h-[52vh] max-w-7xl items-end px-4 pb-16 sm:px-6 lg:min-h-[62vh] lg:px-8 lg:pb-20">
+        <div className="relative mx-auto flex min-h-[30vh] max-w-7xl items-end px-4 pb-10 sm:min-h-[42vh] sm:px-6 sm:pb-16 lg:min-h-[62vh] lg:px-8 lg:pb-20">
           <h1 className="max-w-2xl font-[family-name:var(--font-outfit)] text-3xl font-medium tracking-[-0.02em] text-cream sm:text-5xl">
             Nosotros
           </h1>

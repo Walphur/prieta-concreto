@@ -52,6 +52,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   body {
@@ -59,6 +60,7 @@
     color: var(--foreground);
     font-family: var(--font-dm-sans), ui-sans-serif, sans-serif;
     font-feature-settings: "kern" 1, "liga" 1;
+    overflow-x: clip;
   }
 
   ::selection {
@@ -108,7 +110,13 @@
 }
 
 .section-space {
-  padding-block: 6.5rem;
+  padding-block: 4.5rem;
+}
+
+@media (min-width: 640px) {
+  .section-space {
+    padding-block: 6.5rem;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -137,12 +145,15 @@
 
 /* Quiet verde agua selection — ModelExplorer / nav / filters */
 .chip {
+  position: relative;
+  isolation: isolate;
   border: 1px solid transparent;
   border-radius: 0.125rem;
   transition:
     background-color var(--duration-micro) var(--ease-editorial),
     border-color var(--duration-micro) var(--ease-editorial),
-    color var(--duration-micro) var(--ease-editorial);
+    color var(--duration-micro) var(--ease-editorial),
+    box-shadow var(--duration-micro) var(--ease-editorial);
 }
 
 .chip--active {
@@ -152,9 +163,24 @@
   font-weight: 500;
 }
 
-.chip--idle:hover {
-  background-color: color-mix(in oklab, var(--verde-agua) 7%, transparent);
-  color: color-mix(in oklab, var(--navy) 65%, transparent);
+/* Soft underline grow — idle chips only; hover fill gated for fine pointers */
+.chip--idle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0.28em;
+  width: 0;
+  height: 1px;
+  background-color: color-mix(in oklab, var(--verde-agua) 70%, var(--navy));
+  opacity: 0.55;
+  transform: translateX(-50%);
+  transition: width var(--duration-micro) var(--ease-editorial);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.chip--active::after {
+  content: none;
 }
 
 /* Quiet press / hover for CTAs, chips, FABs */
@@ -170,7 +196,24 @@
 }
 
 .interactive:hover {
-  transform: translateY(-1px);
+  transform: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .interactive:hover {
+    transform: translateY(-1px);
+  }
+
+  .chip--idle:hover {
+    background-color: color-mix(in oklab, var(--verde-agua) 10%, transparent);
+    border-color: color-mix(in oklab, var(--verde-agua) 20%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--verde-agua) 8%, transparent);
+    color: color-mix(in oklab, var(--navy) 82%, transparent);
+  }
+
+  .chip--idle:hover::after {
+    width: max(1.25rem, calc(100% - 1.35rem));
+  }
 }
 
 .interactive:active {
@@ -252,8 +295,16 @@
 }
 
 /* Header logo intro — mark fade, then letter stagger (once per session) */
+.logo-intro {
+  max-width: 100%;
+}
+
 .logo-intro__mark--run {
   animation: logo-mark-in 520ms var(--ease-editorial) both;
+}
+
+.logo-intro__letter {
+  will-change: opacity, transform;
 }
 
 .logo-intro__letter--run {
@@ -342,5 +393,13 @@
   .interactive:hover,
   .interactive:active {
     transform: none !important;
+  }
+
+  .chip--idle::after {
+    transition: none !important;
+  }
+
+  .chip--idle:hover::after {
+    width: max(1.25rem, calc(100% - 1.35rem));
   }
 }

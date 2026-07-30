@@ -58,7 +58,7 @@ export function TonePicker({
                   "block shrink-0 border transition-[box-shadow,border-color,opacity,transform] duration-200 ease-editorial motion-safe:hover:scale-105",
                   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage",
                   "motion-safe:active:scale-[0.98]",
-                  size === "sm" ? "h-7 w-7" : "h-9 w-9",
+                  "h-11 w-11",
                   selected
                     ? "border-navy/50 opacity-100 ring-1 ring-navy/25 ring-offset-2 ring-offset-cream"
                     : "border-navy/10 opacity-80 hover:opacity-100",

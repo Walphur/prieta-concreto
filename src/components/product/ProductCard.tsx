@@ -77,7 +77,7 @@ function ProductCardImage({
         alt={alt}
         fill
         priority={priority}
-        sizes="(max-width: 640px) 100vw, 50vw"
+        sizes="(max-width: 640px) 50vw, 50vw"
         className="object-cover"
       />
     );
@@ -96,7 +96,7 @@ function ProductCardImage({
           alt={alt}
           fill
           priority={priority && i === 0}
-          sizes="(max-width: 640px) 100vw, 50vw"
+          sizes="(max-width: 640px) 50vw, 50vw"
           className={clsx(
             "object-cover transition-opacity duration-700 ease-editorial",
             i === index ? "opacity-100 product-ken-active" : "opacity-0",
@@ -123,7 +123,7 @@ function ToneSwatches({ color }: { color?: string }) {
   }
 
   return (
-    <span className="flex flex-wrap items-center gap-1" aria-label="Tonos disponibles">
+    <span className="flex max-w-full flex-wrap items-center gap-1" aria-label="Tonos disponibles">
       {BACHA_COLORS.map((c) => (
         <span
           key={c.id}
@@ -170,14 +170,14 @@ export function ProductCard({
             rotate={rotateImages}
           />
         </div>
-        <div className="mt-5 space-y-1">
-          <h3 className="font-[family-name:var(--font-outfit)] text-[0.95rem] font-medium tracking-tight text-navy transition-colors duration-200 ease-editorial group-hover:text-sage-dark">
+        <div className="mt-5 min-w-0 space-y-1">
+          <h3 className="font-[family-name:var(--font-outfit)] text-[0.9rem] font-medium tracking-tight text-navy transition-colors duration-200 ease-editorial group-hover:text-sage-dark sm:text-[0.95rem]">
             {isBacha ? modelName : product.name}
           </h3>
           {isBacha ? (
-            <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
+            <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1.5">
               {mold ? (
-                <p className="text-[11px] uppercase tracking-[0.14em] text-navy/40">
+                <p className="text-[10px] uppercase tracking-[0.14em] text-navy/40 sm:text-[11px]">
                   {mold}
                 </p>
               ) : null}

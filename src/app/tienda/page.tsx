@@ -94,7 +94,7 @@ export default async function TiendaPage({
 
   return (
     <div>
-      <section className="relative min-h-[40vh] overflow-hidden bg-navy lg:min-h-[48vh]">
+      <section className="relative min-h-[28vh] overflow-hidden bg-navy sm:min-h-[36vh] lg:min-h-[48vh]">
         <Image
           src="/hero/banner-coleccion.jpg"
           alt="Bacha circular Prieta sobre vanity de madera en baño spa"
@@ -105,7 +105,7 @@ export default async function TiendaPage({
           quality={90}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
-        <div className="relative mx-auto flex min-h-[40vh] max-w-7xl items-end px-4 pb-12 sm:px-6 lg:min-h-[48vh] lg:px-8 lg:pb-16">
+        <div className="relative mx-auto flex min-h-[28vh] max-w-7xl items-end px-4 pb-10 sm:min-h-[36vh] sm:px-6 sm:pb-12 lg:min-h-[48vh] lg:px-8 lg:pb-16">
           <h1 className="font-[family-name:var(--font-outfit)] text-3xl font-medium tracking-[-0.02em] text-cream sm:text-5xl">
             Colección
           </h1>
@@ -113,7 +113,7 @@ export default async function TiendaPage({
       </section>
 
       <div className="mx-auto max-w-7xl px-4 pb-24 pt-8 sm:px-6 sm:pt-10 lg:px-8 lg:pb-36 lg:pt-12">
-        <nav className="mb-4 space-y-4" aria-label="Filtros de colección">
+        <nav className="mb-4 space-y-3" aria-label="Filtros de colección">
           <div className="flex flex-wrap gap-2">
             {filters.map((f) => {
               const active = categoria === f.value;
@@ -124,7 +124,7 @@ export default async function TiendaPage({
                   key={f.value}
                   href={href}
                   className={clsx(
-                    "chip interactive px-4 py-2 text-xs uppercase tracking-[0.14em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-agua",
+                    "chip interactive inline-flex min-h-11 items-center px-4 py-2.5 text-xs uppercase tracking-[0.14em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-agua",
                     active ? "chip--active" : "chip--idle font-medium text-navy/45",
                   )}
                 >
@@ -135,7 +135,7 @@ export default async function TiendaPage({
           </div>
 
           {categoria === "bachas" || categoria === "all" ? (
-            <div className="flex flex-wrap items-center gap-x-1 gap-y-2">
+            <div className="flex flex-wrap items-center gap-x-1 gap-y-1">
               {vistaFilters.map((f) => {
                 const active = vista === f.value;
                 const base =
@@ -149,7 +149,7 @@ export default async function TiendaPage({
                     key={f.value}
                     href={href}
                     className={clsx(
-                      "chip interactive px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-agua",
+                      "chip interactive inline-flex min-h-11 items-center px-3 py-2 text-[11px] uppercase tracking-[0.14em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-agua",
                       active ? "chip--active" : "chip--idle font-medium text-navy/45",
                     )}
                   >
@@ -167,10 +167,10 @@ export default async function TiendaPage({
           <>
             <div
               className={clsx(
-                "mt-16 grid gap-y-14",
+                "mt-10 grid grid-cols-2 gap-x-4 gap-y-10 sm:mt-16 sm:gap-y-14",
                 categoria === "bachas"
-                  ? "gap-x-12 sm:grid-cols-2"
-                  : "gap-x-8 sm:grid-cols-2 lg:grid-cols-3",
+                  ? "sm:gap-x-12"
+                  : "sm:gap-x-8 lg:grid-cols-3",
               )}
             >
               {list.map((product, i) => (

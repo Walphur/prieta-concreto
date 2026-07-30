@@ -32,7 +32,7 @@ const estudioGallery = [
 export default function InspiracionPage() {
   return (
     <div>
-      <section className="relative min-h-[40vh] overflow-hidden bg-navy lg:min-h-[48vh]">
+      <section className="relative min-h-[28vh] overflow-hidden bg-navy sm:min-h-[36vh] lg:min-h-[48vh]">
         <Image
           src="/hero/banner-inspiracion.jpg"
           alt="Baño spa Prieta con bacha marmolada, jardín interior y bañera"
@@ -43,7 +43,7 @@ export default function InspiracionPage() {
           quality={90}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
-        <div className="relative mx-auto flex min-h-[40vh] max-w-7xl items-end px-4 pb-12 sm:px-6 lg:min-h-[48vh] lg:px-8 lg:pb-16">
+        <div className="relative mx-auto flex min-h-[28vh] max-w-7xl items-end px-4 pb-10 sm:min-h-[36vh] sm:px-6 sm:pb-12 lg:min-h-[48vh] lg:px-8 lg:pb-16">
           <h1 className="font-[family-name:var(--font-outfit)] text-3xl font-medium tracking-[-0.02em] text-cream sm:text-5xl">
             Inspiración
           </h1>
