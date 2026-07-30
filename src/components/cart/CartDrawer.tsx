@@ -61,7 +61,7 @@ export function CartDrawer() {
               <Link
                 href="/tienda"
                 onClick={closeCart}
-                className="text-sm font-medium text-sage-dark underline-offset-4 hover:underline"
+                className="text-sm font-medium text-sage-dark no-underline transition hover:text-navy hover:no-underline"
               >
                 Ir a la colección
               </Link>

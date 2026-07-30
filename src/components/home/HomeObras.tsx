@@ -54,7 +54,7 @@ export function HomeObras() {
           </div>
           <Link
             href="/inspiracion"
-            className="text-xs font-medium uppercase tracking-[0.16em] text-navy/50 underline decoration-navy/20 underline-offset-8 transition duration-700 hover:text-navy hover:decoration-navy/50"
+            className="interactive text-xs font-medium uppercase tracking-[0.16em] text-navy/50 no-underline transition duration-700 hover:text-navy hover:no-underline"
           >
             Ver más
           </Link>

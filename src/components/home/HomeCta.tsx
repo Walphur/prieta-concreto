@@ -23,7 +23,7 @@ export function HomeCta() {
             )}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-11 items-center text-xs font-medium uppercase tracking-[0.16em] text-cream/70 underline decoration-cream/25 underline-offset-[10px] transition duration-700 hover:text-cream hover:decoration-cream/60"
+            className="interactive inline-flex min-h-11 items-center text-xs font-medium uppercase tracking-[0.16em] text-cream/70 no-underline transition duration-700 hover:text-cream hover:no-underline"
           >
             WhatsApp
           </a>

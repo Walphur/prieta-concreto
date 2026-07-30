@@ -23,7 +23,7 @@ export async function ComingSoon() {
           </div>
           <Link
             href="/tienda?categoria=celosias"
-            className="text-sm font-medium text-sage-dark underline-offset-4 hover:underline"
+            className="text-sm font-medium text-sage-dark no-underline transition hover:text-navy hover:no-underline"
           >
             Ver en tienda
           </Link>

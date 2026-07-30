@@ -63,6 +63,11 @@
     overflow-x: clip;
   }
 
+  /* Kill UA / inherit underlines on CTAs, nav, buttons-as-links */
+  a {
+    text-decoration: none;
+  }
+
   ::selection {
     background: color-mix(in oklab, var(--sage) 30%, transparent);
     color: var(--navy);
@@ -143,12 +148,13 @@
   transform: scale(1.03);
 }
 
-/* Quiet verde agua selection — ModelExplorer / nav / filters */
+/* Quiet verde agua selection — nav / filters (pill only, no underline) */
 .chip {
   position: relative;
   isolation: isolate;
   border: 1px solid transparent;
   border-radius: 0.125rem;
+  text-decoration: none;
   transition:
     background-color var(--duration-micro) var(--ease-editorial),
     border-color var(--duration-micro) var(--ease-editorial),
@@ -156,31 +162,17 @@
     box-shadow var(--duration-micro) var(--ease-editorial);
 }
 
+.chip:hover,
+.chip:focus,
+.chip:active {
+  text-decoration: none;
+}
+
 .chip--active {
   border-color: color-mix(in oklab, var(--verde-agua) 45%, transparent);
   background-color: color-mix(in oklab, var(--verde-agua) 16%, transparent);
   color: var(--verde-agua-panel);
   font-weight: 500;
-}
-
-/* Soft underline grow — idle chips only; hover fill gated for fine pointers */
-.chip--idle::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0.28em;
-  width: 0;
-  height: 1px;
-  background-color: color-mix(in oklab, var(--verde-agua) 70%, var(--navy));
-  opacity: 0.55;
-  transform: translateX(-50%);
-  transition: width var(--duration-micro) var(--ease-editorial);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.chip--active::after {
-  content: none;
 }
 
 /* Quiet press / hover for CTAs, chips, FABs */
@@ -209,10 +201,6 @@
     border-color: color-mix(in oklab, var(--verde-agua) 20%, transparent);
     box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--verde-agua) 8%, transparent);
     color: color-mix(in oklab, var(--navy) 82%, transparent);
-  }
-
-  .chip--idle:hover::after {
-    width: max(1.25rem, calc(100% - 1.35rem));
   }
 }
 
@@ -393,13 +381,5 @@
   .interactive:hover,
   .interactive:active {
     transform: none !important;
-  }
-
-  .chip--idle::after {
-    transition: none !important;
-  }
-
-  .chip--idle:hover::after {
-    width: max(1.25rem, calc(100% - 1.35rem));
   }
 }

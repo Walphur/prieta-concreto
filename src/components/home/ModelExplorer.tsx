@@ -27,7 +27,7 @@ type ModelExplorerProps = {
   models: ModelExplorerItem[];
 };
 
-/** ModelExplorer never uses .chip — avoids underline-grow ::after from globals.css */
+/** ModelExplorer uses its own pill styles (not .chip) */
 const modelBtnBase =
   "relative w-fit max-w-full shrink-0 rounded-sm border px-2.5 py-1.5 text-left text-lg leading-none tracking-tight sm:text-xl font-[family-name:var(--font-outfit)] ease-editorial focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-verde-agua";
 
@@ -116,14 +116,13 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
                   tabIndex={isActive ? 0 : -1}
                   onClick={() => select(i)}
                   className={clsx(
-                    "interactive",
+                    "interactive no-underline hover:no-underline",
                     modelBtnBase,
                     reduceMotion ? "duration-0" : "duration-[400ms]",
                     isActive
                       ? "border-verde-agua/45 bg-verde-agua/[0.16] font-medium text-verde-agua-panel"
                       : "border-transparent font-normal text-navy/40 hover:bg-verde-agua/[0.1] hover:text-navy/65",
                   )}
-                  style={{ textDecoration: "none" }}
                 >
                   {model.label}
                 </button>
@@ -134,8 +133,7 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
           {/* TODAS — directly under Forma, same left padding as model buttons */}
           <Link
             href="/tienda"
-            className="interactive inline-flex min-h-10 w-fit items-center px-2.5 text-[11px] font-medium uppercase tracking-[0.16em] text-navy/35 hover:text-navy/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
-            style={{ textDecoration: "none" }}
+            className="interactive inline-flex min-h-10 w-fit items-center px-2.5 text-[11px] font-medium uppercase tracking-[0.16em] text-navy/35 no-underline hover:text-navy/70 hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
           >
             Todas
           </Link>
@@ -200,8 +198,7 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
             </Button>
             <Link
               href="/tienda"
-              className="interactive inline-flex min-h-11 items-center text-xs font-medium uppercase tracking-[0.16em] text-navy/45 hover:text-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
-              style={{ textDecoration: "none" }}
+              className="interactive inline-flex min-h-11 items-center text-xs font-medium uppercase tracking-[0.16em] text-navy/45 no-underline hover:text-navy hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
             >
               Toda la tienda
             </Link>

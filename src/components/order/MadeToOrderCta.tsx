@@ -59,7 +59,7 @@ export function MadeToOrderCta({
           Modelo por pedido · tono {colorName} · ~
           {madeToOrder.leadDays} días · seña {depositLabel()} · total{" "}
           {fullPriceLabel()}.{" "}
-          <Link href="/tienda" className="underline-offset-2 hover:underline">
+          <Link href="/tienda" className="font-medium text-sage-dark no-underline hover:text-navy hover:no-underline">
             Ver colección
           </Link>
         </p>

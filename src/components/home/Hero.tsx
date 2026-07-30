@@ -24,7 +24,7 @@ export function Hero() {
             <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 sm:mt-14 sm:gap-x-8 sm:gap-y-4">
               <Link
                 href="/tienda"
-                className="interactive inline-flex min-h-11 items-center bg-white px-7 py-3.5 text-xs font-medium uppercase tracking-[0.18em] text-navy hover:bg-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                className="interactive inline-flex min-h-11 items-center bg-white px-7 py-3.5 text-xs font-medium uppercase tracking-[0.18em] text-navy no-underline hover:bg-cream hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 Colección
               </Link>
@@ -34,7 +34,7 @@ export function Hero() {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center text-xs font-medium uppercase tracking-[0.18em] text-white/80 underline decoration-white/30 underline-offset-[10px] transition duration-700 ease-editorial hover:text-white hover:decoration-white"
+                className="interactive inline-flex min-h-11 items-center text-xs font-medium uppercase tracking-[0.18em] text-white/80 no-underline transition duration-700 ease-editorial hover:text-white hover:no-underline"
               >
                 WhatsApp
               </a>

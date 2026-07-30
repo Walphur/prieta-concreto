@@ -82,7 +82,7 @@ export function Header() {
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   className={clsx(
-                    "chip interactive inline-flex min-h-10 items-center px-3 py-1.5 text-sm tracking-wide",
+                    "chip interactive inline-flex min-h-10 items-center px-3 py-1.5 text-sm tracking-wide no-underline hover:no-underline",
                     active
                       ? "chip--active"
                       : "chip--idle font-medium text-navy/70",
@@ -141,7 +141,7 @@ export function Header() {
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   className={clsx(
-                    "chip interactive inline-flex min-h-11 items-center px-3 py-3 text-sm tracking-wide",
+                    "chip interactive inline-flex min-h-11 items-center px-3 py-3 text-sm tracking-wide no-underline hover:no-underline",
                     active
                       ? "chip--active"
                       : "chip--idle font-medium text-navy/75",

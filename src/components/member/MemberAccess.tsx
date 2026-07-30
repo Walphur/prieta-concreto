@@ -150,7 +150,7 @@ export function MemberAccess({ className, onOpen }: Props) {
                     <button
                       type="button"
                       onClick={() => setOpen(false)}
-                      className="mt-2 text-sm font-medium text-sage-dark underline-offset-4 hover:underline"
+                      className="mt-2 text-sm font-medium text-sage-dark no-underline transition hover:text-navy hover:no-underline"
                     >
                       Continuar
                     </button>

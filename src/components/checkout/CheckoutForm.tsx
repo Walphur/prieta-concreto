@@ -109,7 +109,7 @@ export function CheckoutForm() {
         </p>
         <Link
           href="/tienda"
-          className="mt-8 inline-block text-sm font-medium text-sage-dark underline-offset-4 hover:underline"
+          className="mt-8 inline-block text-sm font-medium text-sage-dark no-underline transition hover:text-navy hover:no-underline"
         >
           Ir a la colección
         </Link>

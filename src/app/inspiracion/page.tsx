@@ -100,7 +100,7 @@ export default function InspiracionPage() {
             )}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-medium uppercase tracking-[0.16em] text-navy/45 underline decoration-navy/20 underline-offset-8 transition duration-700 hover:text-navy hover:decoration-navy/50"
+            className="interactive text-xs font-medium uppercase tracking-[0.16em] text-navy/45 no-underline transition duration-700 hover:text-navy hover:no-underline"
           >
             Sumá tu baño
           </a>

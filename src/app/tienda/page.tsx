@@ -124,7 +124,7 @@ export default async function TiendaPage({
                   key={f.value}
                   href={href}
                   className={clsx(
-                    "chip interactive inline-flex min-h-11 items-center px-4 py-2.5 text-xs uppercase tracking-[0.14em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-agua",
+                    "chip interactive inline-flex min-h-11 items-center px-4 py-2.5 text-xs uppercase tracking-[0.14em] no-underline hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-agua",
                     active ? "chip--active" : "chip--idle font-medium text-navy/45",
                   )}
                 >
@@ -149,7 +149,7 @@ export default async function TiendaPage({
                     key={f.value}
                     href={href}
                     className={clsx(
-                      "chip interactive inline-flex min-h-11 items-center px-3 py-2 text-[11px] uppercase tracking-[0.14em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-agua",
+                      "chip interactive inline-flex min-h-11 items-center px-3 py-2 text-[11px] uppercase tracking-[0.14em] no-underline hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verde-agua",
                       active ? "chip--active" : "chip--idle font-medium text-navy/45",
                     )}
                   >
