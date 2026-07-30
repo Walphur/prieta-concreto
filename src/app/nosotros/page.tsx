@@ -13,10 +13,10 @@ export default function NosotrosPage() {
     <div>
       <section className="relative min-h-[52vh] overflow-hidden bg-navy lg:min-h-[62vh]">
         <Image
-          src="/gallery/clientes/cliente-oval-marmol-bano.jpg"
-          alt="Bacha Prieta instalada en baño de cliente"
+          src="/hero/banner-nosotros.jpg"
+          alt="Bacha circular Prieta en baño zen con jardín y pasillo"
           fill
-          className="object-cover opacity-75"
+          className="object-cover object-center opacity-75"
           priority
           sizes="100vw"
           quality={90}

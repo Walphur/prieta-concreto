@@ -4,7 +4,7 @@ import { whatsappGeneralUrl } from "@/lib/bank";
 
 /**
  * Una sola portada 50/50.
- * Foto exclusiva del home: hero-bano-marmolada (no se reutiliza en otras páginas).
+ * Foto exclusiva del home: banner-inicio (no se reutiliza en otras páginas).
  */
 export function Hero() {
   return (
@@ -43,12 +43,13 @@ export function Hero() {
         </div>
         <div className="relative min-h-[56vh] overflow-hidden sm:min-h-[70vh] lg:min-h-[92vh]">
           <Image
-            src="/hero/hero-bano-marmolada.png"
-            alt="Bacha oval marmolada Prieta en baño con mueble de madera"
+            src="/hero/banner-inicio.jpg"
+            alt="Bacha marmolada Prieta sobre vanity en baño minimalista"
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover object-center"
+            className="object-cover object-[72%_center]"
+            quality={90}
           />
         </div>
       </div>

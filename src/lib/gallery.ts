@@ -77,4 +77,8 @@ export const productPhotos = {
   clienteCircularBeigeEspejo: "/gallery/clientes/cliente-circular-beige-espejo.png",
   heroBanoMarmolada: "/hero/hero-bano-marmolada.png",
   heroBanoCircularEspejo: "/hero/hero-bano-circular-espejo.png",
+  bannerInicio: "/hero/banner-inicio.jpg",
+  bannerColeccion: "/hero/banner-coleccion.jpg",
+  bannerNosotros: "/hero/banner-nosotros.jpg",
+  bannerInspiracion: "/hero/banner-inspiracion.jpg",
 };

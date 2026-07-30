@@ -96,8 +96,8 @@ export default async function TiendaPage({
     <div>
       <section className="relative min-h-[40vh] overflow-hidden bg-navy lg:min-h-[48vh]">
         <Image
-          src="/hero/hero-bano-circular-espejo.png"
-          alt="Bacha circular Prieta instalada en baño con espejo"
+          src="/hero/banner-coleccion.jpg"
+          alt="Bacha circular Prieta sobre vanity de madera en baño spa"
           fill
           className="object-cover object-center opacity-80"
           priority

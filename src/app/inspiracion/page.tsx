@@ -16,9 +16,10 @@ export const metadata: Metadata = {
 
 /** Fotos reservadas para otras páginas — no se repiten aquí. */
 const RESERVED = new Set([
-  "/hero/hero-bano-marmolada.png", // Home hero
-  "/gallery/clientes/cliente-oval-marmol-bano.jpg", // Nosotros hero
-  "/hero/hero-bano-circular-espejo.png", // Tienda portada
+  "/hero/banner-inicio.jpg",
+  "/hero/banner-coleccion.jpg",
+  "/hero/banner-nosotros.jpg",
+  "/hero/banner-inspiracion.jpg",
 ]);
 
 const instalaciones = galleryClientes.filter((i) => !RESERVED.has(i.src));
@@ -31,9 +32,27 @@ const estudioGallery = [
 export default function InspiracionPage() {
   return (
     <div>
+      <section className="relative min-h-[40vh] overflow-hidden bg-navy lg:min-h-[48vh]">
+        <Image
+          src="/hero/banner-inspiracion.jpg"
+          alt="Baño spa Prieta con bacha marmolada, jardín interior y bañera"
+          fill
+          className="object-cover object-center opacity-80"
+          priority
+          sizes="100vw"
+          quality={90}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/20 to-transparent" />
+        <div className="relative mx-auto flex min-h-[40vh] max-w-7xl items-end px-4 pb-12 sm:px-6 lg:min-h-[48vh] lg:px-8 lg:pb-16">
+          <h1 className="font-[family-name:var(--font-outfit)] text-3xl font-medium tracking-[-0.02em] text-cream sm:text-5xl">
+            Inspiración
+          </h1>
+        </div>
+      </section>
+
       <div className="mx-auto max-w-7xl px-4 section-space sm:px-6 lg:px-8">
         <header className="max-w-md pb-6">
-          <h1 className="editorial-title text-3xl sm:text-4xl">Baños</h1>
+          <h2 className="editorial-title text-3xl sm:text-4xl">Baños</h2>
         </header>
 
         <section className="mt-12">
