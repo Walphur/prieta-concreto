@@ -10,6 +10,7 @@ import {
   type BachaShapeId,
 } from "@/lib/bacha-options";
 import { imagesByShape } from "@/lib/gallery";
+import Link from "next/link";
 import type { Product } from "@/types/product";
 
 /** Studio shots for explorer — skip ficha, grupo, cliente, and tall portraits. */
@@ -89,9 +90,17 @@ export async function FeaturedProducts() {
     <section className="bg-cream">
       <div className="mx-auto max-w-7xl px-4 section-space sm:px-6 lg:px-8">
         <SolidifyReveal cureMs={380}>
-          <div className="max-w-sm">
-            <h2 className="editorial-title text-2xl sm:text-3xl">Colección</h2>
-            <p className="mt-3 text-sm leading-relaxed text-navy/50">
+          <div className="max-w-xl">
+            <div className="flex items-baseline justify-between gap-6">
+              <h2 className="editorial-title text-2xl sm:text-3xl">Colección</h2>
+              <Link
+                href="/tienda"
+                className="interactive inline-flex min-h-10 shrink-0 items-center text-[11px] font-medium uppercase tracking-[0.16em] text-navy/35 underline decoration-navy/10 underline-offset-8 hover:text-navy/70 hover:decoration-navy/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage"
+              >
+                Todas
+              </Link>
+            </div>
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-navy/50">
               Cuatro moldes. Elegí el modelo y mirá la pieza.
             </p>
           </div>

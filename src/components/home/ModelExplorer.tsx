@@ -74,14 +74,14 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
   }
 
   return (
-    <div className="mt-6 grid min-w-0 gap-8 sm:mt-8 sm:gap-10 lg:mt-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.35fr)] lg:items-start lg:gap-16 xl:gap-20">
-      {/* Model list — wrap on phone; column from lg */}
+    <div className="mt-5 grid min-w-0 gap-8 sm:mt-6 sm:gap-10 lg:mt-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.4fr)] lg:items-start lg:gap-14 xl:gap-18">
+      {/* Model list — same type size for every item; no shared .chip inflation */}
       <div className="min-w-0">
         <div
           role="tablist"
           aria-label="Modelos de la colección"
           aria-orientation="vertical"
-          className="flex max-w-full flex-row flex-wrap gap-x-2 gap-y-2 sm:gap-x-3 lg:flex-col lg:gap-y-1.5"
+          className="flex max-w-full flex-row flex-wrap items-baseline gap-x-5 gap-y-1 sm:gap-x-6 lg:flex-col lg:items-start lg:gap-y-0.5"
           onKeyDown={onListKeyDown}
         >
           {models.map((model, i) => {
@@ -100,13 +100,13 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
                 tabIndex={isActive ? 0 : -1}
                 onClick={() => select(i)}
                 className={clsx(
-                  "chip interactive relative min-h-11 max-w-full shrink-0 px-3 py-2 text-left font-[family-name:var(--font-outfit)] tracking-tight",
-                  "ease-editorial",
+                  "interactive relative min-h-10 shrink-0 px-0 py-1.5 text-left text-lg leading-none tracking-tight sm:text-xl",
+                  "font-[family-name:var(--font-outfit)] ease-editorial",
                   reduceMotion ? "duration-0" : "duration-[400ms]",
                   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-verde-agua",
                   isActive
-                    ? "chip--active text-[1.2rem] sm:text-[1.35rem] lg:text-[1.5rem]"
-                    : "chip--idle text-[1.05rem] font-normal text-navy/40 sm:text-[1.15rem] lg:text-[1.25rem]",
+                    ? "font-medium text-verde-agua-panel underline decoration-verde-agua/55 decoration-1 underline-offset-[0.35em]"
+                    : "font-normal text-navy/40 hover:text-navy/65",
                 )}
               >
                 {model.label}
@@ -114,12 +114,6 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
             );
           })}
         </div>
-        <Link
-          href="/tienda"
-          className="interactive mt-3 inline-flex min-h-11 items-center text-[11px] font-medium uppercase tracking-[0.16em] text-navy/35 underline decoration-navy/10 underline-offset-8 hover:text-navy/70 hover:decoration-navy/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage lg:mt-4"
-        >
-          Todas
-        </Link>
       </div>
 
       {/* Detail panel */}
@@ -129,7 +123,7 @@ export function ModelExplorer({ models }: ModelExplorerProps) {
         aria-labelledby={`${listId}-tab-${current.id}`}
         className="min-w-0"
       >
-        <div className="relative aspect-square overflow-hidden bg-concrete-light sm:aspect-[5/4] lg:aspect-square">
+        <div className="relative aspect-square overflow-hidden bg-concrete-light">
           {models.map((model) => {
             const src = model.images[0];
             if (!src) return null;
