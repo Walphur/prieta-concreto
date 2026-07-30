@@ -318,19 +318,19 @@
     transform: scale(1);
   }
   50% {
-    opacity: 0.94;
-    transform: scale(1.012);
+    opacity: 0.9;
+    transform: scale(1.035);
   }
 }
 
 .heartbeat-title__inner {
   display: inline-block;
-  transform-origin: left center;
+  transform-origin: center;
   will-change: transform, opacity;
 }
 
 .heartbeat-title__inner--pulse {
-  animation: title-heartbeat 3.6s ease-in-out infinite;
+  animation: title-heartbeat 3.5s ease-in-out infinite;
 }
 
 .heartbeat-title__letter {
@@ -345,6 +345,7 @@
 .heartbeat-title__letter--visible {
   opacity: 1;
   transform: none;
+  animation: none;
 }
 
 .heartbeat-title__letter--run {

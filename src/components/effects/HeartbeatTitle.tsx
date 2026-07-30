@@ -40,11 +40,11 @@ export function HeartbeatTitle({
     }
 
     let beatTimer = 0;
-    let done = false;
+    let started = false;
 
     const start = () => {
-      if (done) return;
-      done = true;
+      if (started) return;
+      started = true;
       setPhase("reveal");
       const letterCount = Array.from(children).length;
       const total = letterCount * staggerMs + LETTER_DURATION_MS;
@@ -56,25 +56,34 @@ export function HeartbeatTitle({
       ([entry]) => {
         if (entry?.isIntersecting) start();
       },
-      { threshold: 0.15, rootMargin: "60px 0px 60px 0px" },
+      { threshold: 0.05, rootMargin: "80px 0px 80px 0px" },
     );
 
     io.observe(el);
 
+    // Hero titles are already in view — kick off without waiting for IO.
     const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
+    if (rect.top < window.innerHeight * 1.1 && rect.bottom > -40) {
       start();
     }
+
+    // Failsafe: never leave titles stuck in idle/reveal without pulse.
+    const failsafe = window.setTimeout(() => {
+      if (!started) start();
+      else setPhase((p) => (p === "reveal" || p === "idle" ? "beat" : p));
+    }, Math.max(1800, Array.from(children).length * staggerMs + LETTER_DURATION_MS + 400));
 
     return () => {
       io.disconnect();
       window.clearTimeout(beatTimer);
+      window.clearTimeout(failsafe);
     };
   }, [children, staggerMs]);
 
-  const animate = phase === "reveal" || phase === "beat";
   const chars = Array.from(children);
   const Comp = Tag as ElementType;
+  const revealing = phase === "reveal";
+  const settled = phase === "beat" || phase === "static";
 
   return (
     <Comp
@@ -95,11 +104,11 @@ export function HeartbeatTitle({
             className={clsx(
               "heartbeat-title__letter",
               phase === "idle" && "heartbeat-title__letter--hidden",
-              animate && "heartbeat-title__letter--run",
-              phase === "static" && "heartbeat-title__letter--visible",
+              revealing && "heartbeat-title__letter--run",
+              settled && "heartbeat-title__letter--visible",
             )}
             style={
-              animate
+              revealing
                 ? { animationDelay: `${i * staggerMs}ms` }
                 : undefined
             }
