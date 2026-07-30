@@ -1,19 +1,37 @@
+"use client";
+
+import { useState } from "react";
 import { depositLabel, fullPriceLabel, madeToOrder } from "@/lib/order-policy";
-import { whatsappGeneralUrl, whatsappWholesaleUrl } from "@/lib/bank";
+import {
+  whatsappGeneralUrl,
+  whatsappWholesaleUrl,
+} from "@/lib/bank";
+import {
+  BACHA_COLORS,
+  type BachaColorId,
+} from "@/lib/bacha-options";
 import { Button } from "@/components/ui/Button";
+import { TonePicker } from "@/components/order/TonePicker";
 import { clsx } from "clsx";
 
 type Props = {
   compact?: boolean;
   className?: string;
   showWholesale?: boolean;
+  /** Show tono picker for particular orders (tienda) */
+  showTonePicker?: boolean;
 };
 
 export function MadeToOrderNotice({
   compact,
   className,
   showWholesale = true,
+  showTonePicker = false,
 }: Props) {
+  const [colorId, setColorId] = useState<BachaColorId>("gris-natural");
+  const colorName =
+    BACHA_COLORS.find((c) => c.id === colorId)?.label ?? colorId;
+
   if (compact) {
     return (
       <p className={className ?? "text-sm text-navy/65"}>
@@ -22,6 +40,12 @@ export function MadeToOrderNotice({
       </p>
     );
   }
+
+  const particularWa = whatsappGeneralUrl(
+    showTonePicker
+      ? `Hola Prieta, quiero encargar una bacha.\nTono: ${colorName}\nEntiendo ~${madeToOrder.leadDays} días y seña ${depositLabel()}.`
+      : `Hola Prieta, quiero encargar una bacha. Entiendo ~${madeToOrder.leadDays} días y seña ${depositLabel()}.`,
+  );
 
   return (
     <aside className={clsx("overflow-hidden border border-navy/10", className)}>
@@ -43,11 +67,20 @@ export function MadeToOrderNotice({
             Modelo y tono a elección. ~{madeToOrder.leadDays} días ·{" "}
             {fullPriceLabel()} · seña {depositLabel()}.
           </p>
+
+          {showTonePicker ? (
+            <TonePicker
+              className="mt-5"
+              size="sm"
+              value={colorId}
+              onChange={setColorId}
+              hint="Elegí el tono antes de escribirnos."
+            />
+          ) : null}
+
           <div className="mt-auto pt-5">
             <Button
-              href={whatsappGeneralUrl(
-                `Hola Prieta, quiero encargar una bacha. Entiendo ~${madeToOrder.leadDays} días y seña ${depositLabel()}.`,
-              )}
+              href={particularWa}
               variant="primary"
               className="bg-verde-agua hover:bg-verde-agua-panel"
             >

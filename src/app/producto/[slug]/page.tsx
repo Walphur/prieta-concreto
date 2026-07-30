@@ -14,6 +14,7 @@ import {
   colorLabel,
   moldLabel,
   shapeLabel,
+  type BachaColorId,
   type BachaShapeId,
 } from "@/lib/bacha-options";
 import { AddToCartButton } from "@/components/product/AddToCartButton";
@@ -217,38 +218,50 @@ export default async function ProductPage({ params }: Props) {
             {product.longDescription}
           </p>
 
-          {product.category === "bachas" && !product.comingSoon ? (
-            <div className="mt-10">
-              <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-navy/40">
-                Tonos
-              </p>
-              <p className="mt-2 text-sm text-navy/50">
-                El pigmento se elige al encargar.
-              </p>
-              <ul className="mt-4 flex flex-wrap gap-3">
-                {BACHA_COLORS.map((c) => (
-                  <li key={c.id} className="flex items-center gap-2">
-                    <span
-                      className="h-5 w-5 border border-navy/10"
-                      style={{ backgroundColor: c.hex }}
-                      aria-hidden
-                    />
-                    <span className="text-xs text-navy/55">{c.label}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
-
           <div className="mt-10">
-            {isExampleBacha ? (
-              <MadeToOrderCta
-                name={shapeName || product.name}
-                colorLabel={colorName || "a elección"}
-                shapeLabel={shapeName}
-              />
+            {isExampleBacha ||
+            (product.category === "bachas" &&
+              product.status === "sold" &&
+              !product.comingSoon) ? (
+              <div className="space-y-4">
+                <MadeToOrderCta
+                  name={shapeName || product.name}
+                  initialColorId={product.color as BachaColorId | undefined}
+                  shapeLabel={shapeName}
+                />
+                {product.status === "sold" ? (
+                  <p className="text-xs leading-relaxed text-navy/45">
+                    Ya salió. El mismo modelo se hace por pedido (~
+                    {madeToOrder.leadDays} días); elegí el tono arriba.
+                  </p>
+                ) : null}
+              </div>
             ) : (
               <>
+                {product.category === "bachas" && !product.comingSoon ? (
+                  <div className="mb-8">
+                    <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-navy/40">
+                      Tonos
+                    </p>
+                    <p className="mt-2 text-sm text-navy/50">
+                      {colorName
+                        ? `Esta pieza: ${colorName}. Otros pigmentos al encargar.`
+                        : "El pigmento se elige al encargar."}
+                    </p>
+                    <ul className="mt-4 flex flex-wrap gap-3">
+                      {BACHA_COLORS.map((c) => (
+                        <li key={c.id} className="flex items-center gap-2">
+                          <span
+                            className="h-5 w-5 border border-navy/10"
+                            style={{ backgroundColor: c.hex }}
+                            aria-hidden
+                          />
+                          <span className="text-xs text-navy/55">{c.label}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
                 <AddToCartButton
                   productId={product.id}
                   name={product.name}
@@ -256,12 +269,6 @@ export default async function ProductPage({ params }: Props) {
                   image={product.images[0]}
                   disabled={!canBuy}
                 />
-                {product.status === "sold" ? (
-                  <p className="mt-4 text-xs leading-relaxed text-navy/45">
-                    Ya salió. El mismo modelo y tono se hace por pedido (~
-                    {madeToOrder.leadDays} días).
-                  </p>
-                ) : null}
               </>
             )}
           </div>

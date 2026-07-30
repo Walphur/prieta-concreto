@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ProductCard } from "@/components/product/ProductCard";
 import { MadeToOrderNotice } from "@/components/order/MadeToOrderNotice";
+import { PigmentStrip } from "@/components/home/PigmentStrip";
 import { MedidasMoldes } from "@/components/tienda/MedidasMoldes";
 import { readProducts } from "@/lib/catalog";
 import { clsx } from "clsx";
@@ -57,7 +58,7 @@ export default async function TiendaPage({
 
   return (
     <div className="mx-auto max-w-7xl px-4 section-space sm:px-6 lg:px-8">
-      <header className="max-w-lg pb-16">
+      <header className="max-w-lg pb-12">
         <h1 className="editorial-title text-3xl sm:text-4xl">
           Colección
         </h1>
@@ -66,7 +67,9 @@ export default async function TiendaPage({
         </p>
       </header>
 
-      <MadeToOrderNotice className="mb-14 w-full" />
+      <PigmentStrip variant="inline" className="mb-14 border-b border-navy/8 pb-14" />
+
+      <MadeToOrderNotice className="mb-14 w-full" showTonePicker />
 
       <nav className="mb-4 space-y-5" aria-label="Filtros de colección">
         <div className="flex flex-wrap gap-2">
