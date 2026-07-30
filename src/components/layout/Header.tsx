@@ -16,8 +16,8 @@ const nav = [
   { href: "/inspiracion", label: "Inspiración" },
 ];
 
-/** Minimal open tote — stroke matches Menu/X (~1.75). */
-function CartToteIcon({ className }: { className?: string }) {
+/** Minimal shopping bag — stroke matches Menu/X (~1.75). */
+function CartBagIcon({ className }: { className?: string }) {
   return (
     <svg
       className={className}
@@ -29,8 +29,8 @@ function CartToteIcon({ className }: { className?: string }) {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path d="M7 8.25h10l-.85 11.1a1.4 1.4 0 0 1-1.4 1.3H9.25a1.4 1.4 0 0 1-1.4-1.3L7 8.25Z" />
-      <path d="M9.25 8.25V6.9a2.75 2.75 0 0 1 5.5 0v1.35" />
+      <path d="M6.5 9h11l-.7 10.2a1.75 1.75 0 0 1-1.75 1.55H8.95a1.75 1.75 0 0 1-1.75-1.55L6.5 9Z" />
+      <path d="M9 9V7.5a3 3 0 0 1 6 0V9" />
     </svg>
   );
 }
@@ -102,7 +102,7 @@ export function Header() {
               className="relative inline-flex h-11 w-11 items-center justify-center text-navy transition-colors hover:text-sage-dark"
               aria-label={`Carrito${count ? `, ${count} artículos` : ""}`}
             >
-              <CartToteIcon className="h-5 w-5" />
+              <CartBagIcon className="h-5 w-5" />
               {count > 0 ? (
                 <span className="absolute right-1.5 top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-sage px-1 text-[10px] font-semibold text-white">
                   {count}
