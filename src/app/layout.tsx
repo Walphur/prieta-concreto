@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { DM_Sans, Outfit } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { WhatsAppFab } from "@/components/layout/WhatsAppFab";
 import { UniboxWidget } from "@/components/layout/UniboxWidget";
 import { MemberProvider } from "@/components/member/MemberProvider";
 import { PromoDaySheet } from "@/components/member/PromoDaySheet";
@@ -104,7 +103,6 @@ export default function RootLayout({
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
-          <WhatsAppFab />
           <UniboxWidget />
           <PromoDaySheet />
         </MemberProvider>
