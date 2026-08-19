@@ -38,6 +38,16 @@ Abrí [http://localhost:3000](http://localhost:3000).
 - Catálogo en `data/products.json`
 - Precio fijo bachas: **$95.000**
 
+### Variables de entorno
+
+| Variable | Uso |
+|----------|-----|
+| `ADMIN_PASSWORD` / `ADMIN_SECRET` | Panel admin |
+| `MEMBER_SECRET` | Firma de cookies del acceso 15% (fallback: `ADMIN_SECRET`) |
+| `BLOB_READ_WRITE_TOKEN` | Opcional. Persistencia compartida (catálogo / miembros / reseñas). Si el Blob store está suspendido o no hay token, el catálogo usa `data/products.json` deployado y los **miembros** se guardan en cookie firmada (funciona en Vercel sin FS escribible). |
+
+No hace falta KV/Postgres para el 15%: en producción sin Blob, `POST /api/members` activa el descuento vía cookie `prieta_member`.
+
 ## Paleta
 
 - Sage `#7D8F78` — CTA / acentos

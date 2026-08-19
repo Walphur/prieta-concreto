@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import {
+  getMemberFromCookie,
   MEMBER_COOKIE,
   memberCookieOptions,
   signMemberToken,
@@ -29,7 +30,8 @@ export async function POST(request: Request) {
   }
 
   try {
-    const member = await upsertMember({ email, name });
+    const cookieMember = await getMemberFromCookie();
+    const { member } = await upsertMember({ email, name }, cookieMember);
     const res = NextResponse.json({
       ok: true,
       member: {
@@ -44,17 +46,15 @@ export async function POST(request: Request) {
     });
     res.cookies.set(
       MEMBER_COOKIE,
-      signMemberToken(member.email),
+      signMemberToken(member),
       memberCookieOptions(),
     );
     return res;
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       {
         error:
-          error instanceof Error
-            ? error.message
-            : "No se pudo guardar el acceso",
+          "No pudimos activar el 15% ahora. Probá de nuevo en unos minutos.",
       },
       { status: 500 },
     );

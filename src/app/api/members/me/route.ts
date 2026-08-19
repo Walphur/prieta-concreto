@@ -1,31 +1,49 @@
 import { NextResponse } from "next/server";
-import { getMemberEmailFromCookie } from "@/lib/member-auth";
+import {
+  getMemberFromCookie,
+  MEMBER_COOKIE,
+  memberCookieOptions,
+  signMemberToken,
+} from "@/lib/member-auth";
 import { getMemberByEmail } from "@/lib/members-store";
 
 export async function GET() {
-  const email = await getMemberEmailFromCookie();
-  if (!email) {
-    return NextResponse.json({ member: null }, {
-      headers: { "Cache-Control": "no-store" },
-    });
+  const fromCookie = await getMemberFromCookie();
+  if (!fromCookie) {
+    return NextResponse.json(
+      { member: null },
+      { headers: { "Cache-Control": "no-store" } },
+    );
   }
 
-  const member = await getMemberByEmail(email);
-  if (!member) {
-    return NextResponse.json({ member: null }, {
-      headers: { "Cache-Control": "no-store" },
-    });
-  }
+  // Prefer shared store when available (syncs firstDiscountUsed across devices).
+  const fromStore = await getMemberByEmail(fromCookie.email);
+  const member = fromStore
+    ? {
+        email: fromStore.email,
+        name: fromStore.name ?? fromCookie.name,
+        firstDiscountUsed:
+          fromStore.firstDiscountUsed || fromCookie.firstDiscountUsed,
+        createdAt: fromStore.createdAt || fromCookie.createdAt,
+      }
+    : {
+        email: fromCookie.email,
+        name: fromCookie.name,
+        firstDiscountUsed: fromCookie.firstDiscountUsed,
+        createdAt: fromCookie.createdAt,
+      };
 
-  return NextResponse.json(
-    {
-      member: {
-        email: member.email,
-        name: member.name,
-        firstDiscountUsed: member.firstDiscountUsed,
-        createdAt: member.createdAt,
-      },
-    },
+  const res = NextResponse.json(
+    { member },
     { headers: { "Cache-Control": "no-store" } },
   );
+
+  // Keep signed cookie as source of truth (upgrades legacy email-only tokens).
+  res.cookies.set(
+    MEMBER_COOKIE,
+    signMemberToken(member),
+    memberCookieOptions(),
+  );
+
+  return res;
 }
