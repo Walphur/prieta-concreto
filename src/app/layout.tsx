@@ -77,6 +77,11 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    other: {
+      "facebook-domain-verification": "im60rfrw2tn0qz6ybnmfx67fltbk5j",
+    },
+  },
   icons: {
     icon: [
       { url: "/favicon.png", sizes: "32x32", type: "image/png" },
