@@ -48,7 +48,9 @@ function isMemberShape(value: unknown): value is Member {
     typeof m.email === "string" &&
     typeof m.createdAt === "string" &&
     typeof m.firstDiscountUsed === "boolean" &&
-    (m.name === undefined || typeof m.name === "string")
+    (m.name === undefined || typeof m.name === "string") &&
+    (m.firstDiscountUsedAt === undefined ||
+      typeof m.firstDiscountUsedAt === "string")
   );
 }
 
@@ -65,6 +67,7 @@ export function signMemberToken(member: Member | string) {
       name: member.name,
       createdAt: member.createdAt,
       firstDiscountUsed: Boolean(member.firstDiscountUsed),
+      firstDiscountUsedAt: member.firstDiscountUsedAt,
     }),
   );
   return `v1.${body}.${sign(`v1.${body}`)}`;
@@ -96,6 +99,7 @@ export function verifyMemberPayload(
         name: parsed.name?.trim() || undefined,
         createdAt: parsed.createdAt,
         firstDiscountUsed: Boolean(parsed.firstDiscountUsed),
+        firstDiscountUsedAt: parsed.firstDiscountUsedAt,
       };
     } catch {
       return null;

@@ -127,6 +127,22 @@ async function writeBlob(members: Member[]) {
   }
 }
 
+export type MembersStorageInfo = {
+  mode: "blob" | "local" | "cookie-only";
+  blobConfigured: boolean;
+  localDev: boolean;
+};
+
+export function getMembersStorageInfo(): MembersStorageInfo {
+  const blobConfigured = useBlob();
+  const localDev = useLocalFile();
+  return {
+    blobConfigured,
+    localDev,
+    mode: blobConfigured ? "blob" : localDev ? "local" : "cookie-only",
+  };
+}
+
 export async function readMembers(): Promise<Member[]> {
   if (useBlob()) {
     const fromBlob = await readBlob();
@@ -198,6 +214,8 @@ export async function upsertMember(
     }
     if (sameCookie?.firstDiscountUsed && !existing.firstDiscountUsed) {
       existing.firstDiscountUsed = true;
+      existing.firstDiscountUsedAt =
+        sameCookie.firstDiscountUsedAt || new Date().toISOString();
       dirty = true;
     }
     if (dirty) {
@@ -216,6 +234,7 @@ export async function upsertMember(
     name: name || sameCookie?.name,
     createdAt: sameCookie?.createdAt || new Date().toISOString(),
     firstDiscountUsed: Boolean(sameCookie?.firstDiscountUsed),
+    firstDiscountUsedAt: sameCookie?.firstDiscountUsedAt,
   };
   members.unshift(member);
 
@@ -253,6 +272,8 @@ export async function markFirstDiscountUsed(
 
   if (!member.firstDiscountUsed) {
     member.firstDiscountUsed = true;
+    member.firstDiscountUsedAt =
+      member.firstDiscountUsedAt || new Date().toISOString();
     try {
       const persisted = await writeMembers(members);
       return { member, persisted };

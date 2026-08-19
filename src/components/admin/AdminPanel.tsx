@@ -14,6 +14,7 @@ import {
 import { formatPrice, statusLabel } from "@/lib/products";
 import { Button } from "@/components/ui/Button";
 import { AdminReviews } from "@/components/admin/AdminReviews";
+import { AdminMembers } from "@/components/admin/AdminMembers";
 
 type Props = { initialProducts: Product[] };
 
@@ -443,6 +444,7 @@ export function AdminPanel({ initialProducts }: Props) {
         ))}
       </ul>
 
+      <AdminMembers />
       <AdminReviews />
     </div>
   );

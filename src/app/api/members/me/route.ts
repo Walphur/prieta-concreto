@@ -24,12 +24,15 @@ export async function GET() {
         name: fromStore.name ?? fromCookie.name,
         firstDiscountUsed:
           fromStore.firstDiscountUsed || fromCookie.firstDiscountUsed,
+        firstDiscountUsedAt:
+          fromStore.firstDiscountUsedAt || fromCookie.firstDiscountUsedAt,
         createdAt: fromStore.createdAt || fromCookie.createdAt,
       }
     : {
         email: fromCookie.email,
         name: fromCookie.name,
         firstDiscountUsed: fromCookie.firstDiscountUsed,
+        firstDiscountUsedAt: fromCookie.firstDiscountUsedAt,
         createdAt: fromCookie.createdAt,
       };
 

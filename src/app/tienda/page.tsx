@@ -6,6 +6,7 @@ import { MadeToOrderNotice } from "@/components/order/MadeToOrderNotice";
 import { PigmentStrip } from "@/components/home/PigmentStrip";
 import { MedidasMoldes } from "@/components/tienda/MedidasMoldes";
 import { HeartbeatTitle } from "@/components/effects/HeartbeatTitle";
+import { MemberDiscountBanner } from "@/components/member/MemberDiscountBanner";
 import { readProducts } from "@/lib/catalog";
 import { BACHA_SHAPES } from "@/lib/bacha-options";
 import { clsx } from "clsx";
@@ -95,6 +96,7 @@ export default async function TiendaPage({
 
   return (
     <div>
+      <MemberDiscountBanner variant="store" />
       <section className="relative min-h-[28vh] overflow-hidden bg-navy sm:min-h-[36vh] lg:min-h-[48vh]">
         <Image
           src="/hero/banner-coleccion.jpg"

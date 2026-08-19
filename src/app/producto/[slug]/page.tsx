@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
-  formatPrice,
   getProductBySlug,
   isPurchasable,
   readProducts,
@@ -20,6 +19,7 @@ import {
 import { AddToCartButton } from "@/components/product/AddToCartButton";
 import { MadeToOrderCta } from "@/components/order/MadeToOrderCta";
 import { ReviewSection } from "@/components/reviews/ReviewSection";
+import { MemberPrice } from "@/components/member/MemberPrice";
 import { madeToOrder, madeToOrderSummary } from "@/lib/order-policy";
 import { getApprovedReviews } from "@/lib/reviews-store";
 
@@ -208,9 +208,9 @@ export default async function ProductPage({ params }: Props) {
           </h1>
 
           {!product.comingSoon && product.price > 0 ? (
-            <p className="mt-6 text-xl font-medium text-navy/80">
-              {formatPrice(product.price)}
-            </p>
+            <div className="mt-6">
+              <MemberPrice price={product.price} size="lg" />
+            </div>
           ) : null}
 
           <p className="mt-3 text-xs uppercase tracking-[0.14em] text-navy/40">

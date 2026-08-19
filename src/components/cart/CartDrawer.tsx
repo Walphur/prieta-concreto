@@ -5,7 +5,10 @@ import Link from "next/link";
 import { X, Trash2 } from "lucide-react";
 import { useCartStore } from "@/lib/cart-store";
 import { useMember } from "@/components/member/MemberProvider";
-import { calcFirstPurchaseDiscount } from "@/lib/member-discount";
+import {
+  calcFirstPurchaseDiscount,
+  memberDiscountedPrice,
+} from "@/lib/member-discount";
 import { formatPrice } from "@/lib/products";
 import { clsx } from "clsx";
 
@@ -55,6 +58,14 @@ export function CartDrawer() {
         </div>
 
         <div className="flex-1 overflow-y-auto px-5 py-4">
+          {discount ? (
+            <div className="mb-4 border border-sage/30 bg-sage/10 px-3 py-2.5 text-sm text-navy">
+              <span className="font-semibold text-sage-dark">
+                −{discount.discountPercent}% primera compra
+              </span>
+              <span className="text-navy/60"> · aplicado al total</span>
+            </div>
+          ) : null}
           {items.length === 0 ? (
             <div className="flex h-full flex-col items-center justify-center gap-3 text-center">
               <p className="text-navy/60">Todavía vacío.</p>
@@ -88,7 +99,18 @@ export function CartDrawer() {
                           {item.name}
                         </p>
                         <p className="mt-0.5 text-sm font-medium text-deep-red">
-                          {formatPrice(item.price ?? 0)}
+                          {discount ? (
+                            <>
+                              <span className="mr-1.5 text-navy/40 line-through">
+                                {formatPrice(item.price ?? 0)}
+                              </span>
+                              {formatPrice(
+                                memberDiscountedPrice(item.price ?? 0),
+                              )}
+                            </>
+                          ) : (
+                            formatPrice(item.price ?? 0)
+                          )}
                         </p>
                         <p className="mt-1 text-xs text-navy/45">Una unidad</p>
                       </div>

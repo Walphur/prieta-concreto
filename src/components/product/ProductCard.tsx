@@ -4,13 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { Product } from "@/types/product";
-import { formatPrice, isInStock, statusLabel } from "@/lib/products";
+import { isInStock, statusLabel } from "@/lib/products";
 import {
   BACHA_COLORS,
   colorLabel,
   moldLabel,
   shapeLabel,
 } from "@/lib/bacha-options";
+import { MemberPrice } from "@/components/member/MemberPrice";
 import { clsx } from "clsx";
 
 type ProductCardProps = {
@@ -191,9 +192,9 @@ export function ProductCard({
             </p>
           )}
           {!product.comingSoon && product.price > 0 ? (
-            <p className="pt-1.5 text-sm font-medium text-navy/70">
-              {formatPrice(product.price)}
-            </p>
+            <div className="pt-1.5">
+              <MemberPrice price={product.price} size="sm" />
+            </div>
           ) : null}
           {isBacha && !inStock && !product.comingSoon ? (
             <p className="text-[11px] text-navy/35">{meta}</p>

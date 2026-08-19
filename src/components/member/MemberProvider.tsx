@@ -13,7 +13,7 @@ import type { Member } from "@/types/member";
 
 type MemberPublic = Pick<
   Member,
-  "email" | "name" | "firstDiscountUsed" | "createdAt"
+  "email" | "name" | "firstDiscountUsed" | "firstDiscountUsedAt" | "createdAt"
 >;
 
 type MemberContextValue = {

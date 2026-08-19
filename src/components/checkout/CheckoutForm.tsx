@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { useCartStore } from "@/lib/cart-store";
 import { useMember } from "@/components/member/MemberProvider";
-import { calcFirstPurchaseDiscount } from "@/lib/member-discount";
+import { calcFirstPurchaseDiscount, memberDiscountedPrice } from "@/lib/member-discount";
 import { formatPrice } from "@/lib/products";
 import {
   ORDER_STORAGE_KEY,
@@ -251,13 +251,30 @@ export function CheckoutForm() {
                   {item.name}
                 </p>
                 <p className="text-sm font-medium text-deep-red">
-                  {formatPrice(item.price ?? 0)}
+                  {discount ? (
+                    <>
+                      <span className="mr-1.5 text-navy/40 line-through">
+                        {formatPrice(item.price ?? 0)}
+                      </span>
+                      {formatPrice(memberDiscountedPrice(item.price ?? 0))}
+                    </>
+                  ) : (
+                    formatPrice(item.price ?? 0)
+                  )}
                 </p>
               </div>
             </li>
           ))}
         </ul>
         <div className="mt-6 space-y-2 border-t border-concrete pt-4">
+          {discount ? (
+            <div className="mb-3 border border-sage/30 bg-sage/10 px-3 py-2.5 text-sm">
+              <span className="font-semibold text-sage-dark">
+                −{discount.discountPercent}% primera compra
+              </span>
+              <span className="text-navy/60"> aplicado a este pedido</span>
+            </div>
+          ) : null}
           <div className="flex items-center justify-between">
             <span className="text-sm text-navy/65">Subtotal</span>
             <span

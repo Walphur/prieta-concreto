@@ -33,6 +33,7 @@ export async function POST(request: Request) {
         email: fromCookie.email,
         name: fromCookie.name,
         firstDiscountUsed: true,
+        firstDiscountUsedAt: fromCookie.firstDiscountUsedAt,
         createdAt: fromCookie.createdAt,
       },
     });
@@ -52,6 +53,7 @@ export async function POST(request: Request) {
         email: member.email,
         name: member.name,
         firstDiscountUsed: member.firstDiscountUsed,
+        firstDiscountUsedAt: member.firstDiscountUsedAt,
         createdAt: member.createdAt,
       },
     });
