@@ -75,7 +75,7 @@ export function MemberAccess({ className, onOpen }: Props) {
       ? "15% listo"
       : member
         ? "Acceso"
-        : "15% primera vez";
+        : "15% 2.ª bacha";
 
   const dialog =
     open && mounted
@@ -108,7 +108,7 @@ export function MemberAccess({ className, onOpen }: Props) {
                     id={titleId}
                     className="mt-1 font-[family-name:var(--font-outfit)] text-xl font-semibold text-navy"
                   >
-                    {member ? "Tu acceso" : "15% la primera vez"}
+                    {member ? "Tu acceso" : "15% en la 2.ª bacha"}
                   </h2>
                 </div>
                 <button
@@ -138,12 +138,12 @@ export function MemberAccess({ className, onOpen }: Props) {
                     </p>
                     {eligibleForDiscount ? (
                       <p className="border border-sage/30 bg-sage/10 px-3 py-2.5 text-sage-dark">
-                        Tenés <strong>15%</strong> en tu primera compra. Se
-                        aplica en el carrito al confirmar.
+                        La primera bacha paga el total. La{" "}
+                        <strong>segunda unidad</strong> lleva 15% en el carrito.
                       </p>
                     ) : (
                       <p>
-                        Ya usaste el 15% de la primera compra. Gracias por
+                        Ya usaste el 15% de la segunda unidad. Gracias por
                         estar.
                       </p>
                     )}
@@ -158,8 +158,8 @@ export function MemberAccess({ className, onOpen }: Props) {
                 ) : (
                   <>
                     <p className="text-sm text-navy/65">
-                      Dejá tu email — sin contraseña — y activás el 15% una sola
-                      vez.
+                      Dejá tu email — sin contraseña — y la segunda bacha lleva
+                      15%. La primera se paga entera. Una sola vez.
                     </p>
                     <form onSubmit={onSubmit} className="mt-5 space-y-3">
                       <div>

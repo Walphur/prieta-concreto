@@ -141,7 +141,7 @@ export function PromoDaySheet() {
               id={titleId}
               className="mt-1 font-[family-name:var(--font-outfit)] text-xl font-semibold text-navy"
             >
-              15% la primera vez
+              15% en la 2.ª bacha
             </h2>
           </div>
           <button
@@ -171,7 +171,8 @@ export function PromoDaySheet() {
           ) : (
             <>
               <p className="text-sm text-navy/65">
-                Dejá tu email — sin contraseña — y activás el 15% una sola vez.
+                Dejá tu email — sin contraseña. La primera bacha se paga
+                entera y la segunda lleva 15%. Una sola vez.
               </p>
               <form onSubmit={onSubmit} className="mt-5 space-y-3">
                 <div>

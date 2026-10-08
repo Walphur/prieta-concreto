@@ -6,7 +6,7 @@ import { X, Trash2 } from "lucide-react";
 import { useCartStore } from "@/lib/cart-store";
 import { useMember } from "@/components/member/MemberProvider";
 import {
-  calcFirstPurchaseDiscount,
+  calcSecondUnitDiscount,
   memberDiscountedPrice,
 } from "@/lib/member-discount";
 import { formatPrice } from "@/lib/products";
@@ -22,8 +22,9 @@ export function CartDrawer() {
 
   const raw = subtotal();
   const discount = eligibleForDiscount
-    ? calcFirstPurchaseDiscount(raw)
+    ? calcSecondUnitDiscount(items)
     : null;
+  const applied = Boolean(discount?.applies);
 
   return (
     <>
@@ -60,10 +61,22 @@ export function CartDrawer() {
         <div className="flex-1 overflow-y-auto px-5 py-4">
           {discount ? (
             <div className="mb-4 border border-sage/30 bg-sage/10 px-3 py-2.5 text-sm text-navy">
-              <span className="font-semibold text-sage-dark">
-                −{discount.discountPercent}% primera compra
-              </span>
-              <span className="text-navy/60"> · aplicado al total</span>
+              {applied ? (
+                <>
+                  <span className="font-semibold text-sage-dark">
+                    −{discount.discountPercent}% en la 2.ª bacha
+                  </span>
+                  <span className="text-navy/60">
+                    {" "}
+                    · la primera se paga entera
+                  </span>
+                </>
+              ) : (
+                <span className="text-navy/70">
+                  La primera bacha va a precio de lista. Sumá una segunda y
+                  esa lleva {discount.discountPercent}%.
+                </span>
+              )}
             </div>
           ) : null}
           {items.length === 0 ? (
@@ -99,7 +112,8 @@ export function CartDrawer() {
                           {item.name}
                         </p>
                         <p className="mt-0.5 text-sm font-medium text-deep-red">
-                          {discount ? (
+                          {applied &&
+                          discount?.discountedProductId === item.productId ? (
                             <>
                               <span className="mr-1.5 text-navy/40 line-through">
                                 {formatPrice(item.price ?? 0)}
@@ -112,7 +126,12 @@ export function CartDrawer() {
                             formatPrice(item.price ?? 0)
                           )}
                         </p>
-                        <p className="mt-1 text-xs text-navy/45">Una unidad</p>
+                        <p className="mt-1 text-xs text-navy/45">
+                          {applied &&
+                          discount?.discountedProductId === item.productId
+                            ? `2.ª unidad · −${discount.discountPercent}%`
+                            : "Precio de lista"}
+                        </p>
                       </div>
                       <button
                         type="button"
@@ -137,17 +156,17 @@ export function CartDrawer() {
               <span
                 className={clsx(
                   "font-[family-name:var(--font-outfit)] text-lg font-semibold",
-                  discount ? "text-navy/45 line-through" : "text-deep-red",
+                  applied ? "text-navy/45 line-through" : "text-deep-red",
                 )}
               >
                 {formatPrice(raw)}
               </span>
             </div>
-            {discount ? (
+            {applied && discount ? (
               <>
                 <div className="mb-2 flex items-center justify-between text-sm">
                   <span className="text-sage-dark">
-                    Primera compra (−{discount.discountPercent}%)
+                    2.ª unidad (−{discount.discountPercent}%)
                   </span>
                   <span className="font-medium text-sage-dark">
                     −{formatPrice(discount.discountAmount)}
@@ -161,7 +180,7 @@ export function CartDrawer() {
                 </div>
               </>
             ) : null}
-            <p className={clsx("mb-3 text-xs text-navy/50", !discount && "mt-2")}>
+            <p className={clsx("mb-3 text-xs text-navy/50", !applied && "mt-2")}>
               Transferencia · Andesmar Cargas a todo el país
             </p>
             <Link

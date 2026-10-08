@@ -36,10 +36,11 @@ export function MemberDiscountBanner({
       >
         <p className="text-sm leading-snug sm:text-[0.95rem]">
           <span className="font-semibold text-sage-dark">
-            {percent}% activo
+            {percent}% en la 2.ª bacha
           </span>
           {" · "}
-          Primera compra con precio rebajado en la tienda y el carrito
+          La primera paga el total. La segunda unidad lleva el descuento en el
+          carrito
           {member?.email ? (
             <span className="hidden text-navy/45 sm:inline">
               {" "}
@@ -56,7 +57,7 @@ export function MemberDiscountBanner({
           </Link>
         ) : (
           <span className="text-[11px] uppercase tracking-[0.12em] text-navy/45">
-            Precio tachado → precio con {percent}%
+            1.ª a precio de lista · 2.ª −{percent}%
           </span>
         )}
       </div>

@@ -7,7 +7,10 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { useCartStore } from "@/lib/cart-store";
 import { useMember } from "@/components/member/MemberProvider";
-import { calcFirstPurchaseDiscount, memberDiscountedPrice } from "@/lib/member-discount";
+import {
+  calcSecondUnitDiscount,
+  memberDiscountedPrice,
+} from "@/lib/member-discount";
 import { formatPrice } from "@/lib/products";
 import {
   ORDER_STORAGE_KEY,
@@ -61,7 +64,7 @@ export function CheckoutForm() {
 
     const raw = subtotal();
     const discount = eligibleForDiscount
-      ? calcFirstPurchaseDiscount(raw)
+      ? calcSecondUnitDiscount(items)
       : null;
 
     const order: PendingOrder = {
@@ -70,7 +73,7 @@ export function CheckoutForm() {
       customer: form,
       items: items.map((i) => ({ ...i })),
       subtotal: raw,
-      ...(discount
+      ...(discount?.applies
         ? {
             discountPercent: discount.discountPercent,
             discountAmount: discount.discountAmount,
@@ -82,7 +85,7 @@ export function CheckoutForm() {
 
     sessionStorage.setItem(ORDER_STORAGE_KEY, JSON.stringify(order));
 
-    if (discount) {
+    if (discount?.applies) {
       await markDiscountUsed();
     }
 
@@ -119,9 +122,10 @@ export function CheckoutForm() {
 
   const raw = subtotal();
   const discount = eligibleForDiscount
-    ? calcFirstPurchaseDiscount(raw)
+    ? calcSecondUnitDiscount(items)
     : null;
-  const payable = discount?.total ?? raw;
+  const applied = Boolean(discount?.applies);
+  const payable = applied && discount ? discount.total : raw;
 
   return (
     <div className="mx-auto grid max-w-5xl gap-12 px-4 py-12 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:py-16">
@@ -251,7 +255,8 @@ export function CheckoutForm() {
                   {item.name}
                 </p>
                 <p className="text-sm font-medium text-deep-red">
-                  {discount ? (
+                  {applied &&
+                  discount?.discountedProductId === item.productId ? (
                     <>
                       <span className="mr-1.5 text-navy/40 line-through">
                         {formatPrice(item.price ?? 0)}
@@ -267,19 +272,31 @@ export function CheckoutForm() {
           ))}
         </ul>
         <div className="mt-6 space-y-2 border-t border-concrete pt-4">
-          {discount ? (
+          {eligibleForDiscount ? (
             <div className="mb-3 border border-sage/30 bg-sage/10 px-3 py-2.5 text-sm">
-              <span className="font-semibold text-sage-dark">
-                −{discount.discountPercent}% primera compra
-              </span>
-              <span className="text-navy/60"> aplicado a este pedido</span>
+              {applied && discount ? (
+                <>
+                  <span className="font-semibold text-sage-dark">
+                    −{discount.discountPercent}% en la 2.ª bacha
+                  </span>
+                  <span className="text-navy/60">
+                    {" "}
+                    · la primera se paga entera
+                  </span>
+                </>
+              ) : (
+                <span className="text-navy/70">
+                  Con una sola bacha no hay descuento. La segunda unidad lleva
+                  15%.
+                </span>
+              )}
             </div>
           ) : null}
           <div className="flex items-center justify-between">
             <span className="text-sm text-navy/65">Subtotal</span>
             <span
               className={
-                discount
+                applied
                   ? "text-sm text-navy/45 line-through"
                   : "font-[family-name:var(--font-outfit)] text-xl font-semibold text-deep-red"
               }
@@ -287,11 +304,11 @@ export function CheckoutForm() {
               {formatPrice(raw)}
             </span>
           </div>
-          {discount ? (
+          {applied && discount ? (
             <>
               <div className="flex items-center justify-between text-sm">
                 <span className="text-sage-dark">
-                  Primera compra (−{discount.discountPercent}%)
+                  2.ª unidad (−{discount.discountPercent}%)
                 </span>
                 <span className="font-medium text-sage-dark">
                   −{formatPrice(discount.discountAmount)}

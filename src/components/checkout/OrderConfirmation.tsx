@@ -109,7 +109,7 @@ export function OrderConfirmation({ refId }: Props) {
               <span className="line-through">{formatPrice(order.subtotal)}</span>
             </div>
             <div className="flex justify-between text-sage-dark">
-              <span>Descuento {order.discountPercent ?? 15}%</span>
+              <span>2.ª unidad (−{order.discountPercent ?? 15}%)</span>
               <span>−{formatPrice(order.discountAmount ?? 0)}</span>
             </div>
             <div className="flex justify-between font-medium text-navy">

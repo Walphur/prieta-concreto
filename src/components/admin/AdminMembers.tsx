@@ -71,7 +71,7 @@ export function AdminMembers() {
             Descuentos 15%
           </h2>
           <p className="mt-1 text-sm text-navy/55">
-            Miembros registrados · primera compra
+            Miembros registrados · 15% en la 2.ª unidad
             {!loading && members.length > 0
               ? ` · ${unused} con 15% disponible · ${used} ya usado`
               : null}

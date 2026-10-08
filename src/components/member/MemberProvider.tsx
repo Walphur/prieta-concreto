@@ -80,7 +80,7 @@ export function MemberProvider({ children }: { children: ReactNode }) {
           ok: true,
           message:
             data.message ||
-            "Listo. Tenés 15% en tu primera compra.",
+            "Listo. La 2.ª bacha lleva 15%. La primera se paga entera.",
         };
       } catch {
         return {
